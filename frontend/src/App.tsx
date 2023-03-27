@@ -4,7 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 // @ts-ignore
-import Header from './app/views/header/header.tsx'
+import Header from './app/views/header.tsx'
 
 function App() {
   const [count, setCount] = useState(0)
