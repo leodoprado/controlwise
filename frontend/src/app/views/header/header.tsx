@@ -4,7 +4,15 @@ export default class Header extends React.Component {
     render() {
         return(
         <header>
-            <p>TESTE</p>
+            <nav>
+                <a>Home</a>
+                 - 
+                <a>Info</a>
+                 - 
+                <a>Ajuda</a>
+                - 
+                <a>Quem é ControlWise</a>
+            </nav>
         </header>
         )
     }
