@@ -1,9 +1,26 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  display: flex;
+  
+  height: 100vh;
+  width: 100vw;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
 }
+
+
+.App {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent; 
+  background-image: linear-gradient(180deg, var(--e-global-color-ae66d20 ) 0%, #232532 100%);
+}
+
+
 
 .logo {
   height: 6em;

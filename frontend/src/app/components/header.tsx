@@ -1,19 +1,15 @@
 import React from "react";
+import './header.css'
 
 export default class Header extends React.Component {
     render() {
         return(
-        <header>
-            <nav>
-                <a>Home</a>
-                 - 
-                <a>Info</a>
-                 - 
+            <header>
+                <a>Home</a>                  
+                <a>Info</a>                 
                 <a>Ajuda</a>
-                - 
                 <a>Quem é ControlWise</a>
-            </nav>
-        </header>
+            </header>
         )
     }
 }
