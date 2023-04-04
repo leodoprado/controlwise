@@ -22,12 +22,16 @@ export const ContainerHeader = styled.div`
         text-decoration: none;
         display: flex;
         align-items: center;
+        justify-content: center;
         font-weight: 700;
         transition-duration: 0.3s;
+        flex-grow: 1;
+        height: 100%;
     }
 
     a:hover {
         color: #DCDCDC;
+        background-color: aquamarine;
     }
 
     img {
