@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ContainerHeader = styled.div`
     width: 100vw;
-    height: 60px;
+    height: 5rem;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -18,7 +18,7 @@ export const ContainerHeader = styled.div`
     }
     
     a {
-        color: #fff;
+        color: #ffe623  ;
         text-decoration: none;
         display: flex;
         align-items: center;
@@ -36,5 +36,12 @@ export const ContainerHeader = styled.div`
 
     img {
         margin-left: 110px;
+    }
+`
+
+export const LogoHeader = styled.div `
+    img {
+        width:60px;
+        height:60px;
     }
 `
