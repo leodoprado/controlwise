@@ -2,6 +2,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomePage from "./pages/home/Home"
+import LoginPage from "./pages/auth";
 
 export default function Router() {
 
@@ -9,6 +10,7 @@ export default function Router() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<HomePage />}></Route>
+                <Route path="/login" element={<LoginPage />}></Route>
             </Routes>
         </BrowserRouter>
     );

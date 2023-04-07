@@ -48,6 +48,6 @@ export const NavigationHeader = styled.div `
 
     a:hover {
         transition: 0.6s;
-        color: #0185bc;
+        color: #01ffd3;
     }
 `
