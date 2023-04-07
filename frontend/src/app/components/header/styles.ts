@@ -13,9 +13,13 @@ export const ContainerHeader = styled.div`
 `
 
 export const LogoHeader = styled.div `
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    a { 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+    }
+
     img {
         width:50px;
         height:50px;
@@ -43,6 +47,7 @@ export const NavigationHeader = styled.div `
     }
 
     a:hover {
-        color: #DCDCDC;
+        transition: 0.6s;
+        color: #0185bc;
     }
 `
