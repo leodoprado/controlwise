@@ -1,47 +1,48 @@
 import styled from "styled-components";
 
 export const ContainerHeader = styled.div`
-    width: 100vw;
-    height: 5rem;
+    height: 3.5rem;
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: row;
+    padding: 0 10%;
+    justify-content: space-between;
     align-items: center;
     background: #23242F;
-    margin-right: auto;
-    margin-left: auto;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Comfortaa', sans-serif;
     box-shadow: 0px 0px 8px gray;
+`
 
-    nav {
-        display: flex;
-        margin-right: 110px;
+export const LogoHeader = styled.div `
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+        width:50px;
+        height:50px;
     }
-    
-    a {
-        color: #ffe623  ;
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+
+    h1 {
+        padding-left: 0.1rem;
+        color: white;
         font-weight: 700;
-        transition-duration: 0.3s;
-        flex-grow: 1;
-        height: 100%;
+    }
+`
+
+export const NavigationHeader = styled.div `
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3rem;
+
+    a {
+        gap: 1rem;
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 400;
+        font-size: 0.9rem;
     }
 
     a:hover {
         color: #DCDCDC;
-        background-color: aquamarine;
-    }
-
-    img {
-        margin-left: 110px;
-    }
-`
-
-export const LogoHeader = styled.div `
-    img {
-        width:60px;
-        height:60px;
     }
 `
