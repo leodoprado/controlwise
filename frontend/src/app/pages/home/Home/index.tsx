@@ -8,7 +8,10 @@ const HomePage = () => {
     <>
         <Header />
         <ContainerMain>
-          <h1></h1>
+          <div id="div-main">
+            <h1>A sua solução de negócio</h1>
+            <button>Começe já!</button>
+          </div>
         </ContainerMain>
         <Footer />
     </>
