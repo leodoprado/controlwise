@@ -10,7 +10,7 @@ const HomePage = () => {
         <ContainerMain>
           <ContainerContent>
             <h1>A sua solução de negócio</h1>
-            <button>Começe já!</button>
+            <button>Comece já!</button>
           </ContainerContent>
         </ContainerMain>
         <Footer />
