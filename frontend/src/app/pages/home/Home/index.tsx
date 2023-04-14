@@ -1,17 +1,17 @@
 import React from 'react'
 import Header from '../../../components/header'
 import Footer from '../../../components/footer'
-import { ContainerMain } from '../Home/style'
+import { ContainerMain, ContainerContent } from '../Home/style'
 
 const HomePage = () => {
   return (
     <>
         <Header />
         <ContainerMain>
-          <div id="div-main">
+          <ContainerContent>
             <h1>A sua solução de negócio</h1>
             <button>Começe já!</button>
-          </div>
+          </ContainerContent>
         </ContainerMain>
         <Footer />
     </>
