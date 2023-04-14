@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const ContainerMain = styled.div`
     display: flex;
+    align-items: center;
+    justify-content: center;
     max-height: 86vh;  
     height: calc(100vh - 72px);
     background: rgb(55,54,65);
@@ -18,25 +20,20 @@ export const ContainerContent = styled.div`
     align-items: flex-start;
     justify-content: center;
 
+    #infoBox {
+        border-style: solid;
+        border-color: white;
+        border-left-width: 2px;
+        padding-left: 10px;
+    }
+
     h1 {
         font-weight: 7800;
         font-size: 4.5ex;
+        margin-bottom: 20px;
     }
-
-    button {
-        margin-top: 100px;
-        width: 180px;
-        height: 50px;
-        font-size: 3ex;
-        background-color: rgb(1, 200, 200);
-        color: white;
-        border-style: none;
-        border-radius: 5px;
-        cursor:pointer;
+    
+    p {
+        font-size: 2ex;
     }
-
-    button:hover {
-        background-color: #1b3ca2;
-        transition: background-color 200ms linear;
-    }
-` 
+`
