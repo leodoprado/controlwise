@@ -49,6 +49,19 @@ const globalStyle = createGlobalStyle`
     border-collapse: collapse;
     border-spacing: 0;
     }
+
+    body {
+        height: 100vh;
+        width: 100vw;
+    }
+
+    #root {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        flex-flow: wrap column;
+        justify-content: space-between;
+    }
 `
 
 export default globalStyle;
