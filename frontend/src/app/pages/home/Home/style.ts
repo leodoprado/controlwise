@@ -39,3 +39,10 @@ export const ContainerContent = styled.div`
         transition: background-color 200ms linear;
     }
 ` 
+
+export const ContainerImage = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+`

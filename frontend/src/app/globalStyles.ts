@@ -59,7 +59,7 @@ const globalStyle = createGlobalStyle`
         display: flex;
         height: 100%;
         width: 100%;
-        flex-flow: wrap column;
+        flex-flow: column;
         justify-content: space-between;
     }
 `
