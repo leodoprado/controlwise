@@ -8,7 +8,7 @@ export const ContainerHeader = styled.div`
     justify-content: space-between;
     align-items: center;
     background: #23242F;
-    font-family: 'Comfortaa', sans-serif;
+    font-family: 'Mulish', sans-serif;
     box-shadow: 0px 0px 8px gray;
 `
 
@@ -18,6 +18,11 @@ export const LogoHeader = styled.div `
         justify-content: center;
         align-items: center;
         text-decoration: none;
+
+        h1:hover {
+            transition: 0.6s;
+            color: #01ffd3;
+        }
     }
 
     img {

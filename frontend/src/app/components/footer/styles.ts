@@ -10,7 +10,7 @@ export const ContentFooter = styled.footer`
     color: white;
     
     a {
-        color: gray;
+        color: #5c97cf;
         text-decoration: none;
     }
 `
