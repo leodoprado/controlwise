@@ -22,6 +22,7 @@ export const ContainerContent = styled.div`
     h1 {
         font-weight: 800;
         font-size: 2.5rem;
+        line-height: 55px;
         text-transform: uppercase;
     }
 

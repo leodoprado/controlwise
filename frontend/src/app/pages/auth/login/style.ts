@@ -12,7 +12,6 @@ export const Container = styled.div`
 `
 
 export const ContainerLogin = styled.div`
-    height: 20rem;
     width: 20rem;
     padding: 2rem;
     display: flex;
@@ -77,6 +76,12 @@ export const ContainerLogin = styled.div`
         border: solid 1px #0185bc;    
     }
 
+    #cadastre-se {
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+        color: #0185bc;    
+    }
+    
     #esqueceu-senha {
         font-size: 0.8rem;
         color: #0185bc;
@@ -84,13 +89,14 @@ export const ContainerLogin = styled.div`
 `
 
 export const ContainerLogo = styled.div`
+    margin-bottom: 1rem;
+    
     a { 
         display: flex;
         justify-content: center;
         align-items: center;
         text-decoration: none;
         margin-left: -1.2rem;
-        margin-bottom: 1rem;
     }
 
     img {
@@ -104,4 +110,13 @@ export const ContainerLogo = styled.div`
         font-weight: 700;
         font-size: 2rem;
     }
+`
+
+export const ContainerLink = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 0.8rem;
+    color: #0185bc;
 `

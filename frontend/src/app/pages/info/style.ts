@@ -20,19 +20,20 @@ export const ContainerContent = styled.div`
     justify-content: center;
 
     #infoBox {
-        border-style: solid;
-        border-color: white;
-        border-left-width: 2px;
-        padding-left: 10px;
+    border-style: solid;
+    border-color: white;
+    border-left-width: 2px;
+    padding-left: 15px;
     }
 
     h1 {
-        font-weight: 7800;
+        font-weight: 800;
         font-size: 4.5ex;
         margin-bottom: 20px;
     }
     
     p {
-        font-size: 2ex;
+        font-size: 3.8ex;
+        text-align: justify;
     }
 `

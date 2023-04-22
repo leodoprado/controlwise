@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, ContainerLogin, ContainerLogo } from './style'
+import { Container, ContainerLogin, ContainerLogo, ContainerLink } from './style'
 import Logo from '../../../../assets/logo.png'
 
 const LoginPage = () => {
@@ -21,7 +21,10 @@ const LoginPage = () => {
                 <input type="password" placeholder='Digite sua senha'/>
                 
                 <button>Login</button>
-                <a id='esqueceu-senha' href="/access">Esqueceu sua senha?</a>
+                <ContainerLink>
+                    <a id='cadastre-se' href="#">Cadastre-se</a>
+                    <a id='esqueceu-senha' href="/access">Esqueceu sua senha?</a>
+                </ContainerLink>
             </ContainerLogin>    
         </Container>   
     </>

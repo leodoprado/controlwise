@@ -14,8 +14,8 @@ const InfoPage = () => {
                                 Info
                             </h1>
                             <p>
-                                ControlWise é um sistema de gerênciamento estratégico empresarial com foco na 
-                                representação estatistica de valores Financeiros de diversas corporações.
+                                Control Wise é um sistema voltado para a representação clara e visual dos dados Financeiros da empresa, com foco em 
+                                pequenos negócios, facilitando a representação estatistica de valores essenciais para previsionar sua saúde financeira.
                             </p> 
                         </div>
                     </ContainerContent>
