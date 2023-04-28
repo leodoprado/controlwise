@@ -5,6 +5,7 @@ import HomePage from "./pages/home/Home"
 import InfoPage from "./pages/info";
 import SobrePage from './pages/sobre';
 import LoginPage from "./pages/auth/login";
+import RegisterPage from "./pages/auth/register";
 import AccessPage from "./pages/auth/access";
 
 export default function Router() {
@@ -14,6 +15,7 @@ export default function Router() {
             <Routes>
                 <Route path="/" element={<HomePage />}></Route>
                 <Route path="/login" element={<LoginPage />}></Route>
+                <Route path="register" element={<RegisterPage/>}></Route>
                 <Route path="/info" element={<InfoPage/>}></Route>
                 <Route path="/sobre" element={<SobrePage/>}></Route>
                 <Route path="/access" element={<AccessPage />}></Route>
