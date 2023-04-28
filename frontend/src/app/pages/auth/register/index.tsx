@@ -18,7 +18,7 @@ const checkInput = (event: React.MouseEvent<HTMLButtonElement>) =>  {
         let input = inputList[i];
         let error = errorList[i];
         if(input.value == "" /*se o input não tiver nada*/) {
-            error.innerHTML = "não está preenchido!";
+            error.innerHTML = "campo obrigatório!";
         }
         else {
             error.innerHTML = ""
