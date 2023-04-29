@@ -23,6 +23,7 @@ export const ContainerContent = styled.div`
     border-style: solid;
     border-color: white;
     border-left-width: 2px;
+    margin-left: 15px;
     padding-left: 15px;
     }
 

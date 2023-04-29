@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../../../components/header";
-import { Container, ContainerRegister, ContainerLogo, ContainerLink } from './style'
+import { Container, ContainerRegister, ContainerLogo } from './style'
 import Footer from "../../../components/footer";
 import Logo from '../../../../assets/logo.png';
 
@@ -69,6 +69,7 @@ export default function RegisterPage() {
 
                     <input type="tel" id="phone" name="phone" className="input" data-mask="(00) 0000-0000" data-mask-selectonfocus="true"/>
                     <button onClick={checkInput}>Registrar</button>
+
                 </ContainerRegister>
             </Container>
         </>

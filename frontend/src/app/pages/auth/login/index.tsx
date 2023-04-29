@@ -22,7 +22,7 @@ const LoginPage = () => {
                 
                 <button>Login</button>
                 <ContainerLink>
-                    <a id='cadastre-se' href="#">Cadastre-se</a>
+                    <a id='cadastre-se' href="/register">Não tem uma conta? Cadastre-se</a>
                     <a id='esqueceu-senha' href="/access">Esqueceu sua senha?</a>
                 </ContainerLink>
             </ContainerLogin>    
