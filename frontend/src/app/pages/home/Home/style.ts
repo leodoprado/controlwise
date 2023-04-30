@@ -18,6 +18,7 @@ export const ContainerContent = styled.div`
     flex-flow: column wrap;
     align-items: flex-start;
     justify-content: center;
+    padding-left: 15px;
 
     h1 {
         font-weight: 800;
