@@ -11,7 +11,7 @@ export default class HeaderAuth extends React.Component {
         return(
             <ContainerHeader>
                 <LogoHeader>
-                    <a href="#">
+                    <a href="/">
                         <img src={Logo} alt="" />
                         <h1>CW</h1>
                     </a>

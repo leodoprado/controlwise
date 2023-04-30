@@ -8,7 +8,7 @@ export const ContainerHeader = styled.div`
     justify-content: space-between;
     align-items: center;
     background: #23242F;
-    box-shadow: 0px 0px 8px gray;
+    border-bottom: 1px outset rgb(1, 255, 211);
 `
 
 export const LogoHeader = styled.div `
