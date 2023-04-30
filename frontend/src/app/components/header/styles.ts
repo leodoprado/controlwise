@@ -8,7 +8,6 @@ export const ContainerHeader = styled.div`
     justify-content: space-between;
     align-items: center;
     background: #23242F;
-    font-family: 'Mulish', sans-serif;
     box-shadow: 0px 0px 8px gray;
 `
 
