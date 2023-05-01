@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../../../components/header'
 import Footer from '../../../components/footer'
-import { ContainerMain, ContainerContent, ContainerImage } from '../Home/style'
+import { ContainerMain, ContainerContent, ContainerImage } from '../homePage/style'
 import HomeImage from '../../../../assets/img-inicio2.png'
 
 const HomePage = () => {

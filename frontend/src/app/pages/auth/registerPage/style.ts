@@ -63,6 +63,12 @@ export const ContainerRegister = styled.div`
         border: solid 1px #0185bc;
     }
 
+    #login {
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+        color: #0185bc;    
+    }
+
     button {
         width: 100%;
         padding: 0.6rem 0;
@@ -108,4 +114,13 @@ export const ContainerLogo = styled.div`
         font-weight: 700;
         font-size: 2rem;
     }
+`
+
+export const ContainerLink = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 0.8rem;
+    color: #0185bc;
 `

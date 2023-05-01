@@ -1,7 +1,5 @@
 import React from "react";
-import Header from "../../../components/header";
-import { Container, ContainerRegister, ContainerLogo } from './style'
-import Footer from "../../../components/footer";
+import { Container, ContainerRegister, ContainerLogo, ContainerLink } from './style'
 import Logo from '../../../../assets/logo.png';
 
 interface ToggleProps {
@@ -40,14 +38,6 @@ export default function RegisterPage() {
                         <h1>Control Wise</h1>
                     </a>
                     </ContainerLogo>
-
-                    <div className="label-register">
-                        <label htmlFor="">Nome de Usuário</label>
-                        <p id="user-error" className="error"></p>
-                    </div>
-
-                    <input type="text" className="input" placeholder='Digite seu nome de usuário'/>
-
                     <div className="label-register">
                         <label htmlFor="">Email</label>
                         <p id="email-error" className="error"></p>
@@ -67,9 +57,11 @@ export default function RegisterPage() {
                         <p id="phone-error" className="error"></p>
                     </div>
 
-                    <input type="tel" id="phone" name="phone" className="input" data-mask="(00) 0000-0000" data-mask-selectonfocus="true"/>
+                    <input type="tel" id="phone" name="phone" placeholder="Digite seu telefone" className="input" data-mask="(00) 0000-0000" data-mask-selectonfocus="true"/>
                     <button onClick={checkInput}>Registrar</button>
-
+                    <ContainerLink>
+                        <a href="/login" id="login">Já possui uma conta? Faça o Login</a>    
+                    </ContainerLink>
                 </ContainerRegister>
             </Container>
         </>

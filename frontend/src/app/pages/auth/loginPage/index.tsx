@@ -8,13 +8,12 @@ const LoginPage = () => {
         <Container>
             <ContainerLogin>
                 <ContainerLogo>
-                    <a href="/">
+                    <a href="/perfil">
                         <img src={Logo} alt="" />
                         <h1>Control Wise</h1>
                     </a>
                 </ContainerLogo>     
-                <h1></h1>
-
+                
                 <label htmlFor="">Email</label>
                 <input type="text" placeholder='Digite seu email'/>
                 <label>Senha</label>
@@ -23,7 +22,7 @@ const LoginPage = () => {
                 <button>Login</button>
                 <ContainerLink>
                     <a id='cadastre-se' href="/register">Não tem uma conta? Cadastre-se</a>
-                    <a id='esqueceu-senha' href="/access">Esqueceu sua senha?</a>
+                    <a id='esqueceu-senha' href="/forgotpass">Esqueceu sua senha?</a>
                 </ContainerLink>
             </ContainerLogin>    
         </Container>   
