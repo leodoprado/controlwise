@@ -9,6 +9,15 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
     font-family: 'Comfortaa', sans-serif;
+
+    .label-login {
+        width: 100%;
+        display: flex;
+    }
+
+    .error {
+        color: crimson;
+    }
 `
 
 export const ContainerLogin = styled.div`
@@ -26,7 +35,7 @@ export const ContainerLogin = styled.div`
     }
 
     label {
-        width: 100%;
+        width: 50%;
         font-size: 0.8rem;
         Color: white;
         margin-bottom: 0.5rem;

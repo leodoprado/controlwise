@@ -3,19 +3,17 @@ import { Container, ContainerRegister, ContainerLogo, ContainerLink } from './st
 import Logo from '../../../../assets/logo.png';
 
 interface ToggleProps {
-
     ClickHandler: (event: React.MouseEvent<HTMLButtonElement>) => void
-
 }
 
-const checkInput = (event: React.MouseEvent<HTMLButtonElement>) =>  {
+const checkInput = () =>  {
     let inputList = document.getElementsByClassName("input") as HTMLCollectionOf<HTMLInputElement>;
     let errorList = document.getElementsByClassName("error") as HTMLCollectionOf<HTMLElement>;
 
     for(let i = 0; i < inputList.length; i++) {
         let input = inputList[i];
         let error = errorList[i];
-        if(input.value == "" /*se o input não tiver nada*/) {
+        if(input.value == "") {
             error.innerHTML = "campo obrigatório!";
         }
         else {
@@ -43,21 +41,21 @@ export default function RegisterPage() {
                         <p id="email-error" className="error"></p>
                     </div>
                     
-                    <input type="text" className="input" placeholder='Digite seu email'/>
+                    <input type="text" className="input" placeholder='Digite seu email' required/>
 
                     <div className="label-register">
                         <label htmlFor="">Senha</label>
                         <p id="password-error" className="error"></p>
                     </div>
                     
-                    <input type="password" className="input" placeholder='Digite sua senha'/>
+                    <input type="password" className="input" placeholder='Digite sua senha' required/>
                     
                     <div className="label-register">
                         <label htmlFor="">Telefone</label>
                         <p id="phone-error" className="error"></p>
                     </div>
 
-                    <input type="tel" id="phone" name="phone" placeholder="Digite seu telefone" className="input" data-mask="(00) 0000-0000" data-mask-selectonfocus="true"/>
+                    <input type="tel" id="phone" name="phone" placeholder="Digite seu telefone" className="input" data-mask="(00) 0000-0000" data-mask-selectonfocus="true" required/>
                     <button onClick={checkInput}>Registrar</button>
                     <ContainerLink>
                         <a href="/login" id="login">Já possui uma conta? Faça o Login</a>    
