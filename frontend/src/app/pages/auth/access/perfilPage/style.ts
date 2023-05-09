@@ -1,40 +1,43 @@
 import styled from "styled-components";
 
 export const ContainerMain = styled.div`
-    max-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 10%;
+    flex-grow: 1;
     background: rgb(55,54,65);
     background: linear-gradient(0deg, rgba(55,54,65,1) 9%, rgba(35,36,47,1) 31%, rgba(17,16,23,1) 82%);
-    font-family: 'Comfortaa', sans-serif;
+    font-family: 'Mulish', sans-serif;
     color: white;
 `
 
 export const ContainerContent = styled.div`
-    height: 100vh;
-    padding: 0px 10%;
+    height: 100%;
     display: flex;
     flex-flow: column wrap;
     align-items: flex-start;
     justify-content: center;
+    padding-left: 15px;
+`
 
-    h1 {
-        font-weight: 7800;
-        font-size: 4.5ex;
-    }
-
-    button {
-        margin-top: 100px;
-        width: 180px;
-        height: 50px;
-        font-size: 3ex;
-        background-color: rgb(1, 200, 200);
-        color: white;
-        border-style: none;
+export const ContainerInput = styled.div`
+    width: 340px;
+    input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid rgba(255,255,255,0.25);
+        background: rgb(35, 36, 47);;
         border-radius: 5px;
-        cursor:pointer;
+        outline: none;
+        color: #fff;
+        font-size: 1em;
+        transition: 0.5s;
+        margin-top: 0.3em;
     }
 
-    button:hover {
-        background-color: #1b3ca2;
-        transition: background-color 200ms linear;
+    input:focus {
+        border-bottom: 1px solid rgb(1, 255, 211);
+        transition: 0.8s;
     }
-` 
+`
