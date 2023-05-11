@@ -16,7 +16,7 @@ export default class Header extends React.Component {
                     <a href="/">Home</a>                  
                     <a href="/sobre">Sobre</a>
                     <a href="/info">Info</a>                 
-                    <a href="#">Ajuda</a>
+                    <a href="/ajuda">Ajuda</a>
                     <a href="/login">Login</a>
                 </NavigationHeader>
             </ContainerHeader>

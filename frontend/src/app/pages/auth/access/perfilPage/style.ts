@@ -2,9 +2,10 @@ import styled from "styled-components";
 
 export const ContainerMain = styled.div`
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     padding: 0px 10%;
+    padding-top: 2rem;
     flex-grow: 1;
     background: rgb(55,54,65);
     background: linear-gradient(0deg, rgba(55,54,65,1) 9%, rgba(35,36,47,1) 31%, rgba(17,16,23,1) 82%);
@@ -12,17 +13,8 @@ export const ContainerMain = styled.div`
     color: white;
 `
 
-export const ContainerContent = styled.div`
-    height: 100%;
-    display: flex;
-    flex-flow: column wrap;
-    align-items: flex-start;
-    justify-content: center;
-    padding-left: 15px;
-`
-
 export const ContainerInput = styled.div`
-    width: 340px;
+    width: 430px;
     input {
         width: 100%;
         padding: 8px;
@@ -40,4 +32,21 @@ export const ContainerInput = styled.div`
         border-bottom: 1px solid rgb(1, 255, 211);
         transition: 0.8s;
     }
+`
+
+export const ContainerLeft = styled.div`
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-left: 15px;
+`
+
+export const ContainerRight = styled.div`
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
 `

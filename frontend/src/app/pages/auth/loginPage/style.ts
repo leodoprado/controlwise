@@ -30,6 +30,10 @@ export const ContainerLogin = styled.div`
     border-radius: 0.5rem;
     background: #23242F;
 
+    form {
+        width: 100%;
+    }
+
     h1 {
         color: white;
     }

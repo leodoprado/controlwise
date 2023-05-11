@@ -1,17 +1,25 @@
 import React from "react";
 import HeaderAuth from "../../../../components/headerAuth";
-import { ContainerMain, ContainerContent, ContainerInput } from './style'
+import { ContainerMain, ContainerLeft, ContainerRight, ContainerInput } from './style'
+
+import Input from "../../../../components/inputText";
 
 const PerfilPage = () => {
     return (
       <>
         <HeaderAuth />
         <ContainerMain>
-          <ContainerInput>
-            <label htmlFor="#">Nome</label>
-            <input type="text" required/>
-          </ContainerInput>
-        
+          <ContainerLeft>
+            <Input 
+              name="Seila"
+              placeholder="nome"/>  
+          </ContainerLeft>         
+          <ContainerRight>
+            <ContainerInput>
+              <label htmlFor="">E-mail</label>
+              <input type="text" />
+            </ContainerInput>
+          </ContainerRight>
         </ContainerMain>
       </>
     )
