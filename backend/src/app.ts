@@ -1,26 +1,17 @@
 import express from 'express';
 import cors from 'cors';
+import * as path from 'path';
+import * as MySQLConnector from '../src/mysql.connector';
 
-class App {
-    public express: express.Application
+const app = express();
+const port = 3000;
 
-    constructor () {
-        this.express = express ()
-        
-        this.middlewares()
-        this.routes()
-    }
+// create database pool
+MySQLConnector.init();
 
-    private middlewares (): void {
-        this.express.use(express.json())
-        this.express.use(cors())
-    }
+// parse incoming request body and append data to `req.body`
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-    private routes (): void {
-        this.express.get('/', (req, res) => {
-            return res.send('Hello World!')
-        })
-    }
-}
-
-export default new App().express
+// enable all CORS request
+app.use(cors());
