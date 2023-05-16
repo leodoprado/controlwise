@@ -37,7 +37,7 @@ export default function Router() {
                 <Route path="/dados" element={<DadosPage/>}></Route>
                 <Route path="/analitico" element={<AnaliticoPage/>}></Route>
                 <Route path="/planejamento" element={<PlanejamentoPage/>}></Route>
-                <Route path="/relatorio" element={<RelatorioPage/>}></Route>
+                <Route path="/relatorios" element={<RelatorioPage/>}></Route>
             </Routes>
         </BrowserRouter>
     );

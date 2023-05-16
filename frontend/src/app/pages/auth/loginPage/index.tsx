@@ -4,6 +4,7 @@ import Logo from '../../../../assets/logo.png'
 import {TypeOf, z} from 'zod';
 import {zodResolver} from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form';
+import { NavLink } from 'react-router-dom';
 
 const loginUserFormSchema = z.object({
     email: z.string()
@@ -29,10 +30,10 @@ const LoginPage = () => {
         <Container>
             <ContainerLogin>
                 <ContainerLogo>
-                    <a href="/perfil">
+                    <NavLink to="/perfil">
                         <img src={Logo} alt="" />
                         <h1>Control Wise</h1>
-                    </a>
+                    </NavLink>
                 </ContainerLogo>     
                 <form onSubmit={handleSubmit(loginUser)}>
                     <div className="label-login">
@@ -54,8 +55,8 @@ const LoginPage = () => {
                     <button type='submit'>Login</button>
                 </form>
                 <ContainerLink>
-                    <a id='cadastre-se' href="/register">Não tem uma conta? Cadastre-se</a>
-                    <a id='esqueceu-senha' href="/forgotpass">Esqueceu sua senha?</a>
+                    <NavLink id='cadastre-se' to="/register">Não tem uma conta? Cadastre-se</NavLink>
+                    <NavLink id='esqueceu-senha' to="/forgotpass">Esqueceu sua senha?</NavLink>
                 </ContainerLink>
             </ContainerLogin>    
         </Container>   

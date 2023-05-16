@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, ContainerRegister, ContainerLogo, ContainerLink } from './style'
 import Logo from '../../../../assets/logo.png';
+import { NavLink } from "react-router-dom";
 
 interface ToggleProps {
     ClickHandler: (event: React.MouseEvent<HTMLButtonElement>) => void
@@ -31,10 +32,10 @@ export default function RegisterPage() {
             <Container>
                 <ContainerRegister>
                     <ContainerLogo>
-                    <a href="/">
+                    <NavLink to="/">
                         <img src={Logo} alt="" />
                         <h1>Control Wise</h1>
-                    </a>
+                    </NavLink>
                     </ContainerLogo>
                     <div className="label-register">
                         <label htmlFor="">Email</label>
@@ -58,7 +59,7 @@ export default function RegisterPage() {
                     <input type="tel" id="phone" name="phone" placeholder="Digite seu telefone" className="input" data-mask="(00) 0000-0000" data-mask-selectonfocus="true" required/>
                     <button onClick={checkInput}>Registrar</button>
                     <ContainerLink>
-                        <a href="/login" id="login">Já possui uma conta? Faça o Login</a>    
+                        <NavLink to="/login" id="login">Já possui uma conta? Faça o Login</NavLink>    
                     </ContainerLink>
                 </ContainerRegister>
             </Container>

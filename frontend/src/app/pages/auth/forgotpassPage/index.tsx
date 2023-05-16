@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, ContainerLogin, ContainerLogo, ContainerLink } from './style'
 import Logo from '../../../../assets/logo.png'
+import { NavLink } from "react-router-dom";
 
 const ForgotpassPage = () => {
     return (
@@ -8,10 +9,10 @@ const ForgotpassPage = () => {
             <Container>
                 <ContainerLogin>
                     <ContainerLogo>
-                        <a href="/">
+                        <NavLink to="/">
                             <img src={Logo} alt="" />
                             <h1>Control Wise</h1>
-                        </a>
+                        </NavLink>
                     </ContainerLogo>     
 
                     <h1>Recupere seu e-mail / senha</h1>
@@ -22,7 +23,7 @@ const ForgotpassPage = () => {
                     <button>Continuar</button>
 
                     <ContainerLink>
-                        <a id='voltar' href="/login">Voltar para o Login</a>
+                        <NavLink id='voltar' to="/login">Voltar para o Login</NavLink>
                     </ContainerLink>
                 </ContainerLogin>    
             </Container>   
