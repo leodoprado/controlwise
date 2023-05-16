@@ -8,7 +8,6 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Comfortaa', sans-serif;
 
     .label-login {
         width: 100%;
@@ -38,41 +37,13 @@ export const ContainerLogin = styled.div`
         color: white;
     }
 
-    label {
-        width: 50%;
-        font-size: 0.8rem;
-        Color: white;
-        margin-bottom: 0.5rem;
-    }
-
-    input {
-        width: 100%;
-        font-size: 0.9rem;
-        padding: 0.8rem;
-        border-radius: 0;
-        border: solid 1px #01435e;
-        margin-bottom: 1rem;
-        background: #23242F;
-        color: white;
-        box-sizing: border-box;
-        outline: none;
-    }
-
-    input::placeholder {
-        color: #f0ffff94;
-    }
-
-    input:focus {
-        transition: 0.6s;
-        border: solid 1px #0185bc;
-    }
-
     button {
         width: 100%;
         padding: 0.6rem 0;
         border-radius: 0;
         border: solid 1px #01435e;
         margin-bottom: 1rem;
+        margin-top: 0.3rem;
         border-radius: 0.1rem;
         outline: none;
         background: #23242F;
@@ -81,7 +52,6 @@ export const ContainerLogin = styled.div`
         letter-spacing: 2px;
         color: white;
         cursor: pointer;
-        font-family: 'Comfortaa', sans-serif;
     }
 
     button:hover {
@@ -123,6 +93,44 @@ export const ContainerLogo = styled.div`
         font-weight: 700;
         font-size: 2rem;
     }
+`
+
+export const ContainerInput = styled.div`
+    label {
+        width: 50%;
+        font-size: 0.8rem;
+        Color: white;
+    }
+
+    input {
+        width: 100%;
+        font-size: 0.9rem;
+        padding: 0.8rem;
+        border-radius: 0;
+        border: solid 1px #01435e;
+        margin-bottom: 0.2rem;
+        margin-top: 0.3rem;
+        background: #23242F;
+        color: white;
+        box-sizing: border-box;
+        outline: none;
+    }
+
+    input::placeholder {
+        color: #f0ffff94;
+    }
+
+    input:focus {
+        transition: 0.6s;
+        border: solid 1px #0185bc;
+    }
+
+    span {
+        font-size: 14px;
+        color: red;
+    }
+
+    margin-bottom: 1rem;
 `
 
 export const ContainerLink = styled.div`

@@ -1,63 +1,60 @@
-import React from "react";
-import { Container, ContainerRegister, ContainerLogo, ContainerLink } from './style'
+import React from 'react'
+import {TypeOf, z} from 'zod';
+import {zodResolver} from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form';
+import { NavLink } from 'react-router-dom';
+
+import { Container, ContainerRegister, ContainerLogo, ContainerInput, ContainerLink } from './style'
 import Logo from '../../../../assets/logo.png';
-import { NavLink } from "react-router-dom";
 
-interface ToggleProps {
-    ClickHandler: (event: React.MouseEvent<HTMLButtonElement>) => void
-}
+const registerUserFormSchema = z.object({
+    email: z.string()
+        .nonempty('Digite seu e-mail cadastrado!')
+        .email('Formato de e-mail inválido!'),
+    password: z.string()
+        .min(6, 'A senha precisa ter no mínimo 6 caracteres!')
+})
 
-const checkInput = () =>  {
-    let inputList = document.getElementsByClassName("input") as HTMLCollectionOf<HTMLInputElement>;
-    let errorList = document.getElementsByClassName("error") as HTMLCollectionOf<HTMLElement>;
-
-    for(let i = 0; i < inputList.length; i++) {
-        let input = inputList[i];
-        let error = errorList[i];
-        if(input.value == "") {
-            error.innerHTML = "campo obrigatório!";
-        }
-        else {
-            error.innerHTML = ""
-            
-        }
-    }
-
-    //console.log("SEVERINO", inputList);
-}
+type registerUserFormData = z.infer<typeof registerUserFormSchema>
 
 export default function RegisterPage() {
+    const { register, handleSubmit, formState: { errors } } = useForm<registerUserFormData> ({
+        resolver: zodResolver(registerUserFormSchema),
+    })
+
+    function registerUser(data : any){
+        console.log(data)
+    }
+
     return(
         <>
             <Container>
                 <ContainerRegister>
                     <ContainerLogo>
-                    <NavLink to="/">
-                        <img src={Logo} alt="" />
-                        <h1>Control Wise</h1>
-                    </NavLink>
+                        <NavLink to="/">
+                            <img src={Logo} alt="" />
+                            <h1>Control Wise</h1>
+                        </NavLink>
                     </ContainerLogo>
-                    <div className="label-register">
-                        <label htmlFor="">Email</label>
-                        <p id="email-error" className="error"></p>
-                    </div>
-                    
-                    <input type="text" className="input" placeholder='Digite seu email' required/>
+                    <form onSubmit={handleSubmit(registerUser)}>
+                        <ContainerInput>
+                            <label htmlFor="">E-mail</label>     
 
-                    <div className="label-register">
+                            <input type="text" className="input" placeholder='Digite seu e-mail' required/>
+                        </ContainerInput>
+
+                        
                         <label htmlFor="">Senha</label>
-                        <p id="password-error" className="error"></p>
-                    </div>
-                    
-                    <input type="password" className="input" placeholder='Digite sua senha' required/>
-                    
-                    <div className="label-register">
-                        <label htmlFor="">Telefone</label>
-                        <p id="phone-error" className="error"></p>
-                    </div>
+                        <input type="password" className="input" placeholder='Digite sua senha' required/>
+                        
+                        <div className="label-register">
+                            <label htmlFor="">Telefone</label>
+                            <p id="phone-error" className="error"></p>
+                        </div>
 
-                    <input type="tel" id="phone" name="phone" placeholder="Digite seu telefone" className="input" data-mask="(00) 0000-0000" data-mask-selectonfocus="true" required/>
-                    <button onClick={checkInput}>Registrar</button>
+                        <input type="tel" id="phone" name="phone" placeholder="Digite seu telefone" className="input" data-mask="(00) 0000-0000" data-mask-selectonfocus="true" required/>
+                        <button type='submit'>Registrar</button>
+                    </form>
                     <ContainerLink>
                         <NavLink to="/login" id="login">Já possui uma conta? Faça o Login</NavLink>    
                     </ContainerLink>

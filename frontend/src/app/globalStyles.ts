@@ -56,6 +56,10 @@ const globalStyle = createGlobalStyle`
         width: 100vw;
     }
 
+    button {
+        font-family: 'Mulish', sans-serif;
+    }
+
     #root {
         display: flex;
         height: 100%;
