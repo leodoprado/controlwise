@@ -1,23 +1,24 @@
 import React from "react";
 import { ContainerHeader, LogoHeader, NavigationHeader } from './styles'
 import Logo from '../../../assets/logo.png'
+import { NavLink } from "react-router-dom";
 
 export default class Header extends React.Component {
     render() {
         return(
             <ContainerHeader>
                 <LogoHeader>
-                    <a href="#">
+                    <NavLink to="#">
                         <img src={Logo} alt="" />
                         <h1>Control Wise</h1>
-                    </a>
+                    </NavLink>
                 </LogoHeader>
                 <NavigationHeader>
-                    <a href="/">Home</a>                  
-                    <a href="/sobre">Sobre</a>
-                    <a href="/info">Info</a>                 
-                    <a href="/ajuda">Ajuda</a>
-                    <a href="/login">Login</a>
+                    <NavLink to="/">Home</NavLink>                  
+                    <NavLink to="/sobre">Sobre</NavLink>
+                    <NavLink to="/info">Info</NavLink>                 
+                    <NavLink to="/ajuda">Ajuda</NavLink>
+                    <NavLink to="/login">Login</NavLink>
                 </NavigationHeader>
             </ContainerHeader>
         )
