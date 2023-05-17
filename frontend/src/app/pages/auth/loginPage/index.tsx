@@ -38,17 +38,13 @@ const LoginPage = () => {
                 </ContainerLogo>     
                 <form onSubmit={handleSubmit(loginUser)}>
                     <ContainerInput>
-                        <label htmlFor="">E-mail</label>
-                        <p id="email-error" className="error"></p>
-                            
+                        <label htmlFor="">E-mail</label>                        
                         <input type="text" placeholder='Digite seu email' className="input" { ...register('email') }/>
                         {errors.email && <span>{errors.email.message}</span>}
                     </ContainerInput> 
 
                     <ContainerInput>
-                        <label htmlFor="">Senha</label>
-                        <p id="password-error" className="error"></p>
-                        
+                        <label htmlFor="">Senha</label>                  
                         <input type="password" placeholder='Digite sua senha' className="input" { ...register('password')}/>
                         {errors.password && <span>{errors.password.message}</span>}
                     </ContainerInput>

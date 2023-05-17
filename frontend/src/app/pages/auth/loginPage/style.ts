@@ -8,15 +8,6 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-
-    .label-login {
-        width: 100%;
-        display: flex;
-    }
-
-    .error {
-        color: crimson;
-    }
 `
 
 export const ContainerLogin = styled.div`

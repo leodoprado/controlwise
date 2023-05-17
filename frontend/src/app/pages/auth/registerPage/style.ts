@@ -33,6 +33,10 @@ export const ContainerRegister = styled.div`
         color: white;
     }
 
+    form {
+        width: 100%;
+    }
+
     label {
         width: 50%;
         font-size: 0.8rem;
