@@ -3,11 +3,26 @@ import {TypeOf, z} from 'zod';
 import {zodResolver} from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form';
 
-import { Container, ContainerLogin, ContainerLogo, ContainerLink } from './style'
+import { Container, ContainerLogin, ContainerLogo, ContainerInput, ContainerLink } from './style'
 import Logo from '../../../../assets/logo.png'
 import { NavLink } from "react-router-dom";
 
+const forgotPassFormSchema = z.object({
+    input: z.string()
+        .nonempty('Digite seu e-mail ou telefone cadastrado!')
+})
+
+type forgotPassFormSchema = z.infer<typeof forgotPassFormSchema>
+
 const ForgotpassPage = () => {
+    const { register, handleSubmit, formState: { errors } } = useForm<forgotPassFormSchema> ({
+        resolver: zodResolver(forgotPassFormSchema),
+    })
+
+    function forgotPass(data : any){
+        console.log(data)
+    }
+
     return (
         <>
             <Container>
@@ -20,11 +35,14 @@ const ForgotpassPage = () => {
                     </ContainerLogo>     
 
                     <h1>Recupere seu e-mail / senha</h1>
-
-                    <label htmlFor="">Número de telefone ou e-mail</label>
-                    <input type="text" placeholder='Digite seu número de telefone ou e-mail'/>
-                    
-                    <button>Continuar</button>
+                    <form onSubmit={handleSubmit(forgotPass)}>
+                        <ContainerInput>
+                            <label htmlFor="">Número de telefone ou e-mail</label>
+                            <input type="text" placeholder='Digite seu número de telefone ou e-mail' { ...register('input') }/>
+                            {errors.input && <span>{errors.input.message}</span>}
+                        </ContainerInput>
+                        <button type="submit">Continuar</button>
+                    </form>
 
                     <ContainerLink>
                         <NavLink id='voltar' to="/login">Voltar para o Login</NavLink>

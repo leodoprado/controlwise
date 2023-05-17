@@ -45,7 +45,7 @@ const LoginPage = () => {
 
                     <ContainerInput>
                         <label htmlFor="">Senha</label>                  
-                        <input type="password" placeholder='Digite sua senha' className="input" { ...register('password')}/>
+                        <input type="password" placeholder='Digite sua senha' className="input" { ...register('password') }/>
                         {errors.password && <span>{errors.password.message}</span>}
                     </ContainerInput>
                     

@@ -10,7 +10,7 @@ const HomePage = () => {
         <Header />
         <ContainerMain>
           <ContainerContent>
-            <h1>Análise inteligente e eficaz do presente e futuro do seu negócio!</h1>
+            <h1>Análise inteligente e eficaz do presente e futuro das suas finanças!</h1>
             <button>Comece já!</button>
           </ContainerContent>
           <ContainerImage>

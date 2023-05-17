@@ -8,7 +8,6 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Comfortaa', sans-serif;
 `
 
 export const ContainerLogin = styled.div`
@@ -113,6 +112,44 @@ export const ContainerLogo = styled.div`
         font-weight: 700;
         font-size: 2rem;
     }
+`
+
+export const ContainerInput = styled.div`
+    label {
+        width: 50%;
+        font-size: 0.8rem;
+        Color: white;
+    }
+
+    input {
+        width: 100%;
+        font-size: 0.9rem;
+        padding: 0.8rem;
+        border-radius: 0;
+        border: solid 1px #01435e;
+        margin-bottom: 0.2rem;
+        margin-top: 0.3rem;
+        background: #23242F;
+        color: white;
+        box-sizing: border-box;
+        outline: none;
+    }
+
+    input::placeholder {
+        color: #f0ffff94;
+    }
+
+    input:focus {
+        transition: 0.6s;
+        border: solid 1px #0185bc;
+    }
+
+    span {
+        font-size: 14px;
+        color: red;
+    }
+
+    margin-bottom: 1rem;
 `
 
 export const ContainerLink = styled.div`
