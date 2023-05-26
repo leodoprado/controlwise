@@ -1,4 +1,4 @@
-import { createPool, Pool} from 'mysql';
+import { createPool, Pool} from 'mysql2';
 import { DATA_SOURCES } from './config/vars.config';
 const dataSource = DATA_SOURCES.mySqlDataSource;
 
@@ -10,11 +10,16 @@ let pool: Pool;
 export const init = () => {
   try {
     pool = createPool({
-      connectionLimit: dataSource.DB_CONNECTION_LIMIT,
+      /*connectionLimit: dataSource.DB_CONNECTION_LIMIT,
       host: dataSource.DB_HOST,
       user: dataSource.DB_USER,
       password: dataSource.DB_PASSWORD,
-      database: dataSource.DB_DATABASE,
+      database: dataSource.DB_DATABASE,*/
+
+      host: "localhost",
+      user: "root",
+      password: "1234",
+      database: "Base"
     });
 
     console.debug('MySql Adapter Pool generated successfully');
