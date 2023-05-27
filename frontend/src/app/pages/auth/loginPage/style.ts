@@ -28,28 +28,6 @@ export const ContainerLogin = styled.div`
         color: white;
     }
 
-    button {
-        width: 100%;
-        padding: 0.6rem 0;
-        border-radius: 0;
-        border: solid 1px #01435e;
-        margin-bottom: 1rem;
-        margin-top: 0.3rem;
-        border-radius: 0.1rem;
-        outline: none;
-        background: #23242F;
-        text-transform: uppercase;
-        font-weight: 800;
-        letter-spacing: 2px;
-        color: white;
-        cursor: pointer;
-    }
-
-    button:hover {
-        transition: 0.6s;
-        border: solid 1px #0185bc;    
-    }
-
     #cadastre-se {
         font-size: 0.8rem;
         margin-bottom: 0.5rem;

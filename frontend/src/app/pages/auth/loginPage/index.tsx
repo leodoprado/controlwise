@@ -6,14 +6,9 @@ import { NavLink } from 'react-router-dom';
 
 import { Container, ContainerLogin, ContainerLogo, ContainerInput, ContainerLink } from './style'
 import Logo from '../../../../assets/logo.png'
-
-const loginUserFormSchema = z.object({
-    email: z.string()
-        .nonempty('Digite seu e-mail cadastrado!')
-        .email('Formato de e-mail inválido!'),
-    password: z.string()
-        .min(6, 'A senha precisa ter no mínimo 6 caracteres!')
-})
+import ButtonAccessDefault from '../../../components/buttonAccessDefault';
+import InputAccessDefault from '../../../components/inputAccessDefault';
+import { loginUserFormSchema } from '../../../../core/hooks/validations';
 
 type LoginUserFormData = z.infer<typeof loginUserFormSchema>
 
@@ -39,17 +34,18 @@ const LoginPage = () => {
                 <form onSubmit={handleSubmit(loginUser)}>
                     <ContainerInput>
                         <label htmlFor="">E-mail</label>                        
-                        <input type="text" placeholder='Digite seu email' className="input" { ...register('email') }/>
+
+                        <InputAccessDefault typeInput='text' placeholderInput='Digite seu e-mail' classNameInput='input' { ...register('email') }/>
                         {errors.email && <span>{errors.email.message}</span>}
                     </ContainerInput> 
 
                     <ContainerInput>
                         <label htmlFor="">Senha</label>                  
-                        <input type="password" placeholder='Digite sua senha' className="input" { ...register('password') }/>
+                        <InputAccessDefault typeInput="password" placeholderInput='Digite sua senha' classNameInput="input" { ...register('password') }/>
                         {errors.password && <span>{errors.password.message}</span>}
                     </ContainerInput>
                     
-                    <button type='submit'>Login</button>
+                    <ButtonAccessDefault typeButton='submit' titleButton='Login'/>
                 </form>
                 <ContainerLink>
                     <NavLink id='cadastre-se' to="/register">Não tem uma conta? Cadastre-se</NavLink>

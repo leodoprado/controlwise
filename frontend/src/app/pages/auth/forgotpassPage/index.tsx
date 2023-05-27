@@ -2,10 +2,10 @@ import React from "react";
 import {TypeOf, z} from 'zod';
 import {zodResolver} from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form';
-
+import { NavLink } from "react-router-dom";
 import { Container, ContainerLogin, ContainerLogo, ContainerInput, ContainerLink } from './style'
 import Logo from '../../../../assets/logo.png'
-import { NavLink } from "react-router-dom";
+import ButtonAccessDefault from "../../../components/buttonAccessDefault";
 
 const forgotPassFormSchema = z.object({
     input: z.string()
@@ -41,7 +41,8 @@ const ForgotpassPage = () => {
                             <input type="text" placeholder='Digite seu número de telefone ou e-mail' { ...register('input') }/>
                             {errors.input && <span>{errors.input.message}</span>}
                         </ContainerInput>
-                        <button type="submit">Continuar</button>
+
+                        <ButtonAccessDefault typeButton="submit" titleButton="Continuar"/>
                     </form>
 
                     <ContainerLink>

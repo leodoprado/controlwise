@@ -7,18 +7,8 @@ import { Validator } from 'react';
 
 import { Container, ContainerRegister, ContainerLogo, ContainerInput, ContainerLink } from './style'
 import Logo from '../../../../assets/logo.png';
-
-const registerUserFormSchema = z.object({
-    email: z.string()
-        .nonempty('Digite seu e-mail para realizar o cadastro!')
-        .email('Formato de e-mail inválido!'),
-    password: z.string()
-        .min(6, 'A senha precisa ter no mínimo 6 caracteres!'),
-    phone: z.string()
-        .nonempty('Digite seu telefone para realizar o cadastro!')
-        .min(11, 'Número de telefone inválido!')
-        .max(11, 'Número de telefone inválido!')
-})
+import ButtonAccessDefault from '../../../components/buttonAccessDefault';
+import { registerUserFormSchema } from '../../../../core/hooks/validations';
 
 type registerUserFormData = z.infer<typeof registerUserFormSchema>
 
@@ -60,7 +50,7 @@ export default function RegisterPage() {
                             {errors.phone && <span>{errors.phone.message}</span>}
                         </ContainerInput>
         
-                        <button type='submit'>Registrar</button>
+                        <ButtonAccessDefault typeButton='submit' titleButton='Registrar'/>
                     </form>
                     <ContainerLink>
                         <NavLink to="/login" id="login">Já possui uma conta? Faça o Login</NavLink>    
