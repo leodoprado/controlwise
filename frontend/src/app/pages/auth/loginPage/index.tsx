@@ -8,12 +8,21 @@ import { Container, ContainerLogin, ContainerLogo, ContainerInput, ContainerLink
 import Logo from '../../../../assets/logo.png'
 import ButtonAccessDefault from '../../../components/buttonAccessDefault';
 import InputAccessDefault from '../../../components/inputAccessDefault';
-import { loginUserFormSchema } from '../../../../core/hooks/validations';
+
+export const loginUserFormSchema = z.object({
+    email: z.string()
+        .nonempty('Digite seu e-mail cadastrado!')
+        .email('Formato de e-mail inválido!'),
+    password: z.string()
+        .min(6, 'A senha precisa ter no mínimo 6 caracteres!')
+})
 
 type LoginUserFormData = z.infer<typeof loginUserFormSchema>
 
 const LoginPage = () => {
   const { register, handleSubmit, formState: { errors } } = useForm<LoginUserFormData> ({
+    mode: 'all',
+    reValidateMode: 'onChange',
     resolver: zodResolver(loginUserFormSchema),
   })
 
@@ -32,17 +41,27 @@ const LoginPage = () => {
                     </NavLink>
                 </ContainerLogo>     
                 <form onSubmit={handleSubmit(loginUser)}>
-                    <ContainerInput>
-                        <label htmlFor="">E-mail</label>                        
-
-                        <InputAccessDefault typeInput='text' placeholderInput='Digite seu e-mail' classNameInput='input' { ...register('email') }/>
-                        {errors.email && <span>{errors.email.message}</span>}
+                    <ContainerInput>                       
+                        <InputAccessDefault 
+                            {...register('email')}
+                            textLabel='E-mail' 
+                            typeInput='text' 
+                            placeholderInput='Digite seu e-mail' 
+                            classNameInput='input'
+                            helperText={errors.email?.message}
+                        />
+                        
                     </ContainerInput> 
 
-                    <ContainerInput>
-                        <label htmlFor="">Senha</label>                  
-                        <InputAccessDefault typeInput="password" placeholderInput='Digite sua senha' classNameInput="input" { ...register('password') }/>
-                        {errors.password && <span>{errors.password.message}</span>}
+                    <ContainerInput>                
+                        <InputAccessDefault 
+                            {...register('password')}
+                            textLabel='Senha' 
+                            typeInput="password" 
+                            placeholderInput='Digite sua senha' 
+                            classNameInput="input"
+                            helperText={errors.password?.message}
+                        />
                     </ContainerInput>
                     
                     <ButtonAccessDefault typeButton='submit' titleButton='Login'/>
