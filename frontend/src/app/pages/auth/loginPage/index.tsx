@@ -2,7 +2,7 @@ import React from 'react'
 import {TypeOf, z} from 'zod';
 import {zodResolver} from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form';
-import { NavLink } from 'react-router-dom';
+import { FormProps, NavLink } from 'react-router-dom';
 
 import { Container, ContainerLogin, ContainerLogo, ContainerInput, ContainerLink } from './style'
 import Logo from '../../../../assets/logo.png'
@@ -10,23 +10,35 @@ import ButtonAccessDefault from '../../../components/buttonAccessDefault';
 import InputAccessDefault from '../../../components/inputAccessDefault';
 
 export const loginUserFormSchema = z.object({
-    email: z.string()
+    address: z.object({
+        email: z.string()
         .nonempty('Digite seu e-mail cadastrado!')
         .email('Formato de e-mail inválido!'),
-    password: z.string()
+        password: z.string()
         .min(6, 'A senha precisa ter no mínimo 6 caracteres!')
+    })
 })
 
 type LoginUserFormData = z.infer<typeof loginUserFormSchema>
 
 const LoginPage = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm<LoginUserFormData> ({
+  const { 
+    register, 
+    handleSubmit, 
+    formState: { errors } 
+    } = useForm<LoginUserFormData> ({
+    criteriaMode: 'all',
     mode: 'all',
-    reValidateMode: 'onChange',
     resolver: zodResolver(loginUserFormSchema),
-  })
+        defaultValues: {
+            address: {
+                email: '',
+                password: ''
+            }
+        }   
+    })
 
-  function loginUser(data : any){
+  const handleFormSubmit = (data: LoginUserFormData) => {
     console.log(data)
   }
 
@@ -40,28 +52,32 @@ const LoginPage = () => {
                         <h1>Control Wise</h1>
                     </NavLink>
                 </ContainerLogo>     
-                <form onSubmit={handleSubmit(loginUser)}>
+                <form onSubmit={handleSubmit(handleFormSubmit)}>
                     <ContainerInput>                       
                         <InputAccessDefault 
-                            {...register('email')}
+                            {...register('address.email')}
                             textLabel='E-mail' 
                             typeInput='text' 
                             placeholderInput='Digite seu e-mail' 
                             classNameInput='input'
-                            helperText={errors.email?.message}
                         />
+                        {errors.address?.email?.message && (
+                            <span>{errors.address.email.message}</span> 
+                        )}
                         
                     </ContainerInput> 
 
                     <ContainerInput>                
                         <InputAccessDefault 
-                            {...register('password')}
+                            {...register('address.password')}
                             textLabel='Senha' 
                             typeInput="password" 
                             placeholderInput='Digite sua senha' 
                             classNameInput="input"
-                            helperText={errors.password?.message}
                         />
+                        {errors.address?.password?.message && (
+                            <span>{errors.address.password.message}</span> 
+                        )}
                     </ContainerInput>
                     
                     <ButtonAccessDefault typeButton='submit' titleButton='Login'/>
