@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useCallback, useEffect } from 'react'
 import {TypeOf, z} from 'zod';
 import {zodResolver} from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form';
 import { FormProps, NavLink } from 'react-router-dom';
+import axios from 'axios';
+
 
 import { Container, ContainerLogin, ContainerLogo, ContainerInput, ContainerLink } from './style'
 import Logo from '../../../../assets/logo.png'
@@ -18,13 +20,21 @@ export const loginUserFormSchema = z.object({
         .min(6, 'A senha precisa ter no mínimo 6 caracteres!')
     })
 })
+.transform((field) => ({
+    address: {
+        email: field.address.email,
+        password: field.address.password
+    }
+}));
 
 type LoginUserFormData = z.infer<typeof loginUserFormSchema>
 
 const LoginPage = () => {
   const { 
     register, 
-    handleSubmit, 
+    handleSubmit,
+    watch, 
+    setValue,
     formState: { errors } 
     } = useForm<LoginUserFormData> ({
     criteriaMode: 'all',
@@ -38,9 +48,23 @@ const LoginPage = () => {
         }   
     })
 
+  const email = watch('address.email');
+
   const handleFormSubmit = (data: LoginUserFormData) => {
     console.log(data)
   }
+
+  const handleFetchAddress = useCallback(async (email: string) => {
+    const { data } = await axios.get(
+        'http://' // <= endpoint para a validação do email de login
+        ); 
+  }, [])
+
+  useEffect(() => {
+    if(email != '') return;
+
+    handleFetchAddress(email);
+  }, [handleFetchAddress, email])
 
   return (
     <>
