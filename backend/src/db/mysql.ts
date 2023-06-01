@@ -66,7 +66,7 @@ export function SQLInsert(table: String, register: any): Promise<T> {
 
 }
 
-export function SQLUpdate(table: String, register: String, column: String, cond: any): Promise<T> {
+export function SQLUpdate(table: String, register: any, column: String, cond: any): Promise<T> {
 
     let columnParams: String = "";
     let values: any[] = [];
