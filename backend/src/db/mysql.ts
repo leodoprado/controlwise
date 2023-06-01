@@ -1,4 +1,5 @@
 import { createConnection, Connection} from 'mysql2';
+import {Usuario} from './dto';
 
 let MySQLConnection: Connection;
 
@@ -12,7 +13,8 @@ function InitSQL(): Connection {
     })
 }
 
-function SQLQuery(query: String, val: String | String[]): Promise<T[]> {
+
+function SQLQuery(query: String, val: String | String[]): Promise<T> {
 
     MySQLConnection = InitSQL();
 
@@ -35,52 +37,59 @@ function SQLQuery(query: String, val: String | String[]): Promise<T[]> {
 }
 
 
-export function SQLSelect(param: String, val: String): Promise<T[]> {
+export function SQLSelect(table: String, param: String, val: String): Promise<T> {
 
-    let query: String = "SELECT * FROM LOGIN WHERE " + param + " = ?";
+    let query: String = "SELECT * FROM " + table.toUpperCase() + " WHERE " + param.toUpperCase() + " = ?";
     return SQLQuery(query, [val]);
 
 }
 
-export function SQLInsert(person: any): Promise<T[]> {
+export function SQLInsert(table: String, register: any): Promise<T> {
     
-    let queryLogin: String = "INSERT INTO LOGIN (LOGIN_EMAIL, LOGIN_SENHA) VALUES ?";
-    let queryClient: String = "INSERT INTO CLIENTE (CLI_LOGIN_ID, CLI_CPF, CLI_RG, CLI_DATANASC, CLI_FONE, CLI_CIDADE) VALUES ?";
-    let queryGetLogin;
-    let valLogin: any[][] = [[person.Email, person.Senha]];
-    let valClient: any[][];
+    let val: any[] = [];
+    let columnParams: String = "";
+    for(const column in register) {
+        columnParams += column;
+        columnParams += ", ";
 
-    //Ele vai inserir no banco de dados, ai dps faz o SELECT pro queryGetLogin pra pegar o id da tabela do login e inserir no client 
-    SQLQuery(queryLogin, [valLogin])
-    .then(() => {
-        queryGetLogin = SQLSelect("LOGIN_EMAIL", person.Email);
-    }).catch((error) => {
-        throw error;
-    });
+        val.push(register[column]);
+    }
+    columnParams = columnParams.slice(0, columnParams.length-2);
+    let query: String = "INSERT INTO "+ table.toUpperCase() +" ("+ columnParams +") VALUES ?";
 
-    queryGetLogin.then((res) => {
-        valClient = [[res[0].LOGIN_COD, "60606", "45435", "1995/03/21", "54 696969", "EREBANGO"]];
-    }).catch((error) => {
-        throw error;
-    });
-
-    //Se deus quiser, isso vai dar certo mas tenho 500% de chances de nao da
-    return SQLQuery(queryClient, [valClient]);
+    //Se deus quiser, isso vai dar certo
+    return SQLQuery(query, [[val]]);
+    
+    //Backups
+    //let valBackup: any[] = [person.USR_SENHA, person.USR_EMAIL, person.USR_FONE, person.USR_NOME, person.USR_CPF, person.USR_RG, person.USR_DATANASC, person.USR_CIDADE, person.USR_DATACAD];
+    //let queryUserBackup: String = "INSERT INTO USUARIO (USR_SENHA, USR_EMAIL, USR_FONE, USR_NOME, USR_CPF, USR_RG, USR_DATANASC, USR_CIDADE, USR_DATACAD) VALUES ?";
 
 }
 
-export function SQLUpdate(param: String, val: String, person: any): Promise<T[]> {
+export function SQLUpdate(table: String, register: String, column: String, cond: any): Promise<T> {
 
-    let query: String = "UPDATE Vitimas SET Nome = ?, TimeTorcedor = ?, Cidade = ? WHERE " + param + " = ?";
-    let values = [person.Nome, person.TimeTorcedor, person.Cidade, val];
+    let columnParams: String = "";
+    let values: any[] = [];
+
+    for(const column in register) {
+        columnParams += column + " = ?, ";
+        values.push(register[column]);
+    }
+
+    columnParams = columnParams.slice(0, columnParams.length-2)
+
+    values.push(cond);
+
+    let query: String = "UPDATE " + table.toUpperCase() + " SET " + columnParams.toUpperCase() + " WHERE " + column.toString() + " = ?";
+
+    //let values = [person.Nome, person.TimeTorcedor, person.Cidade, val];
     return SQLQuery(query, values);
 
 }
 
-export function SQLDelete(param: String, val: String): Promise<T[]> {
+export function SQLDelete(table: String, column: String, cond: any): Promise<T[]> {
 
-    let queryLogin: String = "DELETE FROM LOGIN WHERE " + param + " = ?";
-    let queryCliente: String = "DELETE FROM CLIENTE WHERE...";
-    return SQLQuery(queryLogin, [val]);
+    let query: String = "DELETE FROM " + table.toUpperCase() + " WHERE " + column.toUpperCase() + " = ?";
+    return SQLQuery(query, [cond]);
 
 }

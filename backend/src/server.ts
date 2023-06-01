@@ -3,6 +3,7 @@ import {Response, Request} from 'express'
 import cors from 'cors';
 import * as path from 'path';
 import * as MySQLConnector from '../src/db/mysql';
+import {Usuario} from '../src/db/dto';
 
 const app = express();
 const port = 3000;
@@ -16,11 +17,13 @@ app.use(cors());
 
 //These are endpoints for SQL queries 
 //SELECT
-app.get('/cli/:param/:val', (req: Request, res: Response) => {
+app.get('/:table/:column/:val', (req: Request, res: Response) => {
 
-    const param = req.params.param;
+    const table = req.params.table;
+    const column = req.params.column;
     const val = req.params.val;
-    let queryRes = MySQLConnector.SQLSelect(param, val);
+
+    let queryRes = MySQLConnector.SQLSelect(table, column, val);
 
     queryRes.then((result) => {
         res.send(result);
@@ -32,9 +35,14 @@ app.get('/cli/:param/:val', (req: Request, res: Response) => {
 })
 
 //INSERT
-app.post('/cli', (req: Request, res: Response) => {
+app.post('/:table', (req: Request, res: Response) => {
 
-    let queryRes = MySQLConnector.SQLInsert(req.body);
+    //console.log(req.body);
+
+    let table = req.params.table;
+    let register = req.body;
+
+    let queryRes = MySQLConnector.SQLInsert(table, register);
 
     queryRes.then((result) => {
         res.send(result);
@@ -48,12 +56,16 @@ app.post('/cli', (req: Request, res: Response) => {
 
 
 //UPDATE 
-app.put('/cli/:param/:val', (req: Request, res: Response) => {
+app.put('/:table/:column/:val', (req: Request, res: Response) => {
 
-    const param = req.params.param;
+    const table = req.params.table;
+    const column = req.params.column;
     const val = req.params.val;
 
-    let queryRes = MySQLConnector.SQLUpdate(param, val, req.body);
+
+    const registry = req.body;
+
+    let queryRes = MySQLConnector.SQLUpdate(table, registry, column, val);
 
     queryRes.then((result) => {
         res.send(result);
@@ -65,12 +77,13 @@ app.put('/cli/:param/:val', (req: Request, res: Response) => {
 })
 
 //DELETE
-app.delete('/cli/:param/:val', (req: Request, res: Response) => {
+app.delete('/:table/:column/:val', (req: Request, res: Response) => {
 
-    const param = req.params.param;
+    const table = req.params.table;
+    const column = req.params.column;
     const val = req.params.val;
 
-    let queryRes = MySQLConnector.SQLDelete(param, val);
+    let queryRes = MySQLConnector.SQLDelete(table, column, val);
 
     queryRes.then((result) => {
         res.send(result);

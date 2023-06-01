@@ -1,20 +1,17 @@
-export interface Login {
+export interface Usuario {
     id: number,
-    email: "String",
-    password: "String"
+    USR_SENHA: number,
+    USR_EMAIL: String,
+    USR_FONE: String,
+    USR_NOME: any,
+    USR_CPF: String,
+    USR_RG: String,
+    USR_DATANASC: String,
+    USR_CIDADE: String,
+    USR_DATACAD: String
 }
 
-export interface Cliente {
-    id: number,
-    loginId: number,
-    cpf: String,
-    rg: String,
-    dataNasc: any,
-    fone: String,
-    cidade: String,
-}
-
-export interface Movimentacoes {
+export interface Conta {
     id: number,
     idCli: number,
     data: any,
