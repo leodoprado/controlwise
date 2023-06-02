@@ -48,7 +48,7 @@ const LoginPage = () => {
         }   
     })
 
-    const handleFormSubmit = (data: LoginUserFormData) => {
+    const handleFormSubmit = async (data: LoginUserFormData) => {
         console.log(data)
       }
 
@@ -58,13 +58,19 @@ const LoginPage = () => {
     const { data } = await axios.get(
         'http://localhost:3000/usuario/usr_cod/1' // <= endpoint para a validação do email de login
         );
-        console.log(data[0]);
+        //console.log(data[0]);
+        return data[0];
   }, [])
 
   useEffect(() => {
     if(email != '') return;
 
-    handleFetchAddress(email)
+    handleFetchAddress(email).then((result) =>{
+        console.log(result);
+    })
+    .catch((error) => {
+        console.log(error);
+    })
   }, [handleFetchAddress, email])
 
   
