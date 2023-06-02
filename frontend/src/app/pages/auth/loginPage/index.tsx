@@ -48,23 +48,26 @@ const LoginPage = () => {
         }   
     })
 
-  const email = watch('address.email');
+    const handleFormSubmit = (data: LoginUserFormData) => {
+        console.log(data)
+      }
 
-  const handleFormSubmit = (data: LoginUserFormData) => {
-    console.log(data)
-  }
+  const email = watch('address.email');
 
   const handleFetchAddress = useCallback(async (email: string) => {
     const { data } = await axios.get(
-        'http://' // <= endpoint para a validação do email de login
-        ); 
+        'http://localhost:3000/usuario/usr_cod/1' // <= endpoint para a validação do email de login
+        );
+        console.log(data[0]);
   }, [])
 
   useEffect(() => {
     if(email != '') return;
 
-    handleFetchAddress(email);
+    handleFetchAddress(email)
   }, [handleFetchAddress, email])
+
+  
 
   return (
     <>

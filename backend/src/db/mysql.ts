@@ -1,7 +1,7 @@
 import { createConnection, Connection} from 'mysql2';
 import {Usuario} from './dto';
 
-let MySQLConnection: Connection;
+//let MySQLConnection: Connection;
 
 function InitSQL(): Connection {
     return createConnection({
@@ -16,7 +16,7 @@ function InitSQL(): Connection {
 
 function SQLQuery(query: String, val: String | String[]): Promise<T> {
 
-    MySQLConnection = InitSQL();
+    let MySQLConnection = InitSQL();
 
     return new Promise<T>((resolve, reject) => {
 

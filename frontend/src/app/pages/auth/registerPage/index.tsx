@@ -4,6 +4,7 @@ import {zodResolver} from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form';
 import { NavLink } from 'react-router-dom';
 import { Validator } from 'react';
+import Axios from 'axios';
 
 import { Container, ContainerRegister, ContainerLogo, ContainerInput, ContainerLink } from './style'
 import Logo from '../../../../assets/logo.png';
