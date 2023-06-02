@@ -3,7 +3,7 @@ import {Response, Request} from 'express'
 import cors from 'cors';
 import * as path from 'path';
 import * as MySQLConnector from '../src/db/mysql';
-import {Usuario} from '../src/db/dto';
+import { Usuario, Conta, Categoria, Transacoes, Metas } from './db/models'
 
 const app = express();
 const port = 3000;

@@ -27,7 +27,8 @@
     "express-load": "^1.1.16",
     "mysql2": "^3.3.2",
     "nodemon": "^2.0.22",
-    "sequelize": "^6.31.1",
+    "sequelize": "^6.32.0",
+    "sequelize-typescript": "^2.1.5",
     "sucrase": "^3.32.0"
   },
   "devDependencies": {
