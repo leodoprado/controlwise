@@ -11,21 +11,31 @@ export const ContainerMain = styled.div`
     background: linear-gradient(0deg, rgba(55,54,65,1) 9%, rgba(35,36,47,1) 31%, rgba(17,16,23,1) 82%);
     font-family: 'Mulish', sans-serif;
     color: white;
+
+    form {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
 `
 
 export const ContainerInput = styled.div`
-    width: 430px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
     input {
-        width: 100%;
         padding: 8px;
         border: 1px solid rgba(255,255,255,0.25);
         background: rgb(35, 36, 47);;
-        border-radius: 5px;
         outline: none;
         color: #fff;
-        font-size: 1em;
-        transition: 0.5s;
+        font-size: 1rem;
+        transition: 0.5s;   
         margin-top: 0.3em;
+        margin-bottom: 10px;
     }
 
     input:focus {
@@ -35,6 +45,7 @@ export const ContainerInput = styled.div`
 `
 
 export const ContainerLeft = styled.div`
+    padding-right: 10px;
     width: 50%;
     height: 100%;
     display: flex;
@@ -44,6 +55,7 @@ export const ContainerLeft = styled.div`
 `
 
 export const ContainerRight = styled.div`
+    padding-left: 10px;
     width: 50%;
     height: 100%;
     display: flex;
