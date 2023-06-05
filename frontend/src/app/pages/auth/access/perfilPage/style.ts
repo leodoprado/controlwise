@@ -15,10 +15,20 @@ export const ContainerMain = styled.div`
     form {
         width: 100%;
         height: 100%;
-        display: flex;
-        justify-content: flex-start;
-        align-items: flex-start;
     }
+
+    section {
+        margin-bottom: 20px;
+        padding-bottom: 5px;
+        border-bottom: 1px dashed white;
+    }
+
+`
+
+export const ContainerContent = styled.div`
+    width: 100%;
+    display: flex;
+    margin-bottom: 10px;
 `
 
 export const ContainerInput = styled.div`
@@ -47,7 +57,6 @@ export const ContainerInput = styled.div`
 export const ContainerLeft = styled.div`
     padding-right: 10px;
     width: 50%;
-    height: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
@@ -61,4 +70,31 @@ export const ContainerRight = styled.div`
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
+`
+
+export const ContainerButton = styled.div`
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 15px;
+
+    button {
+        width: 100%;
+        padding: 0.6rem 0;
+        border-radius: 0;
+        border: solid 1px #01435e;
+        margin-bottom: 1rem;
+        border-radius: 0.1rem;
+        outline: none;
+        background: #23242F;
+        text-transform: uppercase;
+        font-weight: 800;
+        letter-spacing: 2px;
+        color: white;
+        cursor: pointer;
+    }
+    button:hover {
+        transition: 0.6s;
+        border: solid 1px #0185bc;    
+    }
 `
