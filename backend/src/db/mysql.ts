@@ -1,5 +1,4 @@
 import { createConnection, Connection} from 'mysql2';
-import {Usuario} from './dto';
 
 //let MySQLConnection: Connection;
 

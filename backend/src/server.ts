@@ -3,6 +3,7 @@ import {Response, Request} from 'express'
 import cors from 'cors';
 import * as path from 'path';
 import * as MySQLConnector from '../src/db/mysql';
+import sequelize from './db/database'
 import { Usuario, Conta, Categoria, Transacoes, Metas } from './db/models'
 
 const app = express();
@@ -14,6 +15,8 @@ app.use(express.urlencoded({ extended: true }));
 
 // enable all CORS request
 app.use(cors());
+
+sequelize.sync();
 
 //These are endpoints for SQL queries 
 //SELECT
@@ -35,22 +38,31 @@ app.get('/:table/:column/:val', (req: Request, res: Response) => {
 })
 
 //INSERT
-app.post('/:table', (req: Request, res: Response) => {
-
-    //console.log(req.body);
-
+app.post('/:table', async (req: Request, res: Response) => {
     let table = req.params.table;
-    let register = req.body;
+    let {...register} = req.body;
 
-    let queryRes = MySQLConnector.SQLInsert(table, register);
+    let result: any;
+    try {
+        result = await Usuario.create({
+            ...register
+        })
+    }catch(e) {
+        console.error(e);
+        res.status(500).send("Erro interno no servidor");
+    }
+    
+    res.send(result);
 
-    queryRes.then((result) => {
+    //let queryRes = MySQLConnector.SQLInsert(table, register);
+
+    /*queryRes.then((result) => {
         res.send(result);
     })
     .catch((error) => {
         console.error(error);
         res.status(500).send("Interal server issues");
-    })
+    })*/
 })
 
 

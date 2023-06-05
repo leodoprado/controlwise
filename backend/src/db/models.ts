@@ -1,31 +1,87 @@
-import { DataTypes } from 'sequelize';
-import sequelize from './conn'
-import { Table, Column, Model, HasMany, HasOne } from 'sequelize-typescript';
+import { Association, DataTypes, Model } from 'sequelize';
+import sequelize from './database'
 
-interface UsuarioAttributes {
-    id: number;
-    senha: string;
-    nome: string;
-    email: string;
-    fone: string;
-    cpf?: string;
-    rg?: string;
-    dataNasc?: Date;
-    cidade?: string;
-    dataCad: Date
-  }
+/*class Usuario extends Model {
+    public USR_COD!: number;
+    public USR_SENHA!: string;
+    public USR_EMAIL!: string;
+    public USR_FONE!: string;
+    public USR_NOME!: string;
+    public USR_CPF?: string;
+    public USR_RG?: string;
+    public USR_DATANASC?: Date;
+    public USR_CIDADE?: string;
+    public USR_DATACAD?: Date;
 
-@Table("USUARIO")
-class Usuario extends Model {
-  @Column("USR_COD")
-  id: number;
+    /*public readonly conta?: Conta[];
 
-  @Column("USR_SENHA")
-  birthday: Date;
+    public static associations: {
+        conta: Association<Usuario, Conta>
+    }*/
 
-  @HasOne(() => Conta)
-  conta: Conta;
-}
+
+
+/*}*/
+
+/*Usuario.init(
+    {
+        USR_COD: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            autoIncrement: true,
+            primaryKey: true
+        },
+        USR_SENHA: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        USR_EMAIL: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        USR_FONE: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        USR_NOME: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        USR_CPF: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        USR_RG: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        USR_DATANASC: {
+            type: DataTypes.DATE,
+            allowNull: true,
+        },
+        USR_CIDADE: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        USR_DATACAD: {
+            type: DataTypes.DATE,
+            allowNull: false
+        }
+    },
+    {
+        sequelize,
+        tableName: "USUARIO"
+    }
+)
+
+/*class Conta extends Model {
+    public CONTA_COD!: number;
+    public CONTA_USRCOD!: number;
+    public CONTA_NOME!: string;
+    public CONTA_TIPO!: string;
+    public CONTA_SALDO!: string;
+    public CONTA_DATACAD?: string;
+}*/
 
 export const Usuario = sequelize.define('USUARIO', {
     USR_COD: {
@@ -70,7 +126,10 @@ export const Usuario = sequelize.define('USUARIO', {
         type: DataTypes.DATE,
         allowNull: false
     }
-})
+}, {
+    freezeTableName: true,
+    timestamps: false
+  })
 
 export const Conta = sequelize.define('CONTA', {
     CONTA_COD: {
@@ -99,7 +158,10 @@ export const Conta = sequelize.define('CONTA', {
         type: DataTypes.DATE,
         allowNull: true,
     }
-})
+}, {
+    freezeTableName: true,
+    timestamps: false
+  })
 
 Usuario.hasOne(Conta);
 Conta.belongsTo(Usuario);
@@ -119,7 +181,10 @@ export const Categoria = sequelize.define('CATEGORIA', {
         type: DataTypes.INTEGER,
         allowNull: false,
     }   
-})
+}, {
+    freezeTableName: true,
+    timestamps: false
+  })
 
 export const Transacoes = sequelize.define('TRANSACOES', {
     TRSC_COD: {
@@ -148,7 +213,10 @@ export const Transacoes = sequelize.define('TRANSACOES', {
         type: DataTypes.DATE,
         allowNull: false,
     },
-})
+}, {
+    freezeTableName: true,
+    timestamps: false
+  })
 
 Transacoes.belongsTo(Conta);
 Conta.hasMany(Transacoes);
@@ -179,7 +247,10 @@ export const Metas = sequelize.define('METAS', {
         type: DataTypes.STRING,
         allowNull: false,
     }
-})
+}, {
+    freezeTableName: true,
+    timestamps: false
+  })
 
 Usuario.hasMany(Metas);
 Metas.belongsTo(Usuario);
