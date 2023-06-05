@@ -81,7 +81,7 @@ export class Conta extends Model {
     public CONTA_SALDO!: string;
     public CONTA_DATACAD?: string;
 
-    public readonly usuario?: Usuario[];
+    public readonly usuario?: Usuario;
 
     public static associations: {
         Usuario: Association<Conta, Usuario>
@@ -94,6 +94,14 @@ Conta.init({
         allowNull: false,
         autoIncrement: true,
         primaryKey: true
+    },
+    CONTA_USRCOD: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: Usuario,
+            key: "USR_COD"
+        }
     },
     USR_SENHA: {
         type: DataTypes.STRING,
@@ -195,10 +203,18 @@ Transacoes.init({
     TRSC_CONTACOD: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        references: {
+            model: Conta,
+            key: "CONTA_COD"
+        }
     },
     TRSC_CATEGCOD: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        references: {
+            model: Categoria,
+            key: "CATEG_COD"
+        }
     },  
     TRSC_VALOR: {
         type: DataTypes.DECIMAL,
@@ -225,6 +241,12 @@ export class Metas extends Model {
     public METAS_DESCRICAO!: string;
     public METAS_VALOR!: number;
     public METAS_DATALIMITE!: string;
+
+    public readonly usuario?: Usuario;
+
+    public static associations: {
+        usuario: Association<Metas, Usuario >
+    }
 }
 
 Metas.init({
@@ -237,6 +259,10 @@ Metas.init({
     METAS_USRCOD: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        references: {
+            model: Usuario,
+            key: "USR_COD"
+        }
     },
     METAS_DESCRICAO: {
         type: DataTypes.STRING,
@@ -265,6 +291,9 @@ Conta.hasMany(Transacoes);
 
 Transacoes.belongsTo(Categoria);
 Categoria.hasMany(Transacoes);
+
+Usuario.hasMany(Metas);
+Metas.belongsTo(Usuario);
 
 /*export const Usuario = sequelize.define('USUARIO', {
     USR_COD: {
