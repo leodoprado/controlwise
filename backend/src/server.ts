@@ -4,7 +4,10 @@ import cors from 'cors';
 import * as path from 'path';
 import * as MySQLConnector from '../src/db/mysql';
 import sequelize from './db/database'
+//import { Usuario, Conta, Categoria, Transacoes, Metas } from './db/models'
+import { Model, ModelCtor } from 'sequelize';
 import { Usuario, Conta, Categoria, Transacoes, Metas } from './db/models'
+
 
 const app = express();
 const port = 3000;
@@ -16,7 +19,15 @@ app.use(express.urlencoded({ extended: true }));
 // enable all CORS request
 app.use(cors());
 
+//Connect to DB
 sequelize.sync();
+
+let tableList = new Map<string, any> 
+tableList.set("USUARIO", Usuario);
+tableList.set("CONTA", Conta);
+tableList.set("CATEGORIA", Categoria);
+tableList.set("TRANSACOES", Transacoes);
+tableList.set("METAS", Metas);
 
 //These are endpoints for SQL queries 
 //SELECT
@@ -40,6 +51,7 @@ app.get('/:table/:column/:val', (req: Request, res: Response) => {
 //INSERT
 app.post('/:table', async (req: Request, res: Response) => {
     let table = req.params.table;
+
     let {...register} = req.body;
 
     let result: any;

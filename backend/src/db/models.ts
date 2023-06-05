@@ -1,7 +1,7 @@
 import { Association, DataTypes, Model } from 'sequelize';
 import sequelize from './database'
 
-/*class Usuario extends Model {
+export class Usuario extends Model {
     public USR_COD!: number;
     public USR_SENHA!: string;
     public USR_EMAIL!: string;
@@ -18,12 +18,9 @@ import sequelize from './database'
     public static associations: {
         conta: Association<Usuario, Conta>
     }*/
+}
 
-
-
-/*}*/
-
-/*Usuario.init(
+Usuario.init(
     {
         USR_COD: {
             type: DataTypes.INTEGER,
@@ -70,20 +67,206 @@ import sequelize from './database'
     },
     {
         sequelize,
-        tableName: "USUARIO"
+        tableName: "USUARIO",
+        freezeTableName: true,
+        timestamps: false
     }
 )
 
-/*class Conta extends Model {
+export class Conta extends Model {
     public CONTA_COD!: number;
     public CONTA_USRCOD!: number;
     public CONTA_NOME!: string;
     public CONTA_TIPO!: string;
     public CONTA_SALDO!: string;
     public CONTA_DATACAD?: string;
-}*/
 
-export const Usuario = sequelize.define('USUARIO', {
+    public readonly usuario?: Usuario[];
+
+    public static associations: {
+        Usuario: Association<Conta, Usuario>
+    }
+}
+
+Conta.init({
+    USR_COD: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true
+    },
+    USR_SENHA: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    USR_EMAIL: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    USR_FONE: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    USR_NOME: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    USR_CPF: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+    USR_RG: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+    USR_DATANASC: {
+        type: DataTypes.DATE,
+        allowNull: true,
+    },
+    USR_CIDADE: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+    USR_DATACAD: {
+        type: DataTypes.DATE,
+        allowNull: false
+    }}, 
+    {
+        sequelize,
+        tableName: "CONTA",
+        freezeTableName: true,
+        timestamps: false
+    }
+)
+
+export class Categoria extends Model {
+    public CATEG_COD!: number;
+    public CATEG_NOME!: string;
+    public CATEG_TIPO!: string;
+}
+
+Categoria.init({
+    CATEG_COD: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true
+    },
+    CATEG_NOME: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    CATEG_TIPO: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    }   
+}, {
+        sequelize,
+        tableName: "CATEGORIA",
+        freezeTableName: true,
+        timestamps: false
+  })
+
+
+export class Transacoes extends Model {
+    public TRSC_COD!: number;
+    public TRSC_CONTACOD!: number;
+    public TRSC_CATEGCOD!: number;
+    public TRSC_VALOR!: number;
+    public TRSC_DESCRICAO!: string;
+    public TRSC_DATA!: string;
+
+    public readonly conta?: Conta;
+    public readonly categoria?: Categoria;
+
+    public static associations: {
+        conta: Association<Transacoes, Conta>
+        categoria: Association<Transacoes, Categoria>
+    }
+}
+
+Transacoes.init({
+    TRSC_COD: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true
+    },
+    TRSC_CONTACOD: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
+    TRSC_CATEGCOD: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },  
+    TRSC_VALOR: {
+        type: DataTypes.DECIMAL,
+        allowNull: false,
+    }, 
+    TRSC_DESCRICAO: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    TRSC_DATA: {
+        type: DataTypes.DATE,
+        allowNull: false,
+    },
+}, {
+        sequelize,
+        tableName: "CATEGORIA",
+        freezeTableName: true,
+        timestamps: false
+  })
+
+export class Metas extends Model {
+    public METAS_COD!: number;
+    public METAS_USRCOD!: number;
+    public METAS_DESCRICAO!: string;
+    public METAS_VALOR!: number;
+    public METAS_DATALIMITE!: string;
+}
+
+Metas.init({
+    METAS_COD: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true
+    },
+    METAS_USRCOD: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
+    METAS_DESCRICAO: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },  
+    METAS_VALOR: {
+        type: DataTypes.DECIMAL,
+        allowNull: false,
+    }, 
+    METAS_DATALIMITE: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    }
+}, {
+        sequelize,
+        tableName: "CATEGORIA",
+        freezeTableName: true,
+        timestamps: false
+  })
+
+Usuario.hasOne(Conta);
+Conta.belongsTo(Usuario);
+
+Transacoes.belongsTo(Conta);
+Conta.hasMany(Transacoes);
+
+Transacoes.belongsTo(Categoria);
+Categoria.hasMany(Transacoes);
+
+/*export const Usuario = sequelize.define('USUARIO', {
     USR_COD: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -253,4 +436,4 @@ export const Metas = sequelize.define('METAS', {
   })
 
 Usuario.hasMany(Metas);
-Metas.belongsTo(Usuario);
+Metas.belongsTo(Usuario);*/
