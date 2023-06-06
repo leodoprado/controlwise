@@ -18,8 +18,12 @@ export default function RegisterPage() {
         resolver: zodResolver(registerUserFormSchema),
     })
 
-    function registerUser(data : any){
-        console.log(data)
+    async function registerUser(data : any){
+        const response = await Axios.post(
+            'http://localhost:3000/usuario/', {USR_EMAIL: data.email, USR_SENHA: data.password, USR_FONE: data.phone, USR_NOME: "NEILOR", USR_DATACAD: "2017-06-15" } // <= endpoint para a validação do email de login
+            );
+            console.log(response);
+
     }
 
     return(

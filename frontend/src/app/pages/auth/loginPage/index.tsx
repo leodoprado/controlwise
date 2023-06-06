@@ -49,7 +49,7 @@ const LoginPage = () => {
     })
 
     const handleFormSubmit = async (data: LoginUserFormData) => {
-        console.log(data)
+        console.log("AAAAAAA")
       }
 
   const email = watch('address.email');
@@ -58,7 +58,6 @@ const LoginPage = () => {
     const { data } = await axios.get(
         'http://localhost:3000/usuario/usr_email/' + email // <= endpoint para a validação do email de login
         );
-        //console.log(data[0]);
         return data[0];
   }, [])
 
