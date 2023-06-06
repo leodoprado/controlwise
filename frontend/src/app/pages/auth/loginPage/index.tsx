@@ -56,7 +56,7 @@ const LoginPage = () => {
 
   const handleFetchAddress = useCallback(async (email: string) => {
     const { data } = await axios.get(
-        'http://localhost:3000/usuario/usr_cod/1' // <= endpoint para a validação do email de login
+        'http://localhost:3000/usuario/usr_email/' + email // <= endpoint para a validação do email de login
         );
         //console.log(data[0]);
         return data[0];
