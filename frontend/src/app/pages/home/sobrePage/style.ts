@@ -21,6 +21,7 @@ export const ContainerContent = styled.div`
     padding-left: 15px;
 
     h1 {
+        width: 100%;
         font-weight: 800;
         font-size: 2.5rem;
         line-height: 55px;
@@ -34,8 +35,8 @@ export const ContainerContent = styled.div`
 
     button {
         font-weight: 800;
-        margin-top: 3rem;
-        width: 180px;
+        margin-top: 2rem;
+        width: 300px;
         height: 3rem;
         font-size: 2.5ex;
         background-color: #20c4a3;
