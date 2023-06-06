@@ -7,6 +7,7 @@ import sequelize from './db/database'
 //import { Usuario, Conta, Categoria, Transacoes, Metas } from './db/models'
 import { Model, ModelCtor } from 'sequelize';
 import { Usuario, Conta, Categoria, Transacoes, Metas } from './db/models'
+import { UPDATE } from 'sequelize/types/query-types';
 
 
 const app = express();
@@ -31,13 +32,25 @@ tableList.set("METAS", Metas);
 
 //These are endpoints for SQL queries 
 //SELECT
-app.get('/:table/:column/:val', (req: Request, res: Response) => {
+app.get('/:table/:column/:val', async (req: Request, res: Response) => {
 
     const table = req.params.table;
     const column = req.params.column;
     const val = req.params.val;
 
-    let queryRes = MySQLConnector.SQLSelect(table, column, val);
+    let result: any;
+    try {
+        result = await tableList.get(table.toUpperCase()).findAll({
+            where: sequelize.where(sequelize.col(column), val)
+        })
+    }catch(e) {
+        console.error(e);
+        res.status(500).send("Erro interno no servidor");
+    }
+    
+    res.send(result);    
+
+    /*let queryRes = MySQLConnector.SQLSelect(table, column, val);
 
     queryRes.then((result) => {
         res.send(result);
@@ -45,7 +58,7 @@ app.get('/:table/:column/:val', (req: Request, res: Response) => {
     .catch((error) => {
         console.error(error);
         res.status(500).send("Interal server issues");
-    })
+    })*/
 })
 
 //INSERT
@@ -56,7 +69,7 @@ app.post('/:table', async (req: Request, res: Response) => {
 
     let result: any;
     try {
-        result = await Usuario.create({
+        result = await tableList.get(table.toUpperCase()).create({
             ...register
         })
     }catch(e) {
@@ -80,16 +93,37 @@ app.post('/:table', async (req: Request, res: Response) => {
 
 
 //UPDATE 
-app.put('/:table/:column/:val', (req: Request, res: Response) => {
+app.put('/:table/:column/:val', async (req: Request, res: Response) => {
 
     const table = req.params.table;
     const column = req.params.column;
     const val = req.params.val;
 
-
     const registry = req.body;
 
-    let queryRes = MySQLConnector.SQLUpdate(table, registry, column, val);
+    let result: any;
+    try {
+
+        let queryRes = await tableList.get(table.toUpperCase()).findAll({
+            where: sequelize.where(sequelize.col(column), val)
+        })
+
+        for(const column in queryRes) {
+            
+            console.log(column)
+            
+            queryRes[column] = 
+            //val.push(register[column]);
+        }
+
+    }catch(e) {
+        console.error(e);
+        res.status(500).send("Erro interno no servidor");
+    }
+
+    res.send("OK")
+
+    /*let queryRes = MySQLConnector.SQLUpdate(table, registry, column, val);
 
     queryRes.then((result) => {
         res.send(result);
@@ -97,7 +131,7 @@ app.put('/:table/:column/:val', (req: Request, res: Response) => {
     .catch((error) => {
         console.error(error);
         res.status(500).send("Interal server issues");
-    })
+    })*/
 })
 
 //DELETE
