@@ -24,6 +24,11 @@ export default function RegisterPage() {
             );
             console.log(response);
 
+            if(response.status === 200) {
+                console.log("registrado!!");
+                alert("registraod!")
+            }
+
     }
 
     return(
