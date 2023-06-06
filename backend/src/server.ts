@@ -49,15 +49,7 @@ app.get('/:table/:column/:val', async (req: Request, res: Response) => {
     
     res.send(result);    
 
-    /*let queryRes = MySQLConnector.SQLSelect(table, column, val);
-
-    queryRes.then((result) => {
-        res.send(result);
-    })
-    .catch((error) => {
-        console.error(error);
-        res.status(500).send("Interal server issues");
-    })*/
+    /*let queryRes = MySQLConnector.SQLSelect(table, column, val);*/
 })
 
 //INSERT
@@ -78,15 +70,7 @@ app.post('/:table', async (req: Request, res: Response) => {
     
     res.send(result);
 
-    //let queryRes = MySQLConnector.SQLInsert(table, register);
-
-    /*queryRes.then((result) => {
-        res.send(result);
-    })
-    .catch((error) => {
-        console.error(error);
-        res.status(500).send("Interal server issues");
-    })*/
+    //let queryRes = MySQLConnector.SQLInsert(table, register);*/
 })
 
 
@@ -105,7 +89,12 @@ app.put('/:table/:column/:val', async (req: Request, res: Response) => {
 
         result = await tableList.get(table.toUpperCase()).findAll({
             where: sequelize.where(sequelize.col(column), val)
-        })
+        });
+
+        result = result[0];
+
+        console.log(registry);
+        console.log(result);
 
         for(let col in registry) {
 
@@ -114,24 +103,16 @@ app.put('/:table/:column/:val', async (req: Request, res: Response) => {
             }
         }
 
+        console.log(result);
         result.save();
+        res.send(result[0]);
 
     }catch(e) {
         console.error(e);
         res.status(500).send("Erro interno no servidor");
     }
 
-    res.send("OK")
-
-    /*let queryRes = MySQLConnector.SQLUpdate(table, registry, column, val);
-
-    queryRes.then((result) => {
-        res.send(result);
-    })
-    .catch((error) => {
-        console.error(error);
-        res.status(500).send("Interal server issues");
-    })*/
+    /*let queryRes = MySQLConnector.SQLUpdate(table, registry, column, val);*/
 })
 
 //DELETE
@@ -151,7 +132,7 @@ app.delete('/:table/:column/:val', async (req: Request, res: Response) => {
             return res.status(404).json({ error: 'Tabela não encontrada!' });
           }
 
-        await result.destroy();
+        await result[0].destroy();
 
     }catch(e) {
         console.error(e);
@@ -160,15 +141,7 @@ app.delete('/:table/:column/:val', async (req: Request, res: Response) => {
     
     res.send(result);    
 
-    /*let queryRes = MySQLConnector.SQLDelete(table, column, val);
-
-    queryRes.then((result) => {
-        res.send(result);
-    })
-    .catch((error) => {
-        console.error(error);
-        res.status(500).send("Interal server issues");
-    })*/
+    /*let queryRes = MySQLConnector.SQLDelete(table, column, val);*/
 })
    
 app.listen(port, () => 'server running on port 3333')
