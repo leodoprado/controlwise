@@ -32,6 +32,7 @@ export const ContainerContent = styled.div`
     p {
         font-size: 26px;
         text-align: justify;
+        line-height: normal;
     }
 
     a {
