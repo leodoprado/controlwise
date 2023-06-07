@@ -3,6 +3,7 @@ import Header from "../../../components/header";
 import Footer from "../../../components/footer";
 import { ContainerMain, ContainerContent, ContainerImage } from "./style";
 import AboutImage from '../../../../assets/imagem-sobre.png'
+import { NavLink } from "react-router-dom";
 
 
 const SobrePage = () => {
@@ -14,9 +15,9 @@ const SobrePage = () => {
                     <img src={AboutImage} alt="Imagem Main"></img>
                 </ContainerImage>
                     <ContainerContent>
-                        <h1>Sobre suas funções!</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis dolore quibusdam sequi porro hic recusandae corporis, nisi dolores officia ipsum enim, maiores architecto nemo tempora? Quisquam dicta expedita culpa enim? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Porro corrsasaupti sapiente beatae ut obcaecati veniam ad nulla expedita consectetur perferendis praesentium, aliquam aperiam reprehenderit quisquam repellat earum sed. Labore, cum. Lore</p>
-                        <button>Receba mais informações!</button>
+                        <h1>Sobre o projeto!</h1>
+                        <p>Plataforma online de gestão financeira, capaz de ajudar a pessoa física de forma fácil, eficiente e organizada a calcular suas rendas e despesas no fim do mês, impactando de forma positiva no seu bem estar financeiro.</p>
+                        <NavLink to="/info">Receba mais informações!</NavLink>
                     </ContainerContent>
                 </ContainerMain>
             <Footer />

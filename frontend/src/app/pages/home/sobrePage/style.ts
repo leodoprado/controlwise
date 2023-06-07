@@ -26,15 +26,20 @@ export const ContainerContent = styled.div`
         font-size: 2.5rem;
         line-height: 55px;
         text-transform: uppercase;
+        margin-bottom: 1rem;
     }
 
     p {
-        font-size: 22px;
+        font-size: 26px;
         text-align: justify;
     }
 
-    button {
+    a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         font-weight: 800;
+        text-decoration: none;
         margin-top: 2rem;
         width: 300px;
         height: 3rem;
@@ -46,7 +51,7 @@ export const ContainerContent = styled.div`
         cursor:pointer;
     }
 
-    button:hover {
+    a:hover {
         background-color: #0085bd;
         transition: 0.6s;
     }
