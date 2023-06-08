@@ -1,0 +1,46 @@
+<!doctype html>
+<head>
+  <title>Login</title>
+  <link rel="stylesheet" href="/css/home/login.css">
+  <link rel="icon" type="imagem/png" href="/img/home/login/icon.ico"/>
+</head>
+<html>
+  <body>
+    <div class="login" style="background-image: url(/img/home/login/img2100px.jpg);">
+        <div class="container-login">
+          <div class="conteudo-login">
+            <a href="/" id="logo">
+              <img src="/img/home/login/logo-.comDomínio250pxwhite.png" alt="">
+            </a>
+            <form action="/authenticate" method="POST">
+                <div class="radio">
+                  <div class="custom-radio">
+                      <input value="Morador" class="radio" name="nivelAcesso" id="radio1" type="radio" checked>
+                      <label class="radio-1" for="radio1">Morador</label>
+                  </div>
+                  <div class="custom-radio">
+                      <input value="Administrador" class="radio" name="nivelAcesso" id="radio2" type="radio">
+                      <label for="radio2">Administrador</label>
+                  </div>
+                </div>
+              <div>
+                <label for="" id="label-id-pass">Id:</label>
+                <input name="login" type="number" placeholder="Digite seu identificador" required/> 
+                <label for="" id="label-id-pass">Senha:</label> 
+                <input name="senha" type="password" placeholder="Digite sua senha" required/> 
+                <input type="submit" value="Entrar"/>
+              </div>
+            </form>
+
+            <%if(message!=''){ %>
+              <%=message%>
+            <%}%>
+            
+            <p>
+              <a href="/login/esqueceu-senha" id="esqueceu-senha">Esqueceu sua senha?</a>
+            </p>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>

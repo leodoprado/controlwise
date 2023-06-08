@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunicados - Morador</title>
+    <link rel="stylesheet" href="/css/log/administrador/comunicadosAdministrador.css">
+    <link rel="icon" type="imagem/png" href="/img/home/principal/icon.ico"/>
+</head>
+<body>
+    <%- include('../../partials/menuMorador.ejs') %>  
+    <div class="container">
+        <div class="container-conteudo">
+            <h1>Mural de Comunicados</h1>
+            <hr>
+            <div class="conteudo">
+                <div class="container-tabela">
+                    <table>
+                        <tr>
+                            <th>ID</th>
+                            <th>Titulo</th>
+                            <th>Assunto</th>
+                            <th>Conteudo</th>
+                            <th>Data de Envio</th>
+                        </tr>
+                        <tr>
+                            <% comunicado.forEach(all => { %>
+                                <tr>
+                                    <td><%= all.idComunicado %></td>
+                                    <td><%= all.titulo %></td>
+                                    <td><%= all.assunto %></td>
+                                    <td><%= all.texto %></td>
+                                    <td><%= all.dataenvio %></td>
+                                </tr>
+                                <% }) %>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

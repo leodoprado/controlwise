@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vincular Moradia - Administrador</title>
+    <link rel="stylesheet" href="/css/log/administrador/vincularMoradiasAdministrador.css">
+    <link rel="icon" type="imagem/png" href="/img/home/principal/icon.ico"/>
+</head>
+<body>
+    <%- include('../../partials/menuAdministrador.ejs') %> 
+    <form action="/login/administrador/moradias/vincular/success" method="post">
+        <div class="container">
+            <div class="container-conteudo">
+                <h1>Vincular Apartamento</h1>
+                <hr>
+                <div class="conteudo">
+                    <div class="conteudo-dados">
+                        <label for="">ID Morador: <input value=<%= dados.idUsuario %> name="idMorador" id="input-idmorador" class="input-dados" type="text" readonly="readonly"></label>
+                        <label for="">Nome: <textarea name="nome" id="input-nome" class="input-dados" type="text" readonly="readonly"><%= dados.nome %></textarea></label>
+                        <label for="">Número Apartamento: <input name="numApto" id="input-numeroapto" class="input-dados" type="text"></label>
+                        <label for="">Andar: <input name="andar" id="input-andar" class="input-dados" type="text"></label>
+                        <label for="">Posição: <input name="posicao" id="input-posicao" class="input-dados" type="text"></label>
+                        <label for="">Vagas de Garagem: <input name="garagem" id="input-garagem" class="input-dados" type="text"></label>
+                        <label for="">Telefone: <input value=<%= dados.telefone1 %> name="telefone"  id="input-nome" class="input-dados" type="text" readonly="readonly"></label>
+                    </div>
+                </div>
+                <div class="container-btn">
+                    <a href="http://localhost:4000/login/administrador/moradias" id="btn-voltar">Voltar</a>
+                    <button id="btn-vincular" type="submit">Vincular</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

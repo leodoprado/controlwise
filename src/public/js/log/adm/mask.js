@@ -1,0 +1,11 @@
+$(document).ready(function(){
+    $('#input-datanasc').mask('00/00/0000');
+    $('#input-cpf').mask('000.000.000-00');
+    $('.input-telefone').mask('(00)00000-0000');
+    $('#input-telefone').mask('(00)00000-0000');
+    $('#input-estado').mask('AA');
+    $('#input-rg').mask('000000000');
+    $('#txValorPadrao').mask('000.000.000.000,00');
+    $('#input-data').mask('00/00/0000');
+    $('#input-horario').mask('00:00');
+})

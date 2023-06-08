@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+      "target": "es2018",
+      "allowSyntheticDefaultImports": false,
+      "moduleResolution": "node",
+      "jsx": "preserve",
+      "baseUrl": "./",
+      "paths": {
+        "@app/*": ["src/*"],
+        "@config/*": ["src/config/*"],
+        "@controller/*": ["src/controller/*"],
+        "@database/*": ["src/database/*"],
+        "@public/*": ["src/public/*"],
+        "@model/*": ["src/model/*"],
+        "@middleware/*": ["src/middleware/*"],
+      }
+    },
+    "exclude": ["node_modules", "dist"]
+  }

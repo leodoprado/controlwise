@@ -1,0 +1,426 @@
+@import url('https://fonts.googleapis.com/css2?family=Bakbak+One&family=Carter+One&family=Livvic:wght@400;500;600;700&family=Nunito:wght@400;500;700&family=Oxanium:wght@800&display=swap');
+
+:root {
+    --primary-color: rgb(8, 37, 103);
+    --second-color: rgb(255, 255, 255);
+    --third-color: #5072A7;
+    --primary-font: "Nunito", sans serif;
+    --second-font: "Livvic", sans serif;
+    --third-font: "Carter One", sans serif;
+    --logo-font: "Bakbak One", sans serif;
+    --gap: 1.5rem;
+}
+
+* {
+    padding: 0%;
+    margin: 0%;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    font-size: 100%;
+}
+
+.cabecalho {
+    background: #ffffff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+h2 {
+    font-size: 20px;
+}
+
+.cabecalho-conteudo {
+    font-family: var(--primary-font);
+    display: flex;
+    justify-content: space-between;
+    padding: var(--gap);
+    align-items: center;
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+.logo img {
+    margin-top: 6px;
+}
+
+.cabecalho ul {
+    list-style: none;
+    display: flex;
+}
+
+.cabecalho ul li a {
+    display: block;
+    padding: 1.5rem;
+    position: relative;
+}
+
+.cabecalho ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #5072A7;
+    margin-bottom: 10px;
+    transition: all ease-in-out;
+}
+
+.cabecalho ul li a:hover::after {
+    width: 100%;
+    left: 0%;
+}
+
+.cabecalho-login a {
+    padding: 10px;
+    background: var(--second-color);
+    color: var(--primary-color);
+    font-family: var(--primary-font);
+    text-align: center;
+    padding: 13px 20px;
+    cursor: pointer;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.cabecalho-login a:hover {
+    background: var(--primary-color);
+    color: var(--second-color);
+
+}
+
+/*-----------------------------------*/
+
+.principal {
+    background: #5072A7;
+    height: 100vh;
+}
+
+.principal-conteudo {
+    display: flex;
+    flex-direction: row;
+    font-family: var(--second-font);
+    padding-top: 110px;
+    padding-left: var(--gap);
+    padding-right: var(--gap);
+    color: var(--second-color);
+}
+
+.principal-texto {
+    width: 60%;
+}
+
+.principal-imagem {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.principal-conteudo h1 {
+    font-weight: 700;
+    font-size: 77px;
+}
+
+.corTextoPrincipal {
+    color: var(--primary-color);
+}
+
+.principal-conteudo p {
+    font-family: var(--second-font);
+    padding-top: 2rem;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.principal-botao button {
+    border: none;
+    padding: 10px;
+    background: var(--primary-color);
+    color: var(--second-color);
+    font-family: var(--primary-font);
+    text-align: center;
+    padding: 13px 20px;
+    cursor: pointer;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 30px;
+}
+
+.principal-botao {
+    margin-left: var(--gap);
+}
+
+.principal-botao :hover {
+    color: var(--primary-color);
+    background: var(--second-color);
+}
+
+/*-----------------------------------*/
+
+.principal2 {
+    height: 90vh;
+    background: #ffffff;
+    border: solid 10px #5072A7;
+}
+
+.principal2 h1 {
+    font-family: var(--second-font);
+    color: var(--primary-color);
+    padding-top: 45px;
+    font-size: 60px;
+    text-align: center;
+
+    background: rgb(8,37,103);
+    background: linear-gradient(90deg, rgba(8,37,103,1) 10%, rgba(80,114,167,1) 41%, rgba(184,209,249,1) 95%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.principal-texto2 {
+    display: flex;
+    padding-top: 25px;
+    text-align: center;
+    color: var(--primary-color);
+}
+
+
+li {
+    list-style-type: none;
+  }
+
+.principal-texto-esquerda {
+    font-family: var(--primary-font);
+    font-weight: 400;
+    font-size: 19px;
+    width: 40%;
+    text-decoration: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.principal-texto-direita {
+    font-family: var(--primary-font);
+    font-weight: 400;
+    font-size: 19px;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.texto-funcionalidades {
+    padding-top: 50px;
+}
+
+/*-----------------------------------*/
+
+.principal3 {
+    height: 93vh;
+    background: rgb(80,114,167);
+    background: linear-gradient(90deg, rgba(80,114,167,1) 0%, rgba(97,126,172,1) 40%, rgba(152,180,224,1) 100%);
+}
+
+.principal3 h1 {
+    font-family: var(--second-font);
+    color: var(--primary-color);
+    font-size: 60px;
+    padding-top: 55px;
+    text-align: center;
+
+    background: rgb(255,255,255);
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(225,231,238,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.principal-texto3 {
+    display: flex;
+    padding-top: 25px;
+    text-align: center;
+    color: var(--primary-color);
+}
+
+.principal-texto-esquerda2 {
+    font-family: var(--primary-font);
+    font-weight: 400;
+    font-size: 21px;
+    width: 40%;
+    text-decoration: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.principal-texto-direita2 {
+    font-family: var(--primary-font);
+    font-weight: 400;
+    font-size: 21px;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*-----------------------------------*/
+
+.principal4 {
+    height: 90vh;
+    background: rgb(46,70,107);
+    background: linear-gradient(0deg, rgba(46,70,107,1) 4%, rgba(97,126,172,1) 50%, rgba(116,144,190,1) 77%);
+}
+
+.principal4 h1 {
+    font-family: var(--second-font);
+    color: var(--second-color);
+    font-size: 60px;
+    padding-top: 40px;
+    text-align: center;
+}
+
+.principal4 h2 {
+    font-family: var(--second-font);
+    color: var(--primary-color);
+    font-size: 35px;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.sections-ajuda {
+    display: flex;
+    padding-top: 60px;
+    width: 100%;
+    height: 300px;
+    text-align: center;
+    font-family: var(--primary-font);
+}
+
+.sections-ajuda h3 {
+    color: var(--primary-color);
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.section-ajuda1 img {
+    padding-bottom: 10px;
+}
+
+.section-ajuda1 {
+    margin-left: var(--gap);
+    padding: var(--gap);
+    color: var(--primary-color);
+    width: 500px;
+    background: #6d95d6;
+    box-shadow: 0 0 35px rgb(0 0 0 / 5%);
+    
+}
+
+.section-ajuda1:hover {
+    border: 1px solid #fafafa;
+}
+
+.section-ajuda1 button {
+    border: none;
+    padding: 10px;
+    background: var(--primary-color);
+    color: var(--second-color);
+    font-family: var(--primary-font);
+    text-align: center;
+    padding: 13px 20px;
+    cursor: pointer;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 30px;
+}
+
+.section-ajuda1 button:hover {
+    color: var(--primary-color);
+    background: var(--second-color);
+}
+
+.section-ajuda2 {
+    margin-left: var(--gap);
+    padding: var(--gap);
+    color: var(--primary-color);
+    width: 500px;
+    background: #6d95d6;
+    box-shadow: 0 0 35px rgb(0 0 0 / 5%);
+}
+
+.section-ajuda2:hover {
+    border: 1px solid #fafafa;
+}
+
+.section-ajuda2 img {
+    padding-bottom: 10px;
+}
+
+.section-ajuda2 button {
+    border: none;
+    padding: 10px;
+    background: var(--primary-color);
+    color: var(--second-color);
+    font-family: var(--primary-font);
+    text-align: center;
+    padding: 13px 20px;
+    cursor: pointer;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 30px;
+}
+
+.section-ajuda2 button:hover {
+    color: var(--primary-color);
+    background: var(--second-color);
+}
+
+.section-ajuda3 {
+    margin-left: var(--gap);
+    margin-right: var(--gap);
+    padding: var(--gap);
+    color: var(--primary-color);
+    width: 500px;
+    background: #6d95d6;
+    box-shadow: 0 0 35px rgb(0 0 0 / 5%);
+}
+
+.section-ajuda3:hover {
+    border: 1px solid var(--second-color);
+}
+
+.section-ajuda3 img {
+    padding-bottom: 10px;
+}
+
+.section-ajuda3 button {
+    border: none;
+    padding: 10px;
+    background: var(--primary-color);
+    color: var(--second-color);
+    font-family: var(--primary-font);
+    text-align: center;
+    padding: 13px 20px;
+    cursor: pointer;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 30px;
+}
+
+.section-ajuda3 button:hover {
+    color: var(--primary-color);
+    background: var(--second-color);
+}

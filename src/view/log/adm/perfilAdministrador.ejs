@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - Administrador</title>
+    <link rel="stylesheet" href="/css/log/administrador/perfil.css">
+    <link rel="icon" type="imagem/png" href="/img/home/principal/icon.ico"/>
+</head>
+<body>
+    <%- include('../../partials/menuAdministrador.ejs') %> 
+    <form action="/login/administrador/perfil/:id" method="post">
+        <div class="container">
+            <div class="container-conteudo">
+                <div class="conteudo">
+                    <div class="conteudo-dados-da-conta">
+                        <div class="imageContainer">
+                            <div class="image">
+                                <img src="/img/log/adm/foto-background.png" alt="Selecione uma imagem" id="imgPhoto">
+                                <input type="file" id="flImage" name="fImage" accept="image/*">
+                            </div>
+                        </div>
+                        <div class="dados-da-conta">
+                            <label for="" >ID Morador: <input disabled value=<%= result.idUsuario %> class="inputs-ddc" type="text" id="idmorador"></label>
+                            <label for="" >Senha: <input disabled class="inputs-ddc" type="password" id="senha" placeholder="***********"></label>
+                            <label for="" >Nível de acesso: <input disabled value=<%= result.nivelAcesso %> class="inputs-ddc" id="nivelacesso"></label>
+                        </div>
+                    </div>
+                    <div class="conteudo-dados-pessoais">
+                        <h4>Dados Pessoais</h4>
+                        <hr>
+                        <div class="dados-pessoais">
+                            <label for="">Nome: <textarea name="nome" id="input-nome" type="text" readonly><%= result.nome %></textarea></label>
+                            <label for="" id="label-datanasc">Data de Nascimento: <input value=<%= result.datanascimento %> id="input-datanasc" type="text" readonly></label>
+                        </div>
+                        <div class="dados-pessoais">
+                            <label for="">CPF: <input value=<%= result.cpf %> name="cpf" id="input-cpf" type="text" readonly></label>
+                            <label for="" id="label-rg">RG: <input value=<%= result.rg %> name="rg" id="input-rg" type="text" required></label>
+                        </div>
+                        <div class="dados-pessoais">
+                            <label for="">Estado Civil: <input value=<%= result.estadocivil %> name="estadocivil" id="input-estadocivil" type="text" required></label>
+                            <label for="" id="label-sexo">Sexo: <input value=<%= result.sexo %> name="sexo" id="input-sexo" type="text" required></label>
+                        </div>
+                        <div class="dados-pessoais">
+                            <label for="">País: <input value=<%= result.pais %> name="pais" type="text" id="input-nacionalidade" required></label>
+                            <label for="" id="label-cidadenatal">Cidade Natal: <textarea name="cidadenatal" id="input-cidadenatal" type="text" required><%= result.cidadenatal %></textarea></label>
+                            <label for="" id="label-estado">UF: <input value=<%= result.estado %> name="estado" type="text" id="input-estado" required></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="conteudo-contatos">
+                    <h4 id="titulo-contatos">Contatos</h4>
+                        <hr>
+                        <div class="contato">
+                            <label for="">Email: <input value=<%= result.email %> name="email" type="text" id="input-email" readonly></label>
+                            <label for="" id="label-emailcomplementar">Email (complementar): <input value=<%= result.emailcomplementar %> name="emailcomplementar" id="input-email" type="text" required></label>                    </div>
+                        <div class="contato">
+                            <label for="">Telefone 1: <input value=<%= result.telefone1 %> name="telefone1" type="text" class="input-telefone" readonly></label>
+                            <label for="" id="label-telefone2">Telefone 2: <input value=<%= result.telefone2 %> name="telefone2" class="input-telefone" type="text" required></label>
+                            <button type="reset" id="btn-cancelar">Cancelar</button>
+                            <button type="submit" id="btn-salvar" >Atualizar</button>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script src="/js/log/adm/foto-perfil.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    
+    <script src="/js/log/adm/jquery.mask.js"></script>
+    <script src="/js/log/adm/mask.js"></script>
+</body>
+</html>
