@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excluir Agendamento - Administrador</title>
+    <link rel="stylesheet" href="/css/log/administrador/agendarAdministrador.css">
+    <link rel="icon" type="imagem/png" href="/img/home/principal/icon.ico"/>
+</head>
+<body>
+    <%- include('../../partials/menuAdministrador.ejs') %>
+    <form action="/login/administrador/agenda/excluir/:idAgendamento" method="post">
+        <div class="container">
+            <div class="container-conteudo">
+                <h1>Excluir Agendamento</h1>
+                <hr>
+                <div class="conteudo">
+                    <div class="conteudo-dados">
+                        <label for="" id="label-idusuario">ID Usuário:<input value=<%= agendamento.idMorador %> name="idMorador" id="input-idusuario" class="inputs-ddc" type="text" disabled></label>
+                        <label for="">Nome: <textarea name="nome" id="input-nome" class="inputs-ddc" type="text" disabled><%= agendamento.nome %></textarea></label>
+                        <div><label for="" id="label-assunto">Titulo:<textarea name="assunto" class="inputs-ddc" id="input-titulo" cols="30" rows="10" disabled><%= agendamento.assunto %> </textarea></label></div>
+                        <label for="" id="label-assunto">Assunto:<textarea name="assunto" class="inputs-ddc" id="input-assunto" cols="30" rows="10" disabled><%= agendamento.titulo %> </textarea></label>
+                        <div id="datainicio">
+                            <label for="">Data Inicio:<input value=<%= agendamento.dataInicio %>  name="dataInicio" id="input-data" class="inputs-ddc" type="text" disabled></label>
+                            <label for="" id="label-horarioinicio">Horário Inicio:<input value=<%= agendamento.horarioInicio %> name="horarioInicio" id="input-horario" class="inputs-ddc" type="text" disabled></label>
+                        </div>
+                        <div id="datafim">
+                            <label for="">Data Fim:<input value=<%= agendamento.dataFim %> name="dataFim" id="input-data" class="inputs-ddc" type="text" disabled></label>
+                            <label for="" id="label-horariofim">Horário Fim:<input value=<%= agendamento.horarioFim %> name="horarioFim" id="input-horario" class="inputs-ddc" type="text" disabled></label>
+                        </div>
+                    </div>
+                    <div class="container-button">
+                        <a id="btn-voltar" href="/login/administrador/agenda">Voltar</a>
+                        <button id="btn-agendar" type="submit">Excluir</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form> 
+</body>
+</html>

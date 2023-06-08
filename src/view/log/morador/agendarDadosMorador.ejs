@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar - Morador</title>
+    <link rel="stylesheet" href="/css/log/administrador/agendarAdministrador.css">
+    <link rel="icon" type="imagem/png" href="/img/home/principal/icon.ico"/>
+</head>
+<body>
+    <%- include('../../partials/menuMorador.ejs') %>
+    <form action="/login/morador/agenda/agendar/success" method="post">
+        <div class="container">
+            <div class="container-conteudo">
+                <h1>Agendar Horário</h1>
+                <hr>
+                <div class="conteudo">
+                    <div class="conteudo-dados">
+                        <label for="" id="label-idusuario">ID Usuário:<input value=<%= dados.idUsuario %> name="idMorador" id="input-idusuario" class="inputs-ddc" type="text" readonly="readonly"></label>
+                        <label for="">Nome: <textarea name="nome" id="input-nome" class="inputs-ddc" type="text" readonly="readonly"><%= dados.nome %></textarea></label>
+                        <label for="" id="label-titulo">Título:<input name="titulo" id="input-titulo" class="inputs-ddc" type="text" required></label>
+                        <label for="" id="label-assunto">Assunto:<textarea name="assunto" class="inputs-ddc" id="input-assunto" cols="30" rows="10" required></textarea></label>
+                        <div id="datainicio">
+                            <label for="">Data Inicio:<input name="dataInicio" id="input-data" class="inputs-ddc" type="text" required></label>
+                            <label for="" id="label-horarioinicio">Horário Inicio:<input name="horarioInicio" id="input-horario" class="inputs-ddc" type="text" required></label>
+                        </div>
+                        <div id="datafim">
+                            <label for="">Data Fim:<input name="dataFim" id="input-data" class="inputs-ddc" type="text" required></label>
+                            <label for="" id="label-horariofim">Horário Fim:<input name="horarioFim" id="input-horario" class="inputs-ddc" type="text" required></label>
+                        </div>
+                    </div>
+                    <div class="container-button">
+                        <a id="btn-voltar" href="/login/morador/agenda">Voltar</a>
+                        <button id="btn-agendar" type="submit">Agendar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    
+    <script src="/js/log/adm/jquery.mask.js"></script>
+    <script src="/js/log/adm/mask.js"></script>
+</body>
+</html>

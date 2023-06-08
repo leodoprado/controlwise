@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Bakbak+One&family=Carter+One&family=Livvic:wght@400;500;600;700&family=Nunito:wght@400;500;700&family=Oxanium:wght@800&display=swap');
+
+:root {
+    --primary-color: rgb(8, 37, 103);
+    --second-color: rgb(255, 255, 255);
+    --third-color: #5072A7;
+    --four-color: rgb(110, 103, 103);
+    --primary-font: "Nunito", sans serif;
+    --second-font: "Livvic", sans serif;
+    --third-font: "Carter One", sans serif;
+    --logo-font: "Bakbak One", sans serif;
+    --gap: 1.5rem;
+}
+
+*{
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-appearance: none;
+	appearance: none;
+	font-family: var(--second-font), Times, serif;
+}
+body, html{
+	overflow-x: hidden;
+}
+
+span {
+	font-weight: bold;
+}
+
+.menu{
+	background-color: #375991;
+	position: fixed;
+	overflow: hidden;
+	height: 100vh;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 70px;
+	-webkit-transition: all 0.3s linear;
+	transition: all 0.3s linear;
+	-webkit-transform: translateZ(0) scale(1,1);
+	transform: translateZ(0) scale(1,1);
+}
+.menu > ul{
+
+}
+
+.menu li{
+	position: relative;
+	display: block;
+	width: 250px;
+}
+.menu li > a{
+	position: relative;
+	width: 255px;
+	color: var(--second-color);
+	display: table;
+	font-size: 16px;
+    font-weight: 500;
+	text-decoration: none;
+	-webkit-transform: translateZ(0) scale(1,1);
+	transform: translateZ(0) scale(1,1);
+	-webkit-transition: all 0.15s linear;
+	transition: all 0.15s linear;
+}
+.menu .span-menu{
+	position: relative;
+	display: table-cell;
+	vertical-align: middle;
+	width: 150px;
+    height: 50px;
+}
+.lista{
+	text-transform: capitalize;
+}
+.lista-logo, .li-empresa, .li-contato{
+
+	text-transform: capitalize;
+}
+.menu li:hover a, nav.menu li.active > a{
+	color: #fff;
+	background-color: var(--primary-color);
+    border-left: 1px solid var(--second-color);
+    transition: 0.4s;
+    transition-timing-function: ease-in-out;
+}
+nav{
+	-webkit-user-select: none;
+	user-select: none;
+	box-shadow: 0 0 15px var(--primary-color);
+}
+.bx{
+	position: relative;
+	width: 70px;
+	height: 40px;
+	text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	top: 5px;
+}
+
+.lista-topo {
+    position: relative;
+
+}
+
+.btn-sair {
+    position: relative;
+    top: 285px;
+}
+
+.menu:hover, nav.menu.expanded{
+	width: 235px;
+	overflow: hidden;
+}
+.home{
+	width: 100%;
+	height: 100vh;
+	background: var(--second-color);
+	background-position: center;
+	background-size: cover;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-blend-mode: darken;
+}

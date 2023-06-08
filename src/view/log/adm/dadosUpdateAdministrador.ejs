@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados do Morador - Administrador</title>
+    <link rel="stylesheet" href="/css/log/administrador/updateDadosAdministrador.css">
+    <link rel="icon" type="imagem/png" href="/img/home/principal/icon.ico"/>
+</head>
+<body>
+    <%- include('../../partials/menuAdministrador.ejs') %> 
+    <form action="/login/administrador/gerencial/update/:idUsuario" method="POST">
+        <div class="container">
+            <div class="container-conteudo">
+                <h1>Alterar Dados do Morador</h1>
+                <hr>
+                <div class="conteudo">
+                    <div class="conteudo-dados-pessoais">
+                        <label for="">Nome: <textarea name="nome" id="input-nome" class="input-dados" type="text"><%= dados.nome %></textarea></label> <br>
+                        <label for="">Data de Nascimento: <input value=<%= dados.datanascimento %>  name="datanascimento" class="inputs-ddc" id="input-datanasc" type="text"></label>
+                        <label for="">CPF: <input value=<%= dados.cpf %>  name="cpf" class="inputs-ddc" id="input-cpf" type="text"></label>
+                        <label for="">Email: <input value=<%= dados.email %>  name="email" class="inputs-ddc" id="input-email" type="text"></label>
+                        <label for="">Telefone: <input value=<%= dados.telefone1 %>  name="telefone1" class="inputs-ddc" class="input-telefone" id="input-telefone" type="text"></label>
+                    </div>
+                    <div class="conteudo-dados-da-conta">
+                        <div class="dados-conta">
+                            <label for="">Nível de acesso da conta:</label>
+                            <input value=<%= dados.nivelAcesso %>  type="text" id="input-nivelacesso" class="inputs-ddc" disabled>
+                        </div>
+                        <label for="">ID Morador: <input value=<%= dados.idUsuario %>  name="idUsuario" class="inputs-ddc" id="input-id-width" type="text" disabled></label> <br>
+                        <label for="">Senha: <input placeholder="**********"  name="senha" class="inputs-ddc" id="input-senha-width" type="password" disabled></label>
+                    </div>
+            </div>
+            <div class="container-btn">
+                <a href="http://localhost:4000/login/administrador/gerencial" id="btn-voltar">Voltar</a>
+                <button id="btn-cadastrar" type="submit">Alterar</button>
+            </div>
+        </div>
+    </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    
+    <script src="/js/log/adm/jquery.mask.js"></script>
+    <script src="/js/log/adm/mask.js"></script>
+</body>
+</html>

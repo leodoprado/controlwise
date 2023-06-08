@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Bakbak+One&family=Carter+One&family=Livvic:wght@400;500;600;700&family=Nunito:wght@400;500;700&family=Oxanium:wght@800&display=swap');
+
+:root {
+    --primary-color: rgb(8, 37, 103);
+    --second-color: rgb(255, 255, 255);
+    --third-color: #5072A7;
+    --four-color: rgb(224, 224, 224);
+    --primary-font: "Nunito", sans serif;
+    --second-font: "Livvic", sans serif;
+    --third-font: "Carter One", sans serif;
+    --logo-font: "Bakbak One", sans serif;
+    --gap: 1.5rem;
+}
+
+* {
+    margin: 0;
+	padding: 0;
+    box-sizing: border-box;
+    border: none;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-appearance: none;
+	appearance: none;
+	font-family: var(--second-font), Times, serif;
+}
+
+textarea:focus, input:focus, select:focus {
+    border: 0 none;
+    outline: 0;
+} 
+
+input {
+    text-align: center;
+}
+
+label {
+    color: var(--primary-color);
+    font-size: 17px;
+}
+
+input:focus {
+    box-shadow: 0 0 3px var(--primary-color);
+}
+
+h1 {
+    text-align: center;
+
+    color: var(--primary-color);
+}
+
+hr {
+    margin: 2px 0 5px;
+    border-top: 1px solid rgb(199, 192, 192);
+}
+
+.container {
+    width: 100%;
+	height: 100vh;
+    background: rgb(255,255,255);
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 0%, rgba(190,203,223,1) 77%, rgba(128,153,191,1) 100%, rgba(80,114,167,1) 100%); 
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-conteudo {
+    width: 90%;
+    height: 90%;
+    margin-left: 70px;
+    background-color: var(--second-color);
+    box-shadow: 0 0 1px var(--third-color);
+    padding: 20px;
+}
+
+.conteudo {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 350px;
+}
+
+.radio {
+    padding-top: 20px;
+}
+
+.conteudo-dados-pessoais {
+    display: flex;
+    align-items: left;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.conteudo-dados-da-conta {
+    padding-left: 100px;
+}
+
+.custom-radio {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.custom-radio input {
+    display: none;
+}
+
+.custom-radio label {
+    font-family: var(--primary-font);
+    font-weight: bold;
+}
+
+.custom-radio input + label:before {
+    content: '';
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: white;
+    border: 2px solid var(--primary-color);
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+    margin-bottom: 3px;
+  }
+  
+  .custom-radio input:checked + label:before {
+    background-color: var(--primary-color);
+    box-sizing: border-box;
+
+    padding: 8px;
+  }
+
+ .radio-1 {
+      padding-right: 50px;
+  }
+
+  .inputs-ddc {
+    width: 150px;
+    font-size: 18px;
+    height: 25px;
+    box-shadow: 0 0 1px var(--third-color);
+    margin-left: 30px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.dados-da-conta input:focus {
+    box-shadow: 0 0 3px var(--primary-color);
+}
+
+#input-senha-width {
+    width: 192px;
+    height: 25px;
+}
+
+#input-id-width {
+    width: 155px;
+    height: 25px;
+}
+
+#input-nome {
+    width: 300px;
+    height: 25px;
+}
+
+#input-datanasc {
+    width: 120px;
+    height: 25px;
+}
+
+#input-cpf {
+    width: 250px;
+    height: 25px;
+}
+
+#input-email {
+    width: 395px;
+    height: 25px;
+}
+
+#input-telefone {
+    width: 200px;
+    height: 25px;
+}
+
+#btn-voltar {
+    border: none;
+    font-family: var(--second-font);
+    background: var(--primary-color);
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    height: 40px;
+    width: 180px;
+    cursor: pointer;
+    opacity: 0.9;
+    padding: 2px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow, transform;
+}
+
+#btn-voltar:hover, #btn-voltar:focus, #btn-voltar:active {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+#btn-cadastrar {
+    border: none;
+    font-family: var(--second-font);
+    background: var(--primary-color);
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    height: 40px;
+    width: 180px;
+    cursor: pointer;
+    opacity: 0.9;
+    padding: 2px;
+    margin-left: 20px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow, transform;
+}
+
+#btn-cadastrar:hover, #btn-cadastrar:focus, #btn-cadastrar:active {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.container-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 70px;
+}

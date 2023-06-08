@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vincular Contrato - Administrador</title>
+    <link rel="stylesheet" href="/css/log/administrador/deleteAdministrador.css">
+    <link rel="icon" type="imagem/png" href="/img/home/principal/icon.ico"/>
+</head>
+<body>
+    <%- include('../../partials/menuAdministrador.ejs') %> 
+    <form action="/login/administrador/financeiro/registro" method="post">
+        <div class="container">
+            <div class="container-conteudo">
+                <h1>Vincular Contrato</h1>
+                <hr>
+                <div class="conteudo">
+                    <div class="conteudo-idusuario">
+                        <label for="">ID Usuário: <input name="idUsuario" type="text"></label>
+                        <button type="submit" id="btn-buscar">buscar</button>
+                    </div>
+                    <div class="container-btn">
+                        <a href="/login/administrador/financeiro" id="btn-voltar">Voltar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

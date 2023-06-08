@@ -1,0 +1,45 @@
+{
+  "name": "comdominio",
+  "version": "1.0.0",
+  "description": ".comDomínio - Projeto Web",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leodoprado/.comDominio.git"
+  },
+  "author": "Leonardo do Prado",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/leodoprado/.comDominio/issues"
+  },
+  "homepage": "https://github.com/leodoprado/.comDominio#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.0",
+    "connect-flash": "^0.1.1",
+    "dotenv": "^16.0.1",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "express-session": "^1.17.3",
+    "migrate": "^1.8.0",
+    "module-alias": "^2.2.2",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.19.2"
+  },
+  "_moduleAliases": {
+    "@": "src",
+    "@app": "src/app.js",
+    "@config": "src/config",
+    "@controller": "src/controller",
+    "@database": "src/database",
+    "@public": "src/public",
+    "@model": "src/model",
+    "@middleware": "src/middleware"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.4.1"
+  }
+}
