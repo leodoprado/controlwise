@@ -27,7 +27,11 @@ export const ContainerContent = styled.div`
         text-transform: uppercase;
     }
 
-    button {
+    a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
         font-weight: 800;
         margin-top: 3rem;
         width: 180px;
@@ -40,7 +44,7 @@ export const ContainerContent = styled.div`
         cursor:pointer;
     }
 
-    button:hover {
+    a:hover {
         background-color: #0085bd;
         transition: 0.6s;
     }
