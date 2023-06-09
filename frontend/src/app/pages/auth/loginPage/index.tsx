@@ -49,16 +49,23 @@ const LoginPage = () => {
     })
 
     const handleFormSubmit = async (data: LoginUserFormData) => {
-        console.log("AAAAAAA")
+        console.log(data.address.email)
+
+        const result = await handleFetchAddress(data.address.email);
+
+        if(result != null) {
+            alert("Seja bem vindo! " + result.USR_NOME);
+        }
+
       }
 
   const email = watch('address.email');
 
   const handleFetchAddress = useCallback(async (email: string) => {
-    /*const { data } = await axios.get(
+    const { data } = await axios.get(
         'http://localhost:3000/usuario/usr_email/' + email // <= endpoint para a validação do email de login
         );
-        return data[0];*/
+        return data[0];
   }, [])
 
   useEffect(() => {
@@ -86,12 +93,11 @@ const LoginPage = () => {
                 </ContainerLogo>     
                 <form onSubmit={handleSubmit(handleFormSubmit)}>
                     <ContainerInput>                       
-                        <InputAccessDefault 
+                        <input 
+                            type="text" 
+                            className="input"
+                            placeholder='Digite seu email'
                             {...register('address.email')}
-                            textLabel='E-mail' 
-                            typeInput='text' 
-                            placeholderInput='Digite seu e-mail' 
-                            classNameInput='input'
                         />
                         {errors.address?.email?.message && (
                             <span>{errors.address.email.message}</span> 
@@ -100,12 +106,11 @@ const LoginPage = () => {
                     </ContainerInput> 
 
                     <ContainerInput>                
-                        <InputAccessDefault 
+                        <input 
                             {...register('address.password')}
-                            textLabel='Senha' 
-                            typeInput="password" 
-                            placeholderInput='Digite sua senha' 
-                            classNameInput="input"
+                            placeholder='Digite sua senha'
+                            type="text" 
+                            className="input"
                         />
                         {errors.address?.password?.message && (
                             <span>{errors.address.password.message}</span> 

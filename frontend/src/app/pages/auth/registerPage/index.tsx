@@ -26,7 +26,7 @@ export default function RegisterPage() {
 
             if(response.status === 200) {
                 console.log("registrado!!");
-                alert("registraod!")
+                alert("registrado!")
             }
 
     }
