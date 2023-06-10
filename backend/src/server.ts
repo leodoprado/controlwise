@@ -7,6 +7,9 @@ import sequelize from './db/database'
 //import { Usuario, Conta, Categoria, Transacoes, Metas } from './db/models'
 import { Model, ModelCtor } from 'sequelize';
 import { Usuario, Conta, Categoria, Transacoes, Metas } from './db/models'
+import bodyParser from 'body-parser';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
 
 const app = express();
@@ -143,5 +146,25 @@ app.delete('/:table/:column/:val', async (req: Request, res: Response) => {
 
     /*let queryRes = MySQLConnector.SQLDelete(table, column, val);*/
 })
+
+// Rota de autenticação
+app.post('/api/login', (req, res) => {
+    const { username, password } = req.body;
+  
+    // Verifique se o usuário existe no banco de dados
+    const user = users.find((u) => u.username === username);
+    if (!user) {
+      return res.status(404).json({ message: 'Usuário não encontrado.' });
+    }
+  
+    // Verifique a senha
+    if (!bcrypt.compareSync(password, user.password)) {
+      return res.status(401).json({ message: 'Credenciais inválidas.' });
+    }
+  
+    // Crie e retorne um token de acesso JWT
+    const token = jwt.sign({ userId: user.id }, 'seuSegredoSuperSecreto', { expiresIn: '1h' });
+    res.json({ token });
+});
    
 app.listen(port, () => 'server running on port 3333')

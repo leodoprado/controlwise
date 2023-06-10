@@ -59,11 +59,12 @@ Usuario.init(
         USR_CIDADE: {
             type: DataTypes.STRING,
             allowNull: true,
-        },
+        }
+        /*,
         USR_DATACAD: {
             type: DataTypes.DATE,
             allowNull: false
-        }
+        }*/
     },
     {
         sequelize,

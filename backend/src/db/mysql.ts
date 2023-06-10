@@ -6,8 +6,8 @@ function InitSQL(): Connection {
     return createConnection({
         host: "localhost",
         user: "root",
-        password: "1234",
-        database: "ControlWiseDB",
+        password: "senha123",
+        database: "controlwise",
         port: 3306
     })
 }

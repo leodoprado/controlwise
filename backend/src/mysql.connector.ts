@@ -18,8 +18,8 @@ export const init = () => {
 
       host: "localhost",
       user: "root",
-      password: "1234",
-      database: "Base"
+      password: "senha123",
+      database: "controlwise"
     });
 
     console.debug('MySql Adapter Pool generated successfully');

@@ -5,7 +5,7 @@ export const ContainerMain = styled.div`
     justify-content: flex-start;
     align-items: center;
     padding: 0px 10%;
-    padding-top: 2rem;
+    padding-top: 1.3rem;
     flex-grow: 1;
     background: rgb(55,54,65);
     background: linear-gradient(0deg, rgba(55,54,65,1) 9%, rgba(35,36,47,1) 31%, rgba(17,16,23,1) 82%);
@@ -20,7 +20,7 @@ export const ContainerMain = styled.div`
     section {
         margin-bottom: 20px;
         padding-bottom: 5px;
-        border-bottom: 1px dashed white;
+        border-bottom: 1px solid white;
     }
 
 `
@@ -82,7 +82,7 @@ export const ContainerButton = styled.div`
         width: 100%;
         padding: 0.6rem 0;
         border-radius: 0;
-        border: solid 1px #01435e;
+        border: solid 1px rgb(1, 255, 211);
         margin-bottom: 1rem;
         border-radius: 0.1rem;
         outline: none;
