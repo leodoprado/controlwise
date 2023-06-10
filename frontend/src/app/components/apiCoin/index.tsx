@@ -1,72 +1,54 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useEffect, useState, useRef } from 'react';
+import axios from 'axios';
+import { Container, Button, Input, QuoteText, ContainerContent } from './style'
+import { BiSearchAlt2 } from "react-icons/bi";
 
-interface Currency {
-  code: string;
-  name: string;
-  high: string;
-  low: string;
-  bid: string;
-  ask: string;
-  timestamp: string;
-}
+const CurrencyQuote: React.FC = () => {
+  const [quote, setQuote] = useState<number | null>(null);
+  const [currencyCode, setCurrencyCode] = useState<string>('');
 
-const CurrencyRates: React.FC = () => {
-  const [currencies, setCurrencies] = useState<Currency[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
-  useEffect(() => {
-    const fetchCurrencyRates = async () => {
-      try {
-        const response = await axios.get(
-          "https://economia.awesomeapi.com.br/json/last/USD-BRL,EUR-BRL,BTC-BRL"
-        );
-        const data = response.data;
-        const currencyRates: Currency[] = Object.values(data);
+  const handleKeyUp = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.keyCode === 13 && buttonRef.current) {
+      buttonRef.current.click();
+    }
+  };
 
-        setCurrencies(currencyRates);
-        setLoading(false);
-      } catch (error) {
-        setError("Erro ao obter as taxas de câmbio");
-        setLoading(false);
-      }
-    };
-
-    fetchCurrencyRates();
-  }, []);
-
-  if (loading) {
-    return <div>Carregando...</div>;
-  }
-
-  if (error) {
-    return <div>{error}</div>;
-  }
+  const fetchCurrencyQuote = async () => {
+    try {
+      const response = await axios.get(
+        `https://api.exchangerate-api.com/v4/latest/${currencyCode}`
+      );
+      const quote = response.data.rates.BRL; // Altere 'BRL' para a moeda desejada
+      setQuote(quote);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
-    <div>
-      <h2>Taxas de Câmbio</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Moeda</th>
-            <th>Valor de Compra</th>
-            <th>Valor de Venda</th>
-          </tr>
-        </thead>
-        <tbody>
-          {currencies.map((currency) => (
-            <tr key={currency.code}>
-              <td>{currency.name}</td>
-              <td>{currency.bid}</td>
-              <td>{currency.ask}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <Container>
+      <ContainerContent>
+        <Input
+          placeholder='Informe a moeda que deseja buscar'
+          type="text"
+          value={currencyCode}
+          onChange={(e) => setCurrencyCode(e.target.value.toUpperCase())}
+          onKeyUp={handleKeyUp}
+        />
+        <Button ref={buttonRef} onClick={() => fetchCurrencyQuote()}><BiSearchAlt2/></Button>
+      </ContainerContent>
+      <p>Referência para a moeda R$:</p>
+      {quote ? (
+        <QuoteText>
+          A cotação atual de {currencyCode} é: {quote}
+        </QuoteText>
+      ) : ( 
+        <QuoteText>Informe a moeda...</QuoteText>
+      )}
+    </Container>
   );
 };
 
-export default CurrencyRates;
+export default CurrencyQuote;

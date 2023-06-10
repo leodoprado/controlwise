@@ -94,7 +94,7 @@ export const ContainerButton = styled.div`
         cursor: pointer;
     }
     button:hover {
-        transition: 0.6s;
+        transition: 1s;
         border: solid 1px #0185bc;    
     }
 `
