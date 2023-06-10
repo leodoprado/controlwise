@@ -5,7 +5,4 @@ const sequelize = new Sequelize('controlwise', 'root', 'senha123', {
     port: 3306
 })
 
-
-
-
 export default sequelize;
