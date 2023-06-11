@@ -24,6 +24,7 @@ const create = require('@controller/loginPage');*/
 router.get('/', homePageController);
 router.get('/sobre', homePageController);
 router.get('/ajuda', homePageController);
+router.get('/login', homePageController);
 //router.get('/login', loginPageController);
 //router.post('/authenticate', loginPageController);
 //router.get('/logout', loginPageController);
