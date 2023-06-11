@@ -20,22 +20,22 @@
                     <h1>Control Wise</h1>
                 </a>
             </div>
-            <form action="" method="post">
+            <form action="/register/user" method="POST">
                 <div class="ContainerContentInput">
                     <div class="ContainerInput">
-                        <label for="">Nome<input type="text" placeholder="Informe seu nome"></label>
+                        <label for="">Nome<input name="nomeUsuario" type="text" placeholder="Informe seu nome"></label>
                     </div>
                     <div class="ContainerInput">
-                        <label for="">CPF<input type="text" placeholder="Informe seu CPF"></label>
+                        <label for="">CPF<input name="cpfUsuario" type="text" placeholder="Informe seu CPF"></label>
                     </div>
                 </div>
                 <div class="ContainerInput">
-                    <label for="">E-mail<input type="text" placeholder="Informe seu e-mail principal"></label>
+                    <label for="">E-mail<input name="emailUsuario" type="text" placeholder="Informe seu e-mail principal"></label>
                 </div>
                 <div class="ContainerInput">
-                    <label for="">Senha<input type="password" placeholder="Informe sua senha"></label>
+                    <label for="">Senha<input name="senhaUsuario" type="password" placeholder="Informe sua senha"></label>
                 </div>
-                <button>Registrar</button>
+                <button type="submit">Registrar</button>
             </form>
             <div class="ContainerLink">
                 <a id="login" href="/login">Já possui uma conta? Faça o Login</a>

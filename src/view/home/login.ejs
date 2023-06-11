@@ -20,14 +20,14 @@
                     <h1>Control Wise</h1>
                 </a>
             </div>
-            <form action="" method="post">
+            <form action="/authenticate" method="POST">
                 <div class="ContainerInput">
-                    <label for="">E-mail<input type="text" placeholder="Informe seu e-mail de acesso"></label>
+                    <label for="">E-mail<input name="emailUsuario" type="text" placeholder="Informe seu e-mail de acesso" required></label>
                 </div>
                 <div class="ContainerInput">
-                    <label for="">Senha<input type="password" placeholder="Informe sua senha cadastrada"></label>
+                    <label for="">Senha<input name="senhaUsuario" type="password" placeholder="Informe sua senha cadastrada" required></label>
                 </div>
-                <button>Login</button>
+                <button type="submit">Login</button>
             </form>
             <div class="ContainerLink">
                 <a id="cadastre-se" href="/register">Não tem uma conta? Cadastre-se</a>

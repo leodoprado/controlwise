@@ -14,6 +14,10 @@ const Usuario = connection.define('usuario', {
     },
     USR_DATANASC: {
         type: Sequelize.DATE,
+        allowNull: true
+    },
+    USR_CPF: {
+        type: Sequelize.STRING,
         allowNull: false
     },
     USR_EMAIL: {
@@ -26,28 +30,23 @@ const Usuario = connection.define('usuario', {
     },
     USR_TELEFONE: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
     },
     USR_CIDADE: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: true
     },
     USR_UF: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
     },
     USR_CEP: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
     },
     USR_ENDERECO: {
         type: Sequelize.STRING,
-        allowNull: false
-    },
-    USR_DATACAD: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        defaultValue: Sequelize.DATEONLY
+        allowNull: true
     }
 })
 
