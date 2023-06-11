@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Control Wise</title>
-    <link rel="stylesheet" href="../../public/css/home/login.css">
+    <link rel="stylesheet" href="../../public/css/home/register.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,17 +20,24 @@
                 </a>
             </div>
             <form action="" method="post">
-                <div class="ContainerInput">
-                    <label for="">E-mail<input type="text" placeholder="Informe seu e-mail de acesso"></label>
+                <div class="ContainerContentInput">
+                    <div class="ContainerInput">
+                        <label for="">Nome<input type="text" placeholder="Informe seu nome"></label>
+                    </div>
+                    <div class="ContainerInput">
+                        <label for="">CPF<input type="text" placeholder="Informe seu CPF"></label>
+                    </div>
                 </div>
                 <div class="ContainerInput">
-                    <label for="">Senha<input type="password" placeholder="Informe sua senha cadastrada"></label>
+                    <label for="">E-mail<input type="text" placeholder="Informe seu e-mail principal"></label>
                 </div>
-                <button>Login</button>
+                <div class="ContainerInput">
+                    <label for="">Senha<input type="password" placeholder="Informe sua senha"></label>
+                </div>
+                <button>Registrar</button>
             </form>
             <div class="ContainerLink">
-                <a id="cadastre-se" href="/register">Não tem uma conta? Cadastre-se</a>
-                <a id="esqueceu-senha" href="/forgotpass">Esqueceu sua senha?</a>
+                <a id="login" href="/login">Já possui uma conta? Faça o Login</a>
             </div>
         </div>
     </div>
