@@ -1,21 +1,21 @@
 {
-  "name": "comdominio",
+  "name": "controlwise",
   "version": "1.0.0",
-  "description": ".comDomínio - Projeto Web",
+  "description": "Control Wise",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/leodoprado/.comDominio.git"
+    "url": "git+https://github.com/leodoprado/controlwise.git"
   },
   "author": "Leonardo do Prado",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/leodoprado/.comDominio/issues"
+    "url": "https://github.com/leodoprado/controlwise/issues"
   },
-  "homepage": "https://github.com/leodoprado/.comDominio#readme",
+  "homepage": "https://github.com/leodoprado/controlwise#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.0",

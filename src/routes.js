@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const accessValidation = require('@middleware/accessValidation')
+//const accessValidation = require('@middleware/accessValidation')
 const homePageController = require('./controller/homePage');
-const loginPageController = require('./controller/loginPage');
-const esqueceusenhaPageController = require('@controller/loginPage');
-const admPagePerfilController = require('./controller/adm/admPagePerfil');
+//const loginPageController = require('./controller/loginPage');
+//const esqueceusenhaPageController = require('@controller/loginPage');
+/*const admPagePerfilController = require('./controller/adm/admPagePerfil');
 const admPageGerencialController = require('@controller/adm/admPageGerencial');
 const admPageCreateController = require('@controller/adm/admPageCreate');
 const admPageDeleteController = require('@controller/adm/admPageDelete');
@@ -19,14 +19,16 @@ const moradorPageMoradiasController = require('@controller/morador/moradorPageMo
 const moradorPageFinanceiroController = require('@controller/adm/admPageFinanceiro');
 const moradorPageComunicadosController = require('@controller/adm/admPageComunicados')
 const moradorPageAgendaController = require('@controller/morador/moradorPageAgenda');
-const create = require('@controller/loginPage');
+const create = require('@controller/loginPage');*/
 
 router.get('/', homePageController);
-router.get('/login', loginPageController);
-router.post('/authenticate', loginPageController);
-router.get('/logout', loginPageController);
-router.get('/create', create);
-router.post('/create/user', create);
+router.get('/sobre', homePageController);
+router.get('/ajuda', homePageController);
+//router.get('/login', loginPageController);
+//router.post('/authenticate', loginPageController);
+//router.get('/logout', loginPageController);
+//router.get('/create', create);
+/*router.post('/create/user', create);
 router.get('/central-de-ajuda', homePageController);
 router.get('/assinatura-do-software', homePageController);
 router.get('/login/morador/perfil/:idUsuario', accessValidation ,moradorPagePerfilController);
@@ -105,5 +107,5 @@ router.get('/login/administrador/agenda/excluir',  accessValidation ,admPageAgen
 router.post('/login/administrador/agenda/excluir',  accessValidation ,admPageAgendaController);
 router.get('/login/administrador/agenda/excluir/:idAgendamento',  accessValidation ,admPageAgendaController);
 router.post('/login/administrador/agenda/excluir/:idAgendamento',  accessValidation ,admPageAgendaController);
-
+*/
 module.exports = router;

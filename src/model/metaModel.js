@@ -1,32 +1,35 @@
 const Sequelize = require ('sequelize');
 const connection = require('@database/db');
 
-const Comunicados = connection.define('comunicados', {
-    idComunicado: {
+const Meta = connection.define('meta', {
+    META_COD: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         allowNull: false,
         autoIncrement: true
     },
-    titulo: {
+    META_DESC: {
         type: Sequelize.STRING,
         allowNull: false,
     },
-    assunto: {
-        type: Sequelize.STRING,
+    META_VALOR: {
+        type: Sequelize.DOUBLE,
         allowNull: false
     },
-    texto: {
+    META_DATALIMITE: {
         type: Sequelize.STRING,
-        allowNull: false
-    },
-    dataenvio: {
-        type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
     }
 })
 
-// Sincronizando o model com o banco de dados
-// Comunicados.sync({force: false});
+Meta.belongsTo(Usuario, {
+    constraint: true,
+    foreignKey: 'USR_ID',
+    type: Sequelize.INTEGER,
+    onDelete: 'CASCADE'
+})
 
-module.exports = Comunicados;
+// Sincronizando o model com o banco de dados
+ Meta.sync({force: false});
+
+module.exports = Meta;

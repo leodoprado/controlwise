@@ -1,46 +1,39 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="PT-BR">
 <head>
-  <title>Login</title>
-  <link rel="stylesheet" href="/css/home/login.css">
-  <link rel="icon" type="imagem/png" href="/img/home/login/icon.ico"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Wise</title>
+    <link rel="stylesheet" href="../../public/css/home/login.css">
+    <link rel="icon" type="imagem/png" href="/src/public/img/home/favicon.ico"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600&family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
-<html>
-  <body>
-    <div class="login" style="background-image: url(/img/home/login/img2100px.jpg);">
-        <div class="container-login">
-          <div class="conteudo-login">
-            <a href="/" id="logo">
-              <img src="/img/home/login/logo-.comDomínio250pxwhite.png" alt="">
-            </a>
-            <form action="/authenticate" method="POST">
-                <div class="radio">
-                  <div class="custom-radio">
-                      <input value="Morador" class="radio" name="nivelAcesso" id="radio1" type="radio" checked>
-                      <label class="radio-1" for="radio1">Morador</label>
-                  </div>
-                  <div class="custom-radio">
-                      <input value="Administrador" class="radio" name="nivelAcesso" id="radio2" type="radio">
-                      <label for="radio2">Administrador</label>
-                  </div>
+<body>
+    <div class="Container">
+        <div class="ContainerLogin">
+            <div class="ContainerLogo">
+                <a class="LinkLogo" href="">
+                    <img src="../../public/img/home/logo.png" alt="" srcset="">
+                    <h1>Control Wise</h1>
+                </a>
+            </div>
+            <form action="" method="post">
+                <div class="ContainerInput">
+                    <label for="">E-mail<input type="text" placeholder="Informe seu e-mail de acesso"></label>
                 </div>
-              <div>
-                <label for="" id="label-id-pass">Id:</label>
-                <input name="login" type="number" placeholder="Digite seu identificador" required/> 
-                <label for="" id="label-id-pass">Senha:</label> 
-                <input name="senha" type="password" placeholder="Digite sua senha" required/> 
-                <input type="submit" value="Entrar"/>
-              </div>
+                <div class="ContainerInput">
+                    <label for="">Senha<input type="password" placeholder="Informe sua senha cadastrada"></label>
+                </div>
+                <button>Login</button>
             </form>
-
-            <%if(message!=''){ %>
-              <%=message%>
-            <%}%>
-            
-            <p>
-              <a href="/login/esqueceu-senha" id="esqueceu-senha">Esqueceu sua senha?</a>
-            </p>
-          </div>
-      </div>
+            <div class="ContainerLink">
+                <a id="cadastre-se" href="/register">Não tem uma conta? Cadastre-se</a>
+                <a id="esqueceu-senha" href="/forgotpass">Esqueceu sua senha?</a>
+            </div>
+        </div>
     </div>
-  </body>
+</body>
 </html>
