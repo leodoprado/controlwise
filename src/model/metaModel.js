@@ -1,5 +1,6 @@
 const Sequelize = require ('sequelize');
 const connection = require('@database/db');
+const Usuario = require('@model/usuarioModel');
 
 const Meta = connection.define('meta', {
     META_COD: {

@@ -1,6 +1,6 @@
 const Sequelize = require ('sequelize');
 const connection = require('@database/db');
-const Usuario = require('@app/model/usuarioModel');
+const Usuario = require('@model/usuarioModel');
 
 const Conta = connection.define('conta', {
     CONTA_COD: {
@@ -27,7 +27,7 @@ const Conta = connection.define('conta', {
     }
 })
 
-Meta.belongsTo(Usuario, {
+Conta.belongsTo(Usuario, {
     constraint: true,
     foreignKey: 'USR_ID',
     type: Sequelize.INTEGER,

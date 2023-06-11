@@ -1,7 +1,7 @@
 const Sequelize = require ('sequelize');
 const connection = require('@database/db');
-const Conta = require('@app/model/contaModel');
-const Categoria = require('@app/model/categoriaModel');
+const Conta = require('@model/contaModel');
+const Categoria = require('@model/categoriaModel');
 
 const Transacao = connection.define('transacao', {
     TRSC_COD: {
