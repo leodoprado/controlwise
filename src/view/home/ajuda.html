@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Control Wise</title>
-    <link rel="stylesheet" href="../../public/css/home/sobre.css">
+    <link rel="stylesheet" href="../../public/css/home/ajuda.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,13 +30,18 @@
         
         <main>
           <!-- Conteúdo principal -->
-          <div class="ContainerImage">
-            <img class="ImageMain" src="../../public/img/home/img-sobre.png" alt="" srcset="">
-          </div>
           <div class="ContainerContent">
-            <h1 class="TittleMain">Sobre o projeto!</h1>
-            <p class="ParagrafoMain">Plataforma online de gestão financeira, capaz de ajudar a pessoa física de forma fácil, eficiente e organizada a calcular suas rendas e despesas no fim do mês, impactando de forma positiva no seu bem estar financeiro.</p>
-            <a class="ButtonLinkMain" href="/ajuda">Central de Ajuda</a>
+            <h1 class="TittleMain">Como podemos te ajudar?</h1>
+            <div class="ContainerInput">
+                <form action="post">
+                    <label htmlFor="">Nome <input class="InputAjuda" type="text" placeholder="Informe seu nome"/></label>
+                    <label htmlFor="">E-mail <input class="InputAjuda" type="text" placeholder="Informe seu e-mail principal"/></label>
+                    <label htmlFor="">Telefone <input class="InputAjuda" type="text" placeholder="Informe seu telefone de contato"/></label>
+                    <label htmlFor="">Qual sua dúvida? <textarea class="TextAreaAjuda" name="" id="" cols="30" rows="10"></textarea></label>
+
+                    <button class="ButtonAjuda">Enviar</button>
+                </form>
+            </div>
           </div>
         </main>
         
