@@ -114,6 +114,13 @@ section {
     border-bottom: 1px solid white;
 }
 
+.ContainerButton {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 .ContainerContent {
     width: 100%;
     display: flex;
@@ -162,13 +169,6 @@ input, textarea {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;    
-}
-
-.ContainerButton {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding-left: 15px;
 }
 
 .AdicionarConta {
