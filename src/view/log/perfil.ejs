@@ -36,25 +36,25 @@
               <div class="ContainerLeft">
                 <div class="ContainerInput">
                   <label htmlFor="">Nome</label>
-                  <textarea name="nome" ><%= result.USR_NOME %></textarea>
+                  <textarea readonly name="nome" ><%= result.USR_NOME %></textarea>
 
                   <label htmlFor="">CPF</label>
-                  <input name="ValueCPF" type="text" />
+                  <textarea readonly name="cpf" ><%= result.USR_CPF %></textarea>
 
                   <label htmlFor="">E-mail</label>
-                  <input name="ValueEmail" type="text" />
+                  <textarea readonly name="email" ><%= result.USR_EMAIL %></textarea>
                 </div>
               </div>
               <div class="ContainerRight">
                 <div class="ContainerInput">
                   <label htmlFor="">Data de Nascimento</label>
-                  <input name="ValueDataNasc" id="inputDate" type="date" />
+                  <input name="datanasc" id="inputDate" type="date" value=<%= result.USR_DATANASC %> />
 
                   <label htmlFor="">RG</label>
-                  <input name="ValueRG" type="text" /> 
+                  <textarea name="rg" ><%= result.USR_RG %></textarea> 
 
                   <label htmlFor="">Telefone</label>
-                  <input name="ValueTelefone" type="text" />
+                  <textarea name="telefone" ><%= result.USR_TELEFONE %></textarea>
                 </div>
               </div>
             </div>
@@ -64,25 +64,26 @@
               <div class="ContainerLeft">
                 <div class="ContainerInput">
                   <label htmlFor="">Cidade</label>
-                  <input name="ValueCidade" type="text" />
+                  <textarea name="cidade" ><%= result.USR_CIDADE %></textarea>
 
                   <label htmlFor="">Endereço</label>
-                  <input name="ValueEndereco" type="text" />
+                  <textarea name="endereco" ><%= result.USR_ENDERECO %></textarea>
 
                   <label htmlFor="">Referência</label>
-                  <input name="ValueReferencia" type="text" />
+                  <textarea name="referencia" ><%= result.USR_REFERENCIA %></textarea>
+
                 </div>
               </div>
               <div class="ContainerRight">
                 <div class="ContainerInput">
                   <label htmlFor="">CEP</label>
-                  <input name="ValueCEP" type="text" />
+                  <textarea name="cep" ><%= result.USR_CEP %></textarea>
 
                   <label htmlFor="">Bairro</label>
-                  <input name="ValueBairro" type="text" /> 
+                  <textarea name="bairro" ><%= result.USR_BAIRRO %></textarea>
 
                   <label htmlFor="">Complemento</label>
-                  <input name="ValueComplemento" type="text" />
+                  <textarea name="complemento" ><%= result.USR_COMPLEMENTO %></textarea>
                 </div>
               </div>
             </div>

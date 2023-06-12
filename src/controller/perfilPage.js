@@ -22,11 +22,32 @@ router.post('/login/perfil/:USR_ID', (req, res) => {
     id = req.params.USR_ID;
 
     nome = req.body.nome;
+    datanasc = req.body.datanasc;
+    cpf = req.body.cpf;
+    rg = req.body.rg;
+    email = req.body.email;
+    telefone = req.body.telefone;
+    cidade = req.body.cidade;
+    cep = req.body.cep;
+    endereco = req.body.endereco;
+    bairro = req.body.bairro;
+    referencia = req.body.referencia;
+    complemento = req.body.complemento;
 
     if(req.body !== ''){
         Usuario.update({
             USR_NOME: nome,
-            
+            USR_DATANASC: datanasc,
+            USR_CPF: cpf,
+            USR_RG: rg,
+            USR_EMAIL: email,
+            USR_TELEFONE: telefone,
+            USR_CIDADE: cidade,
+            USR_CEP: cep,
+            USR_ENDERECO: endereco,
+            USR_BAIRRO: bairro,
+            USR_REFERENCIA: referencia,
+            USR_COMPLEMENTO: complemento           
         },
         {
             where: {USR_ID : USR_ID}
