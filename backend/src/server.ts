@@ -34,16 +34,15 @@ tableList.set("METAS", Metas);
 
 //These are endpoints for SQL queries 
 //SELECT
-app.get('/:table/:column/:val', async (req: Request, res: Response) => {
+app.get('/:table', async (req: Request, res: Response) => {
 
     const table = req.params.table;
-    const column = req.params.column;
-    const val = req.params.val;
+    const cond = req.body.data
 
     let result: any;
     try {
         result = await tableList.get(table.toUpperCase()).findAll({
-            where: sequelize.where(sequelize.col(column), val)
+            where: cond
         })
     }catch(e) {
         console.error(e);
@@ -51,6 +50,33 @@ app.get('/:table/:column/:val', async (req: Request, res: Response) => {
     }
     
     res.send(result);    
+
+    /*let queryRes = MySQLConnector.SQLSelect(table, column, val);*/
+})
+
+app.get('/emailsenha/:email/:password', async (req: Request, res: Response) => {
+
+    console.log("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+    const email = req.params.email;
+    const password = req.params.password;
+
+    //console.log("\n\n\n" + req.params.email + "\n\n\n")
+    //console.log(req.params.password)
+
+    let result: any;
+    try {
+        result = await Usuario.findOne({
+            where: {
+              USR_EMAIL: email,
+              USR_SENHA: password
+            }
+          })
+    }catch(e) {
+        console.error(e);
+        res.status(500).send("Erro interno no servidor");
+    }
+    
+    res.send("result");    
 
     /*let queryRes = MySQLConnector.SQLSelect(table, column, val);*/
 })
@@ -149,7 +175,7 @@ app.delete('/:table/:column/:val', async (req: Request, res: Response) => {
 
 // Rota de autenticação
 app.post('/api/login', (req, res) => {
-    const { username, password } = req.body;
+    /*const { username, password } = req.body;
   
     // Verifique se o usuário existe no banco de dados
     const user = users.find((u) => u.username === username);
@@ -164,7 +190,7 @@ app.post('/api/login', (req, res) => {
   
     // Crie e retorne um token de acesso JWT
     const token = jwt.sign({ userId: user.id }, 'seuSegredoSuperSecreto', { expiresIn: '1h' });
-    res.json({ token });
+    res.json({ token });*/
 });
    
 app.listen(port, () => 'server running on port 3333')

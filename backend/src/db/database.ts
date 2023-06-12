@@ -1,5 +1,5 @@
 import { Sequelize } from 'sequelize';
-const sequelize = new Sequelize('controlwise', 'root', 'senha123', {
+const sequelize = new Sequelize('controlwisedb', 'root', '1234', {
     host: 'localhost',
     dialect: 'mysql',
     port: 3306

@@ -50,8 +50,9 @@ const LoginPage = () => {
 
     const handleFormSubmit = async (data: LoginUserFormData) => {
         console.log(data.address.email)
+        console.log(data.address.password)
 
-        const result = await handleFetchAddress(data.address.email);
+        const result = await handleFetchAddress(data.address.email, data.address.password);
 
         if(result != null) {
             alert("Seja bem vindo! " + result.USR_NOME);
@@ -60,18 +61,19 @@ const LoginPage = () => {
       }
 
   const email = watch('address.email');
+  const password = watch('address.password')
 
-  const handleFetchAddress = useCallback(async (email: string) => {
+  const handleFetchAddress = useCallback(async (email: string, password: string) => {
     const { data } = await axios.get(
-        'http://localhost:3000/usuario/usr_email/' + email // <= endpoint para a validação do email de login
+        'http://localhost:3000/usuario/', { data: { USR_EMAIL: email, USR_SENHA: password } } // <= endpoint para a validação do email de login
         );
         return data[0];
   }, [])
 
   useEffect(() => {
-    if(email != '') return;
+    if(email != '' && password != '') return;
 
-    handleFetchAddress(email).then((result) =>{
+    handleFetchAddress(email, password).then((result) =>{
         console.log(result);
     })
     .catch((error) => {
