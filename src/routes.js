@@ -1,11 +1,13 @@
 const express = require('express');
 const router = express.Router();
-//const accessValidation = require('@middleware/accessValidation')
+const accessValidation = require('./middleware/accessValidation');
 const homePageController = require('./controller/homePage');
 const loginPageController = require('./controller/loginPage');
-const perfilPageController = require('./controller/perfilPage')
-const dadosPageController = require('./controller/dadosPage')
-const accessValidation = require('./middleware/accessValidation');
+const perfilPageController = require('./controller/perfilPage');
+const dadosPageController = require('./controller/dadosPage');
+const analiticoPageController = require('./controller/analiticoPage');
+const planejamentoPageController = require('./controller/planejamentoPage')
+
 //const esqueceusenhaPageController = require('@controller/loginPage');
 /*const admPagePerfilController = require('./controller/adm/admPagePerfil');
 const admPageGerencialController = require('@controller/adm/admPageGerencial');
@@ -36,6 +38,8 @@ router.get('/login/perfil/:USR_ID', accessValidation, perfilPageController);
 router.post('/login/perfil/:USR_ID', accessValidation, perfilPageController);
 router.get('/login/dados', accessValidation, dadosPageController);
 router.get('/login/dados/adicionar', accessValidation, dadosPageController);
+router.get('/login/analitico', accessValidation, analiticoPageController);
+router.get('/login/planejamento', accessValidation, planejamentoPageController);
 //router.get('/central-de-ajuda', homePageController);
 /*router.get('/assinatura-do-software', homePageController);
 router.get('/login/morador/perfil/:idUsuario', accessValidation ,moradorPagePerfilController);
