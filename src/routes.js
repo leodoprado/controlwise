@@ -32,6 +32,7 @@ router.get('/logout', loginPageController);
 router.get('/register', loginPageController);
 router.post('/register/user', loginPageController);
 router.get('/login/perfil/:USR_ID', accessValidation, perfilPageController)
+router.post('/login/perfil/:USR_ID', accessValidation, perfilPageController)
 //router.get('/central-de-ajuda', homePageController);
 /*router.get('/assinatura-do-software', homePageController);
 router.get('/login/morador/perfil/:idUsuario', accessValidation ,moradorPagePerfilController);

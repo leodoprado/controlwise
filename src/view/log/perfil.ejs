@@ -30,31 +30,31 @@
         
         <main>
           <!-- Conteúdo principal -->
-          <form action="" method="post">
+          <form action="/login/perfil/:id" method="post">
             <section>Dados da Conta</section>
             <div class="ContainerContent">
               <div class="ContainerLeft">
                 <div class="ContainerInput">
                   <label htmlFor="">Nome</label>
-                  <input type="text" />
+                  <textarea name="nome" ><%= result.USR_NOME %></textarea>
 
                   <label htmlFor="">CPF</label>
-                  <input type="text" />
+                  <input name="ValueCPF" type="text" />
 
                   <label htmlFor="">E-mail</label>
-                  <input type="text" />
+                  <input name="ValueEmail" type="text" />
                 </div>
               </div>
               <div class="ContainerRight">
                 <div class="ContainerInput">
                   <label htmlFor="">Data de Nascimento</label>
-                  <input id="inputDate" type="date" />
+                  <input name="ValueDataNasc" id="inputDate" type="date" />
 
                   <label htmlFor="">RG</label>
-                  <input type="text" /> 
+                  <input name="ValueRG" type="text" /> 
 
                   <label htmlFor="">Telefone</label>
-                  <input type="text" />
+                  <input name="ValueTelefone" type="text" />
                 </div>
               </div>
             </div>
@@ -64,30 +64,30 @@
               <div class="ContainerLeft">
                 <div class="ContainerInput">
                   <label htmlFor="">Cidade</label>
-                  <input type="text" />
+                  <input name="ValueCidade" type="text" />
 
                   <label htmlFor="">Endereço</label>
-                  <input type="text" />
+                  <input name="ValueEndereco" type="text" />
 
                   <label htmlFor="">Referência</label>
-                  <input type="text" />
+                  <input name="ValueReferencia" type="text" />
                 </div>
               </div>
               <div class="ContainerRight">
                 <div class="ContainerInput">
                   <label htmlFor="">CEP</label>
-                  <input type="text" />
+                  <input name="ValueCEP" type="text" />
 
                   <label htmlFor="">Bairro</label>
-                  <input type="text" /> 
+                  <input name="ValueBairro" type="text" /> 
 
                   <label htmlFor="">Complemento</label>
-                  <input type="text" />
+                  <input name="ValueComplemento" type="text" />
                 </div>
               </div>
             </div>
             <div class="ContainerButton">
-              <button>Salvar</button>
+              <button type="submit">Salvar</button>
             </div>
           </form>
         </main>

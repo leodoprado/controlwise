@@ -19,48 +19,23 @@ router.get('/login/perfil/:USR_ID', accessValidation ,(req, res) => {
 });
 
 router.post('/login/perfil/:USR_ID', (req, res) => {
-    id = req.params.idUsuario;
+    id = req.params.USR_ID;
 
-    nome = req.body.nome
-    datanascimento = req.body.datanascimento
-    cpf = req.body.cpf;
-    rg = req.body.rg;
-    estadocivil = req.body.estadocivil;
-    sexo = req.body.sexo;
-    pais = req.body.pais;
-    cidadenatal = req.body.cidadenatal;
-    estado = req.body.estado;
-    email = req.body.email;
-    emailcomplementar = req.body.emailcomplementar;
-    telefone1 = req.body.telefone1;
-    telefone2 = req.body.telefone2;
-
-    console.log(nome)
+    nome = req.body.nome;
 
     if(req.body !== ''){
         Usuario.update({
-            nome: nome,
-            datanascimento: datanascimento,
-            cpf: cpf,
-            rg : rg,
-            estadocivil : estadocivil,
-            sexo : sexo,
-            pais : pais,
-            cidadenatal : cidadenatal,
-            estado: estado,
-            email : email,
-            emailcomplementar : emailcomplementar,
-            telefone1 : telefone1,
-            telefone2 : telefone2
+            USR_NOME: nome,
+            
         },
         {
-            where: {idUsuario : idUsuario}
+            where: {USR_ID : USR_ID}
         });
         console.log(nome)
-        res.clearCookie('idUsuario');
-        res.redirect('/login/morador/perfil/gerencial');
+        res.clearCookie('USR_ID');
+        res.redirect('/login/perfil/:USR_ID');
     } else {
-        res.render('log/morador/perfilMorador', { result : req.body})
+        res.render('log/perfil', { result : req.body})
     }
 })
 
