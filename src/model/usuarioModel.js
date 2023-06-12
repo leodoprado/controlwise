@@ -60,7 +60,11 @@ const Usuario = connection.define('usuario', {
         type: Sequelize.STRING,
         allowNull: true
     }
-})
+}, {
+    freezeTableName: true,
+    timestamps: false
+}
+)
 
 // Sincronizando model com banco de dados
  Usuario.sync({force: false});

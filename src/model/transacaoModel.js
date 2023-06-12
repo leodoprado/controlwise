@@ -22,6 +22,9 @@ const Transacao = connection.define('transacao', {
         type: Sequelize.STRING,
         allowNull: true
     }
+}, {
+    freezeTableName: true,
+    timestamps: false
 })
 
 Transacao.belongsTo(Conta, {

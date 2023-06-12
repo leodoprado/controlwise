@@ -21,6 +21,9 @@ const Meta = connection.define('meta', {
         type: Sequelize.STRING,
         allowNull: true
     }
+}, {
+    freezeTableName: true,
+    timestamps: false
 })
 
 Meta.belongsTo(Usuario, {
