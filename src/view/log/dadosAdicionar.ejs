@@ -26,11 +26,11 @@
           <div class="ContainerContent">
             <h1 class="TittleMain">Adicionar Conta</h1>
             <div class="ContainerInput">
-                <form action="post">
-                    <label htmlFor="">Nº Conta <input class="InputAjuda" type="text" placeholder="Informe seu nome"/></label>
-                    <label htmlFor="">Tipo <input class="InputAjuda" type="text" placeholder="Informe seu e-mail principal"/></label>
-                    <label htmlFor="">Saldo <input class="InputAjuda" type="text" placeholder="Informe seu telefone de contato"/></label>
-                    <button class="ButtonAjuda">Adicionar</button>
+                <form action="/login/dados/adicionar/" method="post">
+                    <label htmlFor="">Nº Conta <input name="conta" class="InputAjuda" type="text" placeholder="Informe seu nome"/></label>
+                    <label htmlFor="">Tipo <input name="tipo" class="InputAjuda" type="text" placeholder="Informe seu e-mail principal"/></label>
+                    <label htmlFor="">Saldo <input name="saldo" class="InputAjuda" type="text" placeholder="Informe seu telefone de contato"/></label>
+                    <button class="ButtonAjuda" type="submit">Adicionar</button>
                 </form>
             </div>
           </div>

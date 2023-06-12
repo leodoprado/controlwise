@@ -37,9 +37,12 @@ router.post('/register/user', loginPageController);
 router.get('/login/perfil/:USR_ID', accessValidation, perfilPageController);
 router.post('/login/perfil/:USR_ID', accessValidation, perfilPageController);
 router.get('/login/dados', accessValidation, dadosPageController);
-router.get('/login/dados/adicionar', accessValidation, dadosPageController);
+router.get('/login/dados/adicionar/', accessValidation, dadosPageController);
+router.post('/login/dados/adicionar/success', accessValidation, dadosPageController)
+router.post('/login/dados/adicionar', accessValidation, dadosPageController);
 router.get('/login/analitico', accessValidation, analiticoPageController);
 router.get('/login/planejamento', accessValidation, planejamentoPageController);
+
 //router.get('/central-de-ajuda', homePageController);
 /*router.get('/assinatura-do-software', homePageController);
 router.get('/login/morador/perfil/:idUsuario', accessValidation ,moradorPagePerfilController);

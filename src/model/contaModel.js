@@ -10,15 +10,15 @@ const Conta = connection.define('conta', {
         autoIncrement: true
     },
     CONTA_NUMERO: {
-        type: Sequelize.STRING,
+        type: Sequelize.DOUBLE,
         allowNull: false,
     },
     CONTA_TIPO: {
-        type: Sequelize.CHAR,
+        type: Sequelize.STRING,
         allowNull: false
     },
     CONTA_SALDO: {
-        type: Sequelize.STRING,
+        type: Sequelize.DOUBLE,
         allowNull: false
     },
     CONTA_DATACAD: {
