@@ -41,6 +41,8 @@ router.get('/login/dados/adicionar/', accessValidation, dadosPageController);
 router.post('/login/dados/adicionar/success', accessValidation, dadosPageController)
 router.post('/login/dados/adicionar', accessValidation, dadosPageController);
 router.get('/login/analitico', accessValidation, analiticoPageController);
+router.get('/login/analitico/adicionar', accessValidation, analiticoPageController)
+router.post('/login/analitico/adicionar', accessValidation, analiticoPageController);
 router.get('/login/planejamento', accessValidation, planejamentoPageController);
 
 //router.get('/central-de-ajuda', homePageController);

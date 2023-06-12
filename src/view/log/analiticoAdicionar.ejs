@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Control Wise</title>
-    <link rel="stylesheet" href="/css/log/analitico.css">
+    <link rel="stylesheet" href="/css/log/dadosAdicionar.css">
     <link rel="icon" type="imagem/png" href="/img/home/favicon.ico"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,28 +17,22 @@
           <!-- Conteúdo do cabeçalho -->
           <a href="/" class="LogoHeader">
             <img class="ImageHeader" src="/img/home/logo.png" alt="" srcset="">
-            <h1 class="TittleHeader">CW</h1>
-          </a>    
-          <div class="ContainerCenter">
-            <a class="LinkHeader" href="/login/perfil/1" onclick="substituirId(event)">Perfil</a>
-            <a class="LinkHeader" href="/login/dados">Dados</a>
-            <a class="LinkHeader" href="/login/analitico">Analítico</a>
-            <a class="LinkHeader" href="/login/planejamento">Planejamento</a>
-          </div>
-          <a class="LinkLogout" href="/logout">Sair</a>
+            <h1 class="TittleHeader">Control Wise</h1>
+          </a>
         </header>
         
         <main>
           <!-- Conteúdo principal -->
-          <a class="AdicionarMovimentacao" href="/login/analitico/adicionar">Adicionar Movimentação</a>
-
-          <% transacoes.forEach(all => { %>
-            <div class="ListaTransacoes">
-                <p>Valor: <%= all.TRSC_VALOR %></p>
-                <p>Descrição: <%= all.TRSC_DESC %></p>
-                <p>Data Cadastrada: <%= all.TRSC_DATACAD %></p>
+          <div class="ContainerContent">
+            <h1 class="TittleMain">Adicionar Transação</h1>
+            <div class="ContainerInput">
+                <form action="/login/analitico/adicionar/" method="post">
+                    <label htmlFor="">Descrição <input name="desc" class="InputAjuda" type="text" placeholder="Descrição"/></label>
+                    <label htmlFor="">Valor <input name="valor" class="InputAjuda" type="text" placeholder="Valor"/></label>
+                    <button class="ButtonAjuda" type="submit">Adicionar</button>
+                </form>
             </div>
-        <% }) %>
+          </div>
         </main>
       </div>
 </body>

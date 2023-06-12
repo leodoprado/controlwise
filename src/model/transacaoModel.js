@@ -15,7 +15,7 @@ const Transacao = connection.define('transacao', {
         allowNull: false,
     },
     TRSC_DESC: {
-        type: Sequelize.DOUBLE,
+        type: Sequelize.STRING,
         allowNull: false
     },
     TRSC_DATACAD: {
