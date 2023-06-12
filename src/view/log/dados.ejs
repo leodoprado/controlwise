@@ -30,8 +30,12 @@
         
         <main>
           <!-- Conteúdo principal -->
-          <a class="AdicionarConta" href="/login/dados/adicionar">Adicionar Conta</a>
-          
+          <div class="ContainerButton">
+            <a class="AdicionarConta" href="/login/dados/adicionar">Adicionar</a>
+            <a class="AdicionarConta" href="/login/dados/adicionar">Atualizar</a>
+            <a class="AdicionarConta" href="/login/dados/adicionar">Apagar</a>
+          </div>
+
             <% contas.forEach(all => { %>
                 <div class="ListaContas">
                     <p>Nº Conta: <%= all.CONTA_NUMERO %></p>
