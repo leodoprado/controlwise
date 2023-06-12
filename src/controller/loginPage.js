@@ -23,7 +23,7 @@ router.post('/authenticate', (req, res) => {
                     req.session.user = {
                         USR_EMAIL: user.emailUsuario,
                     }
-                res.redirect(`/login/perfil/${user.USR_EMAIL}`);
+                res.redirect(`/login/perfil/${user.USR_ID}`);
             }else{
                 res.redirect('/login');
             }

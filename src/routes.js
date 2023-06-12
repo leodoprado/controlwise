@@ -3,6 +3,8 @@ const router = express.Router();
 //const accessValidation = require('@middleware/accessValidation')
 const homePageController = require('./controller/homePage');
 const loginPageController = require('./controller/loginPage');
+const perfilPageController = require('./controller/perfilPage')
+const accessValidation = require('./middleware/accessValidation');
 //const esqueceusenhaPageController = require('@controller/loginPage');
 /*const admPagePerfilController = require('./controller/adm/admPagePerfil');
 const admPageGerencialController = require('@controller/adm/admPageGerencial');
@@ -29,6 +31,7 @@ router.post('/authenticate', loginPageController);
 router.get('/logout', loginPageController);
 router.get('/register', loginPageController);
 router.post('/register/user', loginPageController);
+router.get('/login/perfil/:USR_ID', accessValidation, perfilPageController)
 //router.get('/central-de-ajuda', homePageController);
 /*router.get('/assinatura-do-software', homePageController);
 router.get('/login/morador/perfil/:idUsuario', accessValidation ,moradorPagePerfilController);

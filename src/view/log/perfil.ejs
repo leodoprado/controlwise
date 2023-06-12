@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Wise</title>
+    <link rel="stylesheet" href="/css/log/perfil.css">
+    <link rel="icon" type="imagem/png" href="/img/home/favicon.ico"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600&family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+          <!-- Conteúdo do cabeçalho -->
+          <a href="/" class="LogoHeader">
+            <img class="ImageHeader" src="/img/home/logo.png" alt="" srcset="">
+            <h1 class="TittleHeader">CW</h1>
+          </a>    
+          <div class="ContainerCenter">
+            <a class="LinkHeader" href="/login/perfil/1" onclick="substituirId(event)">Perfil</a>
+            <a class="LinkHeader" href="/dados">Dados</a>
+            <a class="LinkHeader" href="/analitico">Analítico</a>
+            <a class="LinkHeader" href="/planejamento">Planejamento</a>
+          </div>
+          <a class="LinkLogout" href="/logout">Sair</a>
+        </header>
+        
+        <main>
+          <!-- Conteúdo principal -->
+          <form action="" method="post">
+            <section>Dados da Conta</section>
+            <div class="ContainerContent">
+              <div class="ContainerLeft">
+                <div class="ContainerInput">
+                  <label htmlFor="">Nome</label>
+                  <input type="text" />
+
+                  <label htmlFor="">CPF</label>
+                  <input type="text" />
+
+                  <label htmlFor="">E-mail</label>
+                  <input type="text" />
+                </div>
+              </div>
+              <div class="ContainerRight">
+                <div class="ContainerInput">
+                  <label htmlFor="">Data de Nascimento</label>
+                  <input id="inputDate" type="date" />
+
+                  <label htmlFor="">RG</label>
+                  <input type="text" /> 
+
+                  <label htmlFor="">Telefone</label>
+                  <input type="text" />
+                </div>
+              </div>
+            </div>
+
+            <section>Endereço</section>
+            <div class="ContainerContent">
+              <div class="ContainerLeft">
+                <div class="ContainerInput">
+                  <label htmlFor="">Cidade</label>
+                  <input type="text" />
+
+                  <label htmlFor="">Endereço</label>
+                  <input type="text" />
+
+                  <label htmlFor="">Referência</label>
+                  <input type="text" />
+                </div>
+              </div>
+              <div class="ContainerRight">
+                <div class="ContainerInput">
+                  <label htmlFor="">CEP</label>
+                  <input type="text" />
+
+                  <label htmlFor="">Bairro</label>
+                  <input type="text" /> 
+
+                  <label htmlFor="">Complemento</label>
+                  <input type="text" />
+                </div>
+              </div>
+            </div>
+            <div class="ContainerButton">
+              <button>Salvar</button>
+            </div>
+          </form>
+        </main>
+      </div>
+</body>
+</html>
