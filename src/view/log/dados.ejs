@@ -33,11 +33,11 @@
           <a class="AdicionarConta" href="/login/dados/adicionar">Adicionar Conta</a>
           
             <% contas.forEach(all => { %>
-                <tr>
-                    <td><%= all.CONTA_NUMERO %></td>
-                    <td><%= all.CONTA_TIPO %></td>
-                    <td><%= all.CONTA_SALDO %></td>
-                </tr>
+                <div class="ListaContas">
+                    <p>Nº Conta: <%= all.CONTA_NUMERO %></p>
+                    <p>Tipo: <%= all.CONTA_TIPO %></p>
+                    <p>Saldo: <%= all.CONTA_SALDO %></p>
+                </div>
             <% }) %>
         </main>
       </div>
