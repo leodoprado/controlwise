@@ -1,2 +1,3 @@
-# Control Wise
-![logo](https://github.com/leodoprado/ControlWise/assets/79430646/24d28c65-0197-4b6a-b52d-6bd995596174)
+# Control Wise – Plataforma de Controle Financeiro Pessoal 
+![logo](https://github.com/leodoprado/controlwise/assets/79430646/6997cccc-7371-4476-82a0-1e451cb3d46b)
+
