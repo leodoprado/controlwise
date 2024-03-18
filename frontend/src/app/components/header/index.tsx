@@ -13,13 +13,6 @@ export default class Header extends React.Component {
                         <h1>Control Wise</h1>
                     </NavLink>
                 </LogoHeader>
-                <NavigationHeader>
-                    <NavLink to="/">Home</NavLink>                  
-                    <NavLink to="/sobre">Sobre</NavLink>
-                    <NavLink to="/info">Info</NavLink>                 
-                    <NavLink to="/ajuda">Ajuda</NavLink>
-                    <NavLink to="/login">Login</NavLink>
-                </NavigationHeader>
             </ContainerHeader>
         )
     }

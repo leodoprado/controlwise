@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ContainerMain = styled.div`
+export const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,51 +12,99 @@ export const ContainerMain = styled.div`
     color: white;
 `
 
-export const ContainerContent = styled.div`
-    height: 100%;
+export const ContainerLogin = styled.div`
+    width: 20rem;
+    padding: 3rem;
     display: flex;
-    flex-flow: column wrap;
-    align-items: flex-start;
     justify-content: center;
-    padding-left: 15px;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 0.5rem;
+    background: #23242F;
 
-    h1 {
-        font-weight: 800;
-        font-size: 2.5rem;
-        line-height: 55px;
-        text-transform: uppercase;
+    form {
+        width: 100%;
     }
 
-    a {
+    h1 {
+        color: white;
+    }
+`
+
+export const ContainerInput = styled.div`
+    label {
+        width: 50%;
+        font-size: 0.8rem;
+        Color: white;
+    }
+
+    input {
+        width: 100%;
+        font-size: 0.9rem;
+        padding: 0.8rem;
+        border: none;
+        border-bottom: solid 1px #01435e;
+        margin-bottom: 0.2rem;
+        margin-top: 0.3rem;
+        background: #23242F;
+        color: white;
+        box-sizing: border-box;
+        outline: none;
+        margin-bottom: 1rem;
+    }
+
+    input::placeholder {
+        color: #f0ffff94;
+    }
+
+    input:focus {
+        transition: 0.6s;
+        border-bottom: solid 1px #0185bc;
+    }
+
+    span {
+        font-size: 14px;
+        color: red;
+    }
+
+    #esqueceu-senha {
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: flex-end;
+        flex-direction: column;
+        font-size: 0.8rem;
         text-decoration: none;
-        font-weight: 800;
-        margin-top: 3rem;
-        width: 180px;
-        height: 3rem;
-        font-size: 2.5ex;
-        background-color: #20c4a3;
-        color: white;
-        border-style: none;
-        border-radius: 5px;
-        cursor:pointer;
+        color: #0185bc;
+    }
+
+    #esqueceu-senha:hover {
+        text-decoration: underline;
+    }
+`
+
+export const ContainerTitulo = styled.div`
+    margin-bottom: 2rem;
+
+    h1 {
+        color: White;
+        font-weight: 700;
+        font-size: 2rem;
+    }
+`
+
+export const ContainerLink = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    a {
+      font-size: 1rem;
+      text-decoration: none;
+      color: #0185bc;
     }
 
     a:hover {
-        background-color: #0085bd;
-        transition: 0.6s;
-    }
-` 
-
-export const ContainerImage = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    img {
-        width: 440px;
-        height: 440px;
+        text-decoration: underline;
     }
 `

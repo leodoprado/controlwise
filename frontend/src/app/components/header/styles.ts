@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
 export const ContainerHeader = styled.div`
-    height: 3.5rem;
+    height: 4.5rem;
     display: flex;
     flex-direction: row;
     padding: 0 10%;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     background: #23242F;
-    border-bottom: 1px outset rgb(1, 255, 211);
+    border-bottom: 1px outset rgb(255, 255, 255);
 `
 
 export const LogoHeader = styled.div `
@@ -17,11 +17,6 @@ export const LogoHeader = styled.div `
         justify-content: center;
         align-items: center;
         text-decoration: none;
-
-        h1:hover {
-            transition: 0.6s;
-            color: #01ffd3;
-        }
     }
 
     img {
@@ -33,6 +28,7 @@ export const LogoHeader = styled.div `
         padding-left: 0.1rem;
         color: white;
         font-weight: 700;
+        font-size: 1.38rem;
     }
 `
 

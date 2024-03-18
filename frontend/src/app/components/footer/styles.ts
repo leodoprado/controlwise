@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const ContentFooter = styled.footer`
-    font-family: 'Comfortaa', sans-serif;
     font-size: 1rem;
     background: #23242F;
     padding: 0.5rem;
@@ -10,7 +9,7 @@ export const ContentFooter = styled.footer`
     color: white;
     
     a {
-        color: #01ffd3;
+        color: #ffffff;
         text-decoration: none;
     }
 `
