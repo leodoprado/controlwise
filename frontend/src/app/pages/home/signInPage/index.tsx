@@ -1,19 +1,20 @@
 import React from 'react'
 import Header from '../../../components/header'
 import Footer from '../../../components/footer'
-import { Container, ContainerLogin, ContainerTitulo, ContainerInput, ContainerLink} from '../homePage/style'
+import { Container, ContainerLogin, ContainerTitulo, ContainerInput, ContainerLink} from './style'
 import { NavLink } from 'react-router-dom'
 import ButtonAccessDefault from '../../../components/buttonAccessDefault'
+import Img from '../../../../assets/img-inicio2.png'
 
-const HomePage = () => {
+const SignInPage = () => {
   return (
     <>
         <Header />
         <Container>
-          <ContainerLogin>
-            
+          <ContainerLogin>        
             <ContainerTitulo>
-              <h1>Acesse a plataforma</h1>
+              <p>Mantenha seus gastos sob controle</p>
+              <h1>- Acesse a plataforma -</h1>
             </ContainerTitulo>
             <form>
               <ContainerInput>
@@ -45,4 +46,4 @@ const HomePage = () => {
   )
 }
 
-export default HomePage
+export default SignInPage

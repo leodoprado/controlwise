@@ -83,13 +83,21 @@ export const ContainerInput = styled.div`
 `
 
 export const ContainerTitulo = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     margin-bottom: 2rem;
 
     h1 {
         color: White;
-        font-weight: 700;
-        font-size: 2rem;
+        font-size: 1.3rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-top: 5px;
+        margin-bottom: 5px;
     }
+    
 `
 
 export const ContainerLink = styled.div`
