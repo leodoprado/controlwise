@@ -13,22 +13,32 @@ export const Container = styled.div`
 `
 
 export const ContainerLogin = styled.div`
-    width: 20rem;
     padding: 3rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
     border-radius: 0.5rem;
     background: #23242F;
+`
 
-    form {
-        width: 100%;
-    }
+export const ContainerLeft = styled.div`
+    width: 50%;
+    padding-right: 1rem;
 
-    h1 {
-        color: white;
+    img {
+        width: 350px;
+        height: 350px;
     }
+`
+
+export const ContainerRight = styled.div`
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-left: 1rem;
 `
 
 export const ContainerInput = styled.div`
