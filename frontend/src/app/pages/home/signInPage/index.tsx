@@ -41,7 +41,7 @@ const SignInPage = () => {
             </form>
 
             <ContainerLink>
-              <NavLink id='esqueceu-senha' to="/forgotpass">Ainda não tem uma conta? Cadastre-se</NavLink>
+              <NavLink id='esqueceu-senha' to="/signup">Ainda não tem uma conta? Cadastre-se</NavLink>
             </ContainerLink>
           </ContainerRight>
 
