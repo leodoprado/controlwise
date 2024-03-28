@@ -8,7 +8,7 @@ export default class Header extends React.Component {
         return(
             <ContainerHeader>
                 <LogoHeader>
-                    <NavLink to="#">
+                    <NavLink to="/">
                         <img src={Logo} alt="" />
                         <h1>Control Wise</h1>
                     </NavLink>

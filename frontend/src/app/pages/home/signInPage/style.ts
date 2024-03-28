@@ -17,7 +17,7 @@ export const ContainerLogin = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
+    flex-direction: column;
     border-radius: 0.5rem;
     background: #23242F;
 `

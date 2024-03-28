@@ -12,11 +12,8 @@ const SignInPage = () => {
       <Header />
       <Container>
         <ContainerLogin>
-          <ContainerLeft>
-            <img src={Img} alt="" />
-          </ContainerLeft>
 
-          <ContainerRight>
+
             <ContainerTitulo>
               <p>Mantenha seus gastos sob controle</p>
               <h1>- Acesse a plataforma -</h1>
@@ -43,7 +40,6 @@ const SignInPage = () => {
             <ContainerLink>
               <NavLink id='esqueceu-senha' to="/signup">Ainda não tem uma conta? Cadastre-se</NavLink>
             </ContainerLink>
-          </ContainerRight>
 
         </ContainerLogin>
       </Container>
