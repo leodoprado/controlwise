@@ -12,7 +12,7 @@ const SignUpPage = () => {
             <Container>
                 <ContainerSignUp>
                     <ContainerTitulo>
-                        <h1>- Realize seu cadastro -</h1>
+                        <h1>Realize seu cadastro</h1>
                     </ContainerTitulo>
                     <form>
                         <ContainerInput>

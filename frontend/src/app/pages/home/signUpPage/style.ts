@@ -4,10 +4,8 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0px 10%;
     flex-grow: 1;
-    background: rgb(55,54,65);
-    background: linear-gradient(0deg, rgba(55,54,65,1) 9%, rgba(35,36,47,1) 31%, rgba(17,16,23,1) 82%);
+    background: #171820;
     font-family: 'Mulish', sans-serif;
     color: white;
 `

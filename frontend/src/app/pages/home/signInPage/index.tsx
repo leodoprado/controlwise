@@ -15,8 +15,7 @@ const SignInPage = () => {
 
 
             <ContainerTitulo>
-              <p>Mantenha seus gastos sob controle</p>
-              <h1>- Acesse a plataforma -</h1>
+              <h1>Acesse a plataforma</h1>
             </ContainerTitulo>
             <form>
               <ContainerInput>
