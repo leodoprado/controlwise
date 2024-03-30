@@ -2,9 +2,9 @@ import styled from "styled-components";
 import colors from "../../colors";
 
 export const ContentFooter = styled.footer`
-    font-size: 1em;
+    font-size: 0.7rem;
     background: #23242F;
-    padding: 1rem;
+    padding: 0.8rem;
     text-align: center;
     color: white;
     

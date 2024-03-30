@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import breakPoints from "../../breakPoints";
 
 export const ContainerHeader = styled.div`
-    height: 4.5rem;
+    height: 3rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -19,15 +20,15 @@ export const LogoHeader = styled.div `
     }
 
     img {
-        width:50px;
-        height:50px;
+        width:40px;
+        height:40px;
     }
 
     h1 {
         padding-left: 0.1rem;
         color: white;
         font-weight: 700;
-        font-size: 1.38rem;
+        font-size: 1rem;
     }
 `
 

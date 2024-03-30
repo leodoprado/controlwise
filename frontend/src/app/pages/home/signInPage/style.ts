@@ -40,16 +40,11 @@ export const ContainerRight = styled.div`
 `
 
 export const ContainerInput = styled.div`
-    label {
-        width: 50%;
-        font-size: 0.8rem;
-        Color: white;
-    }
 
     input {
-        width: 100%;
-        font-size: 0.9rem;
+        width: 18rem;
         padding: 0.8rem;
+        font-size: 0.8rem;
         border: none;
         border-bottom: solid 1px #01435e;
         margin-bottom: 0.2rem;
@@ -59,6 +54,7 @@ export const ContainerInput = styled.div`
         box-sizing: border-box;
         outline: none;
         margin-bottom: 1rem;
+        display: flex;
     }
 
     input::placeholder {
@@ -80,7 +76,8 @@ export const ContainerInput = styled.div`
         justify-content: center;
         align-items: flex-end;
         flex-direction: column;
-        font-size: 0.8rem;
+        margin-bottom: 1rem;
+        font-size: 0.7rem;
         text-decoration: none;
         color: #0185bc;
     }
@@ -95,11 +92,11 @@ export const ContainerTitulo = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 
     h1 {
         color: White;
-        font-size: 1.3rem;
+        font-size: 0.7;
         text-transform: uppercase;
         letter-spacing: 2px;
         margin-top: 5px;
@@ -115,7 +112,7 @@ export const ContainerLink = styled.div`
     flex-direction: column;
 
     a {
-      font-size: 1rem;
+      font-size: 0.7rem;
       text-decoration: none;
       color: #0185bc;
     }

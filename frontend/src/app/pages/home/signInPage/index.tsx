@@ -4,7 +4,7 @@ import Footer from '../../../components/footer'
 import { Container, ContainerLogin, ContainerTitulo, ContainerInput, ContainerLink, ContainerLeft, ContainerRight } from './style'
 import { NavLink } from 'react-router-dom'
 import ButtonAccessDefault from '../../../components/buttonAccessDefault'
-import Img from '../../../../assets/img-inicio2.png'
+import { FaGoogle } from "react-icons/fa";
 
 const SignInPage = () => {
   return (
@@ -12,11 +12,10 @@ const SignInPage = () => {
       <Header />
       <Container>
         <ContainerLogin>
-
-
             <ContainerTitulo>
               <h1>Acesse a plataforma</h1>
             </ContainerTitulo>
+            
             <form>
               <ContainerInput>
                 <input
@@ -39,7 +38,6 @@ const SignInPage = () => {
             <ContainerLink>
               <NavLink id='esqueceu-senha' to="/signup">Ainda não tem uma conta? Cadastre-se</NavLink>
             </ContainerLink>
-
         </ContainerLogin>
       </Container>
       <Footer />

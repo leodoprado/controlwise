@@ -1,12 +1,15 @@
 import styled from "styled-components";
 
 export const ButtonComponent = styled.button`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    padding: 1rem;
+    padding: 0.6rem;
+    font-size: 12px;
     border: solid 1px #01435e;
     margin-bottom: 1rem;
-    margin-top: 1rem;
-    border-radius: 20px;
+    border-radius: 1.25rem;
     outline: none;
     background: #23242F;
     text-transform: uppercase;
@@ -14,7 +17,11 @@ export const ButtonComponent = styled.button`
     letter-spacing: 2px;
     color: white;   
     cursor: pointer;
-    color: #999999;
+    color: #999999; 
+
+    .button-icon {
+        margin-right: 5px;
+    }
 
     :hover {
         transition: 0.6s;

@@ -24,11 +24,6 @@ const SignUpPage = () => {
                             <input
                                 type='text'
                                 className='input'
-                                placeholder='Digite seu CPF'
-                            />
-                            <input
-                                type='text'
-                                className='input'
                                 placeholder='Digite seu E-mail'
                             />
                             <input
