@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import colors from "../../colors";
 
 export const ContentFooter = styled.footer`
     font-size: 0.7rem;
@@ -9,7 +8,7 @@ export const ContentFooter = styled.footer`
     color: white;
     
     a {
-        color: ${colors.branco};
+        color: #ffff;
         text-decoration: none;
     }
 

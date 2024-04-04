@@ -1,9 +1,9 @@
 import React from 'react'
-import Header from '../../../components/header'
-import Footer from '../../../components/footer'
+import Header from '../../../components/global/header'
+import Footer from '../../../components/global/footer'
 import { Container, ContainerLogin, ContainerTitulo, ContainerInput, ContainerLink, ContainerLeft, ContainerRight } from './style'
 import { NavLink } from 'react-router-dom'
-import ButtonAccessDefault from '../../../components/buttonAccessDefault'
+import ButtonAccessDefault from '../../../components/global/buttonAccessDefault'
 import { FaGoogle } from "react-icons/fa";
 
 const SignInPage = () => {
