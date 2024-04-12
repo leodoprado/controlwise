@@ -1,1 +1,0 @@
-*serviços utilizados no projeto*

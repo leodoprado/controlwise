@@ -10,7 +10,7 @@ export const Container = styled.div`
     color: white;
 `
 
-export const ContainerSignUp = styled.div`
+export const ContainerContent = styled.div`
     padding: 3rem;
     display: flex;
     justify-content: center;
@@ -70,6 +70,21 @@ export const ContainerInput = styled.div`
         font-size: 14px;
         color: red;
     }
+
+    #esqueceu-senha {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        flex-direction: column;
+        margin-bottom: 1rem;
+        font-size: 0.7rem;
+        text-decoration: none;
+        color: #0185bc;
+    }
+
+    #esqueceu-senha:hover {
+        text-decoration: underline;
+    }
 `
 
 export const ContainerLink = styled.div`
@@ -79,9 +94,9 @@ export const ContainerLink = styled.div`
     flex-direction: column;
 
     a {
-        font-size: 0.7rem;
-        text-decoration: none;
-        color: #0185bc;
+      font-size: 0.7rem;
+      text-decoration: none;
+      color: #0185bc;
     }
 
     a:hover {
