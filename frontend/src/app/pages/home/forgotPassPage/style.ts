@@ -6,7 +6,6 @@ export const Container = styled.div`
     align-items: center;
     flex-grow: 1;
     background: #171820;
-    font-family: 'Mulish', sans-serif;
     color: white;
 `
 

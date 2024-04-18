@@ -37,7 +37,7 @@ const SignUpPage = () => {
                     </form>
 
                     <ContainerLink>
-                        <NavLink to="/">Já possui uma conta? Faça o login</NavLink>
+                        <NavLink to="/askchat">Já possui uma conta? Faça o login</NavLink>
                     </ContainerLink>
 
                 </ContainerSignUp>
