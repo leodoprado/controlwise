@@ -4,16 +4,15 @@ import { createContext } from 'use-context-selector'
 
 interface User {
   id: number
-  username: string
+  name: string
+  email: string
   password: string
-  role: 'admin' | 'user'
-  createdAt: string
 }
 
 interface CreateUserInput {
-  username: string
+  name: string
+  email: string
   password: string
-  role: 'admin' | 'user'
 }
 
 interface UserContextType {
@@ -45,12 +44,11 @@ export function UsersProvider({ children }: UserProviderProps) {
 
   const createUser = useCallback(
     async (data: CreateUserInput) => {
-      const { username, password, role} = data
+      const { name, email, password} = data
       const response = await api.post('/user', {
-        username,
+        name,
+        email,
         password,
-        role,
-        //createdAt: new Date(),
       })
 
       setUsers((state) => [response.data, ...state])

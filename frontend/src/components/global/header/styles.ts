@@ -16,6 +16,7 @@ export const LogoHeader = styled.div `
         justify-content: center;
         align-items: center;
         text-decoration: none;
+        letter-spacing: 1.5px;
     }
 
     img {

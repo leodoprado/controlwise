@@ -57,6 +57,11 @@ export const ContainerInput = styled.div`
         display: flex;
     }
 
+    .input.error {
+        transition: 0.6s;
+        border-bottom: solid 1px red; /* Define a cor da borda como vermelha */
+    }
+
     input::placeholder {
         color: #f0ffff94;
     }

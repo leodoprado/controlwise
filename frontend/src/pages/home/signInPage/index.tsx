@@ -21,11 +21,13 @@ const SignInPage = () => {
                   type='text'
                   className='input'
                   placeholder='Digite seu E-mail'
+                  required
                 />
                 <input
                   type='password'
                   className='input'
                   placeholder='Digite sua Senha'
+                  required
                 />
 
                 <NavLink id='esqueceu-senha' to="/forgotpass">Esqueceu sua senha?</NavLink>

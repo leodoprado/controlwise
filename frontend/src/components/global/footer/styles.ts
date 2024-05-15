@@ -6,6 +6,7 @@ export const ContentFooter = styled.footer`
     padding: 0.8rem;
     text-align: center;
     color: white;
+    letter-spacing: 1.5px;
     
     a {
         color: #ffff;

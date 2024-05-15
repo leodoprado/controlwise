@@ -20,7 +20,7 @@ const globalStyle = createGlobalStyle`
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
-    font-family: 'Mulish', sans-serif;
+    font-family: 'Onest', sans-serif;
     }
 
     article, aside, details, figcaption, figure, 
