@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import Header from "../../../components/global/header";
 import Footer from "../../../components/global/footer";
 import { Container, ContainerSignUp, ContainerTitulo, ContainerInput, ContainerLink } from "./style";
@@ -6,6 +6,9 @@ import { NavLink } from "react-router-dom";
 import ButtonAccessDefault from "../../../components/global/buttonAccessDefault";
 
 const SignUpPage = () => {
+
+    
+
     return (
         <>
             <Header />

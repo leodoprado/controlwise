@@ -13,6 +13,8 @@ export const ContentFooter = styled.footer`
     }
 
     a:hover {
+      color: #dadada;
       text-decoration: underline;
+      transition: 0.6s;
     }
 `

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import breakPoints from "../../../../core/utils/breakPoints";
 
 export const ContainerHeader = styled.div`
     height: 3rem;
