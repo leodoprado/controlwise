@@ -5,16 +5,15 @@ import { IconType } from 'react-icons'; // Importe o tipo de ícone
 type ButtonAccessDefaultProps = {
   typeButton?: "button" | "submit" | "reset" | undefined;
   titleButton: string;
-  disabled?: any;
+  onClick: () => void; // Defina onClick como uma função
   icon?: IconType; 
 };
 
-const ButtonAccessDefault: React.FC<ButtonAccessDefaultProps> = ({ typeButton, titleButton, icon: Icon, disabled }) => {
+const ButtonAccessDefault: React.FC<ButtonAccessDefaultProps> = ({ typeButton, titleButton, icon: Icon, onClick }) => {
   return (
-    <ButtonComponent type={typeButton}>
+    <ButtonComponent type={typeButton} onClick={onClick}>
       {Icon && <Icon className="button-icon" />}
       {titleButton}
-      {disabled}
     </ButtonComponent>
   );
 };

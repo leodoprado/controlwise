@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Header from "../../../components/global/header";
 import Footer from "../../../components/global/footer";
 import { Container, ContainerSignUp, ContainerTitulo, ContainerInput, ContainerLink } from "./style";
@@ -6,15 +6,7 @@ import { NavLink } from "react-router-dom";
 import ButtonAccessDefault from "../../../components/global/buttonAccessDefault";
 
 import * as z from 'zod'
-import { Controller, useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-
-// Yup
-import { Schema, object, string } from "yup"
-
-import { useMutation } from "@tanstack/react-query";
-import { useContextSelector } from "use-context-selector";
-import { UsersContext } from "../../../contexts/UserContext";
+import { userMutation } from "../../../hooks/userMutation";
 
 const newUserFormSchema = z.object({
     name: z.string(),
@@ -22,31 +14,34 @@ const newUserFormSchema = z.object({
     password: z.string(),
 })
 
-type newUserFormInputs = z.infer<typeof newUserFormSchema>
-
 const SignUpPage = () => {
 
-    const createUser = useContextSelector(
-        UsersContext,
-        (context) => {
-          return context.createUser
-        },
-    )
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
 
-    const { 
-        register, 
-        handleSubmit, 
-        reset, 
-        formState: {isSubmitting, errors} 
-    } = useForm<newUserFormInputs>({ resolver: zodResolver(newUserFormSchema) });
+    const { mutate } = userMutation()
 
-    async function handleCreateNewUser(data: newUserFormInputs) {
-        const { name, email, password } = data
-    
-        await createUser({ name, email, password })
-    
-        reset()
+    const submit = () => {
+        const data = {
+            name,
+            email,
+            password
+        }
+        mutate(data)
     }
+
+    const handleName = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setName(event.target.value);
+      };
+
+    const handleEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setEmail(event.target.value);
+      };
+    
+    const handlePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setPassword(event.target.value);
+    };
 
     return (
         <>
@@ -56,33 +51,32 @@ const SignUpPage = () => {
                     <ContainerTitulo>
                         <h1>Realize seu cadastro</h1>
                     </ContainerTitulo>
-                    <form onSubmit={handleSubmit(handleCreateNewUser)}>
+                    <form>
                         <ContainerInput>
                             <input
                                 type='text' 
-                                className={`input ${errors.name ? 'error' : ''}`}
                                 placeholder='Digite seu Nome'
-                                {...register("name")}
-                                required        
+                                required  
+                                onChange={handleName}
+                                value={name}      
                             />
                             <input
                                 type='text'
-                                className={`input ${errors.email ? 'error' : ''}`}
                                 placeholder='Digite seu E-mail'
-                                {...register("email")}
                                 required
+                                onChange={handleEmail}
+                                value={email}
                             />
                             <input
                                 type='password'
-                                className={`input ${errors.password ? 'error' : ''}`}
                                 placeholder='Digite sua Senha'
-                                {...register("password")}
                                 required
+                                onChange={handlePassword}
+                                value={password}
                             />
                         </ContainerInput>
-
-                        <ButtonAccessDefault typeButton='submit' titleButton='Registrar' disabled={isSubmitting}/>
                     </form>
+                    <ButtonAccessDefault titleButton="Registrar" onClick={submit}></ButtonAccessDefault>
 
                     <ContainerLink>
                         <NavLink to="/askchat">Já possui uma conta? Faça o login</NavLink>
