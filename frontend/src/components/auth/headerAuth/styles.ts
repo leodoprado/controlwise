@@ -1,17 +1,17 @@
 import styled from "styled-components";
 
 export const ContainerHeader = styled.div`
-    height: 3rem;
+    height: 3rem; /* Altura do ContainerHeader */
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     background: #23242F;
     border-bottom: 1px outset rgb(255, 255, 255);
-    padding: 0 10% 0 10%;
-`
+    padding: 15px 10%;
+`;
 
-export const LogoHeader = styled.div `
+export const LogoHeader = styled.div`
     a { 
         display: flex;
         justify-content: center;
@@ -21,34 +21,91 @@ export const LogoHeader = styled.div `
     }
 
     img {
-        width:40px;
-        height:40px;
+        width: 60px;
+        height: 60px;
     }
 
     h1 {
         padding-left: 0.1rem;
         color: white;
         font-weight: 700;
-        font-size: 1rem;
+        font-size: 1.2rem;
     }
-`
+`;
 
-export const NavigationHeader = styled.div `
+export const Card = styled.div`
+    background-color: transparent;
     display: flex;
-    flex-direction: row;
     align-items: center;
-    gap: 3rem;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+`;
 
-    a {
-        gap: 1rem;
-        color: #ffffff;
-        text-decoration: none;
-        font-weight: 400;
-        font-size: 0.9rem;
-    }
+export const IconSaldo = styled.div`
+    background-color: #007BFF;
+    padding: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 1rem;
 
-    a:hover {
-        transition: 0.6s;
-        color: #01ffd3;
+    svg {
+        width: 24px;
+        height: 24px;
+        fill: #FFFFFF;
     }
-`
+`;
+
+export const IconReceita = styled.div`
+    background-color: green;
+    padding: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 1rem;
+
+    svg {
+        width: 24px;
+        height: 24px;
+        fill: #FFFFFF;
+    }
+`;
+
+export const IconDespesa = styled.div`
+    background-color: red;
+    padding: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 1rem;
+
+    svg {
+        width: 24px;
+        height: 24px;
+        fill: #FFFFFF;
+    }
+`;
+
+export const Content = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+`;
+
+export const Title = styled.div`
+    font-size: 14px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.2rem;
+    text-transform: uppercase;
+`;
+
+export const Value = styled.div`
+    font-size: 16px;
+    color: white;
+`;
