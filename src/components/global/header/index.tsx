@@ -1,6 +1,6 @@
 import React from "react";
 import { ContainerHeader, LogoHeader, NavigationHeader } from './styles'
-import Logo from '../../../assets/logo.png'
+import Logo from '../../../assets/logo.svg'
 import { NavLink } from "react-router-dom";
 
 export default class Header extends React.Component {

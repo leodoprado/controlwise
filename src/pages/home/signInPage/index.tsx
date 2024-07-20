@@ -1,47 +1,47 @@
-import React from 'react'
-import Header from '../../../components/global/header'
-import Footer from '../../../components/global/footer'
-import { Container, ContainerLogin, ContainerTitulo, ContainerInput, ContainerLink, ContainerLeft, ContainerRight } from './style'
+import { Container, ContainerLeft, ContainerContentLeft, ContainerRight } from './style'
 import { NavLink } from 'react-router-dom'
-import ButtonAccessDefault from '../../../components/global/buttonAccessDefault'
+import logo from '../../../assets/logo.svg'
+import home from '../../../assets/home.svg'
 
 const SignInPage = () => {
   return (
     <>
-      <Header />
       <Container>
-        <ContainerLogin>
-            <ContainerTitulo>
-              <h1>Acesse a plataforma</h1>
-            </ContainerTitulo>
-            
+        <ContainerLeft>
+          <ContainerContentLeft>
+            <img src={logo} alt="Imagem" />
+            <h1 className='titulo'>Acesse sua conta</h1>
+
             <form>
-              <ContainerInput>
-                <input
-                  type='text'
-                  className='input'
-                  placeholder='Digite seu E-mail'
-                  required
-                />
-                <input
-                  type='password'
-                  className='input'
-                  placeholder='Digite sua Senha'
-                  required
-                />
+              <label>Email</label>
+              <input 
+                type="text" 
+                placeholder='Informe seu email'
+                required
+              />
 
-                <NavLink id='esqueceu-senha' to="/forgotpass">Esqueceu sua senha?</NavLink>
-              </ContainerInput>
-
-              <ButtonAccessDefault typeButton='submit' titleButton='Entrar' />
+              <label>Senha</label>
+              <input 
+                type="password" 
+                placeholder='Informe sua senha'
+                required
+              />
             </form>
 
-            <ContainerLink>
-              <NavLink id='esqueceu-senha' to="/signup">Ainda não tem uma conta? Cadastre-se</NavLink>
-            </ContainerLink>
-        </ContainerLogin>
+            <NavLink to="/forgetpass">Esqueceu sua senha?</NavLink>
+
+            <button className='btnEntrar'>Entrar</button>
+
+            <h2 className='divider'>OU</h2>
+
+            <button className='btnCadastrar'>Cadastrar</button>
+
+          </ContainerContentLeft>
+        </ContainerLeft>
+        <ContainerRight>
+          <img src={home} alt="Imagem" />
+        </ContainerRight>
       </Container>
-      <Footer />
     </>
   )
 }
