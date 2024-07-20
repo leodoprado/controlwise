@@ -116,6 +116,7 @@ export const ContainerContentLeft = styled.div`
     }
 
     .btnCadastrar {
+        width: 100%;
         background: none;
         color: #4AC6C0;
         text-transform: uppercase;
@@ -127,6 +128,7 @@ export const ContainerContentLeft = styled.div`
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
         box-sizing: border-box;
+        text-align: center;
     }
 
     .btnCadastrar:hover {
@@ -134,6 +136,7 @@ export const ContainerContentLeft = styled.div`
         color: white;
         border: 1px solid transparent;
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        text-decoration: none;
     }
 
     a {

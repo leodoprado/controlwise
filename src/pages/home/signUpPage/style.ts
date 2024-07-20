@@ -5,91 +5,162 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
     flex-grow: 1;
-    background: #171820;
-    font-family: 'Mulish', sans-serif;
-    color: white;
-`
+    color: #555555;
+    flex-direction: row;
+    width: 100%;
+    box-sizing: border-box;
+`;
 
-export const ContainerSignUp = styled.div`
-    padding: 3rem;
+export const ContainerLeft = styled.div`
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    overflow: hidden;
+`;
+
+export const ContainerContentLeft = styled.div`
+    width: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border-radius: 0.5rem;
-    background: #23242F;
-`
+    box-sizing: border-box;
 
-export const ContainerTitulo = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-bottom: 1.5rem;
-
-    h1 {
-        color: White;
-        font-size: 0.7;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        margin-top: 5px;
-        margin-bottom: 5px;
+    img {
+        max-width: 100%;
+        max-height: 100%;
+        margin-bottom: 20px;
     }
-    
-`
 
-export const ContainerInput = styled.div`
-    margin-bottom: 1.5rem;
+    .titulo {
+        font-size: 20px;
+        margin-bottom: 20px;
+        color: #A6A6A6;
+    }
+
+    label {
+        font-size: 14px;
+    }
 
     input {
-        width: 18rem;
-        padding: 0.8rem;
-        font-size: 0.8rem;
-        border: none;
-        border-bottom: solid 1px #01435e;
-        margin-bottom: 0.2rem;
-        margin-top: 0.3rem;
-        background: #23242F;
-        color: white;
+        width: 100%;
         box-sizing: border-box;
+        background: #F1F3F6;
+        border: none;
+        border-bottom: solid 2px #A6A6A6;
+        padding: 8px;
         outline: none;
-        margin-bottom: 1rem;
-        display: flex;
-    }
-
-    .input.error {
-        transition: 0.6s;
-        border-bottom: solid 1px red; /* Define a cor da borda como vermelha */
+        box-sizing: border-box;
+        margin-bottom: 16px;
+        margin-top: 5px;
     }
 
     input::placeholder {
-        color: #f0ffff94;
+        color: #A6A6A6;
     }
 
     input:focus {
         transition: 0.6s;
-        border-bottom: solid 1px #0185bc;
+        border-bottom: solid 2px #4AC6C0;
     }
 
-    span {
-        font-size: 14px;
-        color: red;
+    button {
+        width: 100%;
+        box-sizing: border-box;
     }
-`
 
-export const ContainerLink = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    .btnEntrar {
+        background: #4AC6C0;
+        color: white;
+        text-transform: uppercase;
+        font-weight: 800;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: 1px solid transparent; /* Define uma borda inicial transparente */
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+        box-sizing: border-box;
+        margin-bottom: 14px;
+    }
+
+    .btnEntrar:hover {
+        background: white;
+        color: #4AC6C0;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        border: 1px solid #4AC6C0
+    }
+
+
+    .divider {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        column-gap: 3px;
+        font-size: 12px;
+        width: 100%;
+        color: gray;
+        opacity: 0.5;
+        margin-bottom: 14px;
+    }
+
+    .divider::before, .divider::after {
+        content: '';
+        height: 1px;
+        background-color: gray;
+        opacity: 0.5;
+    }
+
+    .btnCadastrar {
+        width: 100%;
+        background: none;
+        color: #4AC6C0;
+        text-transform: uppercase;
+        font-weight: 800;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: 1px solid #4AC6C0;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    .btnCadastrar:hover {
+        background: #4AC6C0;
+        color: white;
+        border: 1px solid transparent;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        text-decoration: none;
+    }
 
     a {
         font-size: 0.7rem;
         text-decoration: none;
-        color: #0185bc;
+        color: #A6A6A6;
+        margin-bottom: 16px;
     }
 
     a:hover {
         text-decoration: underline;
     }
-`
+`;
+
+export const ContainerRight = styled.div`
+    background: #EEEEEE;
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        max-width: 80%;
+        max-height: 80%;
+    }
+`;

@@ -34,7 +34,7 @@ const SignInPage = () => {
 
             <h2 className='divider'>OU</h2>
 
-            <button className='btnCadastrar'>Cadastrar</button>
+            <NavLink to="/signup" className="btnCadastrar">Cadastrar</NavLink>
 
           </ContainerContentLeft>
         </ContainerLeft>
