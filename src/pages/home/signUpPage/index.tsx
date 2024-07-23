@@ -9,37 +9,37 @@ const SignUpPage = () => {
             <Container>
             <ContainerLeft>
                 <ContainerContentLeft>
-                <img src={logo} alt="Imagem" />
-                <h1 className='titulo'>Registre sua conta</h1>
+                    <img src={logo} alt="Imagem" />
+                    <h1 className='titulo'>Registre sua conta</h1>
 
-                <form>
-                    <label>Nome</label>
+                    <form>
+                        <label>Nome</label>
+                        <input 
+                            type="text" 
+                            placeholder='Informe seu nome'
+                            required
+                        />
+
+                        <label>Email</label>
                         <input 
                         type="text" 
-                        placeholder='Informe seu nome'
+                        placeholder='Informe seu email'
                         required
-                    />
+                        />
 
-                    <label>Email</label>
-                    <input 
-                    type="text" 
-                    placeholder='Informe seu email'
-                    required
-                    />
+                        <label>Senha</label>
+                        <input 
+                        type="password" 
+                        placeholder='Informe sua senha'
+                        required
+                        />
+                    </form>
 
-                    <label>Senha</label>
-                    <input 
-                    type="password" 
-                    placeholder='Informe sua senha'
-                    required
-                    />
-                </form>
+                    <button className='btnEntrar'>Cadastrar</button>
 
-                <button className='btnEntrar'>Cadastrar</button>
+                    <h2 className='divider'>OU</h2>
 
-                <h2 className='divider'>OU</h2>
-
-                <NavLink to="/" className="btnCadastrar">Acessar sua conta</NavLink>
+                    <NavLink to="/" className="btnCadastrar">Acessar sua conta</NavLink>
 
                 </ContainerContentLeft>
             </ContainerLeft>

@@ -2,6 +2,8 @@ import { Container, ContainerLeft, ContainerContentLeft, ContainerRight } from '
 import { NavLink } from 'react-router-dom'
 import logo from '../../../assets/logo.svg'
 import home from '../../../assets/home.svg'
+import InputAccessDefault from '../../../components/global/inputAccessDefault'
+import { FaEnvelope, FaUser } from 'react-icons/fa';
 
 const SignInPage = () => {
   return (
@@ -9,10 +11,10 @@ const SignInPage = () => {
       <Container>
         <ContainerLeft>
           <ContainerContentLeft>
-            <img src={logo} alt="Imagem" />
-            <h1 className='titulo'>Acesse sua conta</h1>
+              <img src={logo} alt="Imagem" />
+              <h1 className='titulo'>Acesse sua conta</h1>
 
-            <form>
+              <form>
               <label>Email</label>
               <input 
                 type="text" 

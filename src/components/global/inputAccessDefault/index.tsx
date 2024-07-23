@@ -1,22 +1,28 @@
 import React from 'react';
-import { InputComponent } from './style';
-import { IconType } from 'react-icons/lib';
+import { InputContainer, StyledInput, IconWrapper, Label } from './style';
+import { IconType } from 'react-icons';
 
 type InputAccessDefaultProps = {
-    textLabel : string;
-    placeholderInput : string;
-    typeInput : string;
-    classNameInput : string;
-    icon?: IconType;
+  textLabel: string;
+  placeholderInput: string;
+  typeInput: string;
+  classNameInput?: string;
+  icon?: IconType;
 };
 
-const InputAccessDefault: React.FC<InputAccessDefaultProps> = ({ textLabel, placeholderInput, typeInput, classNameInput, icon:Icon}) => {
+const InputAccessDefault: React.FC<InputAccessDefaultProps> = ({ textLabel, placeholderInput, typeInput, classNameInput, icon: Icon }) => {
   return (
-    <>
-      <label>{textLabel}</label>
-      {Icon && <Icon style={{ marginRight: '10px' }} />}
-      <InputComponent type={typeInput} placeholder={placeholderInput} className={classNameInput}></InputComponent>
-    </>    
+    <div>
+      <Label>{textLabel}</Label>
+      <InputContainer>
+        {Icon && (
+          <IconWrapper>
+            <Icon />
+          </IconWrapper>
+        )}
+        <StyledInput type={typeInput} placeholder={placeholderInput} className={classNameInput} />
+      </InputContainer>
+    </div>
   );
 };
 
