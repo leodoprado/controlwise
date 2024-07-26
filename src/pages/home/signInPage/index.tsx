@@ -1,32 +1,38 @@
+import { useState } from 'react'
 import { Container, ContainerLeft, ContainerContentLeft, ContainerRight } from './style'
+import { FaEnvelope, FaLock } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom'
 import logo from '../../../assets/logo.svg'
 import home from '../../../assets/home.svg'
-import InputAccessDefault from '../../../components/global/inputAccessDefault'
-import { FaEnvelope, FaUser } from 'react-icons/fa';
+import InputAccess from '../../../components/global/inputAccess'
 
 const SignInPage = () => {
+  const [userEmail, setUserEmail] = useState('');
+  const [userPass, setUserPass] = useState('');
+
   return (
     <>
       <Container>
         <ContainerLeft>
           <ContainerContentLeft>
-              <img src={logo} alt="Imagem" />
-              <h1 className='titulo'>Acesse sua conta</h1>
+            <img src={logo} alt="Imagem" />
+            <h1 className='titulo'>Acesse sua conta</h1>
 
-              <form>
-              <label>Email</label>
-              <input 
-                type="text" 
-                placeholder='Informe seu email'
-                required
+            <form>
+              <InputAccess
+                label="Email"
+                icon={FaEnvelope}
+                placeholder="Informe seu email"
+                value={userEmail}
+                onChange={(e) => setUserEmail(e.target.value)}
               />
 
-              <label>Senha</label>
-              <input 
-                type="password" 
-                placeholder='Informe sua senha'
-                required
+              <InputAccess
+                label="Senha"
+                icon={FaLock}
+                placeholder="Informe sua senha"
+                value={userPass}
+                onChange={(e) => setUserPass(e.target.value)}
               />
             </form>
 

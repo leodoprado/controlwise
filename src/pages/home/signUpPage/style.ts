@@ -20,6 +20,10 @@ export const ContainerLeft = styled.div`
     align-items: center;
     box-sizing: border-box;
     overflow: hidden;
+
+    @media (min-width: 1920px) {
+        width: 20%;
+    }
 `;
 
 export const ContainerContentLeft = styled.div`
