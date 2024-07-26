@@ -36,7 +36,7 @@ const SignInPage = () => {
               />
             </form>
 
-            <NavLink to="/forgetpass">Esqueceu sua senha?</NavLink>
+            <NavLink to="/forgotpass">Esqueceu sua senha?</NavLink>
 
             <button className='btnEntrar'>Entrar</button>
 

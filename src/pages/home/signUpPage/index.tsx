@@ -23,7 +23,7 @@ const SignUpPage = () => {
                             <InputAccess
                                 label="Nome"
                                 icon={FaUser}
-                                placeholder="Informe seu nome completo"
+                                placeholder="Informe seu nome"
                                 value={userName}
                                 onChange={(e) => setUserName(e.target.value)}
                             />
