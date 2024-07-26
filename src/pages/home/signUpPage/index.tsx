@@ -1,9 +1,16 @@
+import { useState } from 'react'
 import { Container, ContainerLeft, ContainerContentLeft, ContainerRight } from './style';
+import { FaUser, FaEnvelope, FaLock } from 'react-icons/fa';
 import { NavLink } from "react-router-dom";
 import home from '../../../assets/home.svg';
 import logo from '../../../assets/logo.svg'
+import InputAccess from '../../../components/global/inputAccess';
 
 const SignUpPage = () => {
+    const [userName, setUserName] = useState('');
+    const [userEmail, setUserEmail] = useState('');
+    const [userPass, setUserPass] = useState('');
+
     return (
         <>
             <Container>
@@ -13,25 +20,28 @@ const SignUpPage = () => {
                         <h1 className='titulo'>Registre sua conta</h1>
 
                         <form>
-                            <label>Nome</label>
-                            <input
-                                type="text"
-                                placeholder='Informe seu nome'
-                                required
+                            <InputAccess
+                                label="Nome"
+                                icon={FaUser}
+                                placeholder="Informe seu nome completo"
+                                value={userName}
+                                onChange={(e) => setUserName(e.target.value)}
                             />
 
-                            <label>Email</label>
-                            <input
-                                type="text"
-                                placeholder='Informe seu email'
-                                required
+                            <InputAccess
+                                label="Email"
+                                icon={FaEnvelope}
+                                placeholder="Informe seu email"
+                                value={userEmail}
+                                onChange={(e) => setUserEmail(e.target.value)}
                             />
 
-                            <label>Senha</label>
-                            <input
-                                type="password"
-                                placeholder='Informe sua senha'
-                                required
+                            <InputAccess
+                                label="Senha"
+                                icon={FaLock}
+                                placeholder="Informe sua senha"
+                                value={userPass}
+                                onChange={(e) => setUserPass(e.target.value)}
                             />
                         </form>
 

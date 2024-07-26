@@ -34,6 +34,10 @@ export const ContainerContentLeft = styled.div`
     flex-direction: column;
     box-sizing: border-box;
 
+    form {
+        width: 100%;
+    }
+
     img {
         max-width: 100%;
         max-height: 100%;
@@ -44,32 +48,6 @@ export const ContainerContentLeft = styled.div`
         font-size: 20px;
         margin-bottom: 20px;
         color: #A6A6A6;
-    }
-
-    label {
-        font-size: 14px;
-    }
-
-    input {
-        width: 100%;
-        box-sizing: border-box;
-        background: #F1F3F6;
-        border: none;
-        border-bottom: solid 2px #A6A6A6;
-        padding: 8px;
-        outline: none;
-        box-sizing: border-box;
-        margin-bottom: 16px;
-        margin-top: 5px;
-    }
-
-    input::placeholder {
-        color: #A6A6A6;
-    }
-
-    input:focus {
-        transition: 0.6s;
-        border-bottom: solid 2px #4AC6C0;
     }
 
     button {
