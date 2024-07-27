@@ -4,8 +4,6 @@ import SignInPage from "./pages/home/signInPage"
 import SignUpPage from "./pages/home/signUpPage";
 import ForgotPassPage from './pages/home/forgotPassPage';
 
-import DashboardPage from "./pages/auth/dashboardPage";
-
 export default function Router() {
 
     return (
@@ -17,7 +15,6 @@ export default function Router() {
                 <Route path="/forgotpass" element={<ForgotPassPage/>}></Route> 
 
                 {/* Rotas de acesso protegidas */}
-                <Route path="/dashboard" element={<DashboardPage/>}></Route>
             </Routes>
         </BrowserRouter>
     );

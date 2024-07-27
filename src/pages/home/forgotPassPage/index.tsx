@@ -24,14 +24,15 @@ const ForgotPassPage = () => {
                 placeholder="Informe seu email"
                 value={userEmail}
                 onChange={(e) => setUserEmail(e.target.value)}
+                type='text'
               />
             </form>
 
-            <button className='btnEntrar'>Recuperar</button>
+            <button className='btnRecuperar'>Recuperar</button>
 
             <h2 className='divider'>OU</h2>
 
-            <NavLink to="/">Voltar para Login</NavLink>
+            <NavLink to="/" className="btnEntrar">Voltar para login</NavLink>
 
           </ContainerContentLeft>
         </ContainerLeft>

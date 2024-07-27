@@ -26,6 +26,7 @@ const SignUpPage = () => {
                                 placeholder="Informe seu nome"
                                 value={userName}
                                 onChange={(e) => setUserName(e.target.value)}
+                                type='text'
                             />
 
                             <InputAccess
@@ -34,6 +35,7 @@ const SignUpPage = () => {
                                 placeholder="Informe seu email"
                                 value={userEmail}
                                 onChange={(e) => setUserEmail(e.target.value)}
+                                type='text'
                             />
 
                             <InputAccess
@@ -42,14 +44,15 @@ const SignUpPage = () => {
                                 placeholder="Informe sua senha"
                                 value={userPass}
                                 onChange={(e) => setUserPass(e.target.value)}
+                                type='password'
                             />
                         </form>
 
-                        <button className='btnEntrar'>Cadastrar</button>
+                        <button className='btnCadastrar'>Cadastrar</button>
 
                         <h2 className='divider'>OU</h2>
 
-                        <NavLink to="/" className="btnCadastrar">Acessar sua conta</NavLink>
+                        <NavLink to="/" className="btnEntrar">Acessar sua conta</NavLink>
 
                     </ContainerContentLeft>
                 </ContainerLeft>

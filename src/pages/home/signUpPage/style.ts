@@ -5,13 +5,13 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
     flex-grow: 1;
-    color: #555555;
     flex-direction: row;
     width: 100%;
     box-sizing: border-box;
 `;
 
 export const ContainerLeft = styled.div`
+    background-color: ${({ theme }) => theme.colors.white};
     width: 30%;
     height: 100%;
     display: flex;
@@ -45,9 +45,9 @@ export const ContainerContentLeft = styled.div`
     }
 
     .titulo {
+        color: ${({ theme }) => theme.colors.textGray};
         font-size: 20px;
         margin-bottom: 20px;
-        color: #A6A6A6;
     }
 
     button {
@@ -55,14 +55,14 @@ export const ContainerContentLeft = styled.div`
         box-sizing: border-box;
     }
 
-    .btnEntrar {
-        background: #4AC6C0;
-        color: white;
+    .btnCadastrar {
+        background-color: ${({ theme }) => theme.colors.green};
+        color: ${({ theme }) => theme.colors.white};
         text-transform: uppercase;
         font-weight: 800;
         padding: 10px 20px;
         border-radius: 5px;
-        border: 1px solid transparent; /* Define uma borda inicial transparente */
+        border: 1px solid transparent;
         cursor: pointer;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
@@ -70,13 +70,12 @@ export const ContainerContentLeft = styled.div`
         margin-bottom: 14px;
     }
 
-    .btnEntrar:hover {
-        background: white;
-        color: #4AC6C0;
+    .btnCadastrar:hover {
+        background-color: ${({ theme }) => theme.colors.white};
+        color: ${({ theme }) => theme.colors.green};
+        border: 1px solid ${({ theme }) => theme.colors.green};
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-        border: 1px solid #4AC6C0
     }
-
 
     .divider {
         display: grid;
@@ -97,15 +96,15 @@ export const ContainerContentLeft = styled.div`
         opacity: 0.5;
     }
 
-    .btnCadastrar {
+    .btnEntrar {
         width: 100%;
-        background: none;
-        color: #4AC6C0;
+        background-color: ${({ theme }) => theme.colors.white};
+        color: ${({ theme }) => theme.colors.green};
         text-transform: uppercase;
         font-weight: 800;
         padding: 10px 20px;
         border-radius: 5px;
-        border: 1px solid #4AC6C0;
+        border: 1px solid ${({ theme }) => theme.colors.green};
         cursor: pointer;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
@@ -113,18 +112,18 @@ export const ContainerContentLeft = styled.div`
         text-align: center;
     }
 
-    .btnCadastrar:hover {
-        background: #4AC6C0;
-        color: white;
+    .btnEntrar:hover {
+        background-color: ${({ theme }) => theme.colors.green};
+        color: ${({ theme }) => theme.colors.white};
         border: 1px solid transparent;
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
         text-decoration: none;
     }
 
     a {
+        color: ${({ theme }) => theme.colors.textGray};
         font-size: 0.7rem;
         text-decoration: none;
-        color: #A6A6A6;
         margin-bottom: 16px;
     }
 
@@ -134,7 +133,7 @@ export const ContainerContentLeft = styled.div`
 `;
 
 export const ContainerRight = styled.div`
-    background: #EEEEEE;
+    background-color: ${({ theme }) => theme.colors.gray};;
     width: 80%;
     height: 100%;
     display: flex;

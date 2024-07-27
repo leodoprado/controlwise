@@ -25,6 +25,7 @@ const SignInPage = () => {
                 placeholder="Informe seu email"
                 value={userEmail}
                 onChange={(e) => setUserEmail(e.target.value)}
+                type='text'
               />
 
               <InputAccess
@@ -33,6 +34,7 @@ const SignInPage = () => {
                 placeholder="Informe sua senha"
                 value={userPass}
                 onChange={(e) => setUserPass(e.target.value)}
+                type='password'
               />
             </form>
 
