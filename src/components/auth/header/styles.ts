@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
-export const ContainerHeader = styled.div`
+export const ContainerHeader = styled.header`
     height: 2.2rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     background-color: ${({ theme }) => theme.colors.white};
-    padding: 1rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    padding: 10px 30px;
+    box-shadow: 0 0 30px rgba(11,75,139,.251);
 
     img {
         width: 220px;

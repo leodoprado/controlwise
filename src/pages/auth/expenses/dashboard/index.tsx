@@ -1,6 +1,8 @@
 import React from "react";
 import Header from "../../../../components/auth/header";
-import { Container } from "./style";
+
+import { Container, ContainerContent } from "./style";
+import ContentHeader from "../../../../components/auth/header-content";
 
 const DashboardPage = () => {
     return (
@@ -8,7 +10,10 @@ const DashboardPage = () => {
             <Header />
 
             <Container>
-                
+                <ContentHeader/>
+                <ContainerContent>
+
+                </ContainerContent>
             </Container>
         </>
     )

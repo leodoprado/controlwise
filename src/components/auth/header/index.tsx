@@ -11,8 +11,8 @@ export default class Header extends React.Component {
                     <img src={Logo} alt="Logo" />
                 </NavLink>
                 <NavigationHeader>
-                    <NavLink to="/dashboard">Gestão de Despesas</NavLink>
-                    <NavLink to="/dashboard">Carteira de Investimentos</NavLink>
+                    <NavLink to="/dashboard"></NavLink>
+                    <NavLink to="/dashboard"></NavLink>
                 </NavigationHeader>
             </ContainerHeader>
         );
