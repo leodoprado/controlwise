@@ -11,7 +11,7 @@ export const ContainerHeader = styled.header`
     box-shadow: 0 0 30px rgba(11,75,139,.251);
 
     img {
-        width: 220px;
+        width: 180px;
     }
 `;
 

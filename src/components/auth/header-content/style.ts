@@ -1,43 +1,46 @@
+// style.js
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const ContentHeaderContainer = styled.div`
     width: 100%;
-    padding: 20px;
     background-color: ${({ theme }) => theme.colors.green};
-    border-bottom: 1px solid #dee2e6;
     box-sizing: border-box;
     margin-top: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 `;
 
 export const NavigationLinks = styled.div`
     display: flex;
-    gap: 1rem;
-    position: relative;
+    width: 100%;
+    justify-content: flex-start;
+`;
 
-    a {
-        color: ${({ theme }) => theme.colors.white};
-        text-decoration: none;
-        font-weight: 800;
-        text-transform: uppercase;
-        font-size: 16px;
-        position: relative;
-        padding: 0 0.5rem;
-
-        &:not(:first-child)::before {
-            content: '';
-            position: absolute;
-            left: -0.5rem; /* Ajuste conforme necessário */
-            height: 100%;
-            width: 1px;
-            background-color: ${({ theme }) => theme.colors.white};
-        }
+export const StyledNavLink = styled(NavLink)`
+    color: ${({ theme }) => theme.colors.textGray};
+    text-decoration: none;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 18px;
+    padding: 20px 40px;
+    
+    &:not(:last-child) {
+        border-right: 1px solid ${({ theme }) => theme.colors.white};
     }
 
-    a:hover {
-        transition: 0.6s;
-        color: ${({ theme }) => theme.colors.gray};
+    &:first-child:hover {
+        transition: 0.5s;
+        border-top-left-radius: 20px;
+    }
+
+    &:hover {
+        transition: 0.5s;
+        color: ${({ theme }) => theme.colors.white};
+        background-color: #67D1CC;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     }
 `;
