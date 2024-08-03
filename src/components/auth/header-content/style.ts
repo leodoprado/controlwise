@@ -25,20 +25,18 @@ export const StyledNavLink = styled(NavLink)`
     text-decoration: none;
     font-weight: 800;
     text-transform: uppercase;
-    font-size: 18px;
+    font-size: 16px;
     padding: 20px 40px;
     
     &:not(:last-child) {
         border-right: 1px solid ${({ theme }) => theme.colors.white};
     }
 
-    &:first-child:hover {
-        transition: 0.5s;
+    &:first-child:hover {    
         border-top-left-radius: 20px;
     }
 
-    &:hover {
-        transition: 0.5s;
+    &:hover {  
         color: ${({ theme }) => theme.colors.white};
         background-color: #67D1CC;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
