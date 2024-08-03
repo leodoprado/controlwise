@@ -21,7 +21,7 @@ export const NavigationLinks = styled.div`
 `;
 
 export const StyledNavLink = styled(NavLink)`
-    color: ${({ theme }) => theme.colors.textGray};
+    color: #E4E4E4;
     text-decoration: none;
     font-weight: 800;
     text-transform: uppercase;

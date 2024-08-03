@@ -3,7 +3,7 @@ export const theme = {
       white: '#fff',
       gray: '#EEEEEE',
       green: '#4AC6C0',
-      textGray: '#E4E4E4',
+      textGray: '#555555',
     },
   };
   
