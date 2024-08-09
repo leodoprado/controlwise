@@ -1,16 +1,18 @@
-// ContentHeader.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ContentHeaderContainer, NavigationLinks, StyledNavLink } from './style';
-import { NavLink } from 'react-router-dom';
 
 const ContentHeader = () => {
     const [activeTab, setActiveTab] = useState(0);
 
+    useEffect(() => {
+        setActiveTab(0); // Primeiro item selecionado por padrão
+    }, []);
+
     const tabs = [
-        { name: "Dashboard", to: "#" },
-        { name: "Movimentações", to: "#" },
+        { name: "Dashboard", to: "/dashboard" },
+        { name: "Movimentações", to: "/transactions" },
         { name: "Planejamentos", to: "#" },
-        { name: "Metas", to: "#"},
+        { name: "Metas", to: "#" },
         { name: "Análises", to: "#" },
         { name: "Relatórios", to: "#" }
     ];
@@ -24,6 +26,7 @@ const ContentHeader = () => {
                         to={tab.to}
                         className={activeTab === index ? 'active' : ''}
                         onClick={() => setActiveTab(index)}
+                        active={activeTab === index} // Passa a prop active para o StyledNavLink
                     >
                         {tab.name}
                     </StyledNavLink>

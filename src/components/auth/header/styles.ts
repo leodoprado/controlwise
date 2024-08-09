@@ -30,12 +30,16 @@ export const DropdownMenu = styled.div`
     position: relative;
 `;
 
-export const MenuButton = styled.div`
+interface MenuButtonProps {
+    menuOpen: boolean;
+}
+
+export const MenuButton = styled.div<MenuButtonProps>`
     background: none;
     border: none;
     cursor: pointer;
     font-size: 24px;
-    color: ${({ theme }) => theme.colors.textGray};
+    color: ${({ theme, menuOpen }) => (menuOpen ? theme.colors.green : theme.colors.textGray)};
     display: flex;
     align-items: center;
     gap: 0.5rem;

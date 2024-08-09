@@ -1,4 +1,3 @@
-// style.js
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
@@ -20,14 +19,24 @@ export const NavigationLinks = styled.div`
     justify-content: flex-start;
 `;
 
-export const StyledNavLink = styled(NavLink)`
-    color: #E4E4E4;
+interface StyledNavLinkProps {
+    active: boolean;
+}
+
+export const StyledNavLink = styled(NavLink)<StyledNavLinkProps>`
+    color: ${({ active, theme }) => (active ? theme.colors.white : '#E4E4E4')};
     text-decoration: none;
     font-weight: 800;
     text-transform: uppercase;
     font-size: 16px;
     padding: 20px 40px;
-    
+    background-color: ${({ active }) => (active ? '#67D1CC' : 'transparent')};
+    box-shadow: ${({ active }) => (active ? '0 4px 20px rgba(0, 0, 0, 0.2)' : 'none')};
+
+    &:first-child {
+        border-top-left-radius: 20px;
+    }
+
     &:not(:last-child) {
         border-right: 1px solid ${({ theme }) => theme.colors.white};
     }

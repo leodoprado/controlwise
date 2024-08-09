@@ -19,23 +19,23 @@ const Header: React.FC = () => {
             <NavigationHeader>
                 <DropdownMenu>
                     <NavLink to="#" onClick={toggleMenu}>
-                        <MenuButton>
+                        <MenuButton menuOpen={menuOpen}>
                             <span>Leonardo do Prado</span> <FaBars />
                         </MenuButton>
                     </NavLink>
                     <MenuList open={menuOpen}>
                         <MenuItem>
-                            <NavLink to="/settings">
+                            <NavLink to="/profile">
                                 <span>Perfil</span> <FaUser />
                             </NavLink>
                         </MenuItem>
                         <MenuItem>
-                            <NavLink to="/help">
+                            <NavLink to="/myexpenses">
                                 <span>Minhas Despesas</span> <FaMoneyBill />
                             </NavLink>
                         </MenuItem>
                         <MenuItem>
-                            <NavLink to="/settings">
+                            <NavLink to="/mywallet">
                                 <span>Minha Carteira</span> <FaWallet />
                             </NavLink>
                         </MenuItem>
