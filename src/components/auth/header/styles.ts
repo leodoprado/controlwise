@@ -17,6 +17,12 @@ export const ContainerHeader = styled.header`
     a {
         text-decoration: none;
     }
+
+    h1 {
+        color: ${({ theme }) => theme.colors.gray};
+        text-transform: uppercase;
+        font-weight: 800;
+    }
 `;
 
 export const NavigationHeader = styled.div`

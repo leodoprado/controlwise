@@ -16,6 +16,7 @@ const Header: React.FC = () => {
             <NavLink to="/dashboard">
                 <img src={Logo} alt="Logo" />
             </NavLink>
+            <h1>Minhas Despesas</h1>
             <NavigationHeader>
                 <DropdownMenu>
                     <NavLink to="#" onClick={toggleMenu}>
@@ -30,12 +31,12 @@ const Header: React.FC = () => {
                             </NavLink>
                         </MenuItem>
                         <MenuItem>
-                            <NavLink to="/myexpenses">
+                            <NavLink to="/myexpenses/dashboard">
                                 <span>Minhas Despesas</span> <FaMoneyBill />
                             </NavLink>
                         </MenuItem>
                         <MenuItem>
-                            <NavLink to="/mywallet">
+                            <NavLink to="/mywallet/dashboard">
                                 <span>Minha Carteira</span> <FaWallet />
                             </NavLink>
                         </MenuItem>

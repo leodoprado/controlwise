@@ -1,20 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { ContentHeaderContainer, NavigationLinks, StyledNavLink } from './style';
+import { useLocation } from 'react-router-dom';
 
-const ContentHeader = () => {
-    const [activeTab, setActiveTab] = useState(0);
+interface Tab {
+    name: string;
+    to: string;
+}
 
-    useEffect(() => {
-        setActiveTab(0); // Primeiro item selecionado por padrão
-    }, []);
+const ContentHeader: React.FC = () => {
+    const location = useLocation();
 
-    const tabs = [
-        { name: "Dashboard", to: "/dashboard" },
-        { name: "Movimentações", to: "/transactions" },
-        { name: "Planejamentos", to: "#" },
-        { name: "Metas", to: "#" },
-        { name: "Análises", to: "#" },
-        { name: "Relatórios", to: "#" }
+    const tabs: Tab[] = [
+        { name: "Dashboard", to: "/myexpenses/dashboard" },
+        { name: "Movimentações", to: "/myexpenses/transactions" },
+        { name: "Planejamentos", to: "/myexpenses/planning" },
+        { name: "Metas", to: "/myexpenses/goals" },
+        { name: "Análises", to: "/myexpenses/analysis" },
+        { name: "Relatórios", to: "/myexpenses/reports" }
     ];
 
     return (
@@ -24,9 +26,7 @@ const ContentHeader = () => {
                     <StyledNavLink
                         key={index}
                         to={tab.to}
-                        className={activeTab === index ? 'active' : ''}
-                        onClick={() => setActiveTab(index)}
-                        active={activeTab === index} // Passa a prop active para o StyledNavLink
+                        className={({ isActive }) => isActive ? 'active' : ''}
                     >
                         {tab.name}
                     </StyledNavLink>
