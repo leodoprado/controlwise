@@ -10,6 +10,7 @@ import PlanningPage from './pages/auth/expenses/planning';
 import GoalsPage from './pages/auth/expenses/goals';
 import AnalysisPage from './pages/auth/expenses/analysis';
 import ReportsPage from './pages/auth/expenses/reports';
+import ProfilePage from './pages/auth/profile';
 
 export default function Router() {
 
@@ -20,6 +21,9 @@ export default function Router() {
                 <Route path="/" element={<SignInPage />}></Route>
                 <Route path="/signup" element={<SignUpPage/>}></Route>
                 <Route path="/forgotpass" element={<ForgotPassPage/>}></Route> 
+
+                {/* Rotas de acesso protegidas: Geral */}
+                <Route path='/profile' element={<ProfilePage/>}></Route>
 
                 {/* Rotas de acesso protegidas: Gestão de Despesas */}
                 <Route path="/myexpenses/dashboard" element={<DashboardPage/>}></Route>

@@ -4,7 +4,11 @@ import Logo from '../../../assets/logo.svg';
 import { NavLink } from "react-router-dom";
 import { FaBars, FaUser, FaWallet, FaMoneyBill, FaSignOutAlt } from 'react-icons/fa';
 
-const Header: React.FC = () => {
+interface HeaderProps {
+    title: string,
+}
+
+const Header: React.FC<HeaderProps> = ({ title }) => {
     const [menuOpen, setMenuOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -16,7 +20,7 @@ const Header: React.FC = () => {
             <NavLink to="/dashboard">
                 <img src={Logo} alt="Logo" />
             </NavLink>
-            <h1>Minhas Despesas</h1>
+            <h1>{title}</h1>
             <NavigationHeader>
                 <DropdownMenu>
                     <NavLink to="#" onClick={toggleMenu}>

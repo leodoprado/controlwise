@@ -6,7 +6,7 @@ import ContentHeader from "../../../../components/auth/header-content";
 const PlanningPage = () => {
     return (
         <>
-            <Header />
+            <Header title="Minhas Despesas"/>
             
             <Container>
                 <ContentHeader/>
