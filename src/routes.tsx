@@ -18,7 +18,7 @@ export default function Router() {
         <BrowserRouter>
             <Routes>
                 {/* Rotas de acesso livre */}
-                <Route path="/" element={<SignInPage />}></Route>
+                <Route path="/signin" element={<SignInPage />}></Route>
                 <Route path="/signup" element={<SignUpPage/>}></Route>
                 <Route path="/forgotpass" element={<ForgotPassPage/>}></Route> 
 

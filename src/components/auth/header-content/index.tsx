@@ -1,6 +1,5 @@
 import React from 'react';
 import { ContentHeaderContainer, NavigationLinks, StyledNavLink } from './style';
-import { useLocation } from 'react-router-dom';
 
 interface Tab {
     name: string;
@@ -8,7 +7,6 @@ interface Tab {
 }
 
 const ContentHeader: React.FC = () => {
-    const location = useLocation();
 
     const tabs: Tab[] = [
         { name: "Dashboard", to: "/myexpenses/dashboard" },

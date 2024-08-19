@@ -45,7 +45,7 @@ const Header: React.FC<HeaderProps> = ({ title }) => {
                             </NavLink>
                         </MenuItem>
                         <MenuItem>
-                            <NavLink to="/logout">
+                            <NavLink to="/signin">
                                 <span>Sair</span> <FaSignOutAlt />
                             </NavLink>
                         </MenuItem>

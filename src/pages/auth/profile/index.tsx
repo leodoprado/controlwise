@@ -8,9 +8,9 @@ const ProfilePage = () => {
             <Header title="Meu Perfil"/>
 
             <Container>
-                <SimpleHeader/>
+                <SimpleHeader title="Configurações"/>
                 <ContainerContent>
-
+                    
                 </ContainerContent>
             </Container>
         </>
