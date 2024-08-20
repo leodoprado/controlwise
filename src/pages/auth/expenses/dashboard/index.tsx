@@ -3,14 +3,16 @@ import Header from "../../../../components/auth/header";
 
 import { Container, ContainerContent } from "./style";
 import ContentHeader from "../../../../components/auth/header-content";
+import { expensesTabs } from "../../../../components/config/tabs";
 
 const DashboardPage = () => {
+
     return (
         <>
-            <Header title="Minhas Despesas"/>
+            <Header title="Minhas Despesas" />
 
             <Container>
-                <ContentHeader/>
+                <ContentHeader tabs={expensesTabs}/>
                 <ContainerContent>
 
                 </ContainerContent>

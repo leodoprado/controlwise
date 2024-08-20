@@ -6,17 +6,11 @@ interface Tab {
     to: string;
 }
 
-const ContentHeader: React.FC = () => {
+interface ContentHeaderProps {
+    tabs: Tab[];
+}
 
-    const tabs: Tab[] = [
-        { name: "Dashboard", to: "/myexpenses/dashboard" },
-        { name: "Movimentações", to: "/myexpenses/transactions" },
-        { name: "Planejamentos", to: "/myexpenses/planning" },
-        { name: "Metas", to: "/myexpenses/goals" },
-        { name: "Análises", to: "/myexpenses/analysis" },
-        { name: "Relatórios", to: "/myexpenses/reports" }
-    ];
-
+const ContentHeader: React.FC<ContentHeaderProps> = ({ tabs }) => {
     return (
         <ContentHeaderContainer>
             <NavigationLinks>

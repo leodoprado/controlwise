@@ -2,6 +2,7 @@ import Header from "../../../../components/auth/header";
 
 import { Container, ContainerContent } from "./style";
 import ContentHeader from "../../../../components/auth/header-content";
+import { expensesTabs } from "../../../../components/config/tabs";
 
 const TransactionsPage = () => {
     return (
@@ -9,7 +10,7 @@ const TransactionsPage = () => {
             <Header title="Minhas Despesas"/>
             
             <Container>
-                <ContentHeader/>
+                <ContentHeader tabs={expensesTabs}/>
                 <ContainerContent>
 
                 </ContainerContent>
