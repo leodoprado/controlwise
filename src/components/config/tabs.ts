@@ -8,5 +8,10 @@ export const expensesTabs = [
 ]
 
 export const walletTabs = [
-    { name: "Dashboard", to: "/mywallet/dashboard"}
+    { name: "Dashboard", to: "/mywallet/dashboard" }
+]
+
+export const settingsTabs = [
+    { name: "Informações Pessoais", to: "/settings/profile" },
+    { name: "Categorias", to: "/settings/categories"}
 ]

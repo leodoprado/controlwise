@@ -10,7 +10,7 @@ import PlanningPage from './pages/auth/expenses/planning';
 import GoalsPage from './pages/auth/expenses/goals';
 import AnalysisPage from './pages/auth/expenses/analysis';
 import ReportsPage from './pages/auth/expenses/reports';
-import ProfilePage from './pages/auth/profile';
+import ProfilePage from './pages/auth/settings/profile';
 
 export default function Router() {
 

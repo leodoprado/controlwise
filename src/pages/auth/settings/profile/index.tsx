@@ -1,6 +1,7 @@
-import Header from "../../../components/auth/header";
+import Header from "../../../../components/auth/header";
 import { Container, ContainerContent } from "./style";
-import SimpleHeader from "../../../components/auth/header-simple";
+import ContentHeader from "../../../../components/auth/header-content";
+import { settingsTabs } from "../../../../components/config/tabs";
 
 const ProfilePage = () => {
     return (
@@ -8,7 +9,7 @@ const ProfilePage = () => {
             <Header title="Meu Perfil"/>
 
             <Container>
-                <SimpleHeader title="Configurações"/>
+                <ContentHeader tabs={settingsTabs}/>
                 <ContainerContent>
                     
                 </ContainerContent>
