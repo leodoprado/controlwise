@@ -1,10 +1,10 @@
-import { useState } from 'react'
-import { Container, ContainerLeft, ContainerContentLeft, ContainerRight } from './style'
-import { FaEnvelope, FaLock } from 'react-icons/fa';
-import { NavLink } from 'react-router-dom'
-import logo from '../../../assets/logo.svg'
-import home from '../../../assets/home.svg'
-import InputAccess from '../../../components/global/inputAccess'
+import { useState } from 'react';
+import { Container, ContainerLeft, ContainerContentLeft, ContainerRight } from './style';
+import { FaEnvelope, FaLock, FaGoogle } from 'react-icons/fa';
+import { NavLink } from 'react-router-dom';
+import logo from '../../../assets/logo.svg';
+import home from '../../../assets/home.svg';
+import InputAccess from '../../../components/global/inputAccess';
 
 const SignInPage = () => {
   const [userEmail, setUserEmail] = useState('');
@@ -17,6 +17,22 @@ const SignInPage = () => {
           <ContainerContentLeft>
             <img src={logo} alt="Imagem" />
             <h1 className='titulo'>Acesse sua conta</h1>
+
+            {/* Adicionando os botões de Login e Cadastro */}
+            <div className="btnLinks">
+              <NavLink 
+                to="/signin" 
+                className={({ isActive }) => isActive ? "btnAcesso active" : "btnAcesso"}
+              >
+                Login
+              </NavLink>
+              <NavLink 
+                to="/signup" 
+                className={({ isActive }) => isActive ? "btnAcesso active" : "btnAcesso"}
+              >
+                Cadastro
+              </NavLink>
+            </div>
 
             <form>
               <InputAccess
@@ -38,13 +54,13 @@ const SignInPage = () => {
               />
             </form>
 
-            <NavLink to="/forgotpass">Esqueceu sua senha?</NavLink>
+            <NavLink className='forgotpass' to="/forgotpass">Esqueceu sua senha?</NavLink>
 
             <button className='btnEntrar'>Entrar</button>
 
             <h2 className='divider'>OU</h2>
 
-            <NavLink to="/signup" className="btnCadastrar">Cadastrar</NavLink>
+            <button className='btnEntrar'><FaGoogle/>Entrar com google</button>
 
           </ContainerContentLeft>
         </ContainerLeft>
@@ -53,7 +69,7 @@ const SignInPage = () => {
         </ContainerRight>
       </Container>
     </>
-  )
-}
+  );
+};
 
-export default SignInPage
+export default SignInPage;

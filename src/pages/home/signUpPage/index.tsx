@@ -1,9 +1,9 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import { Container, ContainerLeft, ContainerContentLeft, ContainerRight } from './style';
 import { FaUser, FaEnvelope, FaLock } from 'react-icons/fa';
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 import home from '../../../assets/home.svg';
-import logo from '../../../assets/logo.svg'
+import logo from '../../../assets/logo.svg';
 import InputAccess from '../../../components/global/inputAccess';
 
 const SignUpPage = () => {
@@ -18,6 +18,21 @@ const SignUpPage = () => {
                     <ContainerContentLeft>
                         <img src={logo} alt="Imagem" />
                         <h1 className='titulo'>Registre sua conta</h1>
+
+                        <div className="btnLinks">
+                            <NavLink 
+                                to="/signin" 
+                                className={({ isActive }) => isActive ? "btnAcesso active" : "btnAcesso"}
+                            >
+                                Login
+                            </NavLink>
+                            <NavLink 
+                                to="/signup" 
+                                className={({ isActive }) => isActive ? "btnAcesso active" : "btnAcesso"}
+                            >
+                                Cadastro
+                            </NavLink>
+                        </div>
 
                         <form>
                             <InputAccess
@@ -49,11 +64,6 @@ const SignUpPage = () => {
                         </form>
 
                         <button className='btnCadastrar'>Cadastrar</button>
-
-                        <h2 className='divider'>OU</h2>
-
-                        <NavLink to="/" className="btnEntrar">Acessar sua conta</NavLink>
-
                     </ContainerContentLeft>
                 </ContainerLeft>
                 <ContainerRight>
@@ -61,7 +71,7 @@ const SignUpPage = () => {
                 </ContainerRight>
             </Container>
         </>
-    )
+    );
 }
 
-export default SignUpPage
+export default SignUpPage;

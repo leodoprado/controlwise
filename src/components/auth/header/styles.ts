@@ -19,7 +19,7 @@ export const ContainerHeader = styled.header`
     }
 
     h1 {
-        color: ${({ theme }) => theme.colors.gray};
+        color: rgb(193, 193, 193);
         text-transform: uppercase;
         font-weight: 800;
     }

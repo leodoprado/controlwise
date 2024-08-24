@@ -30,7 +30,7 @@ const Header: React.FC<HeaderProps> = ({ title }) => {
                     </NavLink>
                     <MenuList open={menuOpen}>
                         <MenuItem>
-                            <NavLink to="/profile">
+                            <NavLink to="/settings/profile">
                                 <span>Perfil</span> <FaUser />
                             </NavLink>
                         </MenuItem>
