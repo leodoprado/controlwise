@@ -22,8 +22,7 @@ export const StyledInput = styled.input`
   background: #F1F3F6;
   border: none;
   border-bottom: solid 2px #A6A6A6;
-  padding: 8px;
-  padding-right: 40px; /* espaço para o ícone */
+  padding: 10px 40px 10px 10px;
   outline: none;
 
   &::placeholder {

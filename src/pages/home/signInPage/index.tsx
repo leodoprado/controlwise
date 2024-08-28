@@ -53,13 +53,13 @@ const SignInPage = () => {
               />
             </form>
 
-            <NavLink className='forgotpass' to="/forgotpass">Esqueceu sua senha?</NavLink>
+            {/*<NavLink className='forgotpass' to="/forgotpass">Esqueceu sua senha?</NavLink>*/}
 
             <button className='btnEntrar'>Entrar</button>
 
-            <h2 className='divider'>OU</h2>
+            {/*<h2 className='divider'>OU</h2>*/}
 
-            <button className='btnEntrar'><FaGoogle />Entrar com google</button>
+            {/*<button className='btnEntrar'><FaGoogle />Entrar com google</button> */}
 
           </ContainerContentLeft>
         </ContainerLeft>
