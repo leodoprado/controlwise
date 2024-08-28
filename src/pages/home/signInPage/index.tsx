@@ -16,21 +16,20 @@ const SignInPage = () => {
         <ContainerLeft>
           <ContainerContentLeft>
             <img src={logo} alt="Imagem" />
-            <h1 className='titulo'>Acesse sua conta</h1>
-
+            
             {/* Adicionando os botões de Login e Cadastro */}
             <div className="btnLinks">
-              <NavLink 
-                to="/signin" 
+              <NavLink
+                to="/signin"
                 className={({ isActive }) => isActive ? "btnAcesso active" : "btnAcesso"}
               >
-                Login
+                Entrar
               </NavLink>
-              <NavLink 
-                to="/signup" 
+              <NavLink
+                to="/signup"
                 className={({ isActive }) => isActive ? "btnAcesso active" : "btnAcesso"}
               >
-                Cadastro
+                Cadastrar
               </NavLink>
             </div>
 
@@ -60,7 +59,7 @@ const SignInPage = () => {
 
             <h2 className='divider'>OU</h2>
 
-            <button className='btnEntrar'><FaGoogle/>Entrar com google</button>
+            <button className='btnEntrar'><FaGoogle />Entrar com google</button>
 
           </ContainerContentLeft>
         </ContainerLeft>

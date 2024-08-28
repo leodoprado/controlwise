@@ -17,20 +17,19 @@ const SignUpPage = () => {
                 <ContainerLeft>
                     <ContainerContentLeft>
                         <img src={logo} alt="Imagem" />
-                        <h1 className='titulo'>Registre sua conta</h1>
-
+                        
                         <div className="btnLinks">
                             <NavLink 
                                 to="/signin" 
                                 className={({ isActive }) => isActive ? "btnAcesso active" : "btnAcesso"}
                             >
-                                Login
+                                Entrar
                             </NavLink>
                             <NavLink 
                                 to="/signup" 
                                 className={({ isActive }) => isActive ? "btnAcesso active" : "btnAcesso"}
                             >
-                                Cadastro
+                                Cadastrar
                             </NavLink>
                         </div>
 
