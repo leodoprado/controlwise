@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 
-export function SignIn() {
+export function SignUp() {
   return (
     <>
       <Helmet title="Login" />
@@ -22,6 +22,11 @@ export function SignIn() {
 
           <form className="space-y-4">
             <div className="space-y-2">
+              <Label htmlFor="nome">Nome</Label>
+              <Input id="nome" type="text" />
+            </div>
+
+            <div className="space-y-2">
               <Label htmlFor="email">E-mail</Label>
               <Input id="email" type="email" />
             </div>
@@ -32,10 +37,10 @@ export function SignIn() {
             </div>
 
             <Button className="w-full font-bold" type="submit">
-              Acessar painel
+              Cadastrar
             </Button>
             <Button variant="ghost" className="w-full">
-              <Link to="/signup">Nova Conta</Link>
+              <Link to="/signin">Voltar</Link>
             </Button>
           </form>
         </div>
