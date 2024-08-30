@@ -1,11 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import GlobalStyle from './styles/global';
-import App from './app';
-import { QueryClientProvider } from '@tanstack/react-query';
-import { queryClient } from './lib/react-query';
-import { ThemeProvider } from 'styled-components';
-import { theme } from './styles/themes/default';
+import { QueryClientProvider } from '@tanstack/react-query'
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { ThemeProvider } from 'styled-components'
+
+import App from './app'
+import { queryClient } from './lib/react-query'
+import GlobalStyle from './styles/global'
+import { theme } from './styles/themes/default'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
@@ -15,5 +16,5 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         <App />
       </ThemeProvider>
     </QueryClientProvider>
-  </React.StrictMode>
-);
+  </React.StrictMode>,
+)

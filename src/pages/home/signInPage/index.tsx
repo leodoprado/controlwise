@@ -1,14 +1,20 @@
-import { useState } from 'react';
-import { Container, ContainerLeft, ContainerContentLeft, ContainerRight } from './style';
-import { FaEnvelope, FaLock, FaGoogle } from 'react-icons/fa';
-import { NavLink } from 'react-router-dom';
-import logo from '../../../assets/logo.svg';
-import home from '../../../assets/home.svg';
-import InputAccess from '../../../components/global/inputAccess';
+import { useState } from 'react'
+import { FaEnvelope, FaLock } from 'react-icons/fa'
+import { NavLink } from 'react-router-dom'
+
+import home from '../../../assets/home.svg'
+import logo from '../../../assets/logo.svg'
+import InputAccess from '../../../components/global/inputAccess'
+import {
+  Container,
+  ContainerContentLeft,
+  ContainerLeft,
+  ContainerRight,
+} from './style'
 
 const SignInPage = () => {
-  const [userEmail, setUserEmail] = useState('');
-  const [userPass, setUserPass] = useState('');
+  const [userEmail, setUserEmail] = useState('')
+  const [userPass, setUserPass] = useState('')
 
   return (
     <>
@@ -16,18 +22,22 @@ const SignInPage = () => {
         <ContainerLeft>
           <ContainerContentLeft>
             <img src={logo} alt="Imagem" />
-            
+
             {/* Adicionando os botões de Login e Cadastro */}
             <div className="btnLinks">
               <NavLink
                 to="/signin"
-                className={({ isActive }) => isActive ? "btnAcesso active" : "btnAcesso"}
+                className={({ isActive }) =>
+                  isActive ? 'btnAcesso active' : 'btnAcesso'
+                }
               >
                 Entrar
               </NavLink>
               <NavLink
                 to="/signup"
-                className={({ isActive }) => isActive ? "btnAcesso active" : "btnAcesso"}
+                className={({ isActive }) =>
+                  isActive ? 'btnAcesso active' : 'btnAcesso'
+                }
               >
                 Cadastrar
               </NavLink>
@@ -40,7 +50,7 @@ const SignInPage = () => {
                 placeholder="Informe seu email"
                 value={userEmail}
                 onChange={(e) => setUserEmail(e.target.value)}
-                type='text'
+                type="text"
               />
 
               <InputAccess
@@ -49,18 +59,17 @@ const SignInPage = () => {
                 placeholder="Informe sua senha"
                 value={userPass}
                 onChange={(e) => setUserPass(e.target.value)}
-                type='password'
+                type="password"
               />
             </form>
 
-            {/*<NavLink className='forgotpass' to="/forgotpass">Esqueceu sua senha?</NavLink>*/}
+            {/* <NavLink className='forgotpass' to="/forgotpass">Esqueceu sua senha?</NavLink> */}
 
-            <button className='btnEntrar'>Entrar</button>
+            <button className="btnEntrar">Entrar</button>
 
-            {/*<h2 className='divider'>OU</h2>*/}
+            {/* <h2 className='divider'>OU</h2> */}
 
-            {/*<button className='btnEntrar'><FaGoogle />Entrar com google</button> */}
-
+            {/* <button className='btnEntrar'><FaGoogle />Entrar com google</button> */}
           </ContainerContentLeft>
         </ContainerLeft>
         <ContainerRight>
@@ -68,7 +77,7 @@ const SignInPage = () => {
         </ContainerRight>
       </Container>
     </>
-  );
-};
+  )
+}
 
-export default SignInPage;
+export default SignInPage

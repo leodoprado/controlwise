@@ -1,8 +1,16 @@
-import Routes from './routes'
+import './global.css'
+
+import { Helmet, HelmetProvider } from 'react-helmet-async'
+import { RouterProvider } from 'react-router-dom'
+
+import { router } from './pages/routes'
 
 function App() {
   return (
-    <Routes/>
+    <HelmetProvider>
+      <Helmet titleTemplate="%s | Control Wise" />
+      <RouterProvider router={router} />
+    </HelmetProvider>
   )
 }
 
