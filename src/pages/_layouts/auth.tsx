@@ -4,7 +4,7 @@ import home from '@/assets/home.svg'
 
 export function AuthLayout() {
   return (
-    <div className="grid min-h-screen grid-cols-[3fr_7fr]">
+    <div className="grid min-h-screen grid-cols-[3fr_7fr] antialiased">
       <div className="relative flex flex-col items-center justify-center">
         <Outlet />
       </div>

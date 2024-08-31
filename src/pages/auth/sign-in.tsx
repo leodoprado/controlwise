@@ -42,7 +42,7 @@ export function SignIn() {
 
   return (
     <>
-      <Helmet title="Login" />
+      <Helmet title="Entrar" />
       <div className="p-8">
         <div className="mx-auto flex w-full max-w-[350px] flex-col justify-center gap-6">
           <div className="flex flex-col gap-2 text-center">

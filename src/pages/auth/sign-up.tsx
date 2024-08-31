@@ -44,7 +44,7 @@ export function SignUp() {
   }
   return (
     <>
-      <Helmet title="Login" />
+      <Helmet title="Cadastrar" />
       <div className="p-8">
         <div className="mx-auto flex w-full max-w-[350px] flex-col justify-center gap-6">
           <div className="flex flex-col gap-2 text-center">
@@ -80,7 +80,7 @@ export function SignUp() {
             </Button>
             <Button variant="outline" className="w-full p-0">
               <Link
-                to="/signin"
+                to="/"
                 className="flex h-full w-full items-center justify-center p-0"
               >
                 Voltar
