@@ -14,27 +14,30 @@ export function AccountMenu() {
       <DropdownMenuTrigger asChild>
         <Button
           variant={'outline'}
-          className="flex select-none items-center gap-2"
+          className="flex select-none items-center gap-1 rounded-md"
         >
           Leonardo do Prado
           <ChevronDown className="h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent align="end" className="w-56">
-        <DropdownMenuItem>
+      <DropdownMenuContent
+        align="end"
+        className="border-5 mt-1 w-56 transform p-3 shadow-2xl transition-all duration-500 ease-in-out"
+      >
+        <DropdownMenuItem className="cursor-pointer">
           <User2 className="mr-2 h-4 w-4" /> Perfil
         </DropdownMenuItem>
 
-        <DropdownMenuItem>
+        <DropdownMenuItem className="cursor-pointer">
           <Banknote className="mr-2 h-4 w-4" /> Minhas Despesas
         </DropdownMenuItem>
 
-        <DropdownMenuItem>
+        <DropdownMenuItem className="cursor-pointer">
           <Wallet className="mr-2 h-4 w-4" /> Minha Carteira
         </DropdownMenuItem>
 
-        <DropdownMenuItem className="text-rose-500">
+        <DropdownMenuItem className="cursor-pointer text-rose-500">
           <LogOut className="mr-2 h-4 w-4" /> Sair
         </DropdownMenuItem>
       </DropdownMenuContent>

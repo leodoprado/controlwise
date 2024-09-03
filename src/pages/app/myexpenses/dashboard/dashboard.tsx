@@ -8,8 +8,8 @@ export function Dashboard() {
   return (
     <>
       <Helmet title="Painel" />
-      <div className="flex flex-col gap-4">
-        <div className="grid grid-cols-4 gap-4">
+      <div className="flex w-full flex-col items-center gap-4">
+        <div className="grid w-full max-w-7xl grid-cols-1 gap-4 md:grid-cols-3">
           <MonthRevenueCard />
           <MonthOrdersAmountCard />
           <MonthCanceledOrdersAmountCard />

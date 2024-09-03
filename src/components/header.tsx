@@ -2,6 +2,7 @@ import logo from '@/assets/i.ico'
 
 import { AccountMenu } from './account-menu'
 import { NavLink } from './nav-link'
+import { TransactionMenu } from './transaction-menu'
 import { Separator } from './ui/separator'
 export interface HeaderProps {}
 
@@ -21,8 +22,8 @@ export function Header() {
           <NavLink to={'/analysis'}>Análises</NavLink>
           <NavLink to={'/reports'}>Relatórios</NavLink>
         </nav>
-
-        <div className="ml-auto flex items-center gap-2">
+        <TransactionMenu />
+        <div className="ml-auto flex items-center gap-6">
           <AccountMenu />
         </div>
       </div>
