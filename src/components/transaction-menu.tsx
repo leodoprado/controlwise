@@ -23,13 +23,13 @@ export function TransactionMenu() {
 
       <DropdownMenuContent
         align="center"
-        className="border-5 mt-1 w-56 transform p-3 shadow-2xl transition-all duration-500 ease-in-out"
+        className="border-5 mt-1 w-56 transform p-0 shadow-2xl transition-all duration-500 ease-in-out"
       >
-        <DropdownMenuItem className="cursor-pointer">
+        <DropdownMenuItem className="cursor-pointer p-3">
           <TrendingUp className="mr-2 h-4 w-4 text-primary" /> Receita
         </DropdownMenuItem>
 
-        <DropdownMenuItem className="cursor-pointer">
+        <DropdownMenuItem className="cursor-pointer p-3">
           <TrendingDown className="mr-2 h-4 w-4 text-destructive" /> Despesa
         </DropdownMenuItem>
       </DropdownMenuContent>

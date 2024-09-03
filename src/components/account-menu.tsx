@@ -23,21 +23,21 @@ export function AccountMenu() {
 
       <DropdownMenuContent
         align="end"
-        className="border-5 mt-1 w-56 transform p-3 shadow-2xl transition-all duration-500 ease-in-out"
+        className="border-5 mt-1 w-56 transform p-0 shadow-2xl transition-all duration-500 ease-in-out"
       >
-        <DropdownMenuItem className="cursor-pointer">
+        <DropdownMenuItem className="cursor-pointer p-3">
           <User2 className="mr-2 h-4 w-4" /> Perfil
         </DropdownMenuItem>
 
-        <DropdownMenuItem className="cursor-pointer">
+        <DropdownMenuItem className="cursor-pointer p-3">
           <Banknote className="mr-2 h-4 w-4" /> Minhas Despesas
         </DropdownMenuItem>
 
-        <DropdownMenuItem className="cursor-pointer">
+        <DropdownMenuItem className="cursor-pointer p-3">
           <Wallet className="mr-2 h-4 w-4" /> Minha Carteira
         </DropdownMenuItem>
 
-        <DropdownMenuItem className="cursor-pointer text-rose-500">
+        <DropdownMenuItem className="cursor-pointer p-3 text-rose-500">
           <LogOut className="mr-2 h-4 w-4" /> Sair
         </DropdownMenuItem>
       </DropdownMenuContent>
