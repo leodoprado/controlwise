@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async'
 
-export function Goals() {
+export function EGoalsPage() {
   return (
     <>
       <Helmet title="Metas" />

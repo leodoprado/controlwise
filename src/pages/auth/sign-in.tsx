@@ -16,7 +16,7 @@ const signInForm = z.object({
 
 type SignInForm = z.infer<typeof signInForm>
 
-export function SignIn() {
+export function ASignInPage() {
   const {
     register,
     handleSubmit,
@@ -67,9 +67,10 @@ export function SignIn() {
             <Button
               disabled={isSubmitting}
               className="w-full font-bold"
-              type="submit"
+              // type="submit"
+              asChild
             >
-              Acessar painel
+              <Link to="/myexpenses/dashboard">Acessar painel</Link>
             </Button>
             <Button variant="outline" className="w-full p-0">
               <Link

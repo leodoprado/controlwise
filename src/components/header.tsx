@@ -15,12 +15,12 @@ export function Header() {
         <Separator orientation="vertical" className="h-6" />
 
         <nav className="flex items-center space-x-4 lg:space-x-6">
-          <NavLink to={'/dashboard'}>Painel</NavLink>
-          <NavLink to={'/transactions'}>Movimentações</NavLink>
-          <NavLink to={'/planning'}>Planejamentos</NavLink>
-          <NavLink to={'/goals'}>Metas</NavLink>
-          <NavLink to={'/analysis'}>Análises</NavLink>
-          <NavLink to={'/reports'}>Relatórios</NavLink>
+          <NavLink to={'/myexpenses/dashboard'}>Painel</NavLink>
+          <NavLink to={'/myexpenses/transactions'}>Movimentações</NavLink>
+          <NavLink to={'/myexpenses/planning'}>Planejamentos</NavLink>
+          <NavLink to={'/myexpenses/goals'}>Metas</NavLink>
+          <NavLink to={'/myexpenses/analysis'}>Análises</NavLink>
+          <NavLink to={'/myexpenses/reports'}>Relatórios</NavLink>
         </nav>
         <TransactionMenu />
         <div className="ml-auto flex items-center gap-6">

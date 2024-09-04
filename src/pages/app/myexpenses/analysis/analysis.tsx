@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async'
 
-export function Analysis() {
+export function EAnalysisPage() {
   return (
     <>
       <Helmet title="Análises" />

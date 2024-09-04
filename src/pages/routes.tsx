@@ -2,34 +2,36 @@ import { createBrowserRouter } from 'react-router-dom'
 
 import { AppLayout } from './_layouts/app'
 import { AuthLayout } from './_layouts/auth'
-import { Analysis } from './app/myexpenses/analysis/analysis'
-import { Dashboard } from './app/myexpenses/dashboard/dashboard'
-import { Goals } from './app/myexpenses/goals/goals'
-import { Planning } from './app/myexpenses/planning/planning'
-import { Reports } from './app/myexpenses/reports/reports'
-import { Transactions } from './app/myexpenses/transactions/transactions'
-import { SignIn } from './auth/sign-in'
-import { SignUp } from './auth/sign-up'
+// Minhas Despesas - Pages
+import { EAnalysisPage } from './app/myexpenses/analysis/analysis'
+import { EDashboardPage } from './app/myexpenses/dashboard/dashboard'
+import { EGoalsPage } from './app/myexpenses/goals/goals'
+import { EPlanningPage } from './app/myexpenses/planning/planning'
+import { EReportsPage } from './app/myexpenses/reports/reports'
+import { ETransactionsPage } from './app/myexpenses/transactions/transactions'
+// Auth - Pages
+import { ASignInPage } from './auth/sign-in'
+import { ASignUpPage } from './auth/sign-up'
 
 export const router = createBrowserRouter([
   {
     path: '/',
     element: <AuthLayout />,
     children: [
-      { path: '/', element: <SignIn /> },
-      { path: '/signup', element: <SignUp /> },
+      { path: '/', element: <ASignInPage /> },
+      { path: '/signup', element: <ASignUpPage /> },
     ],
   },
   {
-    path: '/',
+    path: '/myexpenses',
     element: <AppLayout />,
     children: [
-      { path: '/dashboard', element: <Dashboard /> },
-      { path: '/transactions', element: <Transactions /> },
-      { path: '/planning', element: <Planning /> },
-      { path: '/goals', element: <Goals /> },
-      { path: '/analysis', element: <Analysis /> },
-      { path: '/reports', element: <Reports /> },
+      { path: '/myexpenses/dashboard', element: <EDashboardPage /> },
+      { path: '/myexpenses/transactions', element: <ETransactionsPage /> },
+      { path: '/myexpenses/planning', element: <EPlanningPage /> },
+      { path: '/myexpenses/goals', element: <EGoalsPage /> },
+      { path: '/myexpenses/analysis', element: <EAnalysisPage /> },
+      { path: '/myexpenses/reports', element: <EReportsPage /> },
     ],
   },
 ])

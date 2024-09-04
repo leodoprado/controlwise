@@ -12,7 +12,7 @@ import {
   TableRow,
 } from '@/components/ui/table'
 
-export function Transactions() {
+export function ETransactionsPage() {
   return (
     <>
       <Helmet title="Movimentações" />

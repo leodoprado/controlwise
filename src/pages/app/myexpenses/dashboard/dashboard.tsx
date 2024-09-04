@@ -4,7 +4,7 @@ import { MonthCanceledOrdersAmountCard } from './month-canceled-orders-amount-ca
 import { MonthOrdersAmountCard } from './month-orders-amount-card'
 import { MonthRevenueCard } from './month-revenue-card'
 
-export function Dashboard() {
+export function EDashboardPage() {
   return (
     <>
       <Helmet title="Painel" />

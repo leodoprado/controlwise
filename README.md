@@ -1,1 +1,1 @@
-![alt text](src/assets/logo.svg)
+![src/assets/long-logo.png](src/assets/long-logo.png)

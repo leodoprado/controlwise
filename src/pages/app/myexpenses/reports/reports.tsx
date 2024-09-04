@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async'
 
-export function Reports() {
+export function EReportsPage() {
   return (
     <>
       <Helmet title="Relatórios" />

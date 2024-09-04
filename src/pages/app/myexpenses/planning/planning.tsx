@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async'
 
-export function Planning() {
+export function EPlanningPage() {
   return (
     <>
       <Helmet title="Planejamentos" />
