@@ -1,4 +1,4 @@
-import logo from '@/assets/i.ico'
+import logo from '@/assets/short-logo.ico'
 
 import { AccountMenu } from './account-menu'
 import { NavLink } from './nav-link'
