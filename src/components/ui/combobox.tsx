@@ -17,60 +17,29 @@ import {
 } from '@/components/ui/popover'
 import { cn } from '@/lib/utils'
 
+// Lista de meses
 const frameworks = [
-  {
-    value: 'jan',
-    label: 'Janeiro',
-  },
-  {
-    value: 'fev',
-    label: 'Fevereiro',
-  },
-  {
-    value: 'mar',
-    label: 'Março',
-  },
-  {
-    value: 'abr',
-    label: 'Abril',
-  },
-  {
-    value: 'mai',
-    label: 'Maio',
-  },
-  {
-    value: 'jun',
-    label: 'Junho',
-  },
-  {
-    value: 'jul',
-    label: 'Julho',
-  },
-  {
-    value: 'ago',
-    label: 'Agosto',
-  },
-  {
-    value: 'set',
-    label: 'Setembro',
-  },
-  {
-    value: 'out',
-    label: 'Outubro',
-  },
-  {
-    value: 'nov',
-    label: 'Novembro',
-  },
-  {
-    value: 'dez',
-    label: 'Dezembro',
-  },
+  { value: 'jan', label: 'Janeiro' },
+  { value: 'fev', label: 'Fevereiro' },
+  { value: 'mar', label: 'Março' },
+  { value: 'abr', label: 'Abril' },
+  { value: 'mai', label: 'Maio' },
+  { value: 'jun', label: 'Junho' },
+  { value: 'jul', label: 'Julho' },
+  { value: 'ago', label: 'Agosto' },
+  { value: 'set', label: 'Setembro' },
+  { value: 'out', label: 'Outubro' },
+  { value: 'nov', label: 'Novembro' },
+  { value: 'dez', label: 'Dezembro' },
 ]
 
 export function ComboboxDemo() {
+  // Função para obter o mês atual da máquina
+  const currentMonthIndex = new Date().getMonth()
+  const currentMonth = frameworks[currentMonthIndex]?.value
+
   const [open, setOpen] = React.useState(false)
-  const [value, setValue] = React.useState('')
+  const [value, setValue] = React.useState(currentMonth) // Mês atual como valor padrão
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -79,7 +48,7 @@ export function ComboboxDemo() {
           variant="secondary"
           role="combobox"
           aria-expanded={open}
-          className="w-[120px] justify-center rounded-full border font-semibold"
+          className="w-[120px] justify-center gap-2 rounded-full border font-semibold"
         >
           {value
             ? frameworks.find((framework) => framework.value === value)?.label
@@ -89,7 +58,7 @@ export function ComboboxDemo() {
       <PopoverContent className="w-[200px] p-0">
         <Command>
           <CommandList>
-            <CommandGroup>
+            <CommandGroup className="">
               {frameworks.map((framework) => (
                 <CommandItem
                   key={framework.value}
@@ -98,6 +67,7 @@ export function ComboboxDemo() {
                     setValue(currentValue === value ? '' : currentValue)
                     setOpen(false)
                   }}
+                  className="cursor-pointer"
                 >
                   <Check
                     className={cn(

@@ -23,8 +23,12 @@ export function Header() {
           <NavLink to={'/myexpenses/analysis'}>Análises</NavLink>
           <NavLink to={'/myexpenses/reports'}>Relatórios</NavLink>
         </nav>
-        <TransactionMenu />
-        <ComboboxDemo />
+
+        <div className="flex gap-3">
+          <TransactionMenu />
+          <ComboboxDemo />
+        </div>
+
         <div className="ml-auto flex items-center gap-6">
           <AccountMenu />
         </div>
