@@ -46,16 +46,24 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
-export function Component() {
+export function ChartBalance() {
   return (
     <Card className="col-span-6">
       <CardHeader>
-        <CardTitle>Relação (Receita - Despesa)</CardTitle>
-        <CardDescription>Setembro 2024</CardDescription>
+        <CardTitle>Balanço (Receita - Despesa)</CardTitle>
+        <CardDescription>2024</CardDescription>
       </CardHeader>
-      <CardContent>
-        <ChartContainer config={chartConfig}>
-          <BarChart accessibilityLayer data={chartData}>
+      <CardContent className="p-0">
+        {' '}
+        <ChartContainer
+          config={chartConfig}
+          className="mx-auto h-[350px] w-[100%]" // Reduzindo o tamanho proporcionalmente
+        >
+          <BarChart
+            data={chartData}
+            width={400} // Ajuste o width para reduzir o tamanho
+            height={250} // Ajuste o height para reduzir o tamanho
+          >
             <CartesianGrid vertical={false} />
             <XAxis
               dataKey="month"

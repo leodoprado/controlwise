@@ -3,6 +3,7 @@ import logo from '@/assets/short-logo.ico'
 import { AccountMenu } from './account-menu'
 import { NavLink } from './nav-link'
 import { TransactionMenu } from './transaction-menu'
+import { ComboboxDemo } from './ui/combobox'
 import { Separator } from './ui/separator'
 export interface HeaderProps {}
 
@@ -23,6 +24,7 @@ export function Header() {
           <NavLink to={'/myexpenses/reports'}>Relatórios</NavLink>
         </nav>
         <TransactionMenu />
+        <ComboboxDemo />
         <div className="ml-auto flex items-center gap-6">
           <AccountMenu />
         </div>

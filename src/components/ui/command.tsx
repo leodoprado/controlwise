@@ -60,10 +60,7 @@ const CommandList = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <CommandPrimitive.List
     ref={ref}
-    className={cn(
-      'grid max-h-[300px] grid-cols-3 gap-2 overflow-y-auto overflow-x-hidden', // Estilos para exibir itens em 3 colunas
-      className,
-    )}
+    className={cn('max-h-[300px] overflow-y-auto overflow-x-hidden', className)}
     {...props}
   />
 ))

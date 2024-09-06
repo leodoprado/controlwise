@@ -1,6 +1,5 @@
 'use client'
 
-import { TrendingUp } from 'lucide-react'
 import * as React from 'react'
 import { Label, Pie, PieChart } from 'recharts'
 
@@ -8,7 +7,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
@@ -27,6 +25,7 @@ const chartData = [
   { browser: 'firefox', visitors: 287, fill: 'var(--color-firefox)' },
   { browser: 'edge', visitors: 173, fill: 'var(--color-edge)' },
   { browser: 'other', visitors: 190, fill: 'var(--color-other)' },
+  { browser: 'other', visitors: 190, fill: 'var(--color-primary)' },
 ]
 
 const chartConfig = {
@@ -62,14 +61,14 @@ export function ComponentPie() {
 
   return (
     <Card className="col-span-3">
-      <CardHeader className="items-center pb-0">
-        <CardTitle>Pie Chart - Donut with Text</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+      <CardHeader className="pb-0">
+        <CardTitle>Despesas por Categoria</CardTitle>
+        <CardDescription>Setembro 2024</CardDescription>
       </CardHeader>
-      <CardContent className="flex-1 pb-0">
+      <CardContent className="flex-1 p-0">
         <ChartContainer
           config={chartConfig}
-          className="mx-auto aspect-square max-h-[250px]"
+          className="mx-auto aspect-square h-full w-full"
         >
           <PieChart>
             <ChartTooltip
@@ -80,8 +79,8 @@ export function ComponentPie() {
               data={chartData}
               dataKey="visitors"
               nameKey="browser"
-              innerRadius={60}
-              strokeWidth={5}
+              innerRadius={80}
+              strokeWidth={2} // Reduzindo a espessura da borda
             >
               <Label
                 content={({ viewBox }) => {
@@ -105,7 +104,7 @@ export function ComponentPie() {
                           y={(viewBox.cy || 0) + 24}
                           className="fill-muted-foreground"
                         >
-                          Visitors
+                          Despesas Totais
                         </tspan>
                       </text>
                     )
@@ -116,14 +115,6 @@ export function ComponentPie() {
           </PieChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter className="flex-col gap-2 text-sm">
-        <div className="flex items-center gap-2 font-medium leading-none">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-        </div>
-        <div className="leading-none text-muted-foreground">
-          Showing total visitors for the last 6 months
-        </div>
-      </CardFooter>
     </Card>
   )
 }
