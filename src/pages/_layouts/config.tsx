@@ -1,8 +1,8 @@
 import { Outlet } from 'react-router-dom'
 
-import { Header } from '@/pages/app/myexpenses/_components/header'
+import { Header } from '@/pages/app/config/_components/header'
 
-export function AppLayout() {
+export function ConfigLayout() {
   return (
     <div className="flex min-h-screen flex-col antialiased">
       <div>

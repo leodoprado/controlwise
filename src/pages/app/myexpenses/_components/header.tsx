@@ -1,10 +1,10 @@
 import logo from '@/assets/short-logo.ico'
 
-import { AccountMenu } from './account-menu'
+import { AccountMenu } from '../../../../components/account-menu'
+import { Separator } from '../../../../components/ui/separator'
+import { ComboboxDemo } from './months'
 import { NavLink } from './nav-link'
 import { TransactionMenu } from './transaction-menu'
-import { ComboboxDemo } from './ui/combobox'
-import { Separator } from './ui/separator'
 export interface HeaderProps {}
 
 export function Header() {

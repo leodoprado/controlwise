@@ -1,4 +1,4 @@
-import { Banknote, ChevronDown, LogOut, User2, Wallet } from 'lucide-react'
+import { Banknote, ChevronDown, LogOut, Settings, Wallet } from 'lucide-react'
 import { NavLink } from 'react-router-dom'
 
 import { Button } from './ui/button'
@@ -26,12 +26,6 @@ export function AccountMenu() {
         align="end"
         className="border-5 mt-1 w-56 transform p-0 shadow-2xl transition-all duration-500 ease-in-out"
       >
-        <NavLink to="/profile">
-          <DropdownMenuItem className="cursor-pointer p-3">
-            <User2 className="mr-2 h-4 w-4" /> Perfil
-          </DropdownMenuItem>
-        </NavLink>
-
         <NavLink to="/myexpenses/dashboard">
           <DropdownMenuItem className="cursor-pointer p-3">
             <Banknote className="mr-2 h-4 w-4" /> Minhas Despesas
@@ -41,6 +35,12 @@ export function AccountMenu() {
         <NavLink to="/mywallet/dashboard">
           <DropdownMenuItem className="cursor-pointer p-3">
             <Wallet className="mr-2 h-4 w-4" /> Minha Carteira
+          </DropdownMenuItem>
+        </NavLink>
+
+        <NavLink to="/config/profile">
+          <DropdownMenuItem className="cursor-pointer p-3">
+            <Settings className="mr-2 h-4 w-4" /> Configurações
           </DropdownMenuItem>
         </NavLink>
 

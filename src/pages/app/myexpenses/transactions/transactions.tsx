@@ -22,7 +22,7 @@ export function ETransactionsPage() {
             <TableHeader>
               <TableRow>
                 <TableHead className="w-[64px]">Tipo</TableHead>
-                <TableHead className="w-[140px]">Identificador</TableHead>
+                <TableHead className="w-[140px]">Categoria</TableHead>
                 <TableHead className="w-[180px]">Realizado há</TableHead>
                 <TableHead className="w-[140px]">Status</TableHead>
                 <TableHead>Cliente</TableHead>
@@ -35,8 +35,8 @@ export function ETransactionsPage() {
               {Array.from({ length: 10 }).map((_, i) => {
                 return (
                   <TableRow key={i}>
-                    <TableCell className="font-mono text-lg font-medium">
-                      D
+                    <TableCell className="font-mono text-xs font-medium">
+                      Despesa
                     </TableCell>
                     <TableCell className="font-mono text-xs font-medium">
                       821e78f7asdhdf128h
