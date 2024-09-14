@@ -3,6 +3,7 @@ import { createBrowserRouter } from 'react-router-dom'
 import { AppLayout } from './_layouts/app'
 import { AuthLayout } from './_layouts/auth'
 import { ConfigLayout } from './_layouts/config'
+import { NotFound } from './404'
 import { CCategoryPage } from './app/config/categories/categories'
 import { CProfilePage } from './app/config/profile/profile'
 import { EAnalysisPage } from './app/myexpenses/analysis/analysis'
@@ -32,7 +33,7 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: '/myexpenses',
+    path: '/',
     element: <AppLayout />,
     children: [
       { path: '/myexpenses/dashboard', element: <EDashboardPage /> },
@@ -42,5 +43,9 @@ export const router = createBrowserRouter([
       { path: '/myexpenses/analysis', element: <EAnalysisPage /> },
       { path: '/myexpenses/reports', element: <EReportsPage /> },
     ],
+  },
+  {
+    path: '*',
+    element: <NotFound />,
   },
 ])

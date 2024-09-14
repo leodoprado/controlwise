@@ -1,9 +1,11 @@
+import { useMutation } from '@tanstack/react-query'
 import { Helmet } from 'react-helmet-async'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import { toast } from 'sonner'
 import { z } from 'zod'
 
+import { signInAccount } from '@/api/signin-account'
 import logo from '@/assets/logo.svg'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -11,7 +13,7 @@ import { Label } from '@/components/ui/label'
 
 const signInForm = z.object({
   email: z.string().email(),
-  senha: z.string(),
+  password: z.string(),
 })
 
 type SignInForm = z.infer<typeof signInForm>
@@ -23,11 +25,13 @@ export function ASignInPage() {
     formState: { isSubmitting },
   } = useForm<SignInForm>()
 
+  const { mutateAsync: signInAccountFn } = useMutation({
+    mutationFn: signInAccount,
+  })
+
   async function handleSignIn(data: SignInForm) {
     try {
-      console.log(data)
-
-      await new Promise((resolve) => setTimeout(resolve, 2000))
+      await signInAccountFn({ email: data.email, password: data.password })
 
       toast.success('Usuário autenticado com sucesso!', {
         action: {
@@ -61,16 +65,15 @@ export function ASignInPage() {
 
             <div className="space-y-2">
               <Label htmlFor="senha">Senha</Label>
-              <Input id="senha" type="password" {...register('senha')} />
+              <Input id="senha" type="password" {...register('password')} />
             </div>
 
             <Button
               disabled={isSubmitting}
               className="w-full font-bold"
-              // type="submit"
-              asChild
+              type="submit"
             >
-              <Link to="/myexpenses/dashboard">Acessar painel</Link>
+              Acessar painel
             </Button>
             <Button variant="outline" className="w-full p-0">
               <Link
