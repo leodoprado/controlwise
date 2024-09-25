@@ -2,9 +2,9 @@ import logo from '@/assets/short-logo.ico'
 
 import { AccountMenu } from '../../../../components/account-menu'
 import { Separator } from '../../../../components/ui/separator'
+import { AddTransaction } from './add-transaction'
 import { ComboboxDemo } from './months'
 import { NavLink } from './nav-link'
-import { TransactionMenu } from './transaction-menu'
 export interface HeaderProps {}
 
 export function Header() {
@@ -25,7 +25,7 @@ export function Header() {
         </nav>
 
         <div className="flex gap-3">
-          <TransactionMenu />
+          <AddTransaction buttonText="Adicionar" />
           <ComboboxDemo />
         </div>
 

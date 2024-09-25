@@ -1,7 +1,9 @@
-import { Edit, Menu, Trash, TrendingDown } from 'lucide-react'
+import { Edit, Menu, Trash, TrendingDown, TrendingUp } from 'lucide-react'
 import { Helmet } from 'react-helmet-async'
 
+import transaction from '@/assets/transaction.svg'
 import { Button } from '@/components/ui/button'
+import { Card } from '@/components/ui/card'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,6 +18,47 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+import { NoContent } from '@/pages/no-content'
+
+import { AddTransaction } from '../_components/add-transaction'
+
+// Simulando os dados como se fossem de um banco de dados
+const transactions = [
+  /** {
+    id: 1,
+    type: 'Despesa',
+    category: 'Casa',
+    date: '19/09/2024',
+    value: 'R$ 149,90',
+    status: 'Pendente',
+    statusColor: 'bg-slate-400',
+    icon: <TrendingDown className="h-4 w-4 text-red-500" />,
+    color: 'text-red-500',
+  },
+  {
+    id: 2,
+    type: 'Receita',
+    category: 'Salário',
+    date: '18/09/2024',
+    value: 'R$ 89,90',
+    status: 'Executado',
+    statusColor: 'bg-green-400',
+    icon: <TrendingUp className="h-4 w-4 text-green-500" />,
+    color: 'text-green-500',
+  },
+  {
+    id: 3,
+    type: 'Despesa',
+    category: 'Carro',
+    date: '21/09/2024',
+    value: 'R$ 112,90',
+    status: 'Cancelado',
+    statusColor: 'bg-red-400',
+    icon: <TrendingDown className="h-4 w-4 text-red-500" />,
+    color: 'text-gray-500',
+  },
+  **/
+]
 
 export function ETransactionsPage() {
   return (
@@ -23,42 +66,44 @@ export function ETransactionsPage() {
       <Helmet title="Movimentações" />
 
       <div className="space-y-2.5">
-        <div className="rounded-md border">
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead className="w-1/6">Tipo</TableHead>
-                <TableHead className="w-1/6">Categoria</TableHead>
-                <TableHead className="w-1/5">Realizado em</TableHead>
-                <TableHead className="w-1/6">Valor</TableHead>
-                <TableHead className="w-1/5">Status</TableHead>
-                <TableHead className="w-1/6">Opções</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {Array.from({ length: 10 }).map((_, i) => {
-                return (
-                  <TableRow key={i}>
+        {transactions.length > 0 ? (
+          <div className="rounded-md border">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="w-1/6">Tipo</TableHead>
+                  <TableHead className="w-1/6">Categoria</TableHead>
+                  <TableHead className="w-1/5">Realizado em</TableHead>
+                  <TableHead className="w-1/6">Valor</TableHead>
+                  <TableHead className="w-1/5">Status</TableHead>
+                  <TableHead className="w-1/6">Opções</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {transactions.map((transaction) => (
+                  <TableRow key={transaction.id}>
                     <TableCell className="font-mono text-xs font-medium">
                       <div className="flex items-center gap-2">
-                        <TrendingDown className="h-4 w-4 text-red-500" />
-                        Despesa
+                        {transaction.icon}
+                        {transaction.type}
                       </div>
                     </TableCell>
                     <TableCell className="font-mono text-xs font-medium">
-                      Casa
+                      {transaction.category}
                     </TableCell>
                     <TableCell className="text-muted-foreground">
-                      19/09/2024
+                      {transaction.date}
                     </TableCell>
-                    <TableCell className="font-medium text-red-500">
-                      R$ 149,90
+                    <TableCell className={`font-medium ${transaction.color}`}>
+                      {transaction.value}
                     </TableCell>
                     <TableCell>
                       <div className="flex items-center gap-2">
-                        <span className="h-2 w-2 rounded-full bg-slate-400" />
+                        <span
+                          className={`h-2 w-2 rounded-full ${transaction.statusColor}`}
+                        />
                         <span className="font-medium text-muted-foreground">
-                          Pendente
+                          {transaction.status}
                         </span>
                       </div>
                     </TableCell>
@@ -83,11 +128,16 @@ export function ETransactionsPage() {
                       </DropdownMenu>
                     </TableCell>
                   </TableRow>
-                )
-              })}
-            </TableBody>
-          </Table>
-        </div>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
+        ) : (
+          <NoContent
+            contentTitle="Ops! Você ainda não possui movimentações registradas."
+            imageSrc={transaction}
+          />
+        )}
       </div>
     </>
   )

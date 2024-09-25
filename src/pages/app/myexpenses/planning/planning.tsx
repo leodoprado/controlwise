@@ -1,12 +1,16 @@
 import { Helmet } from 'react-helmet-async'
 
+import nocontent from '@/assets/nc-planning.svg'
+import { NoContent } from '@/pages/no-content'
+
 export function EPlanningPage() {
   return (
     <>
       <Helmet title="Planejamentos" />
-      <div className="flex flex-col gap-4">
-        <h1 className="text-3xl font-bold tracking-tight">Planejamentos</h1>
-      </div>
+      <NoContent
+        imageSrc={nocontent}
+        contentTitle="Ops! Você ainda não possui planejamentos registrados."
+      />
     </>
   )
 }
