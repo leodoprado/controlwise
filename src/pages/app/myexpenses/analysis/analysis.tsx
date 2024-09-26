@@ -1,12 +1,16 @@
 import { Helmet } from 'react-helmet-async'
 
+import nocontent from '@/assets/nc-analysiss.svg'
+import { NoContent } from '@/pages/no-content'
+
 export function EAnalysisPage() {
   return (
     <>
       <Helmet title="Análises" />
-      <div className="flex flex-col gap-4">
-        <h1 className="text-3xl font-bold tracking-tight">Análises</h1>
-      </div>
+      <NoContent
+        contentTitle="Ops! Sem Análises Realizadas."
+        imageSrc={nocontent}
+      />
     </>
   )
 }

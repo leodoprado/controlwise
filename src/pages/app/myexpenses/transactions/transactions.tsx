@@ -1,7 +1,7 @@
 import { Edit, Menu, Trash, TrendingDown, TrendingUp } from 'lucide-react'
 import { Helmet } from 'react-helmet-async'
 
-import transaction from '@/assets/transaction.svg'
+import transaction from '@/assets/nc-transactio.svg'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import {
@@ -134,7 +134,7 @@ export function ETransactionsPage() {
           </div>
         ) : (
           <NoContent
-            contentTitle="Ops! Você ainda não possui movimentações registradas."
+            contentTitle="Ops! Sem movimentações registradas."
             imageSrc={transaction}
           />
         )}

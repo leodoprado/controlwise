@@ -8,7 +8,7 @@ export function EGoalsPage() {
     <>
       <Helmet title="Metas" />
       <NoContent
-        contentTitle="Ops! Você ainda não possui metas registradas."
+        contentTitle="Ops! Sem metas registradas."
         imageSrc={nocontent}
       />
     </>
