@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async'
 
-export function Dashboard() {
+export function WDashboardPage() {
   return (
     <>
       <Helmet title="Painel" />

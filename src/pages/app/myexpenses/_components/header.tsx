@@ -1,13 +1,13 @@
 import logo from '@/assets/short-logo.ico'
 
 import { AccountMenu } from '../../../../components/account-menu'
+import { NavLink } from '../../../../components/nav-link'
 import { Separator } from '../../../../components/ui/separator'
 import { AddTransaction } from './add-transaction'
 import { ComboboxDemo } from './months'
-import { NavLink } from './nav-link'
 export interface HeaderProps {}
 
-export function Header() {
+export function HeaderExpenses() {
   return (
     <div className="shadow-md">
       <div className="flex h-16 items-center gap-6 px-6">

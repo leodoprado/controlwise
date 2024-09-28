@@ -117,7 +117,7 @@ export function AddTransaction({ buttonText }: { buttonText: string }) {
                   Cadastrar Despesa
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-2">
+              <CardContent className="space-y-3">
                 <div className="space-y-1">
                   <div className="relative">
                     <span className="absolute inset-y-0 left-0 flex items-center pl-3">

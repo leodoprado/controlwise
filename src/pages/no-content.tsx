@@ -3,9 +3,14 @@ import { Card } from '@/components/ui/card'
 interface NoContentProps {
   contentTitle: string
   imageSrc: string
+  children?: React.ReactNode // Componente opcional a ser passado
 }
 
-export function NoContent({ contentTitle, imageSrc }: NoContentProps) {
+export function NoContent({
+  contentTitle,
+  imageSrc,
+  children,
+}: NoContentProps) {
   return (
     <>
       <Card className="flex h-full min-h-screen flex-col items-center justify-center rounded-lg border text-center shadow-lg">
@@ -15,6 +20,8 @@ export function NoContent({ contentTitle, imageSrc }: NoContentProps) {
           alt={contentTitle}
           className="h-auto max-h-[60vh] w-auto max-w-[80vw] object-contain"
         />
+        {children && <div className="mt-4">{children}</div>}{' '}
+        {/* Renderiza o componente passado */}
       </Card>
     </>
   )

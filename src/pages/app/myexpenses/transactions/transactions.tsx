@@ -133,10 +133,14 @@ export function ETransactionsPage() {
             </Table>
           </div>
         ) : (
-          <NoContent
-            contentTitle="Ops! Sem movimentações registradas."
-            imageSrc={transaction}
-          />
+          <div>
+            <NoContent
+              contentTitle="Ops! Sem movimentações registradas."
+              imageSrc={transaction}
+            >
+              <AddTransaction buttonText="Adicionar Nova Movimentação" />
+            </NoContent>
+          </div>
         )}
       </div>
     </>

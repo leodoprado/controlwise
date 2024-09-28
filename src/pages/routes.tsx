@@ -12,6 +12,7 @@ import { EGoalsPage } from './app/myexpenses/goals/goals'
 import { EPlanningPage } from './app/myexpenses/planning/planning'
 import { EReportsPage } from './app/myexpenses/reports/reports'
 import { ETransactionsPage } from './app/myexpenses/transactions/transactions'
+import { WDashboardPage } from './app/mywallet/dashboard/dashboard'
 import { ASignInPage } from './auth/sign-in'
 import { ASignUpPage } from './auth/sign-up'
 
@@ -43,6 +44,11 @@ export const router = createBrowserRouter([
       { path: '/myexpenses/analysis', element: <EAnalysisPage /> },
       { path: '/myexpenses/reports', element: <EReportsPage /> },
     ],
+  },
+  {
+    path: '/',
+    element: <AppLayout />,
+    children: [{ path: '/mywallet/dashboard', element: <WDashboardPage /> }],
   },
   {
     path: '*',
