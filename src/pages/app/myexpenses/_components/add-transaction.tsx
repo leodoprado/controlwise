@@ -2,7 +2,6 @@ import {
   Calculator,
   CircleDollarSignIcon,
   FilePen,
-  Plus,
   TrendingDown,
   TrendingUp,
 } from 'lucide-react'
@@ -16,24 +15,15 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import { Checkbox } from '@/components/ui/checkbox'
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
+import { Dialog, DialogContent } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 import { DatePickerDemo } from './date-picker'
 
-export function AddTransaction({ buttonText }: { buttonText: string }) {
+export function AddTransaction() {
   return (
     <Dialog>
-      <DialogTrigger asChild>
-        <Button
-          variant={'default'}
-          className="flex items-center gap-2 rounded-full px-5 py-3 shadow-md transition-shadow duration-300 hover:shadow-lg"
-        >
-          <span className="text-sm font-bold">{buttonText}</span>
-          <Plus className="h-5 w-5" />
-        </Button>
-      </DialogTrigger>
       <DialogContent className="mx-auto flex w-[400px] max-w-[90vw] items-center justify-center">
         <Tabs defaultValue="account" className="w-full">
           <TabsList className="grid w-full grid-cols-2">

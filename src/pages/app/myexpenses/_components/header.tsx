@@ -3,8 +3,8 @@ import logo from '@/assets/short-logo.ico'
 import { AccountMenu } from '../../../../components/account-menu'
 import { NavLink } from '../../../../components/nav-link'
 import { Separator } from '../../../../components/ui/separator'
-import { AddTransaction } from './add-transaction'
 import { ComboboxDemo } from './months'
+import { ToAdd } from './to-add'
 export interface HeaderProps {}
 
 export function HeaderExpenses() {
@@ -25,7 +25,7 @@ export function HeaderExpenses() {
         </nav>
 
         <div className="flex gap-3">
-          <AddTransaction buttonText="Adicionar" />
+          <ToAdd />
           <ComboboxDemo />
         </div>
 

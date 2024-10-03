@@ -1,9 +1,11 @@
+import { Dialog, DialogTrigger } from '@radix-ui/react-dialog'
 import { Edit, Menu, Trash, TrendingDown, TrendingUp } from 'lucide-react'
 import { Helmet } from 'react-helmet-async'
 
 import transaction from '@/assets/nc-transactio.svg'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
+import { DialogContent } from '@/components/ui/dialog'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -20,11 +22,15 @@ import {
 } from '@/components/ui/table'
 import { NoContent } from '@/pages/no-content'
 
-import { AddTransaction } from '../_components/add-transaction'
+import {
+  AddTransaction,
+  AddTransactionDialog,
+} from '../_components/add-transaction'
 
 // Simulando os dados como se fossem de um banco de dados
 const transactions = [
-  /** {
+  /* {
+    
     id: 1,
     type: 'Despesa',
     category: 'Casa',
@@ -55,9 +61,8 @@ const transactions = [
     status: 'Cancelado',
     statusColor: 'bg-red-400',
     icon: <TrendingDown className="h-4 w-4 text-red-500" />,
-    color: 'text-gray-500',
-  },
-  **/
+    color: 'text-gray-500', 
+  }, */
 ]
 
 export function ETransactionsPage() {
@@ -137,9 +142,7 @@ export function ETransactionsPage() {
             <NoContent
               contentTitle="Ops! Sem movimentações registradas."
               imageSrc={transaction}
-            >
-              <AddTransaction buttonText="Adicionar Nova Movimentação" />
-            </NoContent>
+            ></NoContent>
           </div>
         )}
       </div>
