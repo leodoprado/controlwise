@@ -1,5 +1,13 @@
 import { Dialog, DialogTrigger } from '@radix-ui/react-dialog'
-import { Edit, Menu, Trash, TrendingDown, TrendingUp } from 'lucide-react'
+import {
+  Edit,
+  Info,
+  Menu,
+  Plus,
+  Trash,
+  TrendingDown,
+  TrendingUp,
+} from 'lucide-react'
 import { Helmet } from 'react-helmet-async'
 
 import transaction from '@/assets/nc-transactio.svg'
@@ -20,6 +28,12 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip'
 import { NoContent } from '@/pages/no-content'
 
 import {
@@ -142,7 +156,30 @@ export function ETransactionsPage() {
             <NoContent
               contentTitle="Ops! Sem movimentações registradas."
               imageSrc={transaction}
-            ></NoContent>
+              tooltipContent={
+                <>
+                  Aqui você registra e visualiza novas movimentações.
+                  <br />
+                  Fique por dentro de todas suas Receitas e Despesas.
+                </>
+              }
+            >
+              <div className="mt-4 flex justify-center">
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button
+                      variant={'default'}
+                      className="flex items-center gap-2 rounded-full px-5 py-3 text-sm font-bold shadow-md transition-shadow duration-300 hover:shadow-lg"
+                    >
+                      Adicionar Nova Movimentação
+                      <Plus className="h-5 w-5" />
+                    </Button>
+                  </DialogTrigger>
+
+                  <AddTransaction />
+                </Dialog>
+              </div>
+            </NoContent>
           </div>
         )}
       </div>
