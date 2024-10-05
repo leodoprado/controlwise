@@ -9,6 +9,8 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 
+import { AddGoals } from './add-goals'
+import { AddPlanning } from './add-planning'
 import { AddTransaction } from './add-transaction'
 
 export function ToAdd() {
@@ -42,13 +44,29 @@ export function ToAdd() {
           <AddTransaction />
         </Dialog>
 
-        <DropdownMenuItem className="cursor-pointer p-3">
-          <Presentation className="mr-2 h-4 w-4" /> Planejamento
-        </DropdownMenuItem>
+        <Dialog>
+          <DialogTrigger asChild>
+            <DropdownMenuItem
+              className="cursor-pointer p-3"
+              onSelect={(e) => e.preventDefault()}
+            >
+              <Presentation className="mr-2 h-4 w-4" /> Planejamento
+            </DropdownMenuItem>
+          </DialogTrigger>
+          <AddPlanning />
+        </Dialog>
 
-        <DropdownMenuItem className="cursor-pointer p-3">
-          <Crosshair className="mr-2 h-4 w-4" /> Meta
-        </DropdownMenuItem>
+        <Dialog>
+          <DialogTrigger asChild>
+            <DropdownMenuItem
+              className="cursor-pointer p-3"
+              onSelect={(e) => e.preventDefault()}
+            >
+              <Crosshair className="mr-2 h-4 w-4" /> Meta
+            </DropdownMenuItem>
+          </DialogTrigger>
+          <AddGoals />
+        </Dialog>
       </DropdownMenuContent>
     </DropdownMenu>
   )
