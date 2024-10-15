@@ -6,6 +6,7 @@ import { RouterProvider } from 'react-router-dom'
 import { Toaster } from 'sonner'
 
 import { ThemeProvider } from './components/theme/theme-provider'
+import { AuthProvider } from './contexts/useAuth'
 import { queryClient } from './lib/react-query'
 import { router } from './pages/routes'
 
@@ -15,9 +16,11 @@ function App() {
       <ThemeProvider storageKey="controlwise-theme" defaultTheme="light">
         <Helmet titleTemplate="%s | Control Wise" />
         <Toaster richColors />
-        <QueryClientProvider client={queryClient}>
-          <RouterProvider router={router} />
-        </QueryClientProvider>
+        <AuthProvider>
+          <QueryClientProvider client={queryClient}>
+            <RouterProvider router={router} />
+          </QueryClientProvider>
+        </AuthProvider>
       </ThemeProvider>
     </HelmetProvider>
   )

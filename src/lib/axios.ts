@@ -16,3 +16,12 @@ api.interceptors.request.use((config) => {
 
   return config
 })
+
+if (env.VITE_ENABLE_API_DELAY) {
+  api.interceptors.request.use(async (config) => {
+    await new Promise((resolve) =>
+      setTimeout(resolve, Math.round(Math.random() * 4000)),
+    )
+    return config
+  })
+}

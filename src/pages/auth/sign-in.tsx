@@ -1,24 +1,26 @@
 import { useMutation } from '@tanstack/react-query'
 import { Helmet } from 'react-helmet-async'
 import { useForm } from 'react-hook-form'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { toast } from 'sonner'
 import { z } from 'zod'
 
-import { signIn } from '@/api/sign-in'
 import logo from '@/assets/logo.svg'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { useAuth } from '@/contexts/useAuth'
 
 const signInForm = z.object({
   email: z.string().email(),
+  password: z.string(),
 })
 
 type SignInForm = z.infer<typeof signInForm>
 
 export function ASignInPage() {
   const [searchParams] = useSearchParams()
+  const { login } = useAuth()
 
   const {
     register,
@@ -30,20 +32,21 @@ export function ASignInPage() {
     },
   })
 
+  const navigate = useNavigate()
+
   const { mutateAsync: signInAccountFn } = useMutation({
-    mutationFn: signIn,
+    mutationFn: login,
   })
 
   async function handleSignIn(data: SignInForm) {
     try {
-      await signInAccountFn({ email: data.email })
+      await signInAccountFn({ email: data.email, password: data.password })
 
-      toast.success('Enviamos um link de autenticação para seu e-mail.', {
-        action: {
-          label: 'Reenviar',
-          onClick: () => handleSignIn(data),
-        },
-      })
+      toast.success('Autenticação realizada com sucesso.')
+
+      setTimeout(() => {
+        navigate('/myexpenses/dashboard')
+      }, 2000)
     } catch (error) {
       toast.error('Credenciais inválidas!')
     }
@@ -66,6 +69,11 @@ export function ASignInPage() {
             <div className="space-y-2">
               <Label htmlFor="email">E-mail</Label>
               <Input id="email" type="email" {...register('email')} />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="password">Senha</Label>
+              <Input id="password" type="password" {...register('password')} />
             </div>
 
             <Button

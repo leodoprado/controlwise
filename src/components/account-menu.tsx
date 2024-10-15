@@ -1,5 +1,8 @@
+import { useQuery } from '@tanstack/react-query'
 import { Banknote, ChevronDown, LogOut, Settings, Wallet } from 'lucide-react'
 import { NavLink } from 'react-router-dom'
+
+import { getProfile } from '@/api/get-profile'
 
 import { Button } from './ui/button'
 import {
@@ -10,6 +13,11 @@ import {
 } from './ui/dropdown-menu'
 
 export function AccountMenu() {
+  const { data: profile } = useQuery({
+    queryKey: ['profile'],
+    queryFn: getProfile,
+  })
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -17,7 +25,7 @@ export function AccountMenu() {
           variant={'outline'}
           className="flex select-none items-center gap-1 rounded-md"
         >
-          Leonardo do Prado
+          {profile?.name}
           <ChevronDown className="h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>

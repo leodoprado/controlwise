@@ -1,14 +1,14 @@
 import { useQuery } from '@tanstack/react-query'
 import { createContext, useContext, useEffect, useState } from 'react'
 
-import { authenticateUser } from '@/api/sign-in'
+import { authenticateUser } from '@/api/authenticate-user'
 import { getProfile as getProfileAPI } from '@/api/get-profile'
 
 interface AuthContextType {
   isAuth: boolean
   user: {
     email: string
-    name: string
+    name: string | null
   } | null
   login: (props: {
     email: string
@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     queryFn: async () => {
       if (isAuth) {
         const response = await getProfileAPI()
-        return response.user
+        return response
       }
       return null
     },
@@ -67,7 +67,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   }
 
   return (
-    <AuthContext.Provider value={{ isAuth, login, user, logout }}>
+    <AuthContext.Provider value={{ isAuth, login, logout, user }}>
       {children}
     </AuthContext.Provider>
   )
