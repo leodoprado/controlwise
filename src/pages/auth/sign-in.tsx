@@ -1,11 +1,11 @@
 import { useMutation } from '@tanstack/react-query'
 import { Helmet } from 'react-helmet-async'
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { toast } from 'sonner'
 import { z } from 'zod'
 
-import { signInAccount } from '@/api/signin-account'
+import { signIn } from '@/api/sign-in'
 import logo from '@/assets/logo.svg'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -13,34 +13,39 @@ import { Label } from '@/components/ui/label'
 
 const signInForm = z.object({
   email: z.string().email(),
-  password: z.string(),
 })
 
 type SignInForm = z.infer<typeof signInForm>
 
 export function ASignInPage() {
+  const [searchParams] = useSearchParams()
+
   const {
     register,
     handleSubmit,
     formState: { isSubmitting },
-  } = useForm<SignInForm>()
+  } = useForm<SignInForm>({
+    defaultValues: {
+      email: searchParams.get('email') ?? '',
+    },
+  })
 
   const { mutateAsync: signInAccountFn } = useMutation({
-    mutationFn: signInAccount,
+    mutationFn: signIn,
   })
 
   async function handleSignIn(data: SignInForm) {
     try {
-      await signInAccountFn({ email: data.email, password: data.password })
+      await signInAccountFn({ email: data.email })
 
-      toast.success('Usuário autenticado com sucesso!', {
+      toast.success('Enviamos um link de autenticação para seu e-mail.', {
         action: {
-          label: 'Login',
+          label: 'Reenviar',
           onClick: () => handleSignIn(data),
         },
       })
     } catch (error) {
-      toast.error('Erro ao autenticar usuário.')
+      toast.error('Credenciais inválidas!')
     }
   }
 
@@ -61,11 +66,6 @@ export function ASignInPage() {
             <div className="space-y-2">
               <Label htmlFor="email">E-mail</Label>
               <Input id="email" type="email" {...register('email')} />
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="senha">Senha</Label>
-              <Input id="senha" type="password" {...register('password')} />
             </div>
 
             <Button

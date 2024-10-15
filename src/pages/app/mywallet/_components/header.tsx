@@ -14,11 +14,11 @@ export function HeaderWallet() {
         <Separator orientation="vertical" className="h-6" />
 
         <nav className="flex items-center space-x-4 lg:space-x-6">
-          <NavLink to={'/myexpenses/dashboard'}>Resumo</NavLink>
-          <NavLink to={'/myexpenses/analysis'}>Proventos</NavLink>
-          <NavLink to={'/myexpenses/transactions'}>Gráficos</NavLink>
-          <NavLink to={'/myexpenses/planning'}>Lançamentos</NavLink>
-          <NavLink to={'/myexpenses/goals'}>IRPF</NavLink>
+          <NavLink to={'/mywallet/dashboard'}>Resumo</NavLink>
+          <NavLink to={'/mywallet/earnings'}>Proventos</NavLink>
+          <NavLink to={'/mywallet/graphics'}>Gráficos</NavLink>
+          <NavLink to={'/mywallet/releases'}>Lançamentos</NavLink>
+          <NavLink to={'/mywallet/irpf'}>IRPF</NavLink>
         </nav>
 
         <div className="ml-auto flex items-center gap-6">
