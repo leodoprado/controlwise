@@ -12,22 +12,16 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from './ui/dropdown-menu'
+import { Skeleton } from './ui/skeleton'
 
 export function AccountMenu() {
-  // const navigate = useNavigate()
   const { logout } = useAuth()
 
-  const { data: profile } = useQuery({
+  const { data: profile, isLoading: isLoadingProfile } = useQuery({
     queryKey: ['profile'],
     queryFn: getProfile,
+    staleTime: Infinity,
   })
-
-  /* const { mutateAsync: signOutFn, isPending: isSigningOut } = useMutation({
-    mutationFn: logout,
-    onSuccess: () => {
-      navigate('/', { replace: true })
-    },
-  }) */
 
   return (
     <DropdownMenu>
@@ -36,7 +30,7 @@ export function AccountMenu() {
           variant={'outline'}
           className="flex select-none items-center gap-1 rounded-md"
         >
-          {profile?.nome}
+          {isLoadingProfile ? <Skeleton className="h-4 w-40" /> : profile?.nome}
           <ChevronDown className="h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
