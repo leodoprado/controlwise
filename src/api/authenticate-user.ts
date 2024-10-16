@@ -18,8 +18,5 @@ export async function authenticateUser({
     password,
   })
 
-  // Verifique se a API realmente retornou o token
-  console.log('Resposta da API:', response.data)
-
-  return response.data // Deve conter o accessToken
+  return response.data
 }

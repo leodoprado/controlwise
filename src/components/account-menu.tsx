@@ -3,6 +3,7 @@ import { Banknote, ChevronDown, LogOut, Settings, Wallet } from 'lucide-react'
 import { NavLink } from 'react-router-dom'
 
 import { getProfile } from '@/api/get-profile'
+import { useAuth } from '@/contexts/useAuth'
 
 import { Button } from './ui/button'
 import {
@@ -13,10 +14,20 @@ import {
 } from './ui/dropdown-menu'
 
 export function AccountMenu() {
+  // const navigate = useNavigate()
+  const { logout } = useAuth()
+
   const { data: profile } = useQuery({
     queryKey: ['profile'],
     queryFn: getProfile,
   })
+
+  /* const { mutateAsync: signOutFn, isPending: isSigningOut } = useMutation({
+    mutationFn: logout,
+    onSuccess: () => {
+      navigate('/', { replace: true })
+    },
+  }) */
 
   return (
     <DropdownMenu>
@@ -25,7 +36,7 @@ export function AccountMenu() {
           variant={'outline'}
           className="flex select-none items-center gap-1 rounded-md"
         >
-          {profile?.name}
+          {profile?.nome}
           <ChevronDown className="h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
@@ -53,8 +64,14 @@ export function AccountMenu() {
         </NavLink>
 
         <NavLink to="/">
-          <DropdownMenuItem className="cursor-pointer p-3 text-rose-500">
-            <LogOut className="mr-2 h-4 w-4" /> Sair
+          <DropdownMenuItem
+            asChild
+            className="cursor-pointer p-3 text-rose-500"
+          >
+            <button className="w-full" onClick={() => logout()}>
+              <LogOut className="mr-2 h-4 w-4" />
+              <span>Sair</span>
+            </button>
           </DropdownMenuItem>
         </NavLink>
       </DropdownMenuContent>

@@ -1,5 +1,7 @@
+import { useQuery } from '@tanstack/react-query'
 import * as React from 'react'
 
+import { getProfile } from '@/api/get-profile'
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -13,6 +15,11 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 
 export function CardWithForm() {
+  const { data: profile } = useQuery({
+    queryKey: ['profile'],
+    queryFn: getProfile,
+  })
+
   return (
     <Card className="w-full">
       <CardHeader>
@@ -26,19 +33,19 @@ export function CardWithForm() {
               <Label htmlFor="nome" className="font-semibold">
                 Nome
               </Label>
-              <Input id="nome" />
-            </div>
-            <div className="flex flex-col space-y-2.5">
-              <Label htmlFor="cpf" className="font-semibold">
-                CPF
-              </Label>
-              <Input id="cpf" />
+              <Input id="nome" value={profile?.nome} />
             </div>
             <div className="flex flex-col space-y-2.5">
               <Label htmlFor="email" className="font-semibold">
                 Email
               </Label>
               <Input id="email" />
+            </div>
+            <div className="flex flex-col space-y-2.5">
+              <Label htmlFor="cpf" className="font-semibold">
+                CPF
+              </Label>
+              <Input id="cpf" />
             </div>
             <div className="flex flex-col space-y-2.5">
               <Label htmlFor="telefone" className="font-semibold">

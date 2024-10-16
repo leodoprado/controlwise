@@ -12,7 +12,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 
 const signUpForm = z.object({
-  name: z.string(),
+  nome: z.string(),
   email: z.string().email(),
   password: z.string(),
 })
@@ -35,7 +35,7 @@ export function ASignUpPage() {
   async function handleSignUp(data: SignUpForm) {
     try {
       await createAccountFn({
-        name: data.name,
+        nome: data.nome,
         email: data.email,
         password: data.password,
       })
@@ -66,7 +66,7 @@ export function ASignUpPage() {
           <form onSubmit={handleSubmit(handleSignUp)} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="nome">Nome</Label>
-              <Input id="nome" type="text" {...register('name')} />
+              <Input id="nome" type="text" {...register('nome')} />
             </div>
 
             <div className="space-y-2">

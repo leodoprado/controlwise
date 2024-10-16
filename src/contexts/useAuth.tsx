@@ -8,7 +8,7 @@ interface AuthContextType {
   isAuth: boolean
   user: {
     email: string
-    name: string | null
+    nome: string
   } | null
   login: (props: {
     email: string
