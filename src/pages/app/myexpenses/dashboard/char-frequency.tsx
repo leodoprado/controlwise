@@ -16,25 +16,23 @@ import {
   ChartTooltipContent,
 } from '@/components/ui/chart'
 
-export const description = 'A simple area chart'
-
 const chartData = [
-  { month: 'Jan', despesa: 1900.12 },
-  { month: 'Fev', despesa: 648.01 },
-  { month: 'Mar', despesa: 874.1 },
-  { month: 'Abr', despesa: 731.32 },
-  { month: 'Mai', despesa: 982.23 },
-  { month: 'Jun', despesa: 1459.12 },
-  { month: 'Jul', despesa: 1523 },
-  { month: 'Ago', despesa: 418 },
-  { month: 'Set', despesa: 1630.12 },
-  { month: 'Out', despesa: 1021 },
-  { month: 'Nov', despesa: 874 },
-  { month: 'Dez', despesa: 1784.21 },
+  { month: 'Janeiro', despesa: 2800 },
+  { month: 'Fevereiro', despesa: 2900 },
+  { month: 'Março', despesa: 3100 },
+  { month: 'Abril', despesa: 3300 },
+  { month: 'Maio', despesa: 3200 },
+  { month: 'Junho', despesa: 3500 },
+  { month: 'Julho', despesa: 3600 },
+  { month: 'Agosto', despesa: 2850 },
+  { month: 'Setembro', despesa: 3700 },
+  { month: 'Outubro', despesa: 3800 },
+  { month: 'Novembro', despesa: 2900 },
+  { month: 'Dezembro', despesa: 4000 },
 ]
 
 const chartConfig = {
-  despesa: {
+  desktop: {
     label: 'Despesa',
     color: 'hsl(var(--chart-1))',
   },
@@ -44,13 +42,13 @@ export function ChartFrequency() {
   return (
     <Card className="col-span-6">
       <CardHeader>
-        <CardTitle>Frequência de Gastos</CardTitle>
+        <CardTitle>Frequência de Despesas</CardTitle>
         <CardDescription>2024</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer
-          config={chartConfig}
           className="mx-auto h-[350px] w-[100%]"
+          config={chartConfig}
         >
           <AreaChart
             accessibilityLayer
@@ -70,14 +68,14 @@ export function ChartFrequency() {
             />
             <ChartTooltip
               cursor={false}
-              content={<ChartTooltipContent indicator="line" />}
+              content={<ChartTooltipContent indicator="dot" />}
             />
             <Area
               dataKey="despesa"
-              type="natural"
-              fill="var(--color-despesa)"
+              type="linear"
+              fill="var(--color-desktop)"
               fillOpacity={0.4}
-              stroke="var(--color-despesa)"
+              stroke="var(--color-desktop)"
             />
           </AreaChart>
         </ChartContainer>

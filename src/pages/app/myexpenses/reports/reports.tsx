@@ -10,6 +10,7 @@ export function EReportsPage() {
       <NoContent
         contentTitle="Ops! Sem Relatórios Gerados."
         imageSrc={imgnocontent}
+        buttonText="Gerar Novo Relatório"
       />
     </>
   )

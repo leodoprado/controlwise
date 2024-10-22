@@ -17,13 +17,13 @@ import {
 } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { insertMaskInPhone } from '@/functions/phone-mask'
 
-// Definir o esquema de validação do formulário
 const profileSchema = z.object({
   nome: z.string().min(1),
   email: z.string().email(),
   telefone: z.string(),
-  senha: z.string().optional(), // Senha opcional
+  senha: z.string().optional(),
 })
 
 type ProfileSchema = z.infer<typeof profileSchema>
@@ -31,7 +31,6 @@ type ProfileSchema = z.infer<typeof profileSchema>
 export function CardWithForm() {
   const queryClient = useQueryClient()
 
-  // Buscar dados do perfil
   const { data: profile } = useQuery({
     queryKey: ['profile'],
     queryFn: getProfile,
@@ -41,19 +40,25 @@ export function CardWithForm() {
   const {
     register,
     handleSubmit,
+    setValue,
     reset,
     formState: { isSubmitting },
+    watch,
   } = useForm<ProfileSchema>({
     resolver: zodResolver(profileSchema),
     defaultValues: {
       nome: profile?.nome ?? '',
       email: profile?.email ?? '',
       telefone: profile?.telefone ?? '',
-      senha: '', // Certifique-se de que o campo senha está vazio no início
+      senha: '',
     },
   })
 
-  // Função para atualizar o cache do perfil
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const maskedPhone = insertMaskInPhone(e.target.value)
+    setValue('telefone', maskedPhone, { shouldValidate: true })
+  }
+
   function updatedProfileCache({ nome, email, telefone }: ProfileSchema) {
     const cached = queryClient.getQueryData<ProfileSchema>(['profile'])
 
@@ -69,7 +74,6 @@ export function CardWithForm() {
     return cached
   }
 
-  // Função de mutação para atualizar o perfil
   const { mutateAsync: updateProfileFn } = useMutation({
     mutationFn: updateProfile,
     onMutate({ nome, email, telefone }) {
@@ -83,22 +87,18 @@ export function CardWithForm() {
     },
   })
 
-  // Função para lidar com o envio do formulário
   async function handleUpdateProfile(data: ProfileSchema) {
     const { nome, email, telefone, senha } = data
 
     try {
-      // Enviar a senha somente se ela for preenchida, caso contrário, passe undefined
       await updateProfileFn({
         nome,
         email,
         telefone,
-        senha: senha?.trim() === '' ? undefined : senha, // Enviar undefined se a senha for vazia
+        senha: senha?.trim() === '' ? undefined : senha,
       })
 
       toast.success('Perfil atualizado com sucesso!')
-
-      // Limpar o campo de senha após a submissão do formulário
       reset({ ...data, senha: '' })
     } catch {
       toast.error('Falha ao atualizar dados do perfil!')
@@ -131,7 +131,12 @@ export function CardWithForm() {
               <Label htmlFor="telefone" className="font-semibold">
                 Telefone
               </Label>
-              <Input id="telefone" {...register('telefone')} />
+              <Input
+                id="telefone"
+                {...register('telefone')}
+                onChange={handlePhoneChange}
+                value={watch('telefone')}
+              />
             </div>
             <div className="flex flex-col space-y-2.5">
               <Label htmlFor="senha" className="font-semibold">

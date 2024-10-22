@@ -163,23 +163,9 @@ export function ETransactionsPage() {
                   Fique por dentro de todas suas Receitas e Despesas.
                 </>
               }
-            >
-              <div className="mt-4 flex justify-center">
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button
-                      variant={'default'}
-                      className="flex items-center gap-2 rounded-full px-5 py-3 text-sm font-bold shadow-md transition-shadow duration-300 hover:shadow-lg"
-                    >
-                      Adicionar Nova Movimentação
-                      <Plus className="h-5 w-5" />
-                    </Button>
-                  </DialogTrigger>
-
-                  <AddTransaction />
-                </Dialog>
-              </div>
-            </NoContent>
+              buttonText="Adicionar Nova Movimentação"
+              dialogContent={<AddTransaction />}
+            ></NoContent>
           </div>
         )}
       </div>

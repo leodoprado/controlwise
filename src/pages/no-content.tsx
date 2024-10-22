@@ -1,6 +1,8 @@
-import { Info } from 'lucide-react'
+import { Info, Plus } from 'lucide-react'
 
+import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
+import { Dialog, DialogTrigger } from '@/components/ui/dialog'
 import {
   Tooltip,
   TooltipContent,
@@ -11,15 +13,19 @@ import {
 interface NoContentProps {
   contentTitle: string
   imageSrc: string
-  children?: React.ReactNode // Componente opcional a ser passado
-  tooltipContent?: React.ReactNode // Novo prop para o conteúdo do Tooltip
+  children?: React.ReactNode
+  tooltipContent?: React.ReactNode
+  buttonText?: string
+  dialogContent?: React.ReactNode
 }
 
 export function NoContent({
   contentTitle,
   imageSrc,
   children,
-  tooltipContent, // Recebe o conteúdo do Tooltip como prop
+  tooltipContent,
+  buttonText,
+  dialogContent,
 }: NoContentProps) {
   return (
     <>
@@ -45,6 +51,23 @@ export function NoContent({
             </TooltipProvider>
           )}
         </h1>
+
+        <div className="mb-4 mt-2 flex justify-center">
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button
+                variant={'outline'}
+                className="flex items-center gap-2 rounded-full px-5 py-3 text-sm font-bold shadow-md transition-shadow duration-300 hover:shadow-lg"
+              >
+                {buttonText}
+                <Plus className="h-5 w-5" />
+              </Button>
+            </DialogTrigger>
+
+            {dialogContent}
+          </Dialog>
+        </div>
+
         <img
           src={imageSrc}
           alt={contentTitle}

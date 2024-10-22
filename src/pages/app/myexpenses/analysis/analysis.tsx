@@ -10,6 +10,14 @@ export function EAnalysisPage() {
       <NoContent
         contentTitle="Ops! Sem Análises Realizadas."
         imageSrc={nocontent}
+        tooltipContent={
+          <>
+            Aqui você realiza uma análise sob um determinado período.
+            <br />
+            Fique por dentro dos detalhes minunciosos de suas despesas.
+          </>
+        }
+        buttonText="Realizar Nova Análise"
       />
     </>
   )

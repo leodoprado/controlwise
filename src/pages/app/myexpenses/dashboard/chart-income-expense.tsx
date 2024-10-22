@@ -12,37 +12,33 @@ import {
 import {
   ChartConfig,
   ChartContainer,
-  ChartLegend,
-  ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
 } from '@/components/ui/chart'
 
-export const description = 'A stacked bar chart with a legend'
-
 const chartData = [
-  { month: 'Jan', despesa: 1900.12, receita: 1973.27 - 1900.12 },
-  { month: 'Fev', despesa: 648.01, receita: 1973.27 - 648.01 },
-  { month: 'Mar', despesa: 874.1, receita: 1220 - 874.1 },
-  { month: 'Abr', despesa: 731.32, receita: 2324 - 731.32 },
-  { month: 'Mai', despesa: 982.23, receita: 2129.12 - 982.23 },
-  { month: 'Jun', despesa: 1459.12, receita: 3232.2 - 1459.12 },
-  { month: 'Jul', despesa: 1523, receita: 2478.32 - 1523 },
-  { month: 'Ago', despesa: 418, receita: 1976.12 - 418 },
-  { month: 'Set', despesa: 1630.12, receita: 2954.45 - 1630.12 },
-  { month: 'Out', despesa: 1021, receita: 3120 - 1021 },
-  { month: 'Nov', despesa: 874, receita: 2876 - 874 },
-  { month: 'Dez', despesa: 4431, receita: 1232.12 - 3012.21 },
+  { month: 'Janeiro', receita: 3500, despesa: 2800 },
+  { month: 'Fevereiro', receita: 3700, despesa: 2900 },
+  { month: 'Março', receita: 3600, despesa: 3100 },
+  { month: 'Abril', receita: 3400, despesa: 3300 },
+  { month: 'Maio', receita: 3800, despesa: 3200 },
+  { month: 'Junho', receita: 4000, despesa: 3500 },
+  { month: 'Julho', receita: 4100, despesa: 3600 },
+  { month: 'Agosto', receita: 3900, despesa: 2850 },
+  { month: 'Setembro', receita: 4200, despesa: 3700 },
+  { month: 'Outubro', receita: 4300, despesa: 3800 },
+  { month: 'Novembro', receita: 4400, despesa: 2900 },
+  { month: 'Dezembro', receita: 4600, despesa: 4000 },
 ]
 
 const chartConfig = {
-  despesa: {
-    label: 'Despesa',
-    color: 'hsl(var(--chart-1))', // Vermelho
-  },
-  receita: {
+  desktop: {
     label: 'Receita',
-    color: 'hsl(var(--chart-2))', // Outra cor para a receita
+    color: 'hsl(var(--chart-2))',
+  },
+  mobile: {
+    label: 'Despesa',
+    color: 'hsl(var(--chart-1))',
   },
 } satisfies ChartConfig
 
@@ -53,17 +49,12 @@ export function ChartBalance() {
         <CardTitle>Balanço (Receita - Despesa)</CardTitle>
         <CardDescription>2024</CardDescription>
       </CardHeader>
-      <CardContent className="p-0">
-        {' '}
+      <CardContent>
         <ChartContainer
           config={chartConfig}
-          className="mx-auto h-[350px] w-[100%]" // Reduzindo o tamanho proporcionalmente
+          className="mx-auto h-[350px] w-[100%]" // Definindo a mesma altura que o gráfico de área
         >
-          <BarChart
-            data={chartData}
-            width={400} // Ajuste o width para reduzir o tamanho
-            height={250} // Ajuste o height para reduzir o tamanho
-          >
+          <BarChart accessibilityLayer data={chartData}>
             <CartesianGrid vertical={false} />
             <XAxis
               dataKey="month"
@@ -72,20 +63,12 @@ export function ChartBalance() {
               axisLine={false}
               tickFormatter={(value) => value.slice(0, 3)}
             />
-            <ChartTooltip content={<ChartTooltipContent hideLabel />} />
-            <ChartLegend content={<ChartLegendContent />} />
-            <Bar
-              dataKey="despesa"
-              stackId="a"
-              fill="var(--color-despesa)" // Despesa embaixo
-              radius={[0, 0, 4, 4]}
+            <ChartTooltip
+              cursor={false}
+              content={<ChartTooltipContent indicator="dot" />}
             />
-            <Bar
-              dataKey="receita"
-              stackId="a"
-              fill="var(--color-receita)" // Receita em cima
-              radius={[4, 4, 0, 0]}
-            />
+            <Bar dataKey="receita" fill="var(--color-desktop)" radius={0} />
+            <Bar dataKey="despesa" fill="var(--color-mobile)" radius={0} />
           </BarChart>
         </ChartContainer>
       </CardContent>
