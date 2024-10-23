@@ -40,12 +40,8 @@ export function ASignUpPage() {
         password: data.password,
       })
 
-      toast.success('Sucesso ao cadastrar usuário!', {
-        action: {
-          label: 'Acessar Painel',
-          onClick: () => navigate(`/?email=${data.email}`),
-        },
-      })
+      toast.success('Sucesso ao cadastrar usuário!')
+      navigate('/')
     } catch (error) {
       toast.error('Erro ao cadastrar usuário!')
     }

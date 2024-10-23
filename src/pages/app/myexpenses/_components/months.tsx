@@ -1,6 +1,6 @@
 'use client'
 
-import { Check } from 'lucide-react'
+import { Check, ChevronDown } from 'lucide-react'
 import * as React from 'react'
 
 import { Button } from '@/components/ui/button'
@@ -48,11 +48,12 @@ export function ComboboxDemo() {
           variant="secondary"
           role="combobox"
           aria-expanded={open}
-          className="w-[120px] justify-center gap-2 rounded-full border font-semibold"
+          className="flex w-[140px] items-center justify-center gap-1 rounded-full border font-semibold"
         >
           {value
             ? frameworks.find((framework) => framework.value === value)?.label
-            : 'Select framework...'}
+            : 'Select month...'}
+          <ChevronDown className="h-4 w-4" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">

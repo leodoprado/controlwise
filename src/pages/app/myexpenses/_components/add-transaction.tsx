@@ -1,12 +1,15 @@
 // MovimentacaoDialogContent.tsx
+import { zodResolver } from '@hookform/resolvers/zod'
 import {
+  Banknote,
   Bookmark,
-  Calculator,
   CircleDollarSignIcon,
   FilePen,
   TrendingDown,
   TrendingUp,
 } from 'lucide-react'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -21,10 +24,26 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Switch } from '@/components/ui/switch'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { insertMaskInMoney } from '@/functions/money-mask'
 
 import { DatePickerDemo } from './date-picker'
 
+const transactionSchema = z.object({
+  transactionValue: z.string(),
+})
+
+type TransactionSchema = z.infer<typeof transactionSchema>
+
 export function AddTransaction() {
+  const { setValue, watch } = useForm<TransactionSchema>({
+    resolver: zodResolver(transactionSchema),
+  })
+
+  const handleMoneyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const maskedMoney = insertMaskInMoney(e.target.value)
+    setValue('transactionValue', maskedMoney, { shouldValidate: true })
+  }
+
   return (
     <DialogContent className="mx-auto flex w-[400px] max-w-[90vw] items-center justify-center">
       <Tabs defaultValue="account" className="w-full">
@@ -49,9 +68,15 @@ export function AddTransaction() {
               <div className="space-y-1">
                 <div className="relative">
                   <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-                    <Calculator className="h-4 w-4 text-gray-500" />
+                    <Banknote className="h-4 w-4 text-gray-500" />
                   </span>
-                  <Input id="name" className="pl-10" placeholder="0,00" />
+                  <Input
+                    id="transactionValue"
+                    className="pl-10"
+                    placeholder="0,00"
+                    onChange={handleMoneyChange}
+                    value={watch('transactionValue')}
+                  />
                 </div>
               </div>
               <div className="space-y-1">
@@ -108,9 +133,15 @@ export function AddTransaction() {
               <div className="space-y-1">
                 <div className="relative">
                   <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-                    <Calculator className="h-4 w-4 text-gray-500" />
+                    <Banknote className="h-4 w-4 text-gray-500" />
                   </span>
-                  <Input id="name" className="pl-10" placeholder="0,00" />
+                  <Input
+                    id="transactionValue"
+                    className="pl-10"
+                    placeholder="0,00"
+                    onChange={handleMoneyChange}
+                    value={watch('transactionValue')}
+                  />
                 </div>
               </div>
               <div className="space-y-1">
