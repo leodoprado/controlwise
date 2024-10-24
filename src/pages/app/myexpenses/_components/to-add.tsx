@@ -1,4 +1,4 @@
-import { ArrowLeftRight, Crosshair, Plus, Presentation } from 'lucide-react'
+import { ArrowLeftRight, Flag, Plus, Presentation } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogTrigger } from '@/components/ui/dialog'
@@ -9,7 +9,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 
-import { AddGoals } from './add-goals'
+import { AddObjective } from './add-objective'
 import { AddPlanning } from './add-planning'
 import { AddTransaction } from './add-transaction'
 
@@ -30,7 +30,6 @@ export function ToAdd() {
         align="center"
         className="border-5 mt-1 w-48 transform p-0 shadow-2xl transition-all duration-500 ease-in-out"
       >
-        {/* Dialog wrapping the DialogTrigger and DialogContent */}
         <Dialog>
           <DialogTrigger asChild>
             <DropdownMenuItem
@@ -62,10 +61,10 @@ export function ToAdd() {
               className="cursor-pointer p-3"
               onSelect={(e) => e.preventDefault()}
             >
-              <Crosshair className="mr-2 h-4 w-4" /> Meta
+              <Flag className="mr-2 h-4 w-4" /> Objetivo
             </DropdownMenuItem>
           </DialogTrigger>
-          <AddGoals />
+          <AddObjective />
         </Dialog>
       </DropdownMenuContent>
     </DropdownMenu>

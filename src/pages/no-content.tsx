@@ -52,21 +52,23 @@ export function NoContent({
           )}
         </h1>
 
-        <div className="mb-4 mt-2 flex justify-center">
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button
-                variant={'outline'}
-                className="flex items-center gap-2 rounded-full px-5 py-3 text-sm font-bold shadow-md transition-shadow duration-300 hover:shadow-lg"
-              >
-                {buttonText}
-                <Plus className="h-5 w-5" />
-              </Button>
-            </DialogTrigger>
+        {buttonText && (
+          <div className="mb-4 mt-2 flex justify-center">
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button
+                  variant={'outline'}
+                  className="flex items-center gap-2 rounded-full px-5 py-3 text-sm font-bold shadow-md transition-shadow duration-300 hover:shadow-lg"
+                >
+                  {buttonText}
+                  <Plus className="h-5 w-5" />
+                </Button>
+              </DialogTrigger>
 
-            {dialogContent}
-          </Dialog>
-        </div>
+              {dialogContent}
+            </Dialog>
+          </div>
+        )}
 
         <img
           src={imageSrc}

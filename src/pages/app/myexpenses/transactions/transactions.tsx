@@ -43,8 +43,7 @@ import {
 
 // Simulando os dados como se fossem de um banco de dados
 const transactions = [
-  /* {
-    
+  {
     id: 1,
     type: 'Despesa',
     category: 'Casa',
@@ -75,8 +74,8 @@ const transactions = [
     status: 'Cancelado',
     statusColor: 'bg-red-400',
     icon: <TrendingDown className="h-4 w-4 text-red-500" />,
-    color: 'text-gray-500', 
-  }, */
+    color: 'text-gray-500',
+  },
 ]
 
 export function ETransactionsPage() {
@@ -95,7 +94,7 @@ export function ETransactionsPage() {
                   <TableHead className="w-1/5">Realizado em</TableHead>
                   <TableHead className="w-1/6">Valor</TableHead>
                   <TableHead className="w-1/5">Status</TableHead>
-                  <TableHead className="w-1/6">Opções</TableHead>
+                  <TableHead className="w-1/6">Ações</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>

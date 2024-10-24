@@ -3,7 +3,7 @@ import logo from '@/assets/short-logo.ico'
 import { AccountMenu } from '../../../../components/account-menu'
 import { NavLink } from '../../../../components/nav-link'
 import { Separator } from '../../../../components/ui/separator'
-import { ComboboxDemo } from './months'
+import { PopoverMonths } from './popover-months'
 import { ToAdd } from './to-add'
 export interface HeaderProps {}
 
@@ -19,14 +19,14 @@ export function HeaderExpenses() {
           <NavLink to={'/myexpenses/dashboard'}>Painel</NavLink>
           <NavLink to={'/myexpenses/transactions'}>Movimentações</NavLink>
           <NavLink to={'/myexpenses/planning'}>Planejamentos</NavLink>
-          <NavLink to={'/myexpenses/goals'}>Metas</NavLink>
+          <NavLink to={'/myexpenses/objective'}>Objetivos</NavLink>
           <NavLink to={'/myexpenses/analysis'}>Análises</NavLink>
           <NavLink to={'/myexpenses/reports'}>Relatórios</NavLink>
         </nav>
 
         <div className="flex gap-3">
           <ToAdd />
-          <ComboboxDemo />
+          <PopoverMonths />
         </div>
 
         <div className="ml-auto flex items-center gap-6">

@@ -17,7 +17,6 @@ import {
 } from '@/components/ui/popover'
 import { cn } from '@/lib/utils'
 
-// Lista de meses
 const frameworks = [
   { value: 'jan', label: 'Janeiro' },
   { value: 'fev', label: 'Fevereiro' },
@@ -33,8 +32,7 @@ const frameworks = [
   { value: 'dez', label: 'Dezembro' },
 ]
 
-export function ComboboxDemo() {
-  // Função para obter o mês atual da máquina
+export function PopoverMonths() {
   const currentMonthIndex = new Date().getMonth()
   const currentMonth = frameworks[currentMonthIndex]?.value
 
