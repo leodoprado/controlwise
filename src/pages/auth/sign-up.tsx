@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
 import { z } from 'zod'
 
-import { createAccount } from '@/api/create-account'
+import { createAccount } from '@/api/POST/create-account'
 import logo from '@/assets/logo.svg'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'

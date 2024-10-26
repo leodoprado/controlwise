@@ -137,7 +137,7 @@ export function AddTransaction() {
                   </span>
                   <Input
                     id="transactionValue"
-                    className="pl-10"
+                    className="pl-10 focus-visible:ring-red-500"
                     placeholder="0,00"
                     onChange={handleMoneyChange}
                     value={watch('transactionValue')}
@@ -149,12 +149,16 @@ export function AddTransaction() {
                   <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                     <Bookmark className="h-4 w-4 text-gray-500" />
                   </span>
-                  <Input id="name" className="pl-10" placeholder="Categoria" />
+                  <Input
+                    id="name"
+                    className="pl-10 focus-visible:ring-red-500"
+                    placeholder="Categoria"
+                  />
                 </div>
               </div>
               <div className="flex items-center space-x-2">
                 <Switch
-                  className="data-[state=checked]:bg-destructive"
+                  className="focus-visible:ring-red-500 data-[state=checked]:bg-destructive"
                   id="airplane-mode"
                 />
                 <Label htmlFor="airplane-mode">Despesa Executada</Label>
@@ -171,21 +175,24 @@ export function AddTransaction() {
                   </span>
                   <Input
                     id="username"
-                    className="pl-10"
+                    className="pl-10 focus-visible:ring-red-500"
                     placeholder="Descrição"
                   />
                 </div>
               </div>
               <div className="flex items-center space-x-2">
                 <Switch
-                  className="data-[state=checked]:bg-destructive"
+                  className="focus-visible:ring-red-500 data-[state=checked]:bg-destructive"
                   id="airplane-mode"
                 />
                 <Label htmlFor="airplane-mode">Despesa Executada</Label>
               </div>
             </CardContent>
             <CardFooter>
-              <Button variant={'outline'} className="w-full">
+              <Button
+                variant={'outline'}
+                className="w-full focus-visible:ring-red-500"
+              >
                 Adicionar
               </Button>
             </CardFooter>

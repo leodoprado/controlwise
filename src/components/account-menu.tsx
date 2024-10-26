@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import { Banknote, ChevronDown, LogOut, Settings, Wallet } from 'lucide-react'
 import { NavLink } from 'react-router-dom'
 
-import { getProfile } from '@/api/get-profile'
+import { getProfile } from '@/api/GET/get-profile'
 import { useAuth } from '@/contexts/useAuth'
 
 import { Button } from './ui/button'

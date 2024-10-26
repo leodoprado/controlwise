@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
 import { createContext, useContext, useEffect, useState } from 'react'
 
-import { authenticateUser } from '@/api/authenticate-user'
-import { getProfile as getProfileAPI } from '@/api/get-profile'
+import { authenticateUser } from '@/api/POST/authenticate'
+import { getProfile as getProfileAPI } from '@/api/GET/get-profile'
 
 interface AuthContextType {
   isAuth: boolean

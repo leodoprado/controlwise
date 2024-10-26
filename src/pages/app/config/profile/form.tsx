@@ -4,8 +4,8 @@ import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import { z } from 'zod'
 
-import { getProfile } from '@/api/get-profile'
-import { updateProfile } from '@/api/update-profile'
+import { getProfile } from '@/api/GET/get-profile'
+import { updateProfile } from '@/api/PUT/update-profile'
 import { Button } from '@/components/ui/button'
 import {
   Card,

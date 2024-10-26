@@ -1,6 +1,5 @@
 'use client'
 
-import { DialogTitle } from '@radix-ui/react-dialog'
 import {
   BookOpen,
   Car,
@@ -27,7 +26,7 @@ import {
   CommandItem,
   CommandList,
 } from '@/components/ui/command'
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
+import { Dialog, DialogTrigger } from '@/components/ui/dialog'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -49,6 +48,9 @@ import {
 } from '@/components/ui/table'
 import { cn } from '@/lib/utils'
 import { NoContent } from '@/pages/no-content'
+
+import { FormCategorieExpense } from './form-categorie-expense'
+import { FormCategorieRevenue } from './form-categorie-revenue'
 
 // Define the icon mapping with explicit number key types
 const iconMap: { [key: number]: React.ComponentType } = {
@@ -210,21 +212,11 @@ export function CCategoryPage() {
             </Button>
           </DialogTrigger>
 
-          <DialogContent>
-            <DialogTitle>
-              {selectedCategory === 'despesas'
-                ? 'Adicionar Categoria de Despesas'
-                : 'Adicionar Categoria de Receitas'}
-            </DialogTitle>
-
-            <div className="mt-4">
-              {selectedCategory === 'despesas' ? (
-                <p>Formulário para cadastrar uma nova Categoria de Despesas.</p>
-              ) : (
-                <p>Formulário para cadastrar uma nova Categoria de Receitas.</p>
-              )}
-            </div>
-          </DialogContent>
+          {selectedCategory === 'despesas' ? (
+            <FormCategorieExpense />
+          ) : (
+            <FormCategorieRevenue />
+          )}
         </Dialog>
       </div>
 
