@@ -4,6 +4,8 @@ import {
   Info,
   Menu,
   Plus,
+  SquareCheck,
+  SquareX,
   Trash,
   TrendingDown,
   TrendingUp,
@@ -50,7 +52,7 @@ const transactions = [
     date: '19/09/2024',
     value: 'R$ 149,90',
     status: 'Pendente',
-    statusColor: 'bg-slate-400',
+    statusColor: 'bg-slate-500',
     icon: <TrendingDown className="h-4 w-4 text-red-500" />,
     color: 'text-red-500',
   },
@@ -61,7 +63,7 @@ const transactions = [
     date: '18/09/2024',
     value: 'R$ 89,90',
     status: 'Executado',
-    statusColor: 'bg-green-400',
+    statusColor: 'bg-green-500',
     icon: <TrendingUp className="h-4 w-4 text-green-500" />,
     color: 'text-green-500',
   },
@@ -72,7 +74,7 @@ const transactions = [
     date: '21/09/2024',
     value: 'R$ 112,90',
     status: 'Cancelado',
-    statusColor: 'bg-red-400',
+    statusColor: 'bg-red-500',
     icon: <TrendingDown className="h-4 w-4 text-red-500" />,
     color: 'text-gray-500',
   },
@@ -85,71 +87,146 @@ export function ETransactionsPage() {
 
       <div className="space-y-2.5">
         {transactions.length > 0 ? (
-          <div className="rounded-md border">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead className="w-1/6">Tipo</TableHead>
-                  <TableHead className="w-1/6">Categoria</TableHead>
-                  <TableHead className="w-1/5">Realizado em</TableHead>
-                  <TableHead className="w-1/6">Valor</TableHead>
-                  <TableHead className="w-1/5">Status</TableHead>
-                  <TableHead className="w-1/6">Ações</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {transactions.map((transaction) => (
-                  <TableRow key={transaction.id}>
-                    <TableCell className="font-mono text-xs font-medium">
-                      <div className="flex items-center gap-2">
-                        {transaction.icon}
-                        {transaction.type}
-                      </div>
-                    </TableCell>
-                    <TableCell className="font-mono text-xs font-medium">
-                      {transaction.category}
-                    </TableCell>
-                    <TableCell className="text-muted-foreground">
-                      {transaction.date}
-                    </TableCell>
-                    <TableCell className={`font-medium ${transaction.color}`}>
-                      {transaction.value}
-                    </TableCell>
-                    <TableCell>
-                      <div className="flex items-center gap-2">
-                        <span
-                          className={`h-2 w-2 rounded-full ${transaction.statusColor}`}
-                        />
-                        <span className="font-medium text-muted-foreground">
-                          {transaction.status}
-                        </span>
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                          <Button variant="ghost" size="xs">
-                            <Menu className="h-6 w-6" />
-                          </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent
-                          align="end"
-                          className="border-5 mt-1 w-56 transform p-0 shadow-2xl transition-all duration-500 ease-in-out"
-                        >
-                          <DropdownMenuItem className="cursor-pointer gap-2 p-3">
-                            <Edit className="h-4 w-4" /> Editar Movimentação
-                          </DropdownMenuItem>
-                          <DropdownMenuItem className="cursor-pointer gap-2 p-3">
-                            <Trash className="h-4 w-4" /> Excluir Movimentação
-                          </DropdownMenuItem>
-                        </DropdownMenuContent>
-                      </DropdownMenu>
-                    </TableCell>
+          <>
+            <div className="flex items-center gap-2">
+              <span className={'h-2 w-2 rounded-full bg-slate-500'} />
+              <h1 className="font-semibold">Movimentações Agendadas</h1>
+            </div>
+
+            <div className="rounded-md border">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="w-1/6">Tipo</TableHead>
+                    <TableHead className="w-1/6">Categoria</TableHead>
+                    <TableHead className="w-1/5">Realizado em</TableHead>
+                    <TableHead className="w-1/6">Valor</TableHead>
+                    <TableHead className="w-1/5">Status</TableHead>
+                    <TableHead className="mr-2 flex items-center justify-end">
+                      Ações
+                    </TableHead>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
+                </TableHeader>
+                <TableBody>
+                  {transactions.map((transaction) => (
+                    <TableRow key={transaction.id}>
+                      <TableCell className="font-mono text-xs font-medium">
+                        <div className="flex items-center gap-2">
+                          {transaction.icon}
+                          {transaction.type}
+                        </div>
+                      </TableCell>
+                      <TableCell className="font-mono text-xs font-medium">
+                        {transaction.category}
+                      </TableCell>
+                      <TableCell className="text-muted-foreground">
+                        {transaction.date}
+                      </TableCell>
+                      <TableCell className={`font-medium ${transaction.color}`}>
+                        {transaction.value}
+                      </TableCell>
+                      <TableCell>
+                        <div className="flex items-center gap-2">
+                          <span
+                            className={`h-2 w-2 rounded-full ${transaction.statusColor}`}
+                          />
+                          <span className="font-medium text-muted-foreground">
+                            {transaction.status}
+                          </span>
+                        </div>
+                      </TableCell>
+                      <TableCell className="flex justify-end gap-1">
+                        <Button
+                          variant="ghost"
+                          size="xs"
+                          className="flex items-center"
+                        >
+                          <SquareCheck className="h-4 w-4" />
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="xs"
+                          className="flex items-center"
+                        >
+                          <SquareX className="h-4 w-4" />
+                        </Button>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <span className={'h-2 w-2 rounded-full bg-green-500'} />
+              <span className={'h-2 w-2 rounded-full bg-red-500'} />
+              <h1 className="font-semibold">Histórico de Movimentações</h1>
+            </div>
+
+            <div className="rounded-md border">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="w-1/6">Tipo</TableHead>
+                    <TableHead className="w-1/6">Categoria</TableHead>
+                    <TableHead className="w-1/5">Realizado em</TableHead>
+                    <TableHead className="w-1/6">Valor</TableHead>
+                    <TableHead className="w-1/5">Status</TableHead>
+                    <TableHead className="mr-2 flex items-center justify-end">
+                      Ações
+                    </TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {transactions.map((transaction) => (
+                    <TableRow key={transaction.id}>
+                      <TableCell className="font-mono text-xs font-medium">
+                        <div className="flex items-center gap-2">
+                          {transaction.icon}
+                          {transaction.type}
+                        </div>
+                      </TableCell>
+                      <TableCell className="font-mono text-xs font-medium">
+                        {transaction.category}
+                      </TableCell>
+                      <TableCell className="text-muted-foreground">
+                        {transaction.date}
+                      </TableCell>
+                      <TableCell className={`font-medium ${transaction.color}`}>
+                        {transaction.value}
+                      </TableCell>
+                      <TableCell>
+                        <div className="flex items-center gap-2">
+                          <span
+                            className={`h-2 w-2 rounded-full ${transaction.statusColor}`}
+                          />
+                          <span className="font-medium text-muted-foreground">
+                            {transaction.status}
+                          </span>
+                        </div>
+                      </TableCell>
+                      <TableCell className="flex justify-end gap-1">
+                        <Button
+                          variant="ghost"
+                          size="xs"
+                          className="flex items-center"
+                        >
+                          <Edit className="h-4 w-4" />
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="xs"
+                          className="flex items-center"
+                        >
+                          <Trash className="h-4 w-4" />
+                        </Button>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+          </>
         ) : (
           <div>
             <NoContent

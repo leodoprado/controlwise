@@ -9,7 +9,6 @@ import {
   Ellipsis,
   HelpCircle,
   Home,
-  Menu,
   Plus,
   Trash,
   TreePalm,
@@ -27,12 +26,6 @@ import {
   CommandList,
 } from '@/components/ui/command'
 import { Dialog, DialogTrigger } from '@/components/ui/dialog'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
 import {
   Popover,
   PopoverContent,
@@ -229,7 +222,7 @@ export function CCategoryPage() {
                   <TableHead className="flex-1">Nome</TableHead>
                   <TableHead className="flex-1">Ícone</TableHead>
                   <TableHead className="flex-1">Cor</TableHead>
-                  <TableHead className="flex items-center justify-end">
+                  <TableHead className="mr-2 flex items-center justify-end">
                     Ações
                   </TableHead>
                 </TableRow>
@@ -253,25 +246,21 @@ export function CCategoryPage() {
                         ></span>
                       </TableCell>
 
-                      <TableCell className="flex justify-end">
-                        <DropdownMenu>
-                          <DropdownMenuTrigger asChild>
-                            <Button variant="ghost" size="xs">
-                              <Menu className="h-6 w-6" />
-                            </Button>
-                          </DropdownMenuTrigger>
-                          <DropdownMenuContent
-                            align="end"
-                            className="border-5 mt-1 w-56 transform p-0 shadow-2xl transition-all duration-500 ease-in-out"
-                          >
-                            <DropdownMenuItem className="cursor-pointer gap-2 p-3">
-                              <Edit className="h-4 w-4" /> Editar Categoria
-                            </DropdownMenuItem>
-                            <DropdownMenuItem className="cursor-pointer gap-2 p-3">
-                              <Trash className="h-4 w-4" /> Excluir Categoria
-                            </DropdownMenuItem>
-                          </DropdownMenuContent>
-                        </DropdownMenu>
+                      <TableCell className="flex justify-end gap-1">
+                        <Button
+                          variant="ghost"
+                          size="xs"
+                          className="flex items-center"
+                        >
+                          <Edit className="h-4 w-4" />
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="xs"
+                          className="flex items-center"
+                        >
+                          <Trash className="h-4 w-4" />
+                        </Button>
                       </TableCell>
                     </TableRow>
                   )

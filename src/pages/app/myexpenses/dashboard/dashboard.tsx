@@ -25,8 +25,8 @@ export function EDashboardPage() {
         </div>
 
         <div className="grid w-full max-w-7xl grid-cols-9 gap-4 p-0">
-          <ChartRevenueCategory />
           <ChartFrequency />
+          <ChartRevenueCategory />
         </div>
       </div>
     </>
