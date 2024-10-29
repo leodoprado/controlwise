@@ -166,7 +166,7 @@ export function CCategoryPage() {
           <PopoverContent className="w-[220px] p-0">
             <Command>
               <CommandList>
-                <CommandGroup>
+                <CommandGroup className="p-0">
                   {options.map((option) => (
                     <CommandItem
                       key={option.value}
@@ -175,7 +175,7 @@ export function CCategoryPage() {
                         setSelectedCategory(currentValue)
                         setOpen(false)
                       }}
-                      className="cursor-pointer"
+                      className="cursor-pointer p-3"
                     >
                       <Check
                         className={cn(
