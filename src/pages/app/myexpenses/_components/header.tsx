@@ -20,7 +20,6 @@ export function HeaderExpenses() {
           <NavLink to={'/myexpenses/transactions'}>Movimentações</NavLink>
           <NavLink to={'/myexpenses/planning'}>Planejamentos</NavLink>
           <NavLink to={'/myexpenses/objective'}>Objetivos</NavLink>
-          <NavLink to={'/myexpenses/analysis'}>Análises</NavLink>
           <NavLink to={'/myexpenses/reports'}>Relatórios</NavLink>
         </nav>
 
