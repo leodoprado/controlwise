@@ -38,7 +38,7 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
-export function ChartFrequency() {
+export function ChartFrequencyExpense() {
   return (
     <Card className="col-span-6">
       <CardHeader>

@@ -1,8 +1,9 @@
 import { Helmet } from 'react-helmet-async'
 
-import { ChartFrequency } from './char-frequency'
-// import { Component } from './chart'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+
 import { ComponentPie } from './chart-expense-category'
+import { ChartFrequencyExpense } from './chart-frequency-expense'
 import { ChartBalance } from './chart-income-expense'
 import { ChartRevenueCategory } from './chart-revenue-category'
 import { MonthCanceledOrdersAmountCard } from './month-canceled-orders-amount-card'
@@ -19,14 +20,38 @@ export function EDashboardPage() {
           <MonthOrdersAmountCard />
           <MonthCanceledOrdersAmountCard />
         </div>
-        <div className="grid w-full max-w-7xl grid-cols-9 gap-4 p-0">
-          <ChartBalance />
-          <ComponentPie />
-        </div>
 
-        <div className="grid w-full max-w-7xl grid-cols-9 gap-4 p-0">
-          <ChartFrequency />
-          <ChartRevenueCategory />
+        {/* First row of charts with Tabs */}
+        <div className="grid w-full max-w-7xl grid-cols-9 gap-4">
+          <div className="col-span-3">
+            <Tabs defaultValue="chart1">
+              <TabsList>
+                <TabsTrigger value="chart1">Despesas por Categoria</TabsTrigger>
+                <TabsTrigger value="chart2">Receitas por Categoria</TabsTrigger>
+              </TabsList>
+              <TabsContent value="chart1">
+                <ComponentPie />
+              </TabsContent>
+              <TabsContent value="chart2">
+                <ChartRevenueCategory />
+              </TabsContent>
+            </Tabs>
+          </div>
+
+          <div className="col-span-6">
+            <Tabs defaultValue="chart3">
+              <TabsList>
+                <TabsTrigger value="chart3">Balanço</TabsTrigger>
+                <TabsTrigger value="chart4">Frequência</TabsTrigger>
+              </TabsList>
+              <TabsContent value="chart3">
+                <ChartBalance />
+              </TabsContent>
+              <TabsContent value="chart4">
+                <ChartFrequencyExpense />
+              </TabsContent>
+            </Tabs>
+          </div>
         </div>
       </div>
     </>
