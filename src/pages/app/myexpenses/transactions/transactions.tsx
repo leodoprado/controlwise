@@ -1,14 +1,17 @@
 import { Dialog, DialogTrigger } from '@radix-ui/react-dialog'
 import {
+  Car,
+  Check,
   Edit,
+  Home,
   Info,
   Menu,
   Plus,
-  SquareCheck,
-  SquareX,
   Trash,
   TrendingDown,
   TrendingUp,
+  Wallet,
+  X,
 } from 'lucide-react'
 import { Helmet } from 'react-helmet-async'
 
@@ -42,6 +45,7 @@ import {
   AddTransaction,
   AddTransactionDialog,
 } from '../_components/add-transaction'
+import { FilterTransaction } from './filter-transaction'
 
 // Simulando os dados como se fossem de um banco de dados
 const transactions = [
@@ -54,6 +58,7 @@ const transactions = [
     status: 'Pendente',
     statusColor: 'bg-slate-500',
     icon: <TrendingDown className="h-4 w-4 text-red-500" />,
+    categoryIcon: <Home className="h-4 w-4" />,
     color: 'text-red-500',
   },
   {
@@ -65,6 +70,7 @@ const transactions = [
     status: 'Executado',
     statusColor: 'bg-green-500',
     icon: <TrendingUp className="h-4 w-4 text-green-500" />,
+    categoryIcon: <Wallet className="h-4 w-4" />,
     color: 'text-green-500',
   },
   {
@@ -76,6 +82,7 @@ const transactions = [
     status: 'Cancelado',
     statusColor: 'bg-red-500',
     icon: <TrendingDown className="h-4 w-4 text-red-500" />,
+    categoryIcon: <Car className="h-4 w-4" />,
     color: 'text-gray-500',
   },
 ]
@@ -92,6 +99,7 @@ export function ETransactionsPage() {
               <div className="mb-2 flex items-center gap-2">
                 <span className={'h-2 w-2 rounded-full bg-slate-500'} />
                 <h1 className="font-semibold">Movimentações Agendadas</h1>
+                <FilterTransaction />
               </div>
 
               <div className="rounded-md border">
@@ -122,7 +130,10 @@ export function ETransactionsPage() {
                             </div>
                           </TableCell>
                           <TableCell className="font-mono text-xs font-medium">
-                            {transaction.category}
+                            <div className="flex items-center gap-2">
+                              {transaction.categoryIcon}
+                              {transaction.category}
+                            </div>
                           </TableCell>
                           <TableCell className="text-muted-foreground">
                             {transaction.date}
@@ -142,20 +153,22 @@ export function ETransactionsPage() {
                               </span>
                             </div>
                           </TableCell>
-                          <TableCell className="flex justify-end gap-1">
+                          <TableCell className="flex justify-end gap-2">
                             <Button
-                              variant="ghost"
+                              variant="outline"
                               size="xs"
-                              className="flex items-center"
+                              className="flex items-center gap-1"
                             >
-                              <SquareCheck className="h-4 w-4" />
+                              <Check className="h-4 w-4 text-primary" />{' '}
+                              Executar
                             </Button>
                             <Button
-                              variant="ghost"
+                              variant="outline"
                               size="xs"
-                              className="flex items-center"
+                              className="flex items-center gap-1"
                             >
-                              <SquareX className="h-4 w-4" />
+                              <X className="h-4 w-4 text-destructive" />{' '}
+                              Cancelar
                             </Button>
                           </TableCell>
                         </TableRow>
@@ -169,6 +182,7 @@ export function ETransactionsPage() {
                 <span className={'h-2 w-2 rounded-full bg-green-500'} />
                 <span className={'h-2 w-2 rounded-full bg-red-500'} />
                 <h1 className="font-semibold">Histórico de Movimentações</h1>
+                <FilterTransaction />
               </div>
 
               <div className="rounded-md border">
@@ -199,7 +213,10 @@ export function ETransactionsPage() {
                             </div>
                           </TableCell>
                           <TableCell className="font-mono text-xs font-medium">
-                            {transaction.category}
+                            <div className="flex items-center gap-2">
+                              {transaction.categoryIcon}
+                              {transaction.category}
+                            </div>
                           </TableCell>
                           <TableCell className="text-muted-foreground">
                             {transaction.date}
@@ -219,16 +236,16 @@ export function ETransactionsPage() {
                               </span>
                             </div>
                           </TableCell>
-                          <TableCell className="flex justify-end gap-1">
+                          <TableCell className="flex justify-end gap-2">
                             <Button
-                              variant="ghost"
+                              variant="outline"
                               size="xs"
                               className="flex items-center"
                             >
                               <Edit className="h-4 w-4" />
                             </Button>
                             <Button
-                              variant="ghost"
+                              variant="outline"
                               size="xs"
                               className="flex items-center"
                             >
