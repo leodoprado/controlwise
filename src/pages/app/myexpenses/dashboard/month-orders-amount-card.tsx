@@ -14,8 +14,8 @@ export function MonthOrdersAmountCard() {
       <CardContent className="space-y-1">
         <span className="text-2xl font-bold tracking-tight">R$ 2950,45</span>
         <p className="text-xs text-muted-foreground">
-          <span className="text-emerald-500 dark:text-emerald-400">+6%</span> em
-          relação ao mês passado
+          <span className="text-emerald-400">+6%</span> em relação ao mês
+          passado
         </p>
       </CardContent>
     </Card>

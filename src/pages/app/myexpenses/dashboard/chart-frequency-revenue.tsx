@@ -18,35 +18,35 @@ import {
 
 // Dados do gráfico
 const chartData = [
-  { month: 'Janeiro', despesa: 2800 },
-  { month: 'Fevereiro', despesa: 2900 },
-  { month: 'Março', despesa: 3100 },
-  { month: 'Abril', despesa: 3300 },
-  { month: 'Maio', despesa: 3200 },
-  { month: 'Junho', despesa: 3500 },
-  { month: 'Julho', despesa: 3600 },
-  { month: 'Agosto', despesa: 2850 },
-  { month: 'Setembro', despesa: 3700 },
-  { month: 'Outubro', despesa: 3800 },
-  { month: 'Novembro', despesa: 2900 },
-  { month: 'Dezembro', despesa: 4300 },
+  { month: 'Janeiro', receita: 3500 },
+  { month: 'Fevereiro', receita: 3700 },
+  { month: 'Março', receita: 3600 },
+  { month: 'Abril', receita: 3400 },
+  { month: 'Maio', receita: 3800 },
+  { month: 'Junho', receita: 4000 },
+  { month: 'Julho', receita: 4100 },
+  { month: 'Agosto', receita: 3900 },
+  { month: 'Setembro', receita: 4200 },
+  { month: 'Outubro', receita: 4300 },
+  { month: 'Novembro', receita: 4400 },
+  { month: 'Dezembro', receita: 4600 },
 ]
 
-// Calcula o valor máximo de despesa e adiciona 10% de folga
-const maxValue = Math.max(...chartData.map((data) => data.despesa)) * 1.1
+// Calcula o valor máximo de receita e adiciona 10% de folga
+const maxValue = Math.max(...chartData.map((data) => data.receita)) * 1.1
 
 const chartConfig = {
   desktop: {
-    label: 'Despesa',
-    color: 'hsl(var(--chart-1))',
+    label: 'Receita',
+    color: 'hsl(var(--chart-2))',
   },
 } satisfies ChartConfig
 
-export function ChartFrequencyExpense() {
+export function ChartFrequencyRevenue() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Frequência de Despesas</CardTitle>
+        <CardTitle>Frequência de Receitas</CardTitle>
         <CardDescription>2024</CardDescription>
       </CardHeader>
       <CardContent>
@@ -78,7 +78,7 @@ export function ChartFrequencyExpense() {
               content={<ChartTooltipContent indicator="dot" />}
             />
             <Area
-              dataKey="despesa"
+              dataKey="receita"
               type="linear"
               fill="var(--color-desktop)"
               fillOpacity={0.4}

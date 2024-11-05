@@ -1,7 +1,6 @@
 'use client'
 
-import * as React from 'react'
-import { Label, Pie, PieChart } from 'recharts'
+import { Pie, PieChart } from 'recharts'
 
 import {
   Card,
@@ -17,15 +16,12 @@ import {
   ChartTooltipContent,
 } from '@/components/ui/chart'
 
-export const description = 'A donut chart with text'
-
 const chartData = [
   { browser: 'chrome', visitors: 275, fill: 'var(--color-chrome)' },
   { browser: 'safari', visitors: 200, fill: 'var(--color-safari)' },
   { browser: 'firefox', visitors: 287, fill: 'var(--color-firefox)' },
   { browser: 'edge', visitors: 173, fill: 'var(--color-edge)' },
   { browser: 'other', visitors: 190, fill: 'var(--color-other)' },
-  { browser: 'other', visitors: 190, fill: 'var(--color-primary)' },
 ]
 
 const chartConfig = {
@@ -54,23 +50,19 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
-export function ComponentPie() {
-  const totalVisitors = React.useMemo(() => {
-    return chartData.reduce((acc, curr) => acc + curr.visitors, 0)
-  }, [])
-
+export function ChartExpenseCategory() {
   return (
-    <Card className="col-span-3">
-      <CardHeader className="pb-0">
+    <Card>
+      <CardHeader>
         <CardTitle>Despesas por Categoria</CardTitle>
-        <CardDescription>Setembro 2024</CardDescription>
+        <CardDescription>Novembro</CardDescription>
       </CardHeader>
-      <CardContent className="flex-1 p-0">
+      <CardContent>
         <ChartContainer
           config={chartConfig}
-          className="mx-auto aspect-square h-full w-full"
+          className="mx-auto h-[350px] w-[100%]"
         >
-          <PieChart>
+          <PieChart width={300} height={300}>
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
@@ -80,38 +72,11 @@ export function ComponentPie() {
               dataKey="visitors"
               nameKey="browser"
               innerRadius={80}
-              strokeWidth={2} // Reduzindo a espessura da borda
-            >
-              <Label
-                content={({ viewBox }) => {
-                  if (viewBox && 'cx' in viewBox && 'cy' in viewBox) {
-                    return (
-                      <text
-                        x={viewBox.cx}
-                        y={viewBox.cy}
-                        textAnchor="middle"
-                        dominantBaseline="middle"
-                      >
-                        <tspan
-                          x={viewBox.cx}
-                          y={viewBox.cy}
-                          className="fill-foreground text-3xl font-bold"
-                        >
-                          {totalVisitors.toLocaleString()}
-                        </tspan>
-                        <tspan
-                          x={viewBox.cx}
-                          y={(viewBox.cy || 0) + 24}
-                          className="fill-muted-foreground"
-                        >
-                          Despesas Totais
-                        </tspan>
-                      </text>
-                    )
-                  }
-                }}
-              />
-            </Pie>
+              outerRadius={160}
+              stroke="white"
+              strokeWidth={5}
+              isAnimationActive={false}
+            />
           </PieChart>
         </ChartContainer>
       </CardContent>

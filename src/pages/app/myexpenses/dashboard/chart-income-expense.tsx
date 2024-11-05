@@ -1,6 +1,6 @@
 'use client'
 
-import { Bar, BarChart, CartesianGrid, XAxis } from 'recharts'
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts'
 
 import {
   Card,
@@ -28,8 +28,10 @@ const chartData = [
   { month: 'Setembro', receita: 4200, despesa: 3700 },
   { month: 'Outubro', receita: 4300, despesa: 3800 },
   { month: 'Novembro', receita: 4400, despesa: 2900 },
-  { month: 'Dezembro', receita: 4600, despesa: 4000 },
+  { month: 'Dezembro', receita: 4600, despesa: 4500 },
 ]
+
+const maxValue = Math.max(...chartData.map((data) => data.despesa)) * 1.1
 
 const chartConfig = {
   desktop: {
@@ -44,7 +46,7 @@ const chartConfig = {
 
 export function ChartBalance() {
   return (
-    <Card className="col-span-6">
+    <Card>
       <CardHeader>
         <CardTitle>Balanço (Receita - Despesa)</CardTitle>
         <CardDescription>2024</CardDescription>
@@ -52,9 +54,9 @@ export function ChartBalance() {
       <CardContent>
         <ChartContainer
           config={chartConfig}
-          className="mx-auto h-[350px] w-[100%]" // Definindo a mesma altura que o gráfico de área
+          className="mx-auto h-[350px] w-[100%]"
         >
-          <BarChart accessibilityLayer data={chartData}>
+          <BarChart data={chartData} width={600} height={350}>
             <CartesianGrid vertical={false} />
             <XAxis
               dataKey="month"
@@ -63,6 +65,8 @@ export function ChartBalance() {
               axisLine={false}
               tickFormatter={(value) => value.slice(0, 3)}
             />
+            <YAxis domain={[0, maxValue]} hide />{' '}
+            {/* Define o limite superior do eixo Y */}
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent indicator="dot" />}

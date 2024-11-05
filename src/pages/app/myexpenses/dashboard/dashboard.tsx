@@ -2,8 +2,9 @@ import { Helmet } from 'react-helmet-async'
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
-import { ComponentPie } from './chart-expense-category'
+import { ChartExpenseCategory } from './chart-expense-category'
 import { ChartFrequencyExpense } from './chart-frequency-expense'
+import { ChartFrequencyRevenue } from './chart-frequency-revenue'
 import { ChartBalance } from './chart-income-expense'
 import { ChartRevenueCategory } from './chart-revenue-category'
 import { MonthCanceledOrdersAmountCard } from './month-canceled-orders-amount-card'
@@ -14,44 +15,44 @@ export function EDashboardPage() {
   return (
     <>
       <Helmet title="Painel" />
-      <div className="flex w-full flex-col items-center gap-4">
-        <div className="grid w-full max-w-7xl grid-cols-1 gap-4 md:grid-cols-3">
+
+      <div className="flex flex-col gap-4">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           <MonthRevenueCard />
           <MonthOrdersAmountCard />
           <MonthCanceledOrdersAmountCard />
         </div>
 
-        {/* First row of charts with Tabs */}
-        <div className="grid w-full max-w-7xl grid-cols-9 gap-4">
-          <div className="col-span-3">
-            <Tabs defaultValue="chart1">
-              <TabsList>
-                <TabsTrigger value="chart1">Despesas por Categoria</TabsTrigger>
-                <TabsTrigger value="chart2">Receitas por Categoria</TabsTrigger>
-              </TabsList>
-              <TabsContent value="chart1">
-                <ComponentPie />
-              </TabsContent>
-              <TabsContent value="chart2">
-                <ChartRevenueCategory />
-              </TabsContent>
-            </Tabs>
-          </div>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-9">
+          <Tabs className="col-span-3" defaultValue="chart1">
+            <TabsList>
+              <TabsTrigger value="chart1">Despesas por Categoria</TabsTrigger>
+              <TabsTrigger value="chart2">Receitas por Categoria</TabsTrigger>
+            </TabsList>
+            <TabsContent value="chart1">
+              <ChartExpenseCategory />
+            </TabsContent>
+            <TabsContent value="chart2">
+              <ChartRevenueCategory />
+            </TabsContent>
+          </Tabs>
 
-          <div className="col-span-6">
-            <Tabs defaultValue="chart3">
-              <TabsList>
-                <TabsTrigger value="chart3">Balanço</TabsTrigger>
-                <TabsTrigger value="chart4">Frequência</TabsTrigger>
-              </TabsList>
-              <TabsContent value="chart3">
-                <ChartBalance />
-              </TabsContent>
-              <TabsContent value="chart4">
-                <ChartFrequencyExpense />
-              </TabsContent>
-            </Tabs>
-          </div>
+          <Tabs className="col-span-6" defaultValue="chart3">
+            <TabsList>
+              <TabsTrigger value="chart3">Balanço</TabsTrigger>
+              <TabsTrigger value="chart4">Frequência de Despesas</TabsTrigger>
+              <TabsTrigger value="chart5">Frequência de Receitas</TabsTrigger>
+            </TabsList>
+            <TabsContent className="h-full" value="chart3">
+              <ChartBalance />
+            </TabsContent>
+            <TabsContent value="chart4">
+              <ChartFrequencyExpense />
+            </TabsContent>
+            <TabsContent value="chart5">
+              <ChartFrequencyRevenue />
+            </TabsContent>
+          </Tabs>
         </div>
       </div>
     </>
