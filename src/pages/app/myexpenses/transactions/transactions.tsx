@@ -8,6 +8,7 @@ import {
   Menu,
   Plus,
   Trash,
+  TreePalm,
   TrendingDown,
   TrendingUp,
   Wallet,
@@ -53,7 +54,7 @@ const transactions = [
     id: 1,
     type: 'Despesa',
     category: 'Casa',
-    date: '19/09/2024',
+    date: '03/11/2024',
     value: 'R$ 149,90',
     status: 'Pendente',
     statusColor: 'bg-slate-500',
@@ -65,7 +66,7 @@ const transactions = [
     id: 2,
     type: 'Receita',
     category: 'Salário',
-    date: '18/09/2024',
+    date: '09/11/2024',
     value: 'R$ 89,90',
     status: 'Executado',
     statusColor: 'bg-green-500',
@@ -76,8 +77,20 @@ const transactions = [
   {
     id: 3,
     type: 'Despesa',
+    category: 'Lazer',
+    date: '14/11/2024',
+    value: 'R$ 89,90',
+    status: 'Executado',
+    statusColor: 'bg-green-500',
+    icon: <TrendingDown className="h-4 w-4 text-red-500" />,
+    categoryIcon: <TreePalm className="h-4 w-4" />,
+    color: 'text-red-500',
+  },
+  {
+    id: 4,
+    type: 'Despesa',
     category: 'Carro',
-    date: '21/09/2024',
+    date: '26/11/2024',
     value: 'R$ 112,90',
     status: 'Cancelado',
     statusColor: 'bg-red-500',
@@ -106,12 +119,22 @@ export function ETransactionsPage() {
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead className="w-1/6">Tipo</TableHead>
-                      <TableHead className="w-1/6">Categoria</TableHead>
-                      <TableHead className="w-1/5">Realizado em</TableHead>
-                      <TableHead className="w-1/6">Valor</TableHead>
-                      <TableHead className="w-1/5">Status</TableHead>
-                      <TableHead className="mr-2 flex items-center justify-end">
+                      <TableHead className="w-1/6 font-semibold">
+                        Tipo
+                      </TableHead>
+                      <TableHead className="w-1/6 font-semibold">
+                        Categoria
+                      </TableHead>
+                      <TableHead className="w-1/5 font-semibold">
+                        Realizado em
+                      </TableHead>
+                      <TableHead className="w-1/6 font-semibold">
+                        Valor
+                      </TableHead>
+                      <TableHead className="w-1/5 font-semibold">
+                        Status
+                      </TableHead>
+                      <TableHead className="mr-2 flex items-center justify-end font-semibold">
                         Ações
                       </TableHead>
                     </TableRow>
@@ -189,12 +212,22 @@ export function ETransactionsPage() {
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead className="w-1/6">Tipo</TableHead>
-                      <TableHead className="w-1/6">Categoria</TableHead>
-                      <TableHead className="w-1/5">Realizado em</TableHead>
-                      <TableHead className="w-1/6">Valor</TableHead>
-                      <TableHead className="w-1/5">Status</TableHead>
-                      <TableHead className="mr-2 flex items-center justify-end">
+                      <TableHead className="w-1/6 font-semibold">
+                        Tipo
+                      </TableHead>
+                      <TableHead className="w-1/6 font-semibold">
+                        Categoria
+                      </TableHead>
+                      <TableHead className="w-1/5 font-semibold">
+                        Realizado em
+                      </TableHead>
+                      <TableHead className="w-1/6 font-semibold">
+                        Valor
+                      </TableHead>
+                      <TableHead className="w-1/5 font-semibold">
+                        Status
+                      </TableHead>
+                      <TableHead className="mr-2 flex items-center justify-end font-semibold">
                         Ações
                       </TableHead>
                     </TableRow>
