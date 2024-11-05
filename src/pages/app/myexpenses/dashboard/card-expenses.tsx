@@ -1,20 +1,20 @@
-import { TrendingUp } from 'lucide-react'
+import { TrendingDown } from 'lucide-react'
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
-export function MonthOrdersAmountCard() {
+export function CardExpenses() {
   return (
     <Card className="drop-shadow-md">
       <CardHeader className="flex-row items-center justify-between space-y-0 pb-2">
         <CardTitle className="text-base font-semibold">
-          Receitas (mês)
+          Despesas (mês)
         </CardTitle>
-        <TrendingUp className="mr-2 h-4 w-4 text-primary" />
+        <TrendingDown className="h-4 w-4 text-destructive" />
       </CardHeader>
       <CardContent className="space-y-1">
-        <span className="text-2xl font-bold tracking-tight">R$ 2950,45</span>
+        <span className="text-2xl font-bold tracking-tight">R$ 1630,12</span>
         <p className="text-xs text-muted-foreground">
-          <span className="text-emerald-400">+6%</span> em relação ao mês
+          <span className="text-emerald-400">-2%</span> em relação ao mês
           passado
         </p>
       </CardContent>

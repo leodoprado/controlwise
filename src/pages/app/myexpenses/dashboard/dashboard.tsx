@@ -2,14 +2,14 @@ import { Helmet } from 'react-helmet-async'
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
+import { CardCurrentBalance } from './card-current-balance'
+import { CardExpenses } from './card-expenses'
+import { CardRevenues } from './card-revenues'
 import { ChartExpenseCategory } from './chart-expense-category'
 import { ChartFrequencyExpense } from './chart-frequency-expense'
 import { ChartFrequencyRevenue } from './chart-frequency-revenue'
 import { ChartBalance } from './chart-income-expense'
 import { ChartRevenueCategory } from './chart-revenue-category'
-import { MonthCanceledOrdersAmountCard } from './month-canceled-orders-amount-card'
-import { MonthOrdersAmountCard } from './month-orders-amount-card'
-import { MonthRevenueCard } from './month-revenue-card'
 
 export function EDashboardPage() {
   return (
@@ -18,9 +18,9 @@ export function EDashboardPage() {
 
       <div className="flex flex-col gap-4">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-          <MonthRevenueCard />
-          <MonthOrdersAmountCard />
-          <MonthCanceledOrdersAmountCard />
+          <CardCurrentBalance />
+          <CardRevenues />
+          <CardExpenses />
         </div>
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-9">
