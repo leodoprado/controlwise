@@ -1,4 +1,3 @@
-import { Dialog, DialogTrigger } from '@radix-ui/react-dialog'
 import {
   Car,
   Check,
@@ -17,9 +16,10 @@ import {
 import { Helmet } from 'react-helmet-async'
 
 import transaction from '@/assets/nc-transactio.svg'
+import { Pagination } from '@/components/pagination'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
-import { DialogContent } from '@/components/ui/dialog'
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -46,6 +46,9 @@ import {
   AddTransaction,
   AddTransactionDialog,
 } from '../_components/add-transaction'
+import { CancelTransaction } from './cancel-transaction'
+import { DeleteTransaction } from './delete-transaction'
+import { ExecuteTransaction } from './execute-transaction'
 import { FilterTransaction } from './filter-transaction'
 
 // Simulando os dados como se fossem de um banco de dados
@@ -115,7 +118,7 @@ export function ETransactionsPage() {
                 <FilterTransaction />
               </div>
 
-              <div className="rounded-md border">
+              <div className="mb-2 rounded-md border">
                 <Table>
                   <TableHeader>
                     <TableRow>
@@ -177,28 +180,40 @@ export function ETransactionsPage() {
                             </div>
                           </TableCell>
                           <TableCell className="flex justify-end gap-2">
-                            <Button
-                              variant="outline"
-                              size="xs"
-                              className="flex items-center gap-1"
-                            >
-                              <Check className="h-4 w-4 text-primary" />{' '}
-                              Executar
-                            </Button>
-                            <Button
-                              variant="outline"
-                              size="xs"
-                              className="flex items-center gap-1"
-                            >
-                              <X className="h-4 w-4 text-destructive" />{' '}
-                              Cancelar
-                            </Button>
+                            <Dialog>
+                              <DialogTrigger asChild>
+                                <Button
+                                  variant="outline"
+                                  size="xs"
+                                  className="flex items-center gap-1"
+                                >
+                                  <Check className="h-4 w-4 text-primary" />{' '}
+                                  Executar
+                                </Button>
+                              </DialogTrigger>
+                              <ExecuteTransaction />
+                            </Dialog>
+
+                            <Dialog>
+                              <DialogTrigger asChild>
+                                <Button
+                                  variant="outline"
+                                  size="xs"
+                                  className="flex items-center gap-1"
+                                >
+                                  <X className="h-4 w-4 text-destructive" />{' '}
+                                  Cancelar
+                                </Button>
+                              </DialogTrigger>
+                              <CancelTransaction />
+                            </Dialog>
                           </TableCell>
                         </TableRow>
                       ))}
                   </TableBody>
                 </Table>
               </div>
+              <Pagination pageIndex={0} totalCount={18} perPage={5} />
             </div>
             <div>
               <div className="mb-2 mt-9 flex items-center gap-2">
@@ -208,7 +223,7 @@ export function ETransactionsPage() {
                 <FilterTransaction />
               </div>
 
-              <div className="rounded-md border">
+              <div className="mb-2 rounded-md border">
                 <Table>
                   <TableHeader>
                     <TableRow>
@@ -270,26 +285,37 @@ export function ETransactionsPage() {
                             </div>
                           </TableCell>
                           <TableCell className="flex justify-end gap-2">
-                            <Button
-                              variant="outline"
-                              size="xs"
-                              className="flex items-center"
-                            >
-                              <Edit className="h-4 w-4" />
-                            </Button>
-                            <Button
-                              variant="outline"
-                              size="xs"
-                              className="flex items-center"
-                            >
-                              <Trash className="h-4 w-4" />
-                            </Button>
+                            <Dialog>
+                              <DialogTrigger asChild>
+                                <Button
+                                  variant="outline"
+                                  size="xs"
+                                  className="flex items-center"
+                                >
+                                  <Edit className="h-4 w-4" />
+                                </Button>
+                              </DialogTrigger>
+                            </Dialog>
+
+                            <Dialog>
+                              <DialogTrigger asChild>
+                                <Button
+                                  variant="outline"
+                                  size="xs"
+                                  className="flex items-center"
+                                >
+                                  <Trash className="h-4 w-4" />
+                                </Button>
+                              </DialogTrigger>
+                              <DeleteTransaction />
+                            </Dialog>
                           </TableCell>
                         </TableRow>
                       ))}
                   </TableBody>
                 </Table>
               </div>
+              <Pagination pageIndex={0} totalCount={18} perPage={5} />
             </div>
           </>
         ) : (
