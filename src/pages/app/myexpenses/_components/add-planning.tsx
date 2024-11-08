@@ -12,8 +12,16 @@ export function AddPlanning() {
   return (
     <DialogContent>
       <DialogTitle className="flex items-center">
-        <Presentation className="mr-2 h-4 w-4" /> Novo Planejamento
+        <Presentation className="mr-2 h-4 w-4" /> Novo Planejamento Mensal
       </DialogTitle>
+      <div className="space-y-1">
+        <div className="relative">
+          <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+            <FilePen className="h-4 w-4 text-gray-500" />
+          </span>
+          <Input id="username" className="pl-10" placeholder="Título" />
+        </div>
+      </div>
       <div className="space-y-1">
         <div className="relative">
           <span className="absolute inset-y-0 left-0 flex items-center pl-3">
@@ -30,14 +38,7 @@ export function AddPlanning() {
           <Input id="name" className="pl-10" placeholder="Categoria" />
         </div>
       </div>
-      <div className="space-y-1">
-        <div className="relative">
-          <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-            <FilePen className="h-4 w-4 text-gray-500" />
-          </span>
-          <Input id="username" className="pl-10" placeholder="Descrição" />
-        </div>
-      </div>
+
       <DialogFooter>
         <Button variant={'outline'} className="w-full">
           Adicionar

@@ -113,7 +113,7 @@ export function ETransactionsPage() {
           <>
             <div>
               <div className="mb-2 flex items-center gap-2">
-                <span className={'h-2 w-2 rounded-full bg-slate-500'} />
+                <span className="h-2 w-2 rounded-full bg-slate-500" />
                 <h1 className="font-semibold">Movimentações Agendadas</h1>
                 <FilterTransaction />
               </div>
