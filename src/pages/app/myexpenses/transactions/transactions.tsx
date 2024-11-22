@@ -213,7 +213,7 @@ export function ETransactionsPage() {
                   </TableBody>
                 </Table>
               </div>
-              <Pagination pageIndex={0} totalCount={18} perPage={5} />
+              <Pagination pageIndex={0} totalCount={1} perPage={5} />
             </div>
             <div>
               <div className="mb-2 mt-9 flex items-center gap-2">
@@ -315,7 +315,7 @@ export function ETransactionsPage() {
                   </TableBody>
                 </Table>
               </div>
-              <Pagination pageIndex={0} totalCount={18} perPage={5} />
+              <Pagination pageIndex={0} totalCount={3} perPage={5} />
             </div>
           </>
         ) : (

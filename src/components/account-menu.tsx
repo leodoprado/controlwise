@@ -41,7 +41,7 @@ export function AccountMenu() {
       >
         <NavLink to="/myexpenses/dashboard">
           <DropdownMenuItem className="cursor-pointer p-3">
-            <Banknote className="mr-2 h-4 w-4" /> Minhas Despesas
+            <Banknote className="mr-2 h-4 w-4" /> Minhas Finanças
           </DropdownMenuItem>
         </NavLink>
 

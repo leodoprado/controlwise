@@ -2,13 +2,7 @@
 
 import { Pie, PieChart } from 'recharts'
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import {
   ChartConfig,
   ChartContainer,
@@ -50,12 +44,11 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
-export function ChartExpenseCategory() {
+export function ChartAsset() {
   return (
-    <Card>
+    <Card className="col-span-3">
       <CardHeader>
-        <CardTitle>Despesas por Categoria</CardTitle>
-        <CardDescription>Novembro</CardDescription>
+        <CardTitle>Ativos na Carteira</CardTitle>
       </CardHeader>
       <CardContent>
         <ChartContainer
