@@ -1,22 +1,11 @@
 'use client'
 
-import {
-  BookOpen,
-  Car,
-  Check,
-  ChevronDown,
-  Edit,
-  Ellipsis,
-  HelpCircle,
-  Home,
-  Plus,
-  Trash,
-  TreePalm,
-  Tv,
-} from 'lucide-react' // Add a default icon like HelpCircle for unknown ids
+import { useQuery } from '@tanstack/react-query'
+import { Check, ChevronDown, HelpCircle, Plus, Trash } from 'lucide-react'
 import { useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 
+import { getCategories } from '@/api/GET/get-categories'
 import nocontent from '@/assets/nc-categories.svg'
 import { Button } from '@/components/ui/button'
 import {
@@ -31,6 +20,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover'
+import { Skeleton } from '@/components/ui/skeleton'
 import {
   Table,
   TableBody,
@@ -42,89 +32,10 @@ import {
 import { cn } from '@/lib/utils'
 import { NoContent } from '@/pages/no-content'
 
+import { getColorById, getIconById } from '../categories/mappingIconColor'
+import { DeleteCategorie } from './delete-categorie'
 import { FormCategorieExpense } from './form-categorie-expense'
 import { FormCategorieRevenue } from './form-categorie-revenue'
-
-// Define the icon mapping with explicit number key types
-const iconMap: { [key: number]: React.ComponentType } = {
-  1: Home,
-  2: Car,
-  3: BookOpen,
-  4: Tv,
-  5: TreePalm,
-  6: Ellipsis,
-}
-
-// Define the color mapping
-const colorMap: { [key: number]: string } = {
-  1: 'bg-red-500', // Red
-  2: 'bg-blue-500', // Blue
-  3: 'bg-green-500', // Green
-  4: 'bg-yellow-500', // Yellow
-  5: 'bg-purple-500', // Purple
-  6: 'bg-gray-500', // Gray
-}
-
-// Add a fallback icon for any unknown idIcone
-const getIconById = (idIcone: number) => {
-  return iconMap[idIcone] || HelpCircle // Fallback to HelpCircle if idIcone is unknown
-}
-
-// Add a fallback color for unknown idColor
-const getColorById = (idColor: number) => {
-  return colorMap[idColor] || 'bg-gray-500' // Fallback to gray if idColor is unknown
-}
-
-const categories = [
-  {
-    id: 1,
-    nome: 'Casa',
-    tipo: 'Despesa',
-    idIcone: 1,
-    idColor: 1,
-    descricao: '',
-  },
-  {
-    id: 2,
-    nome: 'Carro',
-    tipo: 'Despesa',
-    idIcone: 2,
-    idColor: 2,
-    descricao: '',
-  },
-  {
-    id: 3,
-    nome: 'Educação',
-    tipo: 'Despesa',
-    idIcone: 3,
-    idColor: 3,
-    descricao: '',
-  },
-  {
-    id: 4,
-    nome: 'Eletrônico',
-    tipo: 'Despesa',
-    idIcone: 4,
-    idColor: 4,
-    descricao: '',
-  },
-  {
-    id: 5,
-    nome: 'Lazer',
-    tipo: 'Despesa',
-    idIcone: 5,
-    idColor: 5,
-    descricao: '',
-  },
-  {
-    id: 6,
-    nome: 'Outros',
-    tipo: 'Despesa',
-    idIcone: 6,
-    idColor: 6,
-    descricao: '',
-  },
-]
 
 const options = [
   { value: 'despesas', label: 'Categorias de Despesas' },
@@ -134,17 +45,25 @@ const options = [
 export function CCategoryPage() {
   const [open, setOpen] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState('despesas')
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false)
 
-  const filteredCategories = categories.filter((categorie) =>
-    selectedCategory === 'despesas'
-      ? categorie.tipo === 'Despesa'
-      : categorie.tipo === 'Receita',
-  )
+  const { data: categories, isLoading: isLoadingCategories } = useQuery({
+    queryKey: ['categories'],
+    queryFn: getCategories,
+  })
+
+  const filteredCategories =
+    categories?.filter((categorie) =>
+      selectedCategory === 'despesas'
+        ? categorie.tipo === 'DESPESA'
+        : categorie.tipo === 'RECEITA',
+    ) || []
 
   return (
     <>
       <Helmet title="Categorias" />
 
+      {/* Header with category selector and add button */}
       <div className="flex gap-4">
         <Popover open={open} onOpenChange={setOpen}>
           <PopoverTrigger asChild>
@@ -156,10 +75,8 @@ export function CCategoryPage() {
               aria-expanded={open}
               className="flex w-[220px] items-center justify-between rounded-full border font-bold"
             >
-              {selectedCategory
-                ? options.find((option) => option.value === selectedCategory)
-                    ?.label
-                : 'Selecione uma categoria...'}
+              {options.find((option) => option.value === selectedCategory)
+                ?.label || 'Selecione uma categoria...'}
               <ChevronDown className="ml-2 h-4 w-4" />
             </Button>
           </PopoverTrigger>
@@ -204,7 +121,6 @@ export function CCategoryPage() {
               <Plus className="h-5 w-5" />
             </Button>
           </DialogTrigger>
-
           {selectedCategory === 'despesas' ? (
             <FormCategorieExpense />
           ) : (
@@ -213,12 +129,17 @@ export function CCategoryPage() {
         </Dialog>
       </div>
 
+      {/* Category List */}
       <div className="space-y-2.5">
-        {filteredCategories.length > 0 ? (
+        {isLoadingCategories ? (
+          <div className="rounded-md border p-4">
+            <Skeleton className="h-8 w-full" />
+          </div>
+        ) : filteredCategories.length > 0 ? (
           <div className="rounded-md border">
             <Table>
               <TableHeader>
-                <TableRow className="w-full">
+                <TableRow>
                   <TableHead className="flex-1">Nome</TableHead>
                   <TableHead className="flex-1">Ícone</TableHead>
                   <TableHead className="flex-1">Cor</TableHead>
@@ -229,38 +150,42 @@ export function CCategoryPage() {
               </TableHeader>
               <TableBody>
                 {filteredCategories.map((categorie) => {
-                  const IconComponent = getIconById(categorie.idIcone)
-                  const ColorClass = getColorById(categorie.idColor)
+                  const IconComponent = getIconById(categorie.codIcone)
+                  const ColorClass = getColorById(categorie.codColor)
 
                   return (
                     <TableRow key={categorie.id}>
                       <TableCell className="font-mono text-xs font-medium">
                         {categorie.nome}
                       </TableCell>
-                      <TableCell className="font-mono text-xs font-medium">
-                        {IconComponent ? <IconComponent /> : 'N/A'}
+                      <TableCell>
+                        {IconComponent ? <IconComponent /> : <HelpCircle />}
                       </TableCell>
-                      <TableCell className="text-muted-foreground">
+                      <TableCell>
                         <span
-                          className={`inline-block h-6 w-6 rounded-full ${ColorClass}`}
+                          className="inline-block h-6 w-6 rounded-full"
+                          style={{ backgroundColor: ColorClass }}
                         ></span>
                       </TableCell>
-
                       <TableCell className="flex justify-end gap-1">
-                        <Button
-                          variant="ghost"
-                          size="xs"
-                          className="flex items-center"
+                        <Dialog
+                          open={isDeleteOpen}
+                          onOpenChange={setIsDeleteOpen}
                         >
-                          <Edit className="h-4 w-4" />
-                        </Button>
-                        <Button
-                          variant="ghost"
-                          size="xs"
-                          className="flex items-center"
-                        >
-                          <Trash className="h-4 w-4" />
-                        </Button>
+                          <DialogTrigger asChild>
+                            <Button
+                              variant="ghost"
+                              size="xs"
+                              className="flex items-center"
+                            >
+                              <Trash className="h-4 w-4" />
+                            </Button>
+                          </DialogTrigger>
+                          <DeleteCategorie
+                            categorieId={categorie.id}
+                            open={isDeleteOpen}
+                          />
+                        </Dialog>
                       </TableCell>
                     </TableRow>
                   )
@@ -273,7 +198,7 @@ export function CCategoryPage() {
             contentTitle="Ops! Sem Categorias Registradas."
             imageSrc={nocontent}
             tooltipContent="Cadastre as Categorias para vincular nas Movimentações."
-          ></NoContent>
+          />
         )}
       </div>
     </>

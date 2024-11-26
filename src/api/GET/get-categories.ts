@@ -1,15 +1,14 @@
 import { api } from '@/lib/axios'
 
 interface GetCategoriesResponse {
-  categories: {
+  categories: Array<{
     id: string
     codigo: number
     nome: string
-    tipo: string
+    tipo: 'DESPESA' | 'RECEITA'
     codIcone: number
     codColor: number
-    descricao: string
-  }
+  }>
 }
 
 export async function getCategories() {
