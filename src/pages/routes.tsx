@@ -5,6 +5,7 @@ import { AuthLayout } from './_layouts/auth'
 import { ConfigLayout } from './_layouts/config'
 import { NotFound } from './404'
 import { CCategoryPage } from './app/config/categories/categories'
+import { CParametersPage } from './app/config/parameters/parameters'
 import { CProfilePage } from './app/config/profile/profile'
 import { EAnalysisPage } from './app/myexpenses/analysis/analysis'
 import { EDashboardPage } from './app/myexpenses/dashboard/dashboard'
@@ -31,6 +32,7 @@ export const router = createBrowserRouter([
     children: [
       { path: '/config/profile', element: <CProfilePage /> },
       { path: '/config/categories', element: <CCategoryPage /> },
+      { path: '/config/parameters', element: <CParametersPage /> },
     ],
   },
   {

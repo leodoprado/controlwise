@@ -16,6 +16,7 @@ export function Header() {
         <nav className="flex items-center space-x-4 lg:space-x-6">
           <NavLink to={'/config/profile'}>Meu Perfil</NavLink>
           <NavLink to={'/config/categories'}>Categorias</NavLink>
+          <NavLink to={'/config/parameters'}>Parâmetros</NavLink>
         </nav>
 
         <div className="ml-auto flex items-center gap-6">
