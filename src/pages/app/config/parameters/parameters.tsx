@@ -1,7 +1,14 @@
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { ChevronDown } from 'lucide-react'
 import { useState } from 'react'
 import { Helmet } from 'react-helmet-async'
+import { useForm } from 'react-hook-form'
+import { toast } from 'sonner'
+import { z } from 'zod'
 
+import { getParameters } from '@/api/GET/get-parameters'
+import { updateParameters } from '@/api/PUT/update-parameters'
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -17,16 +24,75 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover'
 
-export function CParametersPage() {
-  const [selectedYear, setSelectedYear] = useState<number | null>(null)
-  const [open, setOpen] = useState(false) // Estado do Popover
-  const currentYear = new Date().getFullYear()
-  const years = Array.from({ length: 7 }, (_, i) => currentYear - 3 + i) // 5 anos para trás e 5 para frente
+const parametersSchema = z.object({
+  anoReferencia: z.number(),
+})
 
-  const handleSelectYear = (year: number) => {
-    setSelectedYear(year)
-    setOpen(false)
+type ParameterSchema = z.infer<typeof parametersSchema>
+
+export function CParametersPage() {
+  const queryClient = useQueryClient()
+
+  const { data: parameters } = useQuery({
+    queryKey: ['parameters'],
+    queryFn: getParameters,
+    staleTime: Infinity,
+  })
+
+  const { handleSubmit, reset } = useForm<ParameterSchema>({
+    resolver: zodResolver(parametersSchema),
+  })
+
+  function updatedParametersCache({ anoReferencia }: ParameterSchema) {
+    const cached = queryClient.getQueryData<ParameterSchema>(['parameters'])
+
+    if (cached) {
+      queryClient.setQueryData(['parameters'], {
+        ...cached,
+        anoReferencia,
+      })
+    }
+
+    return cached
   }
+
+  const { mutateAsync: updateParametersFn } = useMutation({
+    mutationFn: updateParameters,
+    onMutate({ anoReferencia }) {
+      const previousParameters = updatedParametersCache({ anoReferencia })
+      return { previousParameters }
+    },
+  })
+
+  async function handleUpdateParameters(data: ParameterSchema) {
+    const { anoReferencia } = data
+
+    try {
+      await updateParametersFn({
+        anoReferencia,
+      })
+
+      toast.success('Parâmetros atualizados com sucesso!')
+      reset({ ...data })
+    } catch {
+      toast.error('Falha ao atualizar parâmetros!')
+    }
+  }
+
+  const [open, setOpen] = useState(false)
+
+  const handleSelectYear = async (year: number) => {
+    try {
+      setOpen(false)
+      await updateParametersFn({ anoReferencia: year })
+      toast.success('Parâmetro atualizado com sucesso!')
+    } catch {
+      toast.error('Falha ao atualizar o parâmetro!')
+    }
+  }
+
+  const currentYear = new Date().getFullYear()
+  const years = Array.from({ length: 7 }, (_, i) => currentYear - 3 + i) // Gera anos disponíveis para seleção
 
   return (
     <>
@@ -35,9 +101,9 @@ export function CParametersPage() {
         <CardHeader>
           <CardTitle>Minhas Finanças</CardTitle>
           <CardDescription>
-            Configure os parâmetro referente ao módulo.
+            Configure os parâmetros referentes ao módulo.{' '}
           </CardDescription>
-          <form>
+          <form onSubmit={handleSubmit(handleUpdateParameters)}>
             <CardContent className="mt-3 flex items-center gap-4">
               <Label htmlFor="nome" className="font-semibold">
                 Data de Referência:
@@ -50,7 +116,7 @@ export function CParametersPage() {
                     aria-expanded={open}
                     className="flex w-[140px] items-center justify-center gap-1 rounded-full border font-semibold"
                   >
-                    {selectedYear || currentYear}
+                    {parameters?.anoReferencia}
                     <ChevronDown className="h-4 w-4" />
                   </Button>
                 </PopoverTrigger>
