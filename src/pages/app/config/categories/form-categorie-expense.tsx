@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
 import { z } from 'zod'
 
-import { createCategorie } from '@/api/POST/create-categorie'
+import { createCategorie } from '@/api/POST/post-categorie'
 import { Button } from '@/components/ui/button'
 import {
   DialogContent,
