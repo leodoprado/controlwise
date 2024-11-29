@@ -1,8 +1,7 @@
 'use client'
 
 import { format } from 'date-fns'
-import { ptBR } from 'date-fns/locale' // Importa o locale do Brasil
-import { Calendar as CalendarIcon } from 'lucide-react'
+import { ptBR } from 'date-fns/locale' // Locale do Brasil
 import * as React from 'react'
 
 import { Button } from '@/components/ui/button'
@@ -14,12 +13,19 @@ import {
 } from '@/components/ui/popover'
 import { cn } from '@/lib/utils'
 
-export function DatePickerDemo() {
-  const [date, setDate] = React.useState<Date>()
+type DatePickerDemoProps = {
+  selectedDate: Date | undefined
+  onDateChange: (date: Date | undefined) => void
+}
+
+export function DatePickerDemo({
+  selectedDate,
+  onDateChange,
+}: DatePickerDemoProps) {
   const [open, setOpen] = React.useState(false)
 
-  const handleDateSelect = (selectedDate: Date | undefined) => {
-    setDate(selectedDate)
+  const handleDateSelect = (date: Date | undefined) => {
+    onDateChange(date) // Atualiza o estado externo
     setOpen(false)
   }
 
@@ -30,14 +36,11 @@ export function DatePickerDemo() {
           variant={'outline'}
           className={cn(
             'w-full justify-start pl-10 text-left font-normal',
-            !date && 'text-muted-foreground',
+            !selectedDate && 'text-muted-foreground',
           )}
         >
-          <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-            <CalendarIcon className="h-4 w-4" />
-          </span>
-          {date ? (
-            format(date, 'PPP', { locale: ptBR })
+          {selectedDate ? (
+            format(selectedDate, 'PPP', { locale: ptBR })
           ) : (
             <span>Escolha a data</span>
           )}
@@ -46,7 +49,7 @@ export function DatePickerDemo() {
       <PopoverContent className="w-auto p-0">
         <Calendar
           mode="single"
-          selected={date}
+          selected={selectedDate} // Agora aceita `undefined`
           onSelect={handleDateSelect}
           initialFocus
           locale={ptBR}

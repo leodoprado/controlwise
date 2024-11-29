@@ -1,4 +1,5 @@
 import { ArrowLeftRight, Flag, Plus, Presentation } from 'lucide-react'
+import { useState } from 'react'
 
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogTrigger } from '@/components/ui/dialog'
@@ -14,6 +15,7 @@ import { AddPlanning } from './add-planning'
 import { AddTransaction } from './add-transaction'
 
 export function ToAdd() {
+  const [isAddTransactionOpen, setIsAddTransactionOpen] = useState(false)
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -35,12 +37,18 @@ export function ToAdd() {
             <DropdownMenuItem
               className="cursor-pointer p-3"
               onSelect={(e) => e.preventDefault()} // Previne que o Dropdown feche ao abrir o Dialog
+              onClick={() => setIsAddTransactionOpen(true)} // Abre o formulário
             >
               <ArrowLeftRight className="mr-2 h-4 w-4" />
               Movimentação
             </DropdownMenuItem>
           </DialogTrigger>
-          <AddTransaction />
+
+          {/* Componente AddTransaction com controle de abertura/fechamento */}
+          <AddTransaction
+            isOpen={isAddTransactionOpen}
+            onClose={() => setIsAddTransactionOpen(false)} // Fecha o formulário
+          />
         </Dialog>
 
         <Dialog>

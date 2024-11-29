@@ -1,9 +1,8 @@
-// MovimentacaoDialogContent.tsx
-// import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation } from '@tanstack/react-query'
 import {
   Banknote,
   Bookmark,
+  Calendar,
   CircleDollarSignIcon,
   FilePen,
   TrendingDown,
@@ -27,13 +26,20 @@ import { DialogContent } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Switch } from '@/components/ui/switch'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
-// import { insertMaskInMoney } from '@/functions/money-mask'
+import { CategorySelector } from './categorySelector'
 import { DatePickerDemo } from './date-picker'
 
+// Máscara de valor - Esquerda para a direita
+function insertMaskInMoney(value: string): string {
+  const onlyNumbers = value.replace(/\D/g, '')
+  const formattedValue = (Number(onlyNumbers) / 100).toFixed(2)
+  return formattedValue.replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+}
+
 const transactionSchema = z.object({
-  valor: z.number(),
+  valor: z.string(),
   descricao: z.string().nullable(),
   tipo: z.enum(['RECEITA', 'DESPESA']),
   data: z.date(),
@@ -47,15 +53,32 @@ const transactionSchema = z.object({
 
 type TransactionSchema = z.infer<typeof transactionSchema>
 
-export function AddTransaction() {
+type AddTransactionProps = {
+  isOpen: boolean
+  onClose: () => void
+}
+
+export function AddTransaction({ isOpen, onClose }: AddTransactionProps) {
   const [transactionType, setTransactionType] = useState<'RECEITA' | 'DESPESA'>(
     'RECEITA',
   )
+  const [selectedType, setSelectedType] = useState<'RECEITA' | 'DESPESA'>(
+    'RECEITA',
+  )
+  const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(
+    null,
+  )
+  const [isRecurring, setIsRecurring] = useState(false)
+  const [status, setStatus] = useState(false)
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined)
 
   const {
     register,
     handleSubmit,
     formState: { isSubmitting },
+    reset,
+    watch,
+    setValue,
   } = useForm<TransactionSchema>()
 
   const { mutateAsync: createTransactionFn } = useMutation({
@@ -64,36 +87,73 @@ export function AddTransaction() {
 
   async function handleTransaction(data: TransactionSchema) {
     try {
-      await createTransactionFn({
-        ...data,
-        tipo: transactionType, // Define o tipo dinamicamente
-      })
+      const valor = parseFloat(data.valor.replace(/\./g, '').replace(',', '.'))
 
+      if (isNaN(valor) || valor <= 0) {
+        toast.error('O valor deve ser maior que 0.')
+        return
+      }
+
+      if (!selectedCategoryId) {
+        toast.error('Selecione uma categoria antes de continuar.')
+        return
+      }
+
+      if (!selectedDate) {
+        toast.error('Selecione uma data para continuar.')
+        return
+      }
+
+      const FStatus = status ? 'EXECUTADO' : 'PENDENTE'
+
+      await createTransactionFn({
+        valor,
+        categoryId: selectedCategoryId,
+        isRecurring,
+        data: selectedDate,
+        descricao: data.descricao,
+        status: FStatus,
+        tipo: transactionType,
+      })
+      onClose()
       toast.success('Sucesso ao cadastrar Movimentação!')
     } catch (error) {
       toast.error('Erro ao cadastrar Movimentação!')
     }
   }
 
+  if (!isOpen) return null
+
   return (
     <DialogContent className="mx-auto flex w-[400px] max-w-[90vw] items-center justify-center">
-      <Tabs defaultValue="receita" className="w-full">
+      <Tabs
+        defaultValue="RECEITA"
+        className="w-full"
+        onValueChange={(value) => {
+          setSelectedType(value as 'RECEITA' | 'DESPESA')
+          setTransactionType(value as 'RECEITA' | 'DESPESA')
+          reset()
+          setSelectedCategoryId('')
+          setIsRecurring(false)
+          setStatus(false)
+          setSelectedDate(undefined)
+        }}
+      >
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger
-            value="receita"
+            value="RECEITA"
             onClick={() => setTransactionType('RECEITA')}
           >
             <TrendingUp className="mr-1 h-4 w-4 text-primary" /> Receita
           </TabsTrigger>
           <TabsTrigger
-            value="despesa"
+            value="DESPESA"
             onClick={() => setTransactionType('DESPESA')}
           >
             <TrendingDown className="mr-1 h-4 w-4 text-destructive" /> Despesa
           </TabsTrigger>
         </TabsList>
 
-        {/* Conteúdo compartilhado */}
         <form onSubmit={handleSubmit(handleTransaction)}>
           <Card>
             <CardHeader>
@@ -120,10 +180,20 @@ export function AddTransaction() {
                   </span>
                   <Input
                     id="valor"
-                    type="number"
                     className="pl-10"
                     placeholder="0,00"
-                    {...register('valor')}
+                    {...register('valor', {
+                      required: 'O valor é obrigatório',
+                      validate: (value) =>
+                        parseFloat(value.replace(/\./g, '').replace(',', '.')) >
+                          0 || 'O valor deve ser maior que 0',
+                    })}
+                    onChange={(e) => {
+                      const maskedValue = insertMaskInMoney(e.target.value)
+                      setValue('valor', maskedValue, {
+                        shouldValidate: true,
+                      })
+                    }}
                   />
                 </div>
               </div>
@@ -134,18 +204,21 @@ export function AddTransaction() {
                   <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                     <Bookmark className="h-4 w-4 text-gray-500" />
                   </span>
-                  <Input
-                    id="categoryId"
-                    className="pl-10"
-                    placeholder="Categoria"
-                    {...register('categoryId')}
+                  <CategorySelector
+                    type={selectedType}
+                    selectedCategory={selectedCategoryId}
+                    onChange={setSelectedCategoryId}
                   />
                 </div>
               </div>
 
               {/* Switch Receita/Despesa Recorrente */}
               <div className="flex items-center space-x-2">
-                <Switch id="isRecurring" {...register('isRecurring')} />
+                <Switch
+                  id="isRecurring"
+                  checked={isRecurring}
+                  onCheckedChange={setIsRecurring}
+                />
                 <Label htmlFor="isRecurring">
                   {transactionType === 'RECEITA'
                     ? 'Receita Recorrente'
@@ -156,9 +229,12 @@ export function AddTransaction() {
               {/* Data */}
               <div className="space-y-1">
                 <div className="relative">
+                  <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+                    <Calendar className="h-4 w-4 text-gray-500" />
+                  </span>
                   <DatePickerDemo
-                  // onSelect={(date) => setValue('data', date)} // Atualiza o valor da data
-                  // className="pl-10" // Margem para o ícone à esquerda
+                    selectedDate={selectedDate}
+                    onDateChange={setSelectedDate}
                   />
                 </div>
               </div>
@@ -180,7 +256,11 @@ export function AddTransaction() {
 
               {/* Switch Receita/Despesa Executada */}
               <div className="flex items-center space-x-2">
-                <Switch id="status" {...register('status')} />
+                <Switch
+                  id="status"
+                  checked={status}
+                  onCheckedChange={setStatus}
+                />
                 <Label htmlFor="status">
                   {transactionType === 'RECEITA'
                     ? 'Receita Executada'
@@ -191,9 +271,18 @@ export function AddTransaction() {
 
             <CardFooter>
               <Button
+                type="submit"
                 variant="outline"
                 className="w-full"
-                disabled={isSubmitting}
+                disabled={
+                  isSubmitting ||
+                  !selectedCategoryId ||
+                  !selectedDate ||
+                  !watch('valor') ||
+                  parseFloat(
+                    watch('valor').replace(/\./g, '').replace(',', '.'),
+                  ) <= 0
+                }
               >
                 Adicionar
               </Button>

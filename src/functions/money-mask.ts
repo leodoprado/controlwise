@@ -1,4 +1,4 @@
-export const insertMaskInMoney = (value: string) => {
+export const insertMaskInMoney = (value: string): string => {
   const noMask = value.replace(/\D/g, '')
 
   if (noMask.length === 0) return '0,00'
