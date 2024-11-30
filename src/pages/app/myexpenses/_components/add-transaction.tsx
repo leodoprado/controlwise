@@ -53,12 +53,7 @@ const transactionSchema = z.object({
 
 type TransactionSchema = z.infer<typeof transactionSchema>
 
-type AddTransactionProps = {
-  isOpen: boolean
-  onClose: () => void
-}
-
-export function AddTransaction({ isOpen, onClose }: AddTransactionProps) {
+export function AddTransaction() {
   const [transactionType, setTransactionType] = useState<'RECEITA' | 'DESPESA'>(
     'RECEITA',
   )
@@ -115,15 +110,16 @@ export function AddTransaction({ isOpen, onClose }: AddTransactionProps) {
         status: FStatus,
         tipo: transactionType,
       })
-      onClose()
+      reset()
+      setSelectedCategoryId('')
+      setIsRecurring(false)
+      setStatus(false)
+      setSelectedDate(undefined)
       toast.success('Sucesso ao cadastrar Movimentação!')
     } catch (error) {
       toast.error('Erro ao cadastrar Movimentação!')
     }
   }
-
-  if (!isOpen) return null
-
   return (
     <DialogContent className="mx-auto flex w-[400px] max-w-[90vw] items-center justify-center">
       <Tabs
