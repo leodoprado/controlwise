@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -10,8 +10,10 @@ import {
 
 export function ColorDialog({
   setCodColor,
+  selectedColor,
 }: {
   setCodColor: (index: number) => void
+  selectedColor: number | null
 }) {
   const [selectedColorIndex, setSelectedColorIndex] = useState<number | null>(
     null,
@@ -40,6 +42,11 @@ export function ColorDialog({
     { color: '#556B2F', label: 'Verde Oliva' },
     { color: '#F08080', label: 'Coral' },
   ]
+
+  // Sincroniza o estado com o valor passado pelo componente pai
+  useEffect(() => {
+    setSelectedColorIndex(selectedColor)
+  }, [selectedColor])
 
   const handleSelectColor = (index: number) => {
     setSelectedColorIndex(index)
@@ -73,7 +80,11 @@ export function ColorDialog({
           {colors.map((item, index) => (
             <button
               key={index}
-              className="h-8 w-8 rounded-full border-2"
+              className={`h-8 w-8 rounded-full border-2 ${
+                selectedColorIndex === index
+                  ? 'border-blue-500'
+                  : 'border-transparent'
+              }`}
               style={{ backgroundColor: item.color }}
               onClick={() => handleSelectColor(index)}
             />

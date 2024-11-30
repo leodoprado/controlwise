@@ -15,12 +15,13 @@ import {
   Moon,
   Music,
   PiggyBank,
+  Scan,
   ShoppingCart,
   Sun,
   TreePalm,
   Utensils,
 } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -32,8 +33,10 @@ import {
 
 export function IconDialog({
   setCodIcone,
+  selectedIcon,
 }: {
   setCodIcone: (index: number) => void
+  selectedIcon: number | null
 }) {
   const [selectedIconIndex, setSelectedIconIndex] = useState<number | null>(
     null,
@@ -63,6 +66,11 @@ export function IconDialog({
     { icon: <PiggyBank className="h-6 w-6" />, label: 'Poupança' },
   ]
 
+  // Sincroniza o ícone selecionado com a prop do componente pai
+  useEffect(() => {
+    setSelectedIconIndex(selectedIcon)
+  }, [selectedIcon])
+
   const handleSelectIcon = (index: number) => {
     setSelectedIconIndex(index)
     setIsOpen(false)
@@ -77,7 +85,7 @@ export function IconDialog({
             {selectedIconIndex !== null ? (
               icons[selectedIconIndex].icon
             ) : (
-              <Banknote className="h-5 w-5" />
+              <Scan className="h-6 w-6" />
             )}
           </div>
           <span>
@@ -93,7 +101,11 @@ export function IconDialog({
           {icons.map((item, index) => (
             <button
               key={index}
-              className="rounded-lg p-2 hover:bg-gray-200"
+              className={`rounded-lg p-2 ${
+                selectedIconIndex === index
+                  ? 'bg-blue-100'
+                  : 'hover:bg-gray-200'
+              }`}
               onClick={() => handleSelectIcon(index)}
             >
               {item.icon}

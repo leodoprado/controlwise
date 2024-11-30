@@ -23,6 +23,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover'
+import { Skeleton } from '@/components/ui/skeleton'
 
 const parametersSchema = z.object({
   anoReferencia: z.number(),
@@ -33,7 +34,7 @@ type ParameterSchema = z.infer<typeof parametersSchema>
 export function CParametersPage() {
   const queryClient = useQueryClient()
 
-  const { data: parameters } = useQuery({
+  const { data: parameters, isLoading: isLoadingParameters } = useQuery({
     queryKey: ['parameters'],
     queryFn: getParameters,
     staleTime: Infinity,
@@ -116,7 +117,13 @@ export function CParametersPage() {
                     aria-expanded={open}
                     className="flex w-[140px] items-center justify-center gap-1 rounded-full border font-semibold"
                   >
-                    {parameters?.anoReferencia}
+                    {isLoadingParameters ? (
+                      <div className="flex items-center gap-2">
+                        <Skeleton className="h-5 w-10 rounded-lg bg-gray-200" />
+                      </div>
+                    ) : (
+                      parameters?.anoReferencia
+                    )}
                     <ChevronDown className="h-4 w-4" />
                   </Button>
                 </PopoverTrigger>

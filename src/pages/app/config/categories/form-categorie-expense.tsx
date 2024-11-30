@@ -2,7 +2,6 @@ import { useMutation } from '@tanstack/react-query'
 import { Bookmark, SquarePen } from 'lucide-react'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
 import { z } from 'zod'
 
@@ -32,15 +31,13 @@ export function FormCategorieExpense() {
     register,
     handleSubmit,
     formState: { isSubmitting },
+    reset,
+    watch,
   } = useForm<CategorieExpenseForm>()
 
-  // Estados para codColor e codIcone
   const [codColor, setCodColor] = useState<number | null>(null)
   const [codIcone, setCodIcone] = useState<number | null>(null)
 
-  const navigate = useNavigate()
-
-  // Mutação para criar a categoria
   const { mutateAsync: createCategorieExpenseFn } = useMutation({
     mutationFn: createCategorie,
   })
@@ -52,7 +49,6 @@ export function FormCategorieExpense() {
     }
 
     try {
-      // Envia os dados para o backend
       await createCategorieExpenseFn({
         nome: data.nome,
         tipo: 'DESPESA',
@@ -60,8 +56,10 @@ export function FormCategorieExpense() {
         codIcone,
       })
 
+      reset()
+      setCodColor(null)
+      setCodIcone(null)
       toast.success('Sucesso ao cadastrar categoria de Despesa!')
-      navigate('/config/categories')
     } catch (error) {
       toast.error('Erro ao cadastrar categoria de Despesa!')
     }
@@ -86,18 +84,15 @@ export function FormCategorieExpense() {
             {...register('nome')}
           />
         </div>
-
-        {/* Componentes ColorDialog e IconDialog */}
         <div className="flex gap-4">
-          <ColorDialog setCodColor={setCodColor} /> {/* Atualiza codColor */}
-          <IconDialog setCodIcone={setCodIcone} /> {/* Atualiza codIcone */}
+          <ColorDialog setCodColor={setCodColor} selectedColor={codColor} />{' '}
+          <IconDialog setCodIcone={setCodIcone} selectedIcon={codIcone} />
         </div>
-
         <DialogFooter>
           <Button
             variant={'outline'}
             className="w-full focus-visible:ring-red-500"
-            disabled={isSubmitting}
+            disabled={isSubmitting || !watch('nome') || !codColor || !codIcone}
           >
             Adicionar
           </Button>
