@@ -11,8 +11,9 @@ import {
 } from '@/components/ui/popover'
 
 type AssetProps = {
-  assetType?: string // Tipo pode ser opcional
+  assetType: string
   assets: Array<{
+    id: string
     ticker: string
     nome: string
     tipo: string
@@ -75,8 +76,8 @@ export function Asset({
           <CommandList>
             {filteredAssets.map((asset) => (
               <CommandItem
-                key={asset.ticker}
-                onSelect={() => handleSelectAsset(asset.ticker, asset.nome)} // Envia o nome ao selecionar
+                key={asset.id} // Use o campo `id` como chave
+                onSelect={() => handleSelectAsset(asset.id, asset.nome)} // Envia o ID correto
                 className="cursor-pointer"
               >
                 {asset.ticker + ' - ' + asset.nome}

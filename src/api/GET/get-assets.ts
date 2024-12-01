@@ -2,6 +2,7 @@ import { api } from '@/lib/axios'
 
 interface GetAssetsResponse {
   assets: Array<{
+    id: string
     ticker: string
     nome: string
     tipo: string

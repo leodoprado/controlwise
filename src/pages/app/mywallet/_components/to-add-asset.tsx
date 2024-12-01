@@ -1,3 +1,4 @@
+import { DialogTitle } from '@radix-ui/react-dialog'
 import { Plus } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
@@ -8,6 +9,7 @@ import { AddAsset } from './add-asset'
 export function ToAddAsset() {
   return (
     <Dialog>
+      <DialogTitle></DialogTitle>
       <DialogTrigger asChild>
         <Button
           variant={'default'}

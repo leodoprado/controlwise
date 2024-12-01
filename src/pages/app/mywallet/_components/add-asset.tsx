@@ -73,6 +73,8 @@ export function AddAsset() {
     staleTime: Infinity,
   })
 
+  console.log('Dados dos ativos:', assets)
+
   const { mutateAsync: createMovementFn } = useMutation({
     mutationFn: createMovement,
   })
@@ -116,7 +118,10 @@ export function AddAsset() {
   }
 
   return (
-    <DialogContent className="mx-auto flex w-[400px] max-w-[90vw] items-center justify-center">
+    <DialogContent
+      aria-describedby="dialog-description"
+      className="mx-auto flex w-[400px] max-w-[90vw] items-center justify-center"
+    >
       <Tabs defaultValue="COMPRA" className="w-full">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="COMPRA" onClick={() => setMovementType('COMPRA')}>
@@ -162,7 +167,10 @@ export function AddAsset() {
                   <Asset
                     assetType={selectedAssetType}
                     assets={assets || []}
-                    onSelectAsset={handleSelectAsset}
+                    onSelectAsset={(id) => {
+                      handleSelectAsset(id)
+                      console.log('ID do ativo selecionado:', id) // Confirmação no console
+                    }}
                   />
                 </div>
               </div>
@@ -175,7 +183,6 @@ export function AddAsset() {
                     </span>
                     <Input
                       id="valor"
-                      {...register('valorUnitario', { valueAsNumber: true })}
                       className="pl-10"
                       placeholder="Preço em R$"
                       {...register('valorUnitario', {
@@ -200,6 +207,7 @@ export function AddAsset() {
                     <Input
                       id="quantidade"
                       {...register('quantidade', {
+                        valueAsNumber: true, // Converte automaticamente o valor para número
                         required: 'A quantidade é obrigatória',
                         validate: (value) =>
                           value > 0 || 'A quantidade deve ser maior que 0',
