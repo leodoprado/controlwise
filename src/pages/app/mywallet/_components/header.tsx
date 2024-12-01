@@ -3,6 +3,7 @@ import { NavLink } from '@/components/nav-link'
 
 import { AccountMenu } from '../../../../components/account-menu'
 import { Separator } from '../../../../components/ui/separator'
+import { ToAddAsset } from './to-add-asset'
 export interface HeaderProps {}
 
 export function HeaderWallet() {
@@ -19,6 +20,10 @@ export function HeaderWallet() {
           <NavLink to={'/mywallet/releases'}>Lançamentos</NavLink>
           <NavLink to={'/mywallet/irpf'}>IRPF</NavLink>
         </nav>
+
+        <div className="flex gap-10">
+          <ToAddAsset />
+        </div>
 
         <div className="ml-auto flex items-center gap-6">
           <AccountMenu />

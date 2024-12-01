@@ -55,10 +55,10 @@ type TransactionSchema = z.infer<typeof transactionSchema>
 
 export function AddTransaction() {
   const [transactionType, setTransactionType] = useState<'RECEITA' | 'DESPESA'>(
-    'RECEITA',
+    'DESPESA',
   )
   const [selectedType, setSelectedType] = useState<'RECEITA' | 'DESPESA'>(
-    'RECEITA',
+    'DESPESA',
   )
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(
     null,
@@ -123,7 +123,7 @@ export function AddTransaction() {
   return (
     <DialogContent className="mx-auto flex w-[400px] max-w-[90vw] items-center justify-center">
       <Tabs
-        defaultValue="RECEITA"
+        defaultValue="DESPESA"
         className="w-full"
         onValueChange={(value) => {
           setSelectedType(value as 'RECEITA' | 'DESPESA')
@@ -137,16 +137,16 @@ export function AddTransaction() {
       >
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger
-            value="RECEITA"
-            onClick={() => setTransactionType('RECEITA')}
-          >
-            <TrendingUp className="mr-1 h-4 w-4 text-primary" /> Receita
-          </TabsTrigger>
-          <TabsTrigger
             value="DESPESA"
             onClick={() => setTransactionType('DESPESA')}
           >
             <TrendingDown className="mr-1 h-4 w-4 text-destructive" /> Despesa
+          </TabsTrigger>
+          <TabsTrigger
+            value="RECEITA"
+            onClick={() => setTransactionType('RECEITA')}
+          >
+            <TrendingUp className="mr-1 h-4 w-4 text-primary" /> Receita
           </TabsTrigger>
         </TabsList>
 

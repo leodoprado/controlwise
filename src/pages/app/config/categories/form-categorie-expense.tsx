@@ -78,7 +78,7 @@ export function FormCategorieExpense() {
           </span>
           <Input
             id="nome"
-            className="pl-10 focus-visible:ring-red-500"
+            className="pl-10"
             placeholder="Nome"
             type="text"
             {...register('nome')}
@@ -91,7 +91,7 @@ export function FormCategorieExpense() {
         <DialogFooter>
           <Button
             variant={'outline'}
-            className="w-full focus-visible:ring-red-500"
+            className="w-full"
             disabled={isSubmitting || !watch('nome') || !codColor || !codIcone}
           >
             Adicionar
