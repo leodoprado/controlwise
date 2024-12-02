@@ -21,7 +21,7 @@ export function HeaderWallet() {
           <NavLink to={'/mywallet/irpf'}>IRPF</NavLink>
         </nav>
 
-        <div className="flex gap-10">
+        <div className="flex gap-3">
           <ToAddAsset />
         </div>
 

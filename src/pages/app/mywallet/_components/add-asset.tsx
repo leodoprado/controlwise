@@ -65,6 +65,7 @@ export function AddAsset() {
     formState: { isSubmitting },
     reset,
     setValue,
+    watch,
   } = useForm<MovementSchema>()
 
   const { data: assets, isLoading } = useQuery({
@@ -72,8 +73,6 @@ export function AddAsset() {
     queryFn: getAssets,
     staleTime: Infinity,
   })
-
-  console.log('Dados dos ativos:', assets)
 
   const { mutateAsync: createMovementFn } = useMutation({
     mutationFn: createMovement,
@@ -103,6 +102,8 @@ export function AddAsset() {
         assetId: selectedAssetId,
       })
       reset()
+      setSelectedDate(undefined)
+      setSelectedAssetId(null)
       toast.success('Sucesso ao cadastrar Movimentação!')
     } catch (error) {
       toast.error('Erro ao cadastrar Movimentação!')
@@ -169,7 +170,6 @@ export function AddAsset() {
                     assets={assets || []}
                     onSelectAsset={(id) => {
                       handleSelectAsset(id)
-                      console.log('ID do ativo selecionado:', id) // Confirmação no console
                     }}
                   />
                 </div>
@@ -182,7 +182,7 @@ export function AddAsset() {
                       <Banknote className="h-4 w-4 text-gray-500" />
                     </span>
                     <Input
-                      id="valor"
+                      id="valorUnitario"
                       className="pl-10"
                       placeholder="Preço em R$"
                       {...register('valorUnitario', {
@@ -244,7 +244,14 @@ export function AddAsset() {
                 type="submit"
                 variant="outline"
                 className="w-full"
-                disabled={isSubmitting || isLoading}
+                disabled={
+                  isSubmitting ||
+                  isLoading ||
+                  !selectedAssetId ||
+                  !selectedDate ||
+                  !watch('valorUnitario') ||
+                  !watch('quantidade')
+                }
               >
                 Adicionar
               </Button>
