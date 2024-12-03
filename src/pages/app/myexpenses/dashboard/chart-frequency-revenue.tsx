@@ -16,24 +16,12 @@ import {
   ChartTooltipContent,
 } from '@/components/ui/chart'
 
-// Dados do gráfico
-const chartData = [
-  { month: 'Janeiro', receita: 3500 },
-  { month: 'Fevereiro', receita: 3700 },
-  { month: 'Março', receita: 3600 },
-  { month: 'Abril', receita: 3400 },
-  { month: 'Maio', receita: 3800 },
-  { month: 'Junho', receita: 4000 },
-  { month: 'Julho', receita: 4100 },
-  { month: 'Agosto', receita: 3900 },
-  { month: 'Setembro', receita: 4200 },
-  { month: 'Outubro', receita: 4300 },
-  { month: 'Novembro', receita: 4400 },
-  { month: 'Dezembro', receita: 4600 },
-]
-
-// Calcula o valor máximo de receita e adiciona 10% de folga
-const maxValue = Math.max(...chartData.map((data) => data.receita)) * 1.1
+interface ChartFrequencyRevenueProps {
+  data: Array<{
+    month: string
+    totalRevenues: string
+  }>
+}
 
 const chartConfig = {
   desktop: {
@@ -42,7 +30,14 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
-export function ChartFrequencyRevenue() {
+export function ChartFrequencyRevenue({ data }: ChartFrequencyRevenueProps) {
+  const chartData = data.map((item) => ({
+    month: item.month,
+    receita: parseFloat(item.totalRevenues),
+  }))
+
+  const maxValue = Math.max(...chartData.map((data) => data.receita)) * 1.1
+
   return (
     <Card>
       <CardHeader>
@@ -72,7 +67,6 @@ export function ChartFrequencyRevenue() {
               tickFormatter={(value) => value.slice(0, 3)}
             />
             <YAxis domain={[0, maxValue]} hide />{' '}
-            {/* Adiciona uma folga ao limite superior */}
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent indicator="dot" />}

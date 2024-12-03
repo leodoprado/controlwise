@@ -16,25 +16,14 @@ import {
   ChartTooltipContent,
 } from '@/components/ui/chart'
 
-// Dados do gráfico
-const chartData = [
-  { month: 'Janeiro', despesa: 2800 },
-  { month: 'Fevereiro', despesa: 2900 },
-  { month: 'Março', despesa: 3100 },
-  { month: 'Abril', despesa: 3300 },
-  { month: 'Maio', despesa: 3200 },
-  { month: 'Junho', despesa: 3500 },
-  { month: 'Julho', despesa: 3600 },
-  { month: 'Agosto', despesa: 2850 },
-  { month: 'Setembro', despesa: 3700 },
-  { month: 'Outubro', despesa: 3800 },
-  { month: 'Novembro', despesa: 2900 },
-  { month: 'Dezembro', despesa: 4300 },
-]
+interface ChartFrequencyExpenseProps {
+  data: Array<{
+    month: string
+    totalExpenses: string
+  }>
+}
 
-// Calcula o valor máximo de despesa e adiciona 10% de folga
-const maxValue = Math.max(...chartData.map((data) => data.despesa)) * 1.1
-
+// Configuração do gráfico
 const chartConfig = {
   desktop: {
     label: 'Despesa',
@@ -42,7 +31,15 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
-export function ChartFrequencyExpense() {
+export function ChartFrequencyExpense({ data }: ChartFrequencyExpenseProps) {
+  // Transformação dos dados para o formato do gráfico
+  const chartData = data.map((item) => ({
+    month: item.month,
+    despesa: parseFloat(item.totalExpenses),
+  }))
+
+  const maxValue = Math.max(...chartData.map((data) => data.despesa)) * 1.1
+
   return (
     <Card>
       <CardHeader>
@@ -52,7 +49,7 @@ export function ChartFrequencyExpense() {
       <CardContent>
         <ChartContainer
           className="mx-auto h-[350px] w-[100%]"
-          config={chartConfig}
+          config={chartConfig} // Passando a configuração do gráfico
         >
           <AreaChart
             data={chartData}
@@ -69,10 +66,9 @@ export function ChartFrequencyExpense() {
               tickLine={false}
               axisLine={false}
               tickMargin={8}
-              tickFormatter={(value) => value.slice(0, 3)}
+              tickFormatter={(value) => value.slice(0, 3)} // Exibe somente os 3 primeiros caracteres do mês
             />
-            <YAxis domain={[0, maxValue]} hide />{' '}
-            {/* Adiciona uma folga ao limite superior */}
+            <YAxis domain={[0, maxValue]} hide />
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent indicator="dot" />}

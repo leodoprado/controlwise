@@ -23,12 +23,12 @@ export const description = 'A stacked bar chart with a legend'
 const chartData = [{ month: 'January', desktop: 186, mobile: 80 }]
 
 const chartConfig = {
-  desktop: {
-    label: 'Desktop',
+  receita: {
+    label: 'Receita',
     color: 'hsl(var(--chart-1))',
   },
-  mobile: {
-    label: 'Mobile',
+  despesa: {
+    label: 'Despesa',
     color: 'hsl(var(--chart-2))',
   },
 } satisfies ChartConfig
@@ -54,15 +54,15 @@ export function Component() {
             <ChartTooltip content={<ChartTooltipContent hideLabel />} />
             <ChartLegend content={<ChartLegendContent />} />
             <Bar
-              dataKey="desktop"
+              dataKey="receita"
               stackId="a"
-              fill="var(--color-desktop)"
+              fill="var(--color-receita)"
               radius={[0, 0, 4, 4]}
             />
             <Bar
-              dataKey="mobile"
+              dataKey="despesa"
               stackId="a"
-              fill="var(--color-mobile)"
+              fill="var(--color-despesa)"
               radius={[4, 4, 0, 0]}
             />
           </BarChart>

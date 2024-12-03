@@ -1,6 +1,6 @@
 'use client'
 
-import { Pie, PieChart } from 'recharts'
+import { Cell, Pie, PieChart } from 'recharts'
 
 import {
   Card,
@@ -16,41 +16,31 @@ import {
   ChartTooltipContent,
 } from '@/components/ui/chart'
 
-const chartData = [
-  { browser: 'chrome', visitors: 275, fill: 'var(--color-chrome)' },
-  { browser: 'safari', visitors: 200, fill: 'var(--color-safari)' },
-  { browser: 'firefox', visitors: 287, fill: 'var(--color-firefox)' },
-  { browser: 'edge', visitors: 173, fill: 'var(--color-edge)' },
-  { browser: 'other', visitors: 190, fill: 'var(--color-other)' },
-]
+import { getColorById } from '../../config/categories/mappingIconColor'
+
+interface ExpenseCategory {
+  categorie: string
+  totalValue: number
+  color: number
+}
+
+interface ChartExpenseCategoryProps {
+  data: ExpenseCategory[]
+}
 
 const chartConfig = {
   visitors: {
-    label: 'Visitors',
-  },
-  chrome: {
-    label: 'Chrome',
-    color: 'hsl(var(--chart-1))',
-  },
-  safari: {
-    label: 'Safari',
-    color: 'hsl(var(--chart-2))',
-  },
-  firefox: {
-    label: 'Firefox',
-    color: 'hsl(var(--chart-3))',
-  },
-  edge: {
-    label: 'Edge',
-    color: 'hsl(var(--chart-4))',
-  },
-  other: {
-    label: 'Other',
-    color: 'hsl(var(--chart-5))',
+    label: 'Total',
   },
 } satisfies ChartConfig
 
-export function ChartExpenseCategory() {
+export function ChartExpenseCategory({ data }: ChartExpenseCategoryProps) {
+  const chartData = data.map((item) => ({
+    categorie: item.categorie,
+    totalValue: item.totalValue,
+    fill: getColorById(item.color),
+  }))
+
   return (
     <Card>
       <CardHeader>
@@ -69,14 +59,18 @@ export function ChartExpenseCategory() {
             />
             <Pie
               data={chartData}
-              dataKey="visitors"
-              nameKey="browser"
+              dataKey="totalValue"
+              nameKey="categorie"
               innerRadius={80}
               outerRadius={160}
               stroke="white"
               strokeWidth={2}
               isAnimationActive={false}
-            />
+            >
+              {chartData.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={entry.fill} />
+              ))}
+            </Pie>
           </PieChart>
         </ChartContainer>
       </CardContent>

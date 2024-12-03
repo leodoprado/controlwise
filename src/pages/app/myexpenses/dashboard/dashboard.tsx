@@ -1,26 +1,44 @@
 import { useQuery } from '@tanstack/react-query'
 import { Helmet } from 'react-helmet-async'
 
-import { getDataDashboard } from '@/api/GET/get-dashboard'
+import { getCategorySummary } from '@/api/GET/get-categories-summary'
+import { getDataDashboardMonth } from '@/api/GET/get-dashboard-month'
+import { getDataDashboardYear } from '@/api/GET/get-dashboard-year'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { useQueryKey } from '@/contexts/queryKeyContext'
 
 import { CardCurrentBalance } from './card-current-balance'
 import { CardExpenses } from './card-expenses'
 import { CardRevenues } from './card-revenues'
+import { ChartBalance } from './chart-balance'
 import { ChartExpenseCategory } from './chart-expense-category'
 import { ChartFrequencyExpense } from './chart-frequency-expense'
 import { ChartFrequencyRevenue } from './chart-frequency-revenue'
-import { ChartBalance } from './chart-income-expense'
 import { ChartRevenueCategory } from './chart-revenue-category'
 
 export function EDashboardPage() {
   const { currentKeyMonth } = useQueryKey()
 
-  const { data, isLoading } = useQuery({
-    queryKey: ['dashboard', currentKeyMonth],
-    queryFn: () => getDataDashboard(currentKeyMonth),
+  const { data: monthData, isLoading } = useQuery({
+    queryKey: ['dashboardMonth', currentKeyMonth],
+    queryFn: () => getDataDashboardMonth(currentKeyMonth),
     enabled: !!currentKeyMonth,
+  })
+
+  const { data: yearData } = useQuery({
+    queryKey: ['dashboardYear'],
+    queryFn: getDataDashboardYear,
+    staleTime: 0,
+    refetchOnWindowFocus: true,
+    refetchOnReconnect: true,
+  })
+
+  const { data: categorySummary } = useQuery({
+    queryKey: ['categoriesSummary', currentKeyMonth],
+    queryFn: () => getCategorySummary(currentKeyMonth),
+    staleTime: 0,
+    refetchOnWindowFocus: true,
+    refetchOnReconnect: true,
   })
 
   return (
@@ -30,18 +48,18 @@ export function EDashboardPage() {
       <div className="flex flex-col gap-4">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           <CardCurrentBalance
-            totalBalance={data?.netDifference ?? '0'}
-            percentageBalance={data?.percentageDifference ?? '0'}
+            totalBalance={monthData?.netDifference ?? '0'}
+            percentageBalance={monthData?.percentageDifference ?? '0'}
             isLoading={isLoading}
           />
           <CardRevenues
-            totalRevenues={data?.totalRevenues ?? '0'}
-            percentageRevenues={data?.percentageRevenues ?? '0'}
+            totalRevenues={monthData?.totalRevenues ?? '0'}
+            percentageRevenues={monthData?.percentageRevenues ?? '0'}
             isLoading={isLoading}
           />
           <CardExpenses
-            totalExpenses={data?.totalExpenses ?? '0'}
-            percentageExpenses={data?.percentageExpenses ?? '0'}
+            totalExpenses={monthData?.totalExpenses ?? '0'}
+            percentageExpenses={monthData?.percentageExpenses ?? '0'}
             isLoading={isLoading}
           />
         </div>
@@ -53,10 +71,14 @@ export function EDashboardPage() {
               <TabsTrigger value="chart2">Receitas por Categoria</TabsTrigger>
             </TabsList>
             <TabsContent value="chart1">
-              <ChartExpenseCategory />
+              {categorySummary && (
+                <ChartExpenseCategory data={categorySummary?.expenses} />
+              )}
             </TabsContent>
             <TabsContent value="chart2">
-              <ChartRevenueCategory />
+              {categorySummary && (
+                <ChartRevenueCategory data={categorySummary.revenues} />
+              )}
             </TabsContent>
           </Tabs>
 
@@ -67,13 +89,13 @@ export function EDashboardPage() {
               <TabsTrigger value="chart5">Frequência de Receitas</TabsTrigger>
             </TabsList>
             <TabsContent className="h-full" value="chart3">
-              <ChartBalance />
+              {yearData && <ChartBalance data={yearData} />}
             </TabsContent>
             <TabsContent value="chart4">
-              <ChartFrequencyExpense />
+              {yearData && <ChartFrequencyExpense data={yearData} />}
             </TabsContent>
             <TabsContent value="chart5">
-              <ChartFrequencyRevenue />
+              {yearData && <ChartFrequencyRevenue data={yearData} />}
             </TabsContent>
           </Tabs>
         </div>

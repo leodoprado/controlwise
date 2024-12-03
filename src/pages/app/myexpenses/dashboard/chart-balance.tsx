@@ -1,5 +1,4 @@
-'use client'
-
+import React from 'react'
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts'
 
 import {
@@ -16,24 +15,16 @@ import {
   ChartTooltipContent,
 } from '@/components/ui/chart'
 
-const chartData = [
-  { month: 'Janeiro', receita: 3500, despesa: 2800 },
-  { month: 'Fevereiro', receita: 3700, despesa: 2900 },
-  { month: 'Março', receita: 3600, despesa: 3100 },
-  { month: 'Abril', receita: 3400, despesa: 3300 },
-  { month: 'Maio', receita: 3800, despesa: 3200 },
-  { month: 'Junho', receita: 4000, despesa: 3500 },
-  { month: 'Julho', receita: 4100, despesa: 3600 },
-  { month: 'Agosto', receita: 3900, despesa: 2850 },
-  { month: 'Setembro', receita: 4200, despesa: 3700 },
-  { month: 'Outubro', receita: 4300, despesa: 3800 },
-  { month: 'Novembro', receita: 4400, despesa: 2900 },
-  { month: 'Dezembro', receita: 4600, despesa: 4500 },
-]
+interface ChartBalanceProps {
+  data: Array<{
+    month: string
+    totalRevenues: string
+    totalExpenses: string
+  }>
+}
 
-const maxValue = Math.max(...chartData.map((data) => data.despesa)) * 1.1
-
-const chartConfig = {
+// Definição da configuração do gráfico
+const chartConfig: ChartConfig = {
   desktop: {
     label: 'Receita',
     color: 'hsl(var(--chart-2))',
@@ -42,9 +33,21 @@ const chartConfig = {
     label: 'Despesa',
     color: 'hsl(var(--chart-1))',
   },
-} satisfies ChartConfig
+}
 
-export function ChartBalance() {
+export function ChartBalance({ data }: ChartBalanceProps) {
+  const chartData = data.map((item) => ({
+    month: item.month,
+    receita: parseFloat(item.totalRevenues),
+    despesa: parseFloat(item.totalExpenses),
+  }))
+
+  const maxValue =
+    Math.max(
+      ...chartData.map((data) => data.receita),
+      ...chartData.map((data) => data.despesa),
+    ) * 1.1
+
   return (
     <Card>
       <CardHeader>
@@ -53,7 +56,7 @@ export function ChartBalance() {
       </CardHeader>
       <CardContent>
         <ChartContainer
-          config={chartConfig}
+          config={chartConfig} // Passando a prop `config` obrigatória
           className="mx-auto h-[350px] w-[100%]"
         >
           <BarChart data={chartData} width={600} height={350}>
@@ -65,8 +68,7 @@ export function ChartBalance() {
               axisLine={false}
               tickFormatter={(value) => value.slice(0, 3)}
             />
-            <YAxis domain={[0, maxValue]} hide />{' '}
-            {/* Define o limite superior do eixo Y */}
+            <YAxis domain={[0, maxValue]} hide />
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent indicator="dot" />}

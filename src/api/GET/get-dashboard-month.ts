@@ -1,6 +1,6 @@
 import { api } from '@/lib/axios'
 
-interface GetDataDashboard {
+interface GetDataDashboardMonth {
   totalExpenses: string
   percentageExpenses: string
   totalRevenues: string
@@ -9,8 +9,8 @@ interface GetDataDashboard {
   percentageDifference: string
 }
 
-export async function getDataDashboard(monthIndex: string) {
-  const response = await api.get<GetDataDashboard>(
+export async function getDataDashboardMonth(monthIndex: string) {
+  const response = await api.get<GetDataDashboardMonth>(
     `/dashboard?month=${monthIndex}`,
   )
 
