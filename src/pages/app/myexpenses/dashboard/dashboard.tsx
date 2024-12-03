@@ -1,6 +1,9 @@
+import { useQuery } from '@tanstack/react-query'
 import { Helmet } from 'react-helmet-async'
 
+import { getDataDashboard } from '@/api/GET/get-dashboard'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { useQueryKey } from '@/contexts/queryKeyContext'
 
 import { CardCurrentBalance } from './card-current-balance'
 import { CardExpenses } from './card-expenses'
@@ -12,15 +15,35 @@ import { ChartBalance } from './chart-income-expense'
 import { ChartRevenueCategory } from './chart-revenue-category'
 
 export function EDashboardPage() {
+  const { currentKeyMonth } = useQueryKey()
+
+  const { data, isLoading } = useQuery({
+    queryKey: ['dashboard', currentKeyMonth],
+    queryFn: () => getDataDashboard(currentKeyMonth),
+    enabled: !!currentKeyMonth,
+  })
+
   return (
     <>
       <Helmet title="Painel" />
 
       <div className="flex flex-col gap-4">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-          <CardCurrentBalance />
-          <CardRevenues />
-          <CardExpenses />
+          <CardCurrentBalance
+            totalBalance={data?.netDifference ?? '0'}
+            percentageBalance={data?.percentageDifference ?? '0'}
+            isLoading={isLoading}
+          />
+          <CardRevenues
+            totalRevenues={data?.totalRevenues ?? '0'}
+            percentageRevenues={data?.percentageRevenues ?? '0'}
+            isLoading={isLoading}
+          />
+          <CardExpenses
+            totalExpenses={data?.totalExpenses ?? '0'}
+            percentageExpenses={data?.percentageExpenses ?? '0'}
+            isLoading={isLoading}
+          />
         </div>
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-9">

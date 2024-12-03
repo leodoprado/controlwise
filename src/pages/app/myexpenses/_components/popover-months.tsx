@@ -1,5 +1,3 @@
-'use client'
-
 import { Check, ChevronDown } from 'lucide-react'
 import * as React from 'react'
 
@@ -15,6 +13,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover'
+import { useQueryKey } from '@/contexts/queryKeyContext'
 import { cn } from '@/lib/utils'
 
 // Mapeamento de meses com valores numéricos
@@ -34,30 +33,12 @@ const frameworks = [
 ]
 
 export function PopoverMonths() {
-  const currentMonth = React.useMemo(() => {
-    // Obtém o mês da URL ou usa o mês atual como fallback
-    const params = new URLSearchParams(window.location.search)
-    return params.get('month') || (new Date().getMonth() + 1).toString()
-  }, [])
-
+  const { currentKeyMonth, setCurrentKeyMonth } = useQueryKey()
   const [open, setOpen] = React.useState(false)
-  const [value, setValue] = React.useState(currentMonth) // Mês atual como valor inicial
 
-  const handleSelect = (selectedValue: string) => {
-    setValue(selectedValue) // Atualiza o estado local
+  const handleMonthChange = (selectedMonth: string) => {
+    setCurrentKeyMonth(selectedMonth)
     setOpen(false)
-
-    // Atualiza o parâmetro `month` na URL
-    const params = new URLSearchParams(window.location.search)
-    params.set('month', selectedValue)
-    window.history.pushState(
-      {},
-      '',
-      `${window.location.pathname}?${params.toString()}`,
-    )
-
-    // Opcional: Dispare eventos para atualizações em outros componentes
-    window.dispatchEvent(new Event('monthChanged'))
   }
 
   return (
@@ -69,8 +50,10 @@ export function PopoverMonths() {
           aria-expanded={open}
           className="flex w-[140px] items-center justify-center gap-1 rounded-full border font-semibold"
         >
-          {frameworks.find((framework) => framework.value === value)?.label ||
-            'Selecione um mês'}
+          {
+            frameworks.find((framework) => framework.value === currentKeyMonth)
+              ?.label
+          }
           <ChevronDown className="h-4 w-4" />
         </Button>
       </PopoverTrigger>
@@ -82,13 +65,15 @@ export function PopoverMonths() {
                 <CommandItem
                   key={framework.value}
                   value={framework.value}
-                  onSelect={() => handleSelect(framework.value)}
+                  onSelect={(month) => handleMonthChange(month)}
                   className="cursor-pointer"
                 >
                   <Check
                     className={cn(
                       'mr-2 h-4 w-4',
-                      value === framework.value ? 'opacity-100' : 'opacity-0',
+                      currentKeyMonth === framework.value
+                        ? 'opacity-100'
+                        : 'opacity-0',
                     )}
                   />
                   {framework.label}
