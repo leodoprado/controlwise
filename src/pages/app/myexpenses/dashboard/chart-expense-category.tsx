@@ -15,6 +15,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from '@/components/ui/chart'
+import { useQueryKey } from '@/contexts/queryKeyContext'
 
 import { getColorById } from '../../config/categories/mappingIconColor'
 
@@ -34,7 +35,27 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
+const monthLabels = [
+  '',
+  'Janeiro',
+  'Fevereiro',
+  'Março',
+  'Abril',
+  'Maio',
+  'Junho',
+  'Julho',
+  'Agosto',
+  'Setembro',
+  'Outubro',
+  'Novembro',
+  'Dezembro',
+]
+
 export function ChartExpenseCategory({ data }: ChartExpenseCategoryProps) {
+  const { currentKeyMonth } = useQueryKey()
+
+  const currentMonthLabel = monthLabels[parseInt(currentKeyMonth)]
+
   const chartData = data.map((item) => ({
     categorie: item.categorie,
     totalValue: item.totalValue,
@@ -45,7 +66,7 @@ export function ChartExpenseCategory({ data }: ChartExpenseCategoryProps) {
     <Card>
       <CardHeader>
         <CardTitle>Despesas por Categoria</CardTitle>
-        <CardDescription>Novembro</CardDescription>
+        <CardDescription>{currentMonthLabel}</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer
@@ -64,7 +85,7 @@ export function ChartExpenseCategory({ data }: ChartExpenseCategoryProps) {
               innerRadius={80}
               outerRadius={160}
               stroke="white"
-              strokeWidth={2}
+              strokeWidth={3}
               isAnimationActive={false}
             >
               {chartData.map((entry, index) => (

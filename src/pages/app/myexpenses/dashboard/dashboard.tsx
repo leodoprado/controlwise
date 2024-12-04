@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async'
 import { getCategorySummary } from '@/api/GET/get-categories-summary'
 import { getDataDashboardMonth } from '@/api/GET/get-dashboard-month'
 import { getDataDashboardYear } from '@/api/GET/get-dashboard-year'
+import { getParameters } from '@/api/GET/get-parameters'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { useQueryKey } from '@/contexts/queryKeyContext'
 
@@ -41,6 +42,12 @@ export function EDashboardPage() {
     refetchOnReconnect: true,
   })
 
+  const { data: parameters } = useQuery({
+    queryKey: ['parameters'],
+    queryFn: getParameters,
+    staleTime: Infinity,
+  })
+
   return (
     <>
       <Helmet title="Painel" />
@@ -72,7 +79,7 @@ export function EDashboardPage() {
             </TabsList>
             <TabsContent value="chart1">
               {categorySummary && (
-                <ChartExpenseCategory data={categorySummary?.expenses} />
+                <ChartExpenseCategory data={categorySummary.expenses} />
               )}
             </TabsContent>
             <TabsContent value="chart2">
@@ -89,7 +96,12 @@ export function EDashboardPage() {
               <TabsTrigger value="chart5">Frequência de Receitas</TabsTrigger>
             </TabsList>
             <TabsContent className="h-full" value="chart3">
-              {yearData && <ChartBalance data={yearData} />}
+              {yearData && (
+                <ChartBalance
+                  data={yearData}
+                  yearReference={parameters?.anoReferencia ?? 0}
+                />
+              )}
             </TabsContent>
             <TabsContent value="chart4">
               {yearData && <ChartFrequencyExpense data={yearData} />}

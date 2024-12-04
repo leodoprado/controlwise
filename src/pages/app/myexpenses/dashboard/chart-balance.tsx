@@ -21,6 +21,7 @@ interface ChartBalanceProps {
     totalRevenues: string
     totalExpenses: string
   }>
+  yearReference: number
 }
 
 // Definição da configuração do gráfico
@@ -35,7 +36,7 @@ const chartConfig: ChartConfig = {
   },
 }
 
-export function ChartBalance({ data }: ChartBalanceProps) {
+export function ChartBalance({ data, yearReference }: ChartBalanceProps) {
   const chartData = data.map((item) => ({
     month: item.month,
     receita: parseFloat(item.totalRevenues),
@@ -52,7 +53,7 @@ export function ChartBalance({ data }: ChartBalanceProps) {
     <Card>
       <CardHeader>
         <CardTitle>Balanço (Receita - Despesa)</CardTitle>
-        <CardDescription>2024</CardDescription>
+        <CardDescription>{yearReference}</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer

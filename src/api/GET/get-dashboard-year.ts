@@ -4,6 +4,7 @@ interface GetDataDashboardYear {
   month: string
   totalExpenses: string
   totalRevenues: string
+  yearReference: number
 }
 
 export async function getDataDashboardYear() {
