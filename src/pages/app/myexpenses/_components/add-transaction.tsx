@@ -225,7 +225,7 @@ export function AddTransaction() {
                     selectedPlanning={selectedPlanningId}
                     onChange={setSelectedPlanningId}
                     selectedCategoryId={selectedCategoryId}
-                    type={selectedType}
+                    type={transactionType}
                   />
                 </div>
               </div>

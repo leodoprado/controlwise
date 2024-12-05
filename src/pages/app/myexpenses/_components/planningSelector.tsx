@@ -23,7 +23,7 @@ type PlanningSelectorProps = {
   selectedPlanning: string | null
   onChange: (id: string | null) => void
   selectedCategoryId: string | null // Categoria selecionada
-  type: 'RECEITA' | 'DESPESA' // Tipo (RECEITA ou DESPESA)
+  type: 'RECEITA' | 'DESPESA'
 }
 
 export function PlanningSelector({
@@ -37,27 +37,28 @@ export function PlanningSelector({
   const [open, setOpen] = React.useState(false)
   const [query, setQuery] = React.useState('')
 
+  // Chamada da API para buscar planejamentos por categoria e tipo
   const { data: plannings, isLoading } = useQuery({
-    queryKey: ['plannings', selectedCategoryId, type],
+    queryKey: ['planningsCategory', selectedCategoryId, type],
     queryFn: () =>
-      getPlanningByCategory(
-        currentKeyMonth,
-        selectedCategoryId as string,
-        type,
-      ),
+      getPlanningByCategory(currentKeyMonth, selectedCategoryId as string),
     enabled: !!selectedCategoryId,
   })
 
-  const filteredPlannings =
-    plannings?.filter((planning) =>
-      planning.titulo.toLowerCase().includes(query.toLowerCase()),
-    ) || []
-
+  // Manipula a seleção de um planejamento
   const handleSelect = (id: string) => {
     const selected = id === selectedPlanning ? null : id
     onChange(selected)
     setOpen(false)
   }
+
+  const filteredPlannings = Array.isArray(plannings)
+    ? plannings.filter(
+        (planning) =>
+          planning.tipo === type && // Verifica se o tipo corresponde (RECEITA ou DESPESA)
+          planning.titulo.toLowerCase().includes(query.toLowerCase()), // Verifica se o título inclui o texto da busca
+      )
+    : []
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -67,16 +68,16 @@ export function PlanningSelector({
           role="combobox"
           aria-expanded={open}
           className="w-full justify-start pl-10 text-left font-normal"
-          disabled={!selectedCategoryId} // Desabilita o botão se nenhuma categoria estiver selecionada
+          disabled={!selectedCategoryId}
         >
           <div className="flex items-center gap-2">
             <span>
-              {selectedCategoryId
-                ? selectedPlanning
+              {!selectedCategoryId
+                ? 'Selecione uma categoria primeiro'
+                : selectedPlanning
                   ? plannings?.find((plan) => plan.id === selectedPlanning)
                       ?.titulo
-                  : `Selecione um planejamento de ${type.toLowerCase()}...`
-                : 'Selecione uma categoria primeiro'}
+                  : `Selecione um planejamento de ${type.toLowerCase()}...`}
             </span>
           </div>
         </Button>
