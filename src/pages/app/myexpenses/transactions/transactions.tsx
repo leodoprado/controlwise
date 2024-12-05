@@ -1,34 +1,19 @@
 import { useQuery } from '@tanstack/react-query'
 import {
-  Car,
   Check,
   Edit,
   HelpCircle,
-  Home,
-  Info,
-  Menu,
-  Plus,
   Trash,
-  TreePalm,
   TrendingDown,
   TrendingUp,
-  Wallet,
   X,
 } from 'lucide-react'
 import { Helmet } from 'react-helmet-async'
 
 import { getTransactionMonth } from '@/api/GET/get-transactions'
-import transaction from '@/assets/nc-transactio.svg'
 import { Pagination } from '@/components/pagination'
 import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+import { Dialog, DialogTrigger } from '@/components/ui/dialog'
 import { Skeleton } from '@/components/ui/skeleton'
 import {
   Table,
@@ -38,20 +23,9 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '@/components/ui/tooltip'
 import { useQueryKey } from '@/contexts/queryKeyContext'
-import { NoContent } from '@/pages/no-content'
 
 import { getIconById } from '../../config/categories/mappingIconColor'
-import {
-  AddTransaction,
-  AddTransactionDialog,
-} from '../_components/add-transaction'
 import { CancelTransaction } from './cancel-transaction'
 import { DeleteTransaction } from './delete-transaction'
 import { ExecuteTransaction } from './execute-transaction'

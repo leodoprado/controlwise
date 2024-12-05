@@ -5,6 +5,7 @@ export interface CreateTransactionBody {
   descricao: string | null
   data: Date
   categoryId: string
+  planningId?: string | null
   isRecurring: boolean
   tipo: 'RECEITA' | 'DESPESA'
   status: 'PENDENTE' | 'EXECUTADO' | 'CANCELADO'
@@ -15,6 +16,7 @@ export async function createTransaction({
   descricao,
   data,
   categoryId,
+  planningId,
   isRecurring,
   tipo,
   status,
@@ -24,6 +26,7 @@ export async function createTransaction({
     descricao,
     data,
     categoryId,
+    planningId,
     isRecurring,
     tipo,
     status,

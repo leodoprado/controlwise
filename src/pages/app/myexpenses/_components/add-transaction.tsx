@@ -5,6 +5,7 @@ import {
   Calendar,
   CircleDollarSignIcon,
   FilePen,
+  Flag,
   TrendingDown,
   TrendingUp,
 } from 'lucide-react'
@@ -30,6 +31,7 @@ import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 import { CategorySelector } from './categorySelector'
 import { DatePickerDemo } from './date-picker'
+import { PlanningSelector } from './planningSelector'
 
 // Máscara de valor - Esquerda para a direita
 function insertMaskInMoney(value: string): string {
@@ -66,6 +68,9 @@ export function AddTransaction() {
   const [isRecurring, setIsRecurring] = useState(false)
   const [status, setStatus] = useState(false)
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined)
+  const [selectedPlanningId, setSelectedPlanningId] = useState<string | null>(
+    null,
+  )
 
   const {
     register,
@@ -104,6 +109,7 @@ export function AddTransaction() {
       await createTransactionFn({
         valor,
         categoryId: selectedCategoryId,
+        planningId: selectedPlanningId,
         isRecurring,
         data: selectedDate,
         descricao: data.descricao,
@@ -130,6 +136,7 @@ export function AddTransaction() {
           setTransactionType(value as 'RECEITA' | 'DESPESA')
           reset()
           setSelectedCategoryId('')
+          setSelectedPlanningId(null)
           setIsRecurring(false)
           setStatus(false)
           setSelectedDate(undefined)
@@ -204,6 +211,21 @@ export function AddTransaction() {
                     type={selectedType}
                     selectedCategory={selectedCategoryId}
                     onChange={setSelectedCategoryId}
+                  />
+                </div>
+              </div>
+
+              {/* Campo Planejamento */}
+              <div className="space-y-1">
+                <div className="relative">
+                  <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+                    <Flag className="h-4 w-4 text-gray-500" />
+                  </span>
+                  <PlanningSelector
+                    selectedPlanning={selectedPlanningId}
+                    onChange={setSelectedPlanningId}
+                    selectedCategoryId={selectedCategoryId}
+                    type={selectedType}
                   />
                 </div>
               </div>
