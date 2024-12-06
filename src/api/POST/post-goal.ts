@@ -4,7 +4,7 @@ export interface CreateGoalBody {
   titulo: string
   dataLimite: Date
   valorTotal: number
-  valorInicial: number
+  valorAdicionado: number
   descricao?: string
 }
 
@@ -12,14 +12,14 @@ export async function createGoal({
   titulo,
   dataLimite,
   valorTotal,
-  valorInicial,
+  valorAdicionado,
   descricao,
 }: CreateGoalBody) {
   await api.post('/goal', {
     titulo,
     dataLimite,
     valorTotal,
-    valorInicial,
+    valorAdicionado,
     descricao,
   })
 }

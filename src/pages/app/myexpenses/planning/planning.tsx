@@ -123,8 +123,8 @@ export function EPlanningPage() {
                             parseFloat(planning.valorMovimentado) <
                           0
                             ? planning.tipo === 'RECEITA'
-                              ? 'text-green-500' // Valor positivo e verde para receita negativa
-                              : 'text-red-500' // Valor negativo e vermelho para despesa negativa
+                              ? 'text-green-500'
+                              : 'text-red-500'
                             : ''
                         }`}
                       >
