@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async'
 
 import { ChartAsset } from '../_components/chart-asset'
 import { ChartEquity } from '../_components/chart-equity'
+import { AccordionAssets } from './accordion-assets'
 
 export function WDashboardPage() {
   return (
@@ -13,6 +14,7 @@ export function WDashboardPage() {
           <ChartAsset />
         </div>
       </div>
+      <AccordionAssets />
     </>
   )
 }
