@@ -1,7 +1,9 @@
 'use client'
 
+import { useQuery } from '@tanstack/react-query'
 import { Bar, BarChart, CartesianGrid, XAxis } from 'recharts'
 
+import { getEvolutionMovements } from '@/api/GET/get-evolution-movements'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import {
   ChartConfig,
@@ -9,20 +11,6 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from '@/components/ui/chart'
-const chartData = [
-  { month: 'Jan', desktop: 1498.43 },
-  { month: 'Fev', desktop: 2182.19 },
-  { month: 'Mar', desktop: 2934.15 },
-  { month: 'Abr', desktop: 3322.12 },
-  { month: 'Mai', desktop: 3713.82 },
-  { month: 'Jun', desktop: 4496.13 },
-  { month: 'Jul', desktop: 4826.28 },
-  { month: 'Ago', desktop: 5243.51 },
-  { month: 'Set', desktop: 5807.34 },
-  { month: 'Out', desktop: 6985.77 },
-  { month: 'Nov', desktop: 7157.51 },
-  { month: 'Dez', desktop: 8533.45 },
-]
 
 const chartConfig = {
   desktop: {
@@ -32,37 +20,53 @@ const chartConfig = {
 } satisfies ChartConfig
 
 export function ChartEquity() {
+  const { data, isLoading } = useQuery({
+    queryKey: ['evolution'],
+    queryFn: getEvolutionMovements,
+  })
+
+  // Processando os dados para o formato esperado pelo BarChart
+  const chartData =
+    data?.map((item) => ({
+      month: item.month, // Exemplo: "January", "February"
+      desktop: item.aggregatedValue, // Substitua `value` pelo campo correto do seu retorno
+    })) || []
+
   return (
     <Card className="col-span-6">
       <CardHeader>
         <CardTitle>Evolução do Patrimônio</CardTitle>
       </CardHeader>
       <CardContent>
-        <ChartContainer
-          config={chartConfig}
-          className="mx-auto h-[350px] w-[100%]"
-        >
-          <BarChart
-            accessibilityLayer
-            data={chartData}
-            width={600}
-            height={350}
+        {isLoading ? (
+          <div>Carregando...</div>
+        ) : (
+          <ChartContainer
+            config={chartConfig}
+            className="mx-auto h-[350px] w-[100%]"
           >
-            <CartesianGrid vertical={false} />
-            <XAxis
-              dataKey="month"
-              tickLine={false}
-              tickMargin={10}
-              axisLine={false}
-              tickFormatter={(value) => value.slice(0, 3)}
-            />
-            <ChartTooltip
-              cursor={false}
-              content={<ChartTooltipContent hideLabel />}
-            />
-            <Bar dataKey="desktop" fill="var(--color-desktop)" />
-          </BarChart>
-        </ChartContainer>
+            <BarChart
+              accessibilityLayer
+              data={chartData}
+              width={600}
+              height={350}
+            >
+              <CartesianGrid vertical={false} />
+              <XAxis
+                dataKey="month"
+                tickLine={false}
+                tickMargin={10}
+                axisLine={false}
+                tickFormatter={(value) => value.slice(0, 3)} // Exibe os 3 primeiros caracteres do mês
+              />
+              <ChartTooltip
+                cursor={false}
+                content={<ChartTooltipContent hideLabel />}
+              />
+              <Bar dataKey="desktop" fill="var(--color-desktop)" />
+            </BarChart>
+          </ChartContainer>
+        )}
       </CardContent>
     </Card>
   )

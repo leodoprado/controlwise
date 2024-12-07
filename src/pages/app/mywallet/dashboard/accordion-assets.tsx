@@ -93,7 +93,7 @@ export function AccordionAssets() {
   })
 
   if (isLoading || isLoadingPrices) {
-    return <div>Carregando...</div>
+    return <div>Carregando Ativos...</div>
   }
 
   const assetsWithPrices = assets?.map((asset) => {
@@ -136,6 +136,7 @@ export function AccordionAssets() {
                 <Table>
                   <TableRow>
                     <TableHead className="font-semibold">Ativo</TableHead>
+                    <TableHead className="font-semibold">Ticker</TableHead>
                     <TableHead className="font-semibold">Quantidade</TableHead>
                     <TableHead className="font-semibold">Preço Médio</TableHead>
                     <TableHead className="font-semibold">
@@ -148,6 +149,7 @@ export function AccordionAssets() {
                   {movements.map((movement) => (
                     <TableRow key={movement.id}>
                       <TableCell>{movement.asset}</TableCell>
+                      <TableCell>{movement.ticker}</TableCell>
                       <TableCell>{movement.quantity}</TableCell>
                       <TableCell>
                         {movement.averagePrice.toFixed(2) || 'N/A'}
