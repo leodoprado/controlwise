@@ -1,7 +1,5 @@
-'use client'
-
 import { useQuery } from '@tanstack/react-query'
-import { Cell, Pie, PieChart } from 'recharts'
+import { Cell, Pie, PieChart, TooltipProps } from 'recharts'
 
 import { getAssetsSummary } from '@/api/GET/get-assets-summary'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -9,16 +7,13 @@ import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
-  ChartTooltipContent,
 } from '@/components/ui/chart'
 
-// Definição da tipagem para os dados retornados pela query
 interface AssetSummary {
   assetType: string
   totalEquity: number
 }
 
-// Mapeamento estático de cores para cada tipo de ativo
 const assetTypeColors: Record<string, string> = {
   ACAO: '#60A5FA',
   FII: '#F97316',
@@ -27,7 +22,6 @@ const assetTypeColors: Record<string, string> = {
   BDR: '#4F46E5',
 }
 
-// Mapeamento estático de labels para os tipos de ativo
 const assetTypeLabels: Record<string, string> = {
   ACAO: 'Ações',
   FII: 'FIIs',
@@ -50,13 +44,43 @@ export function ChartAsset() {
     queryFn: getAssetsSummary,
   })
 
+  const totalEquity =
+    assetSummary?.reduce((acc, item) => acc + item.totalEquity, 0) || 0
+
   const chartData =
     assetSummary?.map((item) => ({
       assetType: item.assetType,
       totalEquity: item.totalEquity,
-      fill: assetTypeColors[item.assetType] || 'hsl(var(--chart-default))', // Cor padrão, caso o tipo não esteja no mapeamento
-      label: assetTypeLabels[item.assetType] || 'Desconhecido', // Label amigável
+      fill: assetTypeColors[item.assetType] || 'hsl(var(--chart-default))',
+      label: assetTypeLabels[item.assetType] || 'Desconhecido',
     })) || []
+
+  const renderTooltipContent = (data: TooltipProps<number, string>) => {
+    if (!data.payload || data.payload.length === 0) return null
+
+    const entry = data.payload[0].payload
+    const percentage = ((entry.totalEquity / totalEquity) * 100).toFixed(1)
+
+    return (
+      <div className="rounded bg-white p-2 text-sm shadow">
+        <p className="flex items-center">
+          <span
+            className="mr-2 h-3 w-3 rounded-full"
+            style={{ backgroundColor: entry.fill }}
+          ></span>
+          <strong>{entry.label}</strong>
+        </p>
+        <p>
+          Valor:{' '}
+          {entry.totalEquity.toLocaleString('pt-BR', {
+            style: 'currency',
+            currency: 'BRL',
+          })}
+        </p>
+        <p>Porcentagem: {percentage}%</p>
+      </div>
+    )
+  }
 
   return (
     <Card className="col-span-3">
@@ -74,10 +98,7 @@ export function ChartAsset() {
             className="mx-auto h-[350px] w-[100%]"
           >
             <PieChart width={300} height={300}>
-              <ChartTooltip
-                cursor={false}
-                content={<ChartTooltipContent hideLabel />}
-              />
+              <ChartTooltip cursor={false} content={renderTooltipContent} />
               <Pie
                 data={chartData}
                 dataKey="totalEquity"

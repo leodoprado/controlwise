@@ -41,7 +41,7 @@ export function WMovementsPage() {
       <div className="">
         <Card>
           <CardHeader className="flex items-start justify-between">
-            <CardTitle>Lançamentos - 2024</CardTitle>
+            <CardTitle>Lançamentos</CardTitle>
             <div className="flex items-center gap-4">
               <CardDescription className="flex items-center gap-4">
                 <div className="flex items-center gap-2">
