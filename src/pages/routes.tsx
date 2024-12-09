@@ -14,6 +14,8 @@ import { EPlanningPage } from './app/myexpenses/planning/planning'
 import { EReportsPage } from './app/myexpenses/reports/reports'
 import { ETransactionsPage } from './app/myexpenses/transactions/transactions'
 import { WDashboardPage } from './app/mywallet/dashboard/dashboard'
+import { WExportIRPF } from './app/mywallet/irpf/irpf'
+import { WMovementsPage } from './app/mywallet/movements/movements'
 import { ASignInPage } from './auth/sign-in'
 import { ASignUpPage } from './auth/sign-up'
 
@@ -50,7 +52,11 @@ export const router = createBrowserRouter([
   {
     path: '/',
     element: <AppLayout />,
-    children: [{ path: '/mywallet/dashboard', element: <WDashboardPage /> }],
+    children: [
+      { path: '/mywallet/dashboard', element: <WDashboardPage /> },
+      { path: '/mywallet/movements', element: <WMovementsPage /> },
+      { path: '/mywallet/irpf', element: <WExportIRPF /> },
+    ],
   },
   {
     path: '*',

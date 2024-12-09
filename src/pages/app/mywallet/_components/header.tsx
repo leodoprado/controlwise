@@ -16,7 +16,7 @@ export function HeaderWallet() {
 
         <nav className="flex items-center space-x-4 lg:space-x-6">
           <NavLink to={'/mywallet/dashboard'}>Resumo</NavLink>
-          <NavLink to={'/mywallet/releases'}>Lançamentos</NavLink>
+          <NavLink to={'/mywallet/movements'}>Lançamentos</NavLink>
           <NavLink to={'/mywallet/irpf'}>IRPF</NavLink>
         </nav>
 

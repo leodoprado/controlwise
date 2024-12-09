@@ -89,12 +89,8 @@ export function AccordionAssets() {
       const tickers = assets?.map((asset) => asset.ticker) || []
       return fetchMarketPricesSequential(tickers)
     },
-    enabled: !!assets, // Ativa apenas quando os ativos forem carregados
+    enabled: !!assets,
   })
-
-  if (isLoading || isLoadingPrices) {
-    return <div>Carregando Ativos...</div>
-  }
 
   const assetsWithPrices = assets?.map((asset) => {
     const currentPrice = marketPrices?.[asset.ticker] || 0
@@ -126,55 +122,65 @@ export function AccordionAssets() {
       </CardHeader>
 
       <CardContent>
-        <Accordion type="single" collapsible className="w-full">
-          {Object.entries(groupedAssets).map(([type, movements]) => (
-            <AccordionItem key={type} value={type}>
-              <AccordionTrigger className="text-lg font-semibold">
-                {typeLabels[type] || type}
-              </AccordionTrigger>
-              <AccordionContent>
-                <Table>
-                  <TableRow>
-                    <TableHead className="font-semibold">Ativo</TableHead>
-                    <TableHead className="font-semibold">Ticker</TableHead>
-                    <TableHead className="font-semibold">Quantidade</TableHead>
-                    <TableHead className="font-semibold">Preço Médio</TableHead>
-                    <TableHead className="font-semibold">
-                      Cotação Atual
-                    </TableHead>
-                    <TableHead className="font-semibold">
-                      Rentabilidade (%)
-                    </TableHead>
-                  </TableRow>
-                  {movements.map((movement) => (
-                    <TableRow key={movement.id}>
-                      <TableCell>{movement.asset}</TableCell>
-                      <TableCell>{movement.ticker}</TableCell>
-                      <TableCell>{movement.quantity}</TableCell>
-                      <TableCell>
-                        {movement.averagePrice.toFixed(2) || 'N/A'}
-                      </TableCell>
-                      <TableCell>
-                        {movement.currentPrice?.toFixed(2) || 'N/A'}
-                      </TableCell>
-                      <TableCell
-                        className={
-                          movement.profitability
-                            ? movement.profitability > 0
-                              ? 'text-green-500'
-                              : 'text-red-500'
-                            : ''
-                        }
-                      >
-                        {movement.profitability?.toFixed(2) || 'N/A'}%
-                      </TableCell>
+        {isLoading || isLoadingPrices ? (
+          <div>Carregando Ativos...</div>
+        ) : !assets || assets.length === 0 ? (
+          <div>Nenhum ativo registrado.</div>
+        ) : (
+          <Accordion type="single" collapsible className="w-full">
+            {Object.entries(groupedAssets).map(([type, movements]) => (
+              <AccordionItem key={type} value={type}>
+                <AccordionTrigger className="text-lg font-semibold">
+                  {typeLabels[type] || type}
+                </AccordionTrigger>
+                <AccordionContent>
+                  <Table>
+                    <TableRow>
+                      <TableHead className="font-semibold">Ativo</TableHead>
+                      <TableHead className="font-semibold">Ticker</TableHead>
+                      <TableHead className="font-semibold">
+                        Quantidade
+                      </TableHead>
+                      <TableHead className="font-semibold">
+                        Preço Médio
+                      </TableHead>
+                      <TableHead className="font-semibold">
+                        Cotação Atual
+                      </TableHead>
+                      <TableHead className="font-semibold">
+                        Rentabilidade (%)
+                      </TableHead>
                     </TableRow>
-                  ))}
-                </Table>
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+                    {movements.map((movement) => (
+                      <TableRow key={movement.id}>
+                        <TableCell>{movement.asset}</TableCell>
+                        <TableCell>{movement.ticker}</TableCell>
+                        <TableCell>{movement.quantity}</TableCell>
+                        <TableCell>
+                          {movement.averagePrice.toFixed(2) || 'N/A'}
+                        </TableCell>
+                        <TableCell>
+                          {movement.currentPrice?.toFixed(2) || 'N/A'}
+                        </TableCell>
+                        <TableCell
+                          className={
+                            movement.profitability
+                              ? movement.profitability > 0
+                                ? 'text-green-500'
+                                : 'text-red-500'
+                              : ''
+                          }
+                        >
+                          {movement.profitability?.toFixed(2) || 'N/A'}%
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </Table>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        )}
       </CardContent>
     </Card>
   )
