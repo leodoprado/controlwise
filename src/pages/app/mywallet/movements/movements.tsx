@@ -58,9 +58,9 @@ export function WMovementsPage() {
 
           <CardContent>
             {isLoadingAllMovements ? (
-              <p>Carregando movimentações...</p>
+              <p>Carregando lançamentos...</p>
             ) : !allMovements || allMovements.length === 0 ? (
-              <p>Nenhuma movimentação encontrada.</p>
+              <p>Nenhum lançamento encontrado.</p>
             ) : (
               <Table>
                 <TableHeader>

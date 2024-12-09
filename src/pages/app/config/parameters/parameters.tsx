@@ -100,14 +100,14 @@ export function CParametersPage() {
       <Helmet title="Parâmetros" />
       <Card className="w-full">
         <CardHeader>
-          <CardTitle>Minhas Finanças</CardTitle>
+          <CardTitle>Parâmetro Geral</CardTitle>
           <CardDescription>
-            Configure os parâmetros referentes ao módulo.{' '}
+            Selecione o ano de referência dos módulos.{' '}
           </CardDescription>
           <form onSubmit={handleSubmit(handleUpdateParameters)}>
             <CardContent className="mt-3 flex items-center gap-4">
               <Label htmlFor="nome" className="font-semibold">
-                Data de Referência:
+                Ano de Referência:
               </Label>
               <Popover open={open} onOpenChange={setOpen}>
                 <PopoverTrigger asChild>
