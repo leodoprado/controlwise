@@ -20,13 +20,13 @@ import { ChartRevenueCategory } from './chart-revenue-category'
 export function EDashboardPage() {
   const { currentKeyMonth } = useQueryKey()
 
-  const { data: monthData, isLoading } = useQuery({
+  const { data: monthData, isLoading: isLoadingMonth } = useQuery({
     queryKey: ['dashboardMonth', currentKeyMonth],
     queryFn: () => getDataDashboardMonth(currentKeyMonth),
     enabled: !!currentKeyMonth,
   })
 
-  const { data: yearData } = useQuery({
+  const { data: yearData, isLoading: isLoadingYear } = useQuery({
     queryKey: ['dashboardYear'],
     queryFn: getDataDashboardYear,
     staleTime: 0,
@@ -34,13 +34,14 @@ export function EDashboardPage() {
     refetchOnReconnect: true,
   })
 
-  const { data: categorySummary } = useQuery({
-    queryKey: ['categoriesSummary', currentKeyMonth],
-    queryFn: () => getCategorySummary(currentKeyMonth),
-    staleTime: 0,
-    refetchOnWindowFocus: true,
-    refetchOnReconnect: true,
-  })
+  const { data: categorySummary, isLoading: isLoadingCategorySummary } =
+    useQuery({
+      queryKey: ['categoriesSummary', currentKeyMonth],
+      queryFn: () => getCategorySummary(currentKeyMonth),
+      staleTime: 0,
+      refetchOnWindowFocus: true,
+      refetchOnReconnect: true,
+    })
 
   const { data: parameters } = useQuery({
     queryKey: ['parameters'],
@@ -57,17 +58,17 @@ export function EDashboardPage() {
           <CardCurrentBalance
             totalBalance={monthData?.netDifference ?? '0'}
             percentageBalance={monthData?.percentageDifference ?? '0'}
-            isLoading={isLoading}
+            isLoading={isLoadingMonth}
           />
           <CardRevenues
             totalRevenues={monthData?.totalRevenues ?? '0'}
             percentageRevenues={monthData?.percentageRevenues ?? '0'}
-            isLoading={isLoading}
+            isLoading={isLoadingMonth}
           />
           <CardExpenses
             totalExpenses={monthData?.totalExpenses ?? '0'}
             percentageExpenses={monthData?.percentageExpenses ?? '0'}
-            isLoading={isLoading}
+            isLoading={isLoadingMonth}
           />
         </div>
 
@@ -78,14 +79,16 @@ export function EDashboardPage() {
               <TabsTrigger value="chart2">Receitas por Categoria</TabsTrigger>
             </TabsList>
             <TabsContent value="chart1">
-              {categorySummary && (
-                <ChartExpenseCategory data={categorySummary.expenses} />
-              )}
+              <ChartExpenseCategory
+                data={categorySummary?.expenses || []}
+                isLoading={isLoadingCategorySummary}
+              />
             </TabsContent>
             <TabsContent value="chart2">
-              {categorySummary && (
-                <ChartRevenueCategory data={categorySummary.revenues} />
-              )}
+              <ChartRevenueCategory
+                data={categorySummary?.revenues || []}
+                isLoading={isLoadingCategorySummary}
+              />
             </TabsContent>
           </Tabs>
 
@@ -96,13 +99,13 @@ export function EDashboardPage() {
               <TabsTrigger value="chart5">Frequência de Receitas</TabsTrigger>
             </TabsList>
             <TabsContent className="h-full" value="chart3">
-              {yearData && (
-                <ChartBalance
-                  data={yearData}
-                  yearReference={parameters?.anoReferencia ?? 0}
-                />
-              )}
+              <ChartBalance
+                data={yearData || []}
+                yearReference={parameters?.anoReferencia ?? 0}
+                isLoading={isLoadingYear}
+              />
             </TabsContent>
+
             <TabsContent value="chart4">
               {yearData && <ChartFrequencyExpense data={yearData} />}
             </TabsContent>

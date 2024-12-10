@@ -11,7 +11,6 @@ import {
 import { Helmet } from 'react-helmet-async'
 
 import { getTransactionMonth } from '@/api/GET/get-transactions'
-import { Pagination } from '@/components/pagination'
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogTrigger } from '@/components/ui/dialog'
 import { Skeleton } from '@/components/ui/skeleton'
@@ -29,7 +28,6 @@ import { getIconById } from '../../config/categories/mappingIconColor'
 import { CancelTransaction } from './cancel-transaction'
 import { DeleteTransaction } from './delete-transaction'
 import { ExecuteTransaction } from './execute-transaction'
-import { FilterTransaction } from './filter-transaction'
 
 export function ETransactionsPage() {
   const { currentKeyMonth } = useQueryKey()
@@ -49,7 +47,6 @@ export function ETransactionsPage() {
           <div className="mb-2 flex items-center gap-2">
             <span className="h-2 w-2 rounded-full bg-slate-500" />
             <h1 className="font-semibold">Movimentações Agendadas</h1>
-            <FilterTransaction />
           </div>
 
           <div className="mb-2 rounded-md border">
@@ -172,14 +169,12 @@ export function ETransactionsPage() {
               </TableBody>
             </Table>
           </div>
-          <Pagination pageIndex={0} totalCount={1} perPage={5} />
         </div>
         <div>
           <div className="mb-2 mt-9 flex items-center gap-2">
             <span className={'h-2 w-2 rounded-full bg-green-500'} />
             <span className={'h-2 w-2 rounded-full bg-red-500'} />
             <h1 className="font-semibold">Histórico de Movimentações</h1>
-            <FilterTransaction />
           </div>
 
           <div className="mb-2 rounded-md border">
@@ -298,7 +293,6 @@ export function ETransactionsPage() {
               </TableBody>
             </Table>
           </div>
-          <Pagination pageIndex={0} totalCount={1} perPage={5} />
         </div>
       </div>
     </>

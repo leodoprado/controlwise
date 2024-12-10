@@ -27,6 +27,7 @@ interface ExpenseCategory {
 
 interface ChartExpenseCategoryProps {
   data: ExpenseCategory[]
+  isLoading: boolean
 }
 
 const chartConfig = {
@@ -51,7 +52,10 @@ const monthLabels = [
   'Dezembro',
 ]
 
-export function ChartExpenseCategory({ data }: ChartExpenseCategoryProps) {
+export function ChartExpenseCategory({
+  data,
+  isLoading,
+}: ChartExpenseCategoryProps) {
   const { currentKeyMonth } = useQueryKey()
 
   const currentMonthLabel = monthLabels[parseInt(currentKeyMonth)]
@@ -69,31 +73,37 @@ export function ChartExpenseCategory({ data }: ChartExpenseCategoryProps) {
         <CardDescription>{currentMonthLabel}</CardDescription>
       </CardHeader>
       <CardContent>
-        <ChartContainer
-          config={chartConfig}
-          className="mx-auto h-[350px] w-[100%]"
-        >
-          <PieChart width={300} height={300}>
-            <ChartTooltip
-              cursor={false}
-              content={<ChartTooltipContent hideLabel />}
-            />
-            <Pie
-              data={chartData}
-              dataKey="totalValue"
-              nameKey="categorie"
-              innerRadius={80}
-              outerRadius={160}
-              stroke="white"
-              strokeWidth={3}
-              isAnimationActive={false}
-            >
-              {chartData.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={entry.fill} />
-              ))}
-            </Pie>
-          </PieChart>
-        </ChartContainer>
+        {isLoading ? (
+          <p className="text-center text-sm font-medium text-gray-500">
+            Carregando dados...
+          </p>
+        ) : (
+          <ChartContainer
+            config={chartConfig}
+            className="mx-auto h-[350px] w-[100%]"
+          >
+            <PieChart width={300} height={300}>
+              <ChartTooltip
+                cursor={false}
+                content={<ChartTooltipContent hideLabel />}
+              />
+              <Pie
+                data={chartData}
+                dataKey="totalValue"
+                nameKey="categorie"
+                innerRadius={80}
+                outerRadius={160}
+                stroke="white"
+                strokeWidth={3}
+                isAnimationActive={false}
+              >
+                {chartData.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={entry.fill} />
+                ))}
+              </Pie>
+            </PieChart>
+          </ChartContainer>
+        )}
       </CardContent>
     </Card>
   )

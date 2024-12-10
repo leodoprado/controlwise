@@ -89,9 +89,13 @@ export function ChartAsset() {
       </CardHeader>
       <CardContent>
         {isLoadingSummary ? (
-          <p>Carregando...</p>
+          <p className="text-start text-sm font-medium text-gray-500">
+            Carregando dados...
+          </p>
         ) : chartData.length === 0 ? (
-          <p>Nenhum dado disponível.</p>
+          <p className="text-start text-sm font-medium text-gray-500">
+            Nenhum dado disponível.
+          </p>
         ) : (
           <ChartContainer
             config={chartConfig}

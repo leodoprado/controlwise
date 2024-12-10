@@ -1,7 +1,7 @@
 'use client'
 
 import { useQuery } from '@tanstack/react-query'
-import { Bar, BarChart, CartesianGrid, XAxis } from 'recharts'
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts'
 
 import { getEvolutionMovements } from '@/api/GET/get-evolution-movements'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -14,7 +14,7 @@ import {
 
 const chartConfig = {
   desktop: {
-    label: 'Desktop',
+    label: 'Patrimônio',
     color: 'hsl(var(--chart-2))',
   },
 } satisfies ChartConfig
@@ -25,12 +25,15 @@ export function ChartEquity() {
     queryFn: getEvolutionMovements,
   })
 
-  // Processando os dados para o formato esperado pelo BarChart
   const chartData =
     data?.map((item) => ({
-      month: item.month, // Exemplo: "January", "February"
-      desktop: item.aggregatedValue, // Substitua `value` pelo campo correto do seu retorno
+      month: item.month,
+      patrimonio: parseFloat(item.aggregatedValue), // Parse para número
     })) || []
+
+  // Calcular o valor máximo com uma margem adicional
+  const maxValue =
+    Math.max(...chartData.map((item) => item.patrimonio || 0)) * 1.1
 
   return (
     <Card className="col-span-6">
@@ -39,7 +42,13 @@ export function ChartEquity() {
       </CardHeader>
       <CardContent>
         {isLoading ? (
-          <div>Carregando...</div>
+          <p className="text-start text-sm font-medium text-gray-500">
+            Carregando dados...
+          </p>
+        ) : chartData.length === 0 ? (
+          <p className="mt-4 text-center text-sm font-medium text-gray-500">
+            Nenhum dado disponível.
+          </p>
         ) : (
           <ChartContainer
             config={chartConfig}
@@ -57,13 +66,15 @@ export function ChartEquity() {
                 tickLine={false}
                 tickMargin={10}
                 axisLine={false}
-                tickFormatter={(value) => value.slice(0, 3)} // Exibe os 3 primeiros caracteres do mês
+                tickFormatter={(value) => value.slice(0, 3)}
               />
+              <YAxis domain={[0, maxValue]} hide />{' '}
+              {/* Adicionado o domínio do eixo Y */}
               <ChartTooltip
                 cursor={false}
                 content={<ChartTooltipContent hideLabel />}
               />
-              <Bar dataKey="desktop" fill="var(--color-desktop)" />
+              <Bar dataKey="patrimonio" fill="var(--color-desktop)" />
             </BarChart>
           </ChartContainer>
         )}

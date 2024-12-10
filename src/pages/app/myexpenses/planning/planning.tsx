@@ -4,6 +4,7 @@ import {
   Edit,
   HelpCircle,
   Pin,
+  Presentation,
   Trash,
   TrendingDown,
   TrendingUp,
@@ -24,7 +25,6 @@ import { Progress } from '@/components/ui/progress'
 import { useQueryKey } from '@/contexts/queryKeyContext'
 
 import { getIconById } from '../../config/categories/mappingIconColor'
-import { FilterCategories } from './filter-categories'
 
 export function EPlanningPage() {
   const { currentKeyMonth } = useQueryKey()
@@ -42,10 +42,10 @@ export function EPlanningPage() {
       <div className="w-full space-y-2.5">
         <div className="mb-4 flex items-center gap-4">
           <div className="flex items-center gap-2">
+            <Presentation className="h-5 w-5" />
             <h1 className="whitespace-nowrap font-semibold">
-              Filtros de Planejamentos:
+              Planejamentos Mensais
             </h1>
-            <FilterCategories />
           </div>
         </div>
 
@@ -128,7 +128,7 @@ export function EPlanningPage() {
                             : ''
                         }`}
                       >
-                        R${' '}
+                        Restam R${' '}
                         {Math.abs(
                           parseFloat(planning.valorTarget) -
                             parseFloat(planning.valorMovimentado),

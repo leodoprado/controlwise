@@ -123,9 +123,13 @@ export function AccordionAssets() {
 
       <CardContent>
         {isLoading || isLoadingPrices ? (
-          <div>Carregando Ativos...</div>
+          <p className="text-start text-sm font-medium text-gray-500">
+            Carregando dados...
+          </p>
         ) : !assets || assets.length === 0 ? (
-          <div>Nenhum ativo registrado.</div>
+          <p className="text-start text-sm font-medium text-gray-500">
+            Nenhum dado disponível.
+          </p>
         ) : (
           <Accordion type="single" collapsible className="w-full">
             {Object.entries(groupedAssets).map(([type, movements]) => (

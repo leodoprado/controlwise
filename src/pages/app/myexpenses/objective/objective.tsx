@@ -5,6 +5,7 @@ import {
   Edit,
   Flag,
   HandCoins,
+  Pin,
   Trash,
 } from 'lucide-react'
 import { Helmet } from 'react-helmet-async'
@@ -21,8 +22,6 @@ import {
 import { Dialog, DialogTrigger } from '@/components/ui/dialog'
 import { Progress } from '@/components/ui/progress'
 
-import { FilterObjectives } from './filter-objectives'
-
 export function EObjectivePage() {
   const { data: goals, isLoading: isLoadingGoals } = useQuery({
     queryKey: ['goals'],
@@ -36,10 +35,8 @@ export function EObjectivePage() {
       <div className="w-full space-y-2.5">
         <div className="mb-4 flex items-center gap-4">
           <div className="flex items-center gap-2">
-            <h1 className="whitespace-nowrap font-semibold">
-              Filtros de Objetivos:
-            </h1>
-            <FilterObjectives />
+            <Flag className="h-5 w-5" />
+            <h1 className="whitespace-nowrap font-semibold">Objetivos</h1>
           </div>
         </div>
 
@@ -65,7 +62,7 @@ export function EObjectivePage() {
                 >
                   <CardHeader className="flex-row items-center justify-between space-y-0 pb-2">
                     <CardTitle className="text-2x1 flex items-center gap-2 font-bold">
-                      <Flag className="h-5 w-5" />
+                      <Pin className="h-4 w-4" />
                       {goal.titulo}
                     </CardTitle>
                     <div className="flex gap-2">

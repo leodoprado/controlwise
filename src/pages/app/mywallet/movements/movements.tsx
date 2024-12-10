@@ -12,6 +12,7 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
+import { Separator } from '@/components/ui/separator'
 import {
   Table,
   TableCell,
@@ -57,10 +58,15 @@ export function WMovementsPage() {
           </CardHeader>
 
           <CardContent>
+            <Separator />
             {isLoadingAllMovements ? (
-              <p>Carregando lançamentos...</p>
+              <p className="mt-4 text-center text-sm font-medium text-gray-500">
+                Carregando Lançamentos...
+              </p>
             ) : !allMovements || allMovements.length === 0 ? (
-              <p>Nenhum lançamento encontrado.</p>
+              <p className="mt-4 text-start text-sm font-medium text-gray-500">
+                Nenhum Lançamento disponível.
+              </p>
             ) : (
               <Table>
                 <TableHeader>

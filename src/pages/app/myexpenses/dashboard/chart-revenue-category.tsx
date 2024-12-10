@@ -27,6 +27,7 @@ interface RevenueCategory {
 
 interface ChartRevenueCategoryProps {
   data: RevenueCategory[]
+  isLoading: boolean
 }
 
 const chartConfig = {

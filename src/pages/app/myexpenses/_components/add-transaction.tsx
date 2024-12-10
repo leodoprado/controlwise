@@ -230,7 +230,7 @@ export function AddTransaction() {
                 </div>
               </div>
 
-              {/* Switch Receita/Despesa Recorrente */}
+              {/* Switch Receita/Despesa Recorrente 
               <div className="flex items-center space-x-2">
                 <Switch
                   id="isRecurring"
@@ -242,7 +242,7 @@ export function AddTransaction() {
                     ? 'Receita Recorrente'
                     : 'Despesa Recorrente'}
                 </Label>
-              </div>
+              </div> */}
 
               {/* Data */}
               <div className="space-y-1">
