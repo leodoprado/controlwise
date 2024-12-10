@@ -1,3 +1,11 @@
+import {
+  Document,
+  Page,
+  pdf,
+  StyleSheet,
+  Text,
+  View,
+} from '@react-pdf/renderer'
 import { useQuery } from '@tanstack/react-query'
 import { ChevronDown, Download, Info } from 'lucide-react'
 import { useEffect, useState } from 'react'
@@ -27,7 +35,6 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip'
 
-// Tipos
 interface Asset {
   name: string
   ticker: string
@@ -46,6 +53,68 @@ const assetTypeTitles: Record<string, string> = {
   FII: 'GRUPO 07 - Fundos / Código 03 - Fundos de investimento imobiliário',
   CRIPTOMOEDA: 'GRUPO 08 - Criptoativos',
 }
+
+// Estilos do relatório PDF
+// Estilos do relatório PDF
+const styles = StyleSheet.create({
+  page: { padding: 30 },
+  title: { fontSize: 18, marginBottom: 10, fontWeight: 'bold' },
+  section: { marginBottom: 20 },
+  table: { display: 'flex', flexDirection: 'column', marginBottom: 10 },
+  tableRow: { flexDirection: 'row' },
+  tableCell: {
+    flex: 1,
+    padding: 5,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ddd',
+  },
+  headerCell: { fontWeight: 'bold', backgroundColor: '#f3f3f3', padding: 5 },
+})
+
+// Componente PDF
+const IRPFReport = ({
+  groupedAssets,
+}: {
+  groupedAssets: Record<string, Asset[]>
+}) => (
+  <Document>
+    <Page style={styles.page}>
+      <Text style={styles.title}>Relatório IRPF</Text>
+      {Object.entries(groupedAssets).map(([assetType, assets]) => (
+        <View key={assetType} style={styles.section}>
+          <Text style={styles.title}>
+            {assetTypeTitles[assetType] || assetType}
+          </Text>
+          <View style={styles.table}>
+            <View style={styles.tableRow}>
+              <Text style={[styles.tableCell, styles.headerCell]}>Nome</Text>
+              <Text style={[styles.tableCell, styles.headerCell]}>Ticker</Text>
+              <Text style={[styles.tableCell, styles.headerCell]}>
+                Quantidade Total
+              </Text>
+              <Text style={[styles.tableCell, styles.headerCell]}>
+                Valor Total
+              </Text>
+            </View>
+            {assets.map((asset, index) => (
+              <View key={index} style={styles.tableRow}>
+                <Text style={styles.tableCell}>{asset.name}</Text>
+                <Text style={styles.tableCell}>{asset.ticker}</Text>
+                <Text style={styles.tableCell}>{asset.totalQuantity}</Text>
+                <Text style={styles.tableCell}>
+                  {asset.totalValue.toLocaleString('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL',
+                  })}
+                </Text>
+              </View>
+            ))}
+          </View>
+        </View>
+      ))}
+    </Page>
+  </Document>
+)
 
 export function WExportIRPF() {
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear())
@@ -78,6 +147,19 @@ export function WExportIRPF() {
     },
     {},
   )
+
+  const handleDownloadPDF = async () => {
+    if (!groupedAssets) return
+    const blob = await pdf(
+      <IRPFReport groupedAssets={groupedAssets} />,
+    ).toBlob()
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `Relatorio_IRPF_${selectedYear}.pdf`
+    a.click()
+    URL.revokeObjectURL(url)
+  }
 
   return (
     <>
@@ -146,6 +228,7 @@ export function WExportIRPF() {
                   <Button
                     variant="outline"
                     className="flex items-center justify-center rounded-full font-bold"
+                    onClick={handleDownloadPDF}
                   >
                     <Download className="h-4 w-4 stroke-[2.5] text-primary" />
                   </Button>
