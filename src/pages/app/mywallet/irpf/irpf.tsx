@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { ChevronDown, Info } from 'lucide-react'
+import { ChevronDown, Download, Info } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 
@@ -140,6 +140,16 @@ export function WExportIRPF() {
                   </div>
                 </PopoverContent>
               </Popover>
+              {!isLoadingAssetsYear &&
+                groupedAssets &&
+                Object.keys(groupedAssets).length > 0 && (
+                  <Button
+                    variant="outline"
+                    className="flex items-center justify-center rounded-full font-bold"
+                  >
+                    <Download className="h-4 w-4 stroke-[2.5] text-primary" />
+                  </Button>
+                )}
             </div>
 
             <Separator className="mt-4" />
